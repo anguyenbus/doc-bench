@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://doc-bench.dev/schemas/results_v1.schema.json",
+  "title": "Document Parsing Evaluation Results",
+  "description": "Output schema for parsing evaluation results (CSV rows and JSON summary)",
+  "type": "object",
+  "properties": {
+    "query_id": {
+      "type": "string",
+      "description": "Unique identifier for the evaluated document/query"
+    },
+    "error": {
+      "type": "string",
+      "description": "Error message if evaluation failed, empty string otherwise"
+    },
+    "nid": {
+      "type": "number",
+      "description": "Normalized Intersection over Union for reading order"
+    },
+    "nid_s": {
+      "type": "number",
+      "description": "Scaled NID score"
+    },
+    "teds": {
+      "type": "number",
+      "description": "Tree Edit Distance Score for tables"
+    },
+    "teds_s": {
+      "type": "number",
+      "description": "Scaled TEDS score"
+    },
+    "mhs": {
+      "type": "number",
+      "description": "Mean Heading Similarity"
+    },
+    "mhs_s": {
+      "type": "number",
+      "description": "Scaled MHS score"
+    },
+    "ard": {
+      "type": "number",
+      "description": "Average Reading Displacement"
+    },
+    "bleu": {
+      "type": "number",
+      "description": "BLEU score for text similarity"
+    },
+    "meteor": {
+      "type": "number",
+      "description": "METEOR score for text similarity"
+    }
+  },
+  "required": ["query_id"],
+  "additionalProperties": false
+}
