@@ -1,82 +1,79 @@
 # Multi-stage Dockerfile for doc-bench
-# Builder stage compiles dependencies, runtime stage contains minimal image
+# Minimal image with baked-in datasets (DP-Bench + OmniDocBench large slice)
 
 # ============================================================================
-# BUILDER STAGE
+# BUILDER STAGE - Install dependencies
 # ============================================================================
-FROM python:3.12-slim AS builder
+FROM python:3.13-slim AS builder
 
-# Build-time environment for optimization
+# Build-time environment
 ENV UV_COMPILE_BYTECODE=1 \
     PYTHONOPTIMIZE=2 \
-    PYTHONUNBUFFERED=1 \
-    UV_SYSTEM_PYTHON=1
-
-# Install system build dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    curl \
-    ca-certificates \
-    && rm -rf /var/lib/apt/lists/*
+    PYTHONUNBUFFERED=1
 
 # Install uv package manager
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
 
-# Set working directory for build
+# Set working directory
 WORKDIR /build
 
-# Copy dependency files for layer caching
+# Copy dependency files
 COPY pyproject.toml uv.lock ./
+COPY README.md ./
+COPY src ./src
 
-# Install dependencies using uv (frozen lockfile for reproducibility)
+# Install dependencies
 RUN uv sync --frozen --no-dev
+# Move venv to /opt/venv for consistent copying
+RUN mv .venv /opt/venv
 
 # ============================================================================
-# DATASETS STAGE
+# DATASETS STAGE - Download datasets
 # ============================================================================
-FROM builder AS datasets
+FROM python:3.13-slim AS datasets
 
-# Set working directory for data download
 WORKDIR /opt/doc-bench
 
-# Copy application code and scripts needed for dataset download
+# Copy uv binary from builder
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
+
+# Copy venv from builder
+COPY --from=builder /opt/venv /opt/venv
+
+# Copy source and scripts
 COPY --chown=root:root src /opt/doc-bench/src
 COPY --chown=root:root scripts /opt/doc-bench/scripts
 
-# Download DP-Bench and OmniDocBench English slices
-# dp_bench: full dataset
-# omnidocbench_english: nano (3), mini (10), medium (100), large (full)
-RUN uv run python scripts/download_datasets.py \
+# Download datasets: DP-Bench + OmniDocBench large slice only
+# (nano/mini/medium are subsets of large - slice at runtime)
+WORKDIR /opt/doc-bench
+ENV PYTHONPATH=/opt/doc-bench/src
+RUN /opt/venv/bin/python scripts/download_datasets.py \
     --datasets dp_bench omnidocbench \
-    --omnidocbench-slices nano mini medium large \
+    --omnidocbench-slices large \
     --output-dir /opt/doc-bench/data
 
-# Verify datasets were downloaded successfully
-RUN test -d /opt/doc-bench/data/parsing/omnidocbench_english_nano && \
-    test -d /opt/doc-bench/data/parsing/omnidocbench_english_mini && \
-    test -d /opt/doc-bench/data/parsing/omnidocbench_english_medium && \
-    test -d /opt/doc-bench/data/parsing/omnidocbench_english_large && \
+# Verify datasets
+RUN test -d /opt/doc-bench/data/parsing/omnidocbench_english_large && \
     test -d /opt/doc-bench/data/parsing/dp_bench && \
     test -f /opt/doc-bench/data/MANIFEST.yaml || \
     (echo "ERROR: Dataset download failed" && exit 1)
 
-# Clean up uv cache to minimize layer size
-RUN uv cache clean
-
 # ============================================================================
-# RUNTIME STAGE
+# RUNTIME STAGE - Minimal final image
 # ============================================================================
-FROM python:3.12-slim AS runtime
+FROM python:3.13-slim AS runtime
 
 # Runtime environment
 ENV PYTHONUNBUFFERED=1 \
-    PATH="/.venv/bin:$PATH" \
-    PYTHONPATH="/opt/doc-bench/src:/opt/doc-bench/scripts:$PYTHONPATH" \
+    PATH="/opt/venv/bin:$PATH" \
+    PYTHONPATH="/opt/doc-bench/src" \
+    NLTK_DATA="/opt/nltk_data" \
     DOC_BENCH_LOG_LEVEL=INFO \
     DOC_BENCH_OUTPUT_FORMAT=csv
 
-# Install runtime system dependencies
+# Install runtime dependencies only (no build tools)
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    curl \
     ca-certificates \
     && rm -rf /var/lib/apt/lists/* \
     && apt-get clean
@@ -86,34 +83,38 @@ RUN groupadd -r docbench && \
     useradd -r -u 1000 -g docbench -s /bin/bash -d /home/docbench docbench && \
     mkdir -p /home/docbench
 
-# Create application directory structure
-RUN mkdir -p /opt/doc-bench/src && \
-    mkdir -p /opt/doc-bench/scripts && \
-    mkdir -p /opt/doc-bench/contracts && \
-    mkdir -p /opt/doc-bench/data && \
-    mkdir -p /work/parsers && \
-    mkdir -p /work/results
+# Create directories
+RUN mkdir -p /opt/doc-bench /work/parsers /work/results
 
-# Copy virtual environment from builder
-COPY --from=builder --chown=docbench:docbench /.venv /.venv
+# Copy venv from builder
+COPY --from=builder /opt/venv /opt/venv
+# Fix entrypoint scripts: regenerate with correct python path
+RUN /opt/venv/bin/python -m sysconfig && \
+    for script in /opt/venv/bin/*; do \
+        if head -1 "$script" | grep -q "^#!/build/.venv/bin/python"; then \
+            sed -i '1s|#!/build/.venv/bin/python|#!/opt/venv/bin/python|' "$script"; \
+        fi; \
+    done
+# Download NLTK data for METEOR metric (to shared location)
+RUN mkdir -p /opt/nltk_data && \
+    /opt/venv/bin/python -c "import nltk; nltk.download('wordnet', download_dir='/opt/nltk_data'); nltk.download('punkt', download_dir='/opt/nltk_data')" && \
+    chown -R docbench:docbench /opt/nltk_data
 
 # Copy baked datasets from datasets stage
 COPY --from=datasets --chown=docbench:docbench /opt/doc-bench/data /opt/doc-bench/data
 
-# Copy application source code
+# Copy source code
 COPY --chown=docbench:docbench src /opt/doc-bench/src
 COPY --chown=docbench:docbench scripts /opt/doc-bench/scripts
 COPY --chown=docbench:docbench contracts /opt/doc-bench/contracts
+COPY --chown=docbench:docbench eval_config.yaml /opt/doc-bench/eval_config.yaml
 
-# Set ownership of directories
+# Set ownership
 RUN chown -R docbench:docbench /opt/doc-bench /work
 
-# Set working directory
 WORKDIR /opt/doc-bench
-
-# Switch to non-root user
 USER docbench
 
-# Default entry point - show help when no arguments provided
-ENTRYPOINT ["uv", "run"]
+# Default entry point
+ENTRYPOINT ["doc-bench"]
 CMD ["--help"]

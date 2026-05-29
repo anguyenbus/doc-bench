@@ -16,16 +16,11 @@ dependencies = [
     "jinja2",
     "pypdf",
     "huggingface-hub",
-    "docling>=2",
     "rapidfuzz>=3",
     "apted>=1",
     "beautifulsoup4>=4",
     "lxml>=5",
-    "torch",
-    "torchmetrics[detection]>=1",
     "nltk",
-    "evaluate",
-    "pycocotools",
     "beartype",
     "sacrebleu>=2.6.0",
     "polars>=1.41.0",
@@ -36,8 +31,12 @@ dependencies = [
 bedrock = [
     "boto3>=1.0.0",
 ]
+docling = [
+    "docling>=2",
+]
 [project.scripts]
-eval-parsing = "doc_bench.runners.run_parsing_eval:main"
+doc-bench = "doc_bench.runners.run_parsing_eval:main"
+doc-bench-dump-dataset = "doc_bench.cli.dump_dataset:main"
 
 [dependency-groups]
 dev = [

@@ -25,9 +25,8 @@ htmlcov/
 tests/
 
 # Documentation
-*.md
-!README.md
 docs/
+docker.md
 
 # IDE
 .vscode/
@@ -63,14 +62,3 @@ build/
 
 # Node modules (if any)
 node_modules/
-
-# Lock file (used in build only)
-uv.lock
-
-# References not needed in image
-references/eval-harness/.git
-references/eval-harness/.pytest_cache
-references/eval-harness/htmlcov
-references/eval-harness/tests
-references/eval-harness/docs
-references/eval-hains/eval_questions

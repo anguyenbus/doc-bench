@@ -1,0 +1,41 @@
+# Default evaluation config for Docker container
+# Datasets are baked-in at /opt/doc-bench/data
+
+datasets:
+  omnidocbench:
+    path: /opt/doc-bench/data/parsing/omnidocbench_english_large
+  dp_bench:
+    path: /opt/doc-bench/data/parsing/dp_bench
+
+metrics:
+  parsing:
+    # Text similarity metrics
+    bleu: true
+    meteor: true
+    char_edit_distance: true
+    word_edit_distance: true
+
+    # Reading order metrics
+    nid: true
+    nid_normalized: true
+    ard: true
+
+    # Table structure metrics
+    teds: true
+    teds_normalized: true
+
+    # Heading hierarchy metrics
+    mhs: true
+    mhs_normalized: true
+
+models:
+  # Parser output models (for reference)
+  stub:
+    type: stub
+    description: "Stub parser for testing"
+  fast:
+    type: fast
+    description: "Fast digital PDF parser (pypdf)"
+  docling:
+    type: docling
+    description: "Full parser with OCR support (requires docling dependency)"

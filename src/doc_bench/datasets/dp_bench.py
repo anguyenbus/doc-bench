@@ -9,6 +9,8 @@ import json
 from collections.abc import Iterator
 from pathlib import Path
 
+from doc_bench.identity import doc_id_for
+
 
 def load_dp_bench(root: Path) -> Iterator[tuple[str, Path, dict]]:
     """
@@ -29,7 +31,7 @@ def load_dp_bench(root: Path) -> Iterator[tuple[str, Path, dict]]:
 
     Yields:
         tuple: (doc_id, pdf_path, gold_elements) where:
-            - doc_id: Document identifier (PDF filename without extension)
+            - doc_id: Document identifier derived via doc_id_for()
             - pdf_path: Path to the PDF file
             - gold_elements: Ground truth from reference.json
 
@@ -56,7 +58,8 @@ def load_dp_bench(root: Path) -> Iterator[tuple[str, Path, dict]]:
 
     # Iterate over each document in reference
     for pdf_filename, gold_elements in reference.items():
-        doc_id = pdf_filename.replace(".pdf", "")
+        # Use doc_id_for() to derive canonical identifier
+        doc_id = doc_id_for("dp_bench", (pdf_filename, gold_elements))
         pdf_path = pdfs_dir / pdf_filename
 
         if not pdf_path.exists():
