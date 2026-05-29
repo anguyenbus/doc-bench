@@ -30,7 +30,27 @@ uv sync --extra bedrock
 
 ## Parsing Evaluation
 
-Evaluate document parsers on layout-aware benchmarks.
+Evaluate document parsers on layout-aware benchmarks. Two modes available:
+
+### Modes
+
+**In-Process Mode** — Run parser inside doc-bench
+```bash
+uv run doc-bench evaluate --dataset dp_bench --parser stub --limit 10
+```
+
+**File-Based Mode** — Grade pre-computed predictions
+```bash
+# 1. Export dataset documents
+docker run --rm --entrypoint /opt/venv/bin/doc-bench-dump-dataset \
+  -v ./pdfs:/work/output doc-bench --dataset dp_bench --output /work/output --limit 10
+
+# 2. Run your parser, write predictions as ./predictions/<doc_id>.json
+
+# 3. Grade predictions
+docker run --rm -v ./predictions:/work/predictions -v ./results:/work/results \
+  doc-bench --dataset dp_bench --predictions /work/predictions
+```
 
 ### Datasets
 
@@ -59,9 +79,16 @@ uv run doc-bench evaluate --dataset omnidocbench --parser fast
 # Evaluate on DP-Bench with stub parser (limited samples)
 uv run doc-bench evaluate --dataset dp_bench --parser stub --limit 10
 
+# File-based: grade pre-computed predictions
+uv run doc-bench evaluate --dataset dp_bench --predictions ./predictions
+
 # Custom output directory
 uv run doc-bench evaluate --dataset omnidocbench --parser docling --output-dir ./my_results
 ```
+
+### Document Identity Convention
+
+Prediction files must be named `<doc_id>.json` where `<doc_id>` matches the stem of the exported PDF from `dump-dataset`. See [docs/document-identity.md](docs/document-identity.md) for details.
 
 ### Metrics
 
@@ -77,12 +104,20 @@ uv run doc-bench evaluate --dataset omnidocbench --parser docling --output-dir .
 Results written to `results/` with timestamp:
 - `{dataset}_{parser}_results_{timestamp}.csv` - Per-document metrics
 - `{dataset}_{parser}_results_{timestamp}.json` - Summary with averages
+- `{dataset}_{parser}_rejected_{timestamp}.csv` - Rejected samples (file-based mode only)
 
 Example CSV output:
 ```csv
 query_id,error,nid,nid_s,teds,teds_s,mhs,mhs_s,ard,bleu,meteor
 omnidocbench_0,,0.85,0.87,0.92,0.94,0.88,0.90,0.12,0.75,0.68
 omnidocbench_1,,0.78,0.80,0.85,0.87,0.82,0.84,0.15,0.70,0.62
+```
+
+**Rejection tracking** (file-based mode):
+```csv
+doc_id,reason,source_file,detail
+01030000000001,MISSING_PREDICTION,01030000000001.pdf,
+01030000000002,INVALID_SCHEMA,01030000000002.json,"elements[0].bbox missing required field 'x1'"
 ```
 
 ## Configuration
@@ -207,20 +242,18 @@ docker build -t doc-bench .
 ### Run
 
 ```bash
-# Evaluate with OmniDocBench nano slice (baked in image)
-docker run -v ./parsers:/work/parsers:ro -v ./results:/work/results:rw \
-    doc-bench doc-bench evaluate --dataset omnidocbench_english_nano --parser stub
+# In-process evaluation (stub parser)
+docker run -v ./results:/work/results doc-bench --dataset omnidocbench_english_nano --parser stub
 
-# With OmniDocBench medium slice (100 docs, baked in)
-docker run -v ./parsers:/work/parsers:ro -v ./results:/work/results:rw \
-    doc-bench doc-bench evaluate --dataset omnidocbench_english_medium --parser fast
-
-# With DP-Bench (baked in)
-docker run -v ./parsers:/work/parsers:ro -v ./results:/work/results:rw \
-    doc-bench doc-bench evaluate --dataset dp_bench --parser docling
+# File-based evaluation (grade pre-computed predictions)
+docker run --rm --entrypoint /opt/venv/bin/doc-bench-dump-dataset \
+  -v ./pdfs:/work/output doc-bench --dataset dp_bench --output /work/output --limit 10
+# Run your parser over ./pdfs, write predictions to ./predictions/<doc_id>.json
+docker run --rm -v ./predictions:/work/predictions -v ./results:/work/results \
+  doc-bench --dataset dp_bench --predictions /work/predictions
 
 # View available commands
-docker run doc-bench --help
+docker run --rm doc-bench --help
 ```
 
 ### Volume Mounts
@@ -252,3 +285,9 @@ docker compose -f docker-compose.yml -f docker-compose.dev.yml run doc-bench doc
 ## Contracts
 
 See [contracts/README.md](contracts/README.md) for schema documentation.
+
+## Documentation
+
+- [File-Based Evaluation Guide](docs/file-based-evaluation.md) - Dump, predict, grade workflow
+- [Document Identity Convention](docs/document-identity.md) - Naming rules for prediction files
+- [contracts/README.md](contracts/README.md) - Parser output schema
