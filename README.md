@@ -54,13 +54,12 @@ docker run --rm -v ./predictions:/work/predictions -v ./results:/work/results \
 
 ### Datasets
 
-| Dataset | Description | Documents |
-|---------|-------------|-----------|
-| `omnidocbench_english_nano` | Nano slice for quick testing | 3 pages |
-| `omnidocbench_english_mini` | Mini slice for development | 10 pages |
-| `omnidocbench_english_medium` | Medium slice for evaluation | 100 pages |
-| `omnidocbench_english_large` | Full English dataset | 593 pages |
-| `dp_bench` | Digital PDF benchmark | 1,052 docs |
+| Dataset | Description | Documents | Notes |
+|---------|-------------|-----------|-------|
+| `omnidocbench` | English-only sample | 10 pages | Docker baseline (pruned from 593) |
+| `dp_bench` | Digital PDF benchmark | 1,052 docs | Full dataset included |
+
+**Note:** The Docker image includes a minimal 10-page OmniDocBench sample for fast iteration. For full evaluation, use local datasets or mount additional data.
 
 ### Parsers
 
@@ -235,15 +234,39 @@ doc-bench provides a containerized image with **baked-in datasets** for reproduc
 ### Build
 
 ```bash
-# Datasets downloaded during build (nano, mini, medium, large slices + dp_bench)
+# Build minimal image with 10-file OmniDocBench sample
 docker build -t doc-bench .
 ```
+
+**Image size:** 769MB (includes DP-Bench + 10 OmniDocBench English pages)
+
+### Included Datasets
+
+| Dataset | Documents | Purpose |
+|---------|-----------|---------|
+| `omnidocbench_english_large` | 10 pages | Minimal test sample (pruned from 593) |
+| `dp_bench` | 1,052 docs | Full digital PDF benchmark |
+
+### Baseline Results
+
+Pre-computed docling baseline included at `/opt/doc-bench/baseline/docling_baseline.json`:
+
+```json
+{
+  "nid": 0.9173,
+  "ard": 0.7993,
+  "bleu": 0.717,
+  "meteor": 0.8198
+}
+```
+
+Use for comparing against new parsing methods.
 
 ### Run
 
 ```bash
 # In-process evaluation (stub parser)
-docker run -v ./results:/work/results doc-bench --dataset omnidocbench_english_nano --parser stub
+docker run -v ./results:/work/results doc-bench --dataset omnidocbench --parser stub
 
 # File-based evaluation (grade pre-computed predictions)
 docker run --rm --entrypoint /opt/venv/bin/doc-bench-dump-dataset \
