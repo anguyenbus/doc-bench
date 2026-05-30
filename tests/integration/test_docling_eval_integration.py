@@ -16,9 +16,7 @@ class TestDoclingEvalIntegration:
     def test_full_evaluation_pipeline(self):
         """Test full evaluation pipeline with sample document data."""
         # Sample document data mimicking OmniDocBench/DP-Bench structure
-        document_text = (
-            "This document contains important information for evaluation purposes."
-        )
+        document_text = "This document contains important information for evaluation purposes."
 
         # Reading order evaluation
         element_ids = [1, 2, 3, 4, 5]
@@ -37,9 +35,7 @@ class TestDoclingEvalIntegration:
         layout_result = layout_map_score(gt_layout, pred_layout)
 
         # Text similarity evaluation
-        pred_text = (
-            "This document contains important information for evaluation purposes."
-        )
+        pred_text = "This document contains important information for evaluation purposes."
         bleu = bleu_score(document_text, pred_text)
         meteor = meteor_score(document_text, pred_text)
         char_dist = char_edit_distance(document_text, pred_text)

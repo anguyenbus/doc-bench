@@ -89,7 +89,7 @@ class TestUserSwitch:
         assert user_match, "USER docbench directive should be present"
 
         # Check that COPY with chown comes before USER
-        user_line_pos = dockerfile_content[:user_match.start()].count('\n')
         chown_pos = dockerfile_content.find("--chown=docbench")
-        assert chown_pos != -1 and chown_pos < user_match.start(), \
+        assert chown_pos != -1 and chown_pos < user_match.start(), (
             "USER switch should come after chown operations"
+        )

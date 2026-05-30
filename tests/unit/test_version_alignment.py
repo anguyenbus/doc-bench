@@ -5,9 +5,7 @@ Tests package version matches dataset versions in MANIFEST.yaml
 and CI check detects version misalignment.
 """
 
-from pathlib import Path
 from unittest.mock import patch
-import pytest
 
 
 class TestVersionModule:
@@ -44,10 +42,11 @@ class TestVersionAlignment:
 
     def test_version_alignment_passes_when_aligned(self, tmp_path):
         """Test version alignment passes when versions match."""
-        from doc_bench.version import check_dataset_version_alignment
-
         # Create mock manifest with matching version
         import yaml
+
+        from doc_bench.version import check_dataset_version_alignment
+
         manifest = {
             "dp_bench": {"version": "0.1.0"},
             "omnidocbench": {"version": "0.1.0"},
@@ -63,10 +62,11 @@ class TestVersionAlignment:
 
     def test_version_alignment_fails_when_mismatched(self, tmp_path):
         """Test version alignment fails when versions don't match."""
-        from doc_bench.version import check_dataset_version_alignment
-
         # Create mock manifest with mismatched version
         import yaml
+
+        from doc_bench.version import check_dataset_version_alignment
+
         manifest = {
             "dp_bench": {"version": "0.2.0"},  # Different version
             "omnidocbench": {"version": "0.1.0"},
@@ -93,10 +93,11 @@ class TestVersionAlignment:
 
     def test_version_alignment_partial_match(self, tmp_path):
         """Test version alignment with some datasets matching."""
-        from doc_bench.version import check_dataset_version_alignment
-
         # Create mock manifest with mixed versions
         import yaml
+
+        from doc_bench.version import check_dataset_version_alignment
+
         manifest = {
             "dp_bench": {"version": "0.1.0"},  # Matches
             "omnidocbench": {"version": "0.2.0"},  # Doesn't match
@@ -119,10 +120,11 @@ class TestCIVersionCheck:
 
     def test_ci_check_fails_on_misalignment(self, tmp_path):
         """Test CI check fails on version misalignment."""
-        from doc_bench.version import check_dataset_version_alignment
-
         # Create misaligned manifest
         import yaml
+
+        from doc_bench.version import check_dataset_version_alignment
+
         manifest = {
             "dp_bench": {"version": "0.2.0"},
         }
@@ -138,10 +140,11 @@ class TestCIVersionCheck:
 
     def test_ci_check_passes_on_alignment(self, tmp_path):
         """Test CI check passes when versions align."""
-        from doc_bench.version import check_dataset_version_alignment
-
         # Create aligned manifest
         import yaml
+
+        from doc_bench.version import check_dataset_version_alignment
+
         manifest = {
             "dp_bench": {"version": "0.1.0"},
             "omnidocbench": {"version": "0.1.0"},

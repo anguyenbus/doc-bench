@@ -1,7 +1,6 @@
 """Tests for prediction loading module."""
 
 import json
-from pathlib import Path
 
 from doc_bench.predictions import load_prediction
 

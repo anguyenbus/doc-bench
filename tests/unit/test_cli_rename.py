@@ -59,6 +59,12 @@ def test_doc_bench_entry_point_works() -> None:
     assert scripts["eval-parsing"] == "doc_bench.runners.run_parsing_eval:main"
 
     # Check that removed commands are not in scripts
-    removed = ["eval-rag", "generate-spans", "eval-replay", "chunking-compare", "eval-harness-check"]
+    removed = [
+        "eval-rag",
+        "generate-spans",
+        "eval-replay",
+        "chunking-compare",
+        "eval-harness-check",
+    ]
     for cmd in removed:
         assert cmd not in scripts

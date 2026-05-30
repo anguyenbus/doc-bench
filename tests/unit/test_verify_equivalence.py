@@ -6,7 +6,6 @@ parser mode and predictions mode.
 """
 
 import json
-import math
 import sys
 from pathlib import Path
 
@@ -39,10 +38,10 @@ def sample_parser_scores(tmp_path):
             "mhs_s": 0.70,
             "ard": 0.60,
             "bleu": 0.65,
-            "meteor": 0.68
+            "meteor": 0.68,
         },
         "total_processed": 10,
-        "errors": 0
+        "errors": 0,
     }
     with open(scores_file, "w") as f:
         json.dump(scores, f)
@@ -67,15 +66,15 @@ def sample_predictions_scores(tmp_path):
             "mhs_s": 0.70,
             "ard": 0.60,
             "bleu": 0.65,
-            "meteor": 0.68
+            "meteor": 0.68,
         },
         "evaluated_samples": 10,
         "rejected_samples": {
             "MISSING_PREDICTION": 0,
             "INVALID_JSON": 0,
             "INVALID_SCHEMA": 0,
-            "EVALUATION_ERROR": 0
-        }
+            "EVALUATION_ERROR": 0,
+        },
     }
     with open(scores_file, "w") as f:
         json.dump(scores, f)
@@ -100,15 +99,15 @@ def divergent_scores(tmp_path):
             "mhs_s": 0.70,
             "ard": 0.60,
             "bleu": 0.65,
-            "meteor": 0.68
+            "meteor": 0.68,
         },
         "evaluated_samples": 10,
         "rejected_samples": {
             "MISSING_PREDICTION": 0,
             "INVALID_JSON": 0,
             "INVALID_SCHEMA": 0,
-            "EVALUATION_ERROR": 0
-        }
+            "EVALUATION_ERROR": 0,
+        },
     }
     with open(scores_file, "w") as f:
         json.dump(scores, f)
@@ -216,18 +215,12 @@ class TestVerifyEquivalence:
 
     def test_missing_parser_scores(self, sample_predictions_scores):
         """Missing parser scores should return 2."""
-        exit_code = verify_equivalence(
-            Path("nonexistent_parser.json"),
-            sample_predictions_scores
-        )
+        exit_code = verify_equivalence(Path("nonexistent_parser.json"), sample_predictions_scores)
         assert exit_code == 2
 
     def test_missing_predictions_scores(self, sample_parser_scores):
         """Missing predictions scores should return 2."""
-        exit_code = verify_equivalence(
-            sample_parser_scores,
-            Path("nonexistent_predictions.json")
-        )
+        exit_code = verify_equivalence(sample_parser_scores, Path("nonexistent_predictions.json"))
         assert exit_code == 2
 
 
@@ -239,13 +232,10 @@ class TestEquivalenceIntegration:
         parser_file = tmp_path / "parser.json"
         pred_file = tmp_path / "pred.json"
 
-        parser_scores = {
-            "timestamp": "20240101_120000",
-            "metrics_avg": {"nid": 0.85}
-        }
+        parser_scores = {"timestamp": "20240101_120000", "metrics_avg": {"nid": 0.85}}
         pred_scores = {
             "timestamp": "20240101_120001",  # Different
-            "metrics_avg": {"nid": 0.85}
+            "metrics_avg": {"nid": 0.85},
         }
 
         with open(parser_file, "w") as f:
@@ -261,14 +251,8 @@ class TestEquivalenceIntegration:
         parser_file = tmp_path / "parser.json"
         pred_file = tmp_path / "pred.json"
 
-        parser_scores = {
-            "total_processed": 10,
-            "metrics_avg": {"nid": 0.85}
-        }
-        pred_scores = {
-            "evaluated_samples": 10,
-            "metrics_avg": {"nid": 0.85}
-        }
+        parser_scores = {"total_processed": 10, "metrics_avg": {"nid": 0.85}}
+        pred_scores = {"evaluated_samples": 10, "metrics_avg": {"nid": 0.85}}
 
         with open(parser_file, "w") as f:
             json.dump(parser_scores, f)
@@ -292,7 +276,7 @@ class TestEquivalenceIntegration:
             "mhs_s": 0.70,
             "ard": 0.60,
             "bleu": 0.65,
-            "meteor": 0.68
+            "meteor": 0.68,
         }
 
         parser_scores = {"metrics_avg": all_metrics.copy()}

@@ -33,12 +33,14 @@ def test_docker_compose_no_legacy_paths() -> None:
     content = compose_path.read_text()
 
     # Should not have legacy eval-harness paths
-    assert "./references/eval-harness" not in content, \
+    assert "./references/eval-harness" not in content, (
         "docker-compose.yml should not contain legacy eval-harness paths"
+    )
 
     # Should have doc-bench service name
-    assert "doc-bench" in content or "doc_bench" in content, \
+    assert "doc-bench" in content or "doc_bench" in content, (
         "docker-compose.yml should reference doc-bench"
+    )
 
 
 def test_docker_compose_correct_volumes() -> None:
@@ -51,7 +53,9 @@ def test_docker_compose_correct_volumes() -> None:
     content = compose_path.read_text()
 
     # Should have parsers and results volumes
-    assert "./parsers" in content or "/work/parsers" in content, \
+    assert "./parsers" in content or "/work/parsers" in content, (
         "docker-compose.yml should mount parsers directory"
-    assert "./results" in content or "/work/results" in content, \
+    )
+    assert "./results" in content or "/work/results" in content, (
         "docker-compose.yml should mount results directory"
+    )

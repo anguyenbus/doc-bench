@@ -5,8 +5,10 @@ Tests that the package builds correctly with bundled fixtures
 and wheel size is within acceptable limits.
 """
 
-import pytest
 from pathlib import Path
+
+import pytest
+
 try:
     import tomllib
 except ImportError:
@@ -101,7 +103,9 @@ class TestFixtureBundling:
         }
 
         actual_scripts = set(scripts.keys())
-        assert expected_scripts <= actual_scripts, f"Missing entry points: {expected_scripts - actual_scripts}"
+        assert expected_scripts <= actual_scripts, (
+            f"Missing entry points: {expected_scripts - actual_scripts}"
+        )
 
     def test_fixtures_directory_exists(self):
         """Test fixtures directory exists in source."""
@@ -111,6 +115,7 @@ class TestFixtureBundling:
     def test_fixtures_module_exists(self):
         """Test fixtures module exists."""
         from doc_bench import fixtures
+
         assert hasattr(fixtures, "get_fixture_path")
         assert hasattr(fixtures, "load_manifest")
 
@@ -161,8 +166,8 @@ class TestWheelBuilding:
 
     def test_wheel_size_acceptable(self):
         """Test built wheel size is within acceptable limits."""
-        from pathlib import Path
         import os
+        from pathlib import Path
 
         dist_dir = Path("dist")
         if not dist_dir.exists():
@@ -184,12 +189,15 @@ class TestWheelBuilding:
             pytest.warn(f"Wheel size {size_mb:.1f}MB is in acceptable range (50-100MB)")
         else:
             # Too large: > 100MB
-            pytest.fail(f"Wheel size {size_mb:.1f}MB exceeds 100MB threshold - consider separate fixture package")
+            pytest.fail(
+                f"Wheel size {size_mb:.1f}MB exceeds 100MB threshold - "
+                f"consider separate fixture package"
+            )
 
     def test_wheel_contains_fixtures(self):
         """Test built wheel contains fixture module."""
-        from pathlib import Path
         import zipfile
+        from pathlib import Path
 
         dist_dir = Path("dist")
         if not dist_dir.exists():
@@ -205,7 +213,11 @@ class TestWheelBuilding:
             files = zf.namelist()
 
         # Check for fixture files
-        fixture_files = [f for f in files if "doc_bench/fixtures" in f or f.startswith("doc_bench/fixtures/")]
+        fixture_files = [
+            f for f in files if "doc_bench/fixtures" in f or f.startswith("doc_bench/fixtures/")
+        ]
 
         # At minimum, fixtures module should be bundled
-        assert any("__init__.py" in f for f in fixture_files), "Wheel should contain fixtures module"
+        assert any("__init__.py" in f for f in fixture_files), (
+            "Wheel should contain fixtures module"
+        )

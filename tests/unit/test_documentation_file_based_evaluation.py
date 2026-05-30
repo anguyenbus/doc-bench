@@ -55,7 +55,7 @@ class TestDocumentationContent:
             "MISSING_PREDICTION",
             "INVALID_JSON",
             "INVALID_SCHEMA",
-            "EVALUATION_ERROR"
+            "EVALUATION_ERROR",
         ]
         for reason in expected_reasons:
             assert reason in doc_content
@@ -105,7 +105,13 @@ class TestDocumentationAccuracy:
             content = f.read()
 
         # These flags should be documented
-        expected_flags = ["--dataset", "--predictions", "--max-rejection-rate", "--output-dir", "--limit"]
+        expected_flags = [
+            "--dataset",
+            "--predictions",
+            "--max-rejection-rate",
+            "--output-dir",
+            "--limit",
+        ]
         for flag in expected_flags:
             assert flag in content, f"CLI flag {flag} not documented"
 
@@ -163,7 +169,11 @@ class TestDocumentationReadability:
     def test_not_emoji(self, doc_content):
         """Should not contain emojis (per project standards)."""
         # Check for common emoji patterns
-        emoji_patterns = [r"[\U0001F600-\U0001F64F]", r"[\U0001F300-\U0001F5FF]", r"[\U0001F680-\U0001F6FF]"]
+        emoji_patterns = [
+            r"[\U0001F600-\U0001F64F]",
+            r"[\U0001F300-\U0001F5FF]",
+            r"[\U0001F680-\U0001F6FF]",
+        ]
         for pattern in emoji_patterns:
             matches = re.findall(pattern, doc_content)
             assert len(matches) == 0, f"Found emojis in documentation: {matches}"

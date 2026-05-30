@@ -5,8 +5,6 @@ Tests the rejected.csv writing with 4 columns: doc_id, reason, source_file, deta
 """
 
 import csv
-from pathlib import Path
-from unittest.mock import patch
 
 import pytest
 
@@ -23,9 +21,7 @@ class TestRejectionDetailFormatting:
 
     def test_missing_prediction_detail_with_message_ignored(self):
         """MISSING_PREDICTION should ignore error message."""
-        detail = format_rejection_detail(
-            RejectionReason.MISSING_PREDICTION, "ignored message"
-        )
+        detail = format_rejection_detail(RejectionReason.MISSING_PREDICTION, "ignored message")
         assert detail == ""
 
     def test_invalid_json_detail_includes_message(self):
@@ -70,15 +66,17 @@ class TestRejectedCsvWriting:
         with open(rejection_csv_path, "w", newline="") as f:
             writer = csv.DictWriter(f, fieldnames=["doc_id", "reason", "source_file", "detail"])
             writer.writeheader()
-            writer.writerow({
-                "doc_id": "test_doc",
-                "reason": "MISSING_PREDICTION",
-                "source_file": "test_doc.pdf",
-                "detail": ""
-            })
+            writer.writerow(
+                {
+                    "doc_id": "test_doc",
+                    "reason": "MISSING_PREDICTION",
+                    "source_file": "test_doc.pdf",
+                    "detail": "",
+                }
+            )
 
         # Read back and verify columns
-        with open(rejection_csv_path, "r") as f:
+        with open(rejection_csv_path) as f:
             reader = csv.DictReader(f)
             rows = list(reader)
 
@@ -97,27 +95,31 @@ class TestRejectedCsvWriting:
         with open(rejection_csv_path, "a", newline="") as f:
             writer = csv.DictWriter(f, fieldnames=fieldnames)
             writer.writeheader()
-            writer.writerow({
-                "doc_id": "doc1",
-                "reason": "MISSING_PREDICTION",
-                "source_file": "doc1.pdf",
-                "detail": ""
-            })
+            writer.writerow(
+                {
+                    "doc_id": "doc1",
+                    "reason": "MISSING_PREDICTION",
+                    "source_file": "doc1.pdf",
+                    "detail": "",
+                }
+            )
             f.flush()
 
         # Append second rejection
         with open(rejection_csv_path, "a", newline="") as f:
             writer = csv.DictWriter(f, fieldnames=fieldnames)
-            writer.writerow({
-                "doc_id": "doc2",
-                "reason": "INVALID_SCHEMA",
-                "source_file": "doc2.pdf",
-                "detail": "elements[0]: Missing required field"
-            })
+            writer.writerow(
+                {
+                    "doc_id": "doc2",
+                    "reason": "INVALID_SCHEMA",
+                    "source_file": "doc2.pdf",
+                    "detail": "elements[0]: Missing required field",
+                }
+            )
             f.flush()
 
         # Read back and verify
-        with open(rejection_csv_path, "r") as f:
+        with open(rejection_csv_path) as f:
             reader = csv.DictReader(f)
             rows = list(reader)
 
@@ -133,22 +135,24 @@ class TestRejectedCsvWriting:
             ("doc1", "MISSING_PREDICTION", "doc1.pdf", ""),
             ("doc2", "INVALID_JSON", "doc2.json", "JSON parse error: Unexpected token"),
             ("doc3", "INVALID_SCHEMA", "doc3.pdf", "elements[0].bbox: Missing x0"),
-            ("doc4", "EVALUATION_ERROR", "doc4.pdf", "AttributeError: 'NoneType' object has no attribute 'x'"),
+            (
+                "doc4",
+                "EVALUATION_ERROR",
+                "doc4.pdf",
+                "AttributeError: 'NoneType' object has no attribute 'x'",
+            ),
         ]
 
         with open(rejection_csv_path, "w", newline="") as f:
             writer = csv.DictWriter(f, fieldnames=fieldnames)
             writer.writeheader()
             for doc_id, reason, source, detail in test_cases:
-                writer.writerow({
-                    "doc_id": doc_id,
-                    "reason": reason,
-                    "source_file": source,
-                    "detail": detail
-                })
+                writer.writerow(
+                    {"doc_id": doc_id, "reason": reason, "source_file": source, "detail": detail}
+                )
 
         # Verify all written
-        with open(rejection_csv_path, "r") as f:
+        with open(rejection_csv_path) as f:
             reader = csv.DictReader(f)
             rows = list(reader)
 
@@ -169,15 +173,17 @@ class TestRejectedCsvWriting:
         with open(rejection_csv_path, "w", newline="") as f:
             writer = csv.DictWriter(f, fieldnames=fieldnames)
             writer.writeheader()
-            writer.writerow({
-                "doc_id": "doc_special",
-                "reason": "INVALID_SCHEMA",
-                "source_file": "doc.pdf",
-                "detail": special_detail
-            })
+            writer.writerow(
+                {
+                    "doc_id": "doc_special",
+                    "reason": "INVALID_SCHEMA",
+                    "source_file": "doc.pdf",
+                    "detail": special_detail,
+                }
+            )
 
         # Read back and verify
-        with open(rejection_csv_path, "r") as f:
+        with open(rejection_csv_path) as f:
             reader = csv.DictReader(f)
             rows = list(reader)
 
@@ -208,15 +214,17 @@ class TestRejectionIntegration:
             writer = csv.DictWriter(f, fieldnames=["doc_id", "reason", "source_file", "detail"])
             writer.writeheader()
             if prediction is None:
-                writer.writerow({
-                    "doc_id": doc_id,
-                    "reason": RejectionReason.MISSING_PREDICTION.value,
-                    "source_file": f"{doc_id}.json",
-                    "detail": format_rejection_detail(RejectionReason.MISSING_PREDICTION)
-                })
+                writer.writerow(
+                    {
+                        "doc_id": doc_id,
+                        "reason": RejectionReason.MISSING_PREDICTION.value,
+                        "source_file": f"{doc_id}.json",
+                        "detail": format_rejection_detail(RejectionReason.MISSING_PREDICTION),
+                    }
+                )
 
         # Verify
-        with open(rejected_csv, "r") as f:
+        with open(rejected_csv) as f:
             reader = csv.DictReader(f)
             rows = list(reader)
 
@@ -253,15 +261,17 @@ class TestRejectionIntegration:
                     reason = RejectionReason.MISSING_PREDICTION
                 else:
                     reason = RejectionReason.INVALID_JSON
-                writer.writerow({
-                    "doc_id": doc_id,
-                    "reason": reason.value,
-                    "source_file": source_file,
-                    "detail": format_rejection_detail(reason, "JSON decode error")
-                })
+                writer.writerow(
+                    {
+                        "doc_id": doc_id,
+                        "reason": reason.value,
+                        "source_file": source_file,
+                        "detail": format_rejection_detail(reason, "JSON decode error"),
+                    }
+                )
 
         # Verify
-        with open(rejected_csv, "r") as f:
+        with open(rejected_csv) as f:
             reader = csv.DictReader(f)
             rows = list(reader)
 

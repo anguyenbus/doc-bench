@@ -5,8 +5,7 @@ Tests NLTK data download and setup functionality.
 """
 
 from pathlib import Path
-from unittest.mock import patch, MagicMock
-import pytest
+from unittest.mock import patch
 
 
 class TestNLTKSetup:
@@ -15,8 +14,9 @@ class TestNLTKSetup:
     @patch("nltk.download")
     def test_setup_downloads_wordnet(self, mock_download):
         """Test setup downloads wordnet data."""
-        from doc_bench.cli.setup import main
         from click.testing import CliRunner
+
+        from doc_bench.cli.setup import main
 
         runner = CliRunner()
         result = runner.invoke(main, [])
@@ -27,8 +27,9 @@ class TestNLTKSetup:
     @patch("nltk.download")
     def test_setup_downloads_punkt(self, mock_download):
         """Test setup downloads punkt data."""
-        from doc_bench.cli.setup import main
         from click.testing import CliRunner
+
+        from doc_bench.cli.setup import main
 
         runner = CliRunner()
         result = runner.invoke(main, [])
@@ -39,8 +40,9 @@ class TestNLTKSetup:
     @patch("nltk.download")
     def test_setup_downloads_omw_1_4(self, mock_download):
         """Test setup downloads omw-1.4 data."""
-        from doc_bench.cli.setup import main
         from click.testing import CliRunner
+
+        from doc_bench.cli.setup import main
 
         runner = CliRunner()
         result = runner.invoke(main, [])
@@ -52,8 +54,9 @@ class TestNLTKSetup:
     @patch("pathlib.Path.exists", return_value=True)
     def test_setup_detects_existing_data(self, mock_exists, mock_download):
         """Test setup detects already-downloaded data."""
-        from doc_bench.cli.setup import main
         from click.testing import CliRunner
+
+        from doc_bench.cli.setup import main
 
         runner = CliRunner()
         result = runner.invoke(main, [])

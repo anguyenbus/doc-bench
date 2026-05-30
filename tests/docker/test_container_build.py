@@ -10,7 +10,6 @@ from __future__ import annotations
 import os
 import subprocess
 import tempfile
-import time
 from pathlib import Path
 from typing import Final
 
@@ -107,8 +106,9 @@ class TestContainerExecution:
         )
 
         # uv run --help should show help output
-        assert "usage" in result.stdout.lower() or "help" in result.stdout.lower(), \
+        assert "usage" in result.stdout.lower() or "help" in result.stdout.lower(), (
             "Default command should show help"
+        )
 
     def test_non_root_user_execution(self, built_image: str) -> None:
         """Test that container runs as non-root user."""
@@ -131,10 +131,14 @@ class TestVolumeMounts:
         with tempfile.TemporaryDirectory() as tmpdir:
             result = subprocess.run(
                 [
-                    "docker", "run", "--rm",
-                    "-v", f"{tmpdir}:/work/parsers:ro",
+                    "docker",
+                    "run",
+                    "--rm",
+                    "-v",
+                    f"{tmpdir}:/work/parsers:ro",
                     built_image,
-                    "ls", "/work/parsers"
+                    "ls",
+                    "/work/parsers",
                 ],
                 capture_output=True,
                 text=True,
@@ -148,10 +152,15 @@ class TestVolumeMounts:
         with tempfile.TemporaryDirectory() as tmpdir:
             result = subprocess.run(
                 [
-                    "docker", "run", "--rm",
-                    "-v", f"{tmpdir}:/work/results:rw",
+                    "docker",
+                    "run",
+                    "--rm",
+                    "-v",
+                    f"{tmpdir}:/work/results:rw",
                     built_image,
-                    "sh", "-c", "touch /work/results/test.txt && ls /work/results"
+                    "sh",
+                    "-c",
+                    "touch /work/results/test.txt && ls /work/results",
                 ],
                 capture_output=True,
                 text=True,
@@ -169,9 +178,13 @@ class TestDatasets:
         """Test that OmniDocBench dataset is baked into image."""
         result = subprocess.run(
             [
-                "docker", "run", "--rm",
+                "docker",
+                "run",
+                "--rm",
                 built_image,
-                "sh", "-c", "test -d /opt/doc-bench/data/parsing/omnidocbench_english"
+                "sh",
+                "-c",
+                "test -d /opt/doc-bench/data/parsing/omnidocbench_english",
             ],
             capture_output=True,
             text=True,
@@ -180,15 +193,21 @@ class TestDatasets:
         # Dataset should exist (may be empty in test but directory exists)
         # If download failed during build, this would fail
         if result.returncode != 0:
-            pytest.skip("OmniDocBench dataset not found (may not be downloaded in test environment)")
+            pytest.skip(
+                "OmniDocBench dataset not found (may not be downloaded in test environment)"
+            )
 
     def test_dp_bench_dataset_exists(self, built_image: str) -> None:
         """Test that DP-Bench dataset is baked into image."""
         result = subprocess.run(
             [
-                "docker", "run", "--rm",
+                "docker",
+                "run",
+                "--rm",
                 built_image,
-                "sh", "-c", "test -d /opt/doc-bench/data/parsing/dp_bench"
+                "sh",
+                "-c",
+                "test -d /opt/doc-bench/data/parsing/dp_bench",
             ],
             capture_output=True,
             text=True,
@@ -201,11 +220,7 @@ class TestDatasets:
     def test_manifest_exists(self, built_image: str) -> None:
         """Test that MANIFEST.yaml exists."""
         result = subprocess.run(
-            [
-                "docker", "run", "--rm",
-                built_image,
-                "cat", "/opt/doc-bench/data/MANIFEST.yaml"
-            ],
+            ["docker", "run", "--rm", built_image, "cat", "/opt/doc-bench/data/MANIFEST.yaml"],
             capture_output=True,
             text=True,
         )

@@ -30,6 +30,7 @@ def test_kept_parser_output_schema_exists() -> None:
 
     # Verify it's valid JSON
     import json
+
     with open(parser_output_schema) as f:
         schema = json.load(f)
 
@@ -46,6 +47,7 @@ def test_results_v1_schema_exists() -> None:
 
     # Verify it's valid JSON
     import json
+
     with open(results_schema) as f:
         schema = json.load(f)
 

@@ -63,11 +63,11 @@ def test_kept_schema_validator_importable() -> None:
 def test_kept_parsing_metrics_importable() -> None:
     """Test that parsing metrics are still importable."""
     from doc_bench.metrics.parsing import (
+        mhs,
         nid,
+        reading_order,
         table_teds,
         text_similarity,
-        reading_order,
-        mhs,
     )
 
     assert nid is not None

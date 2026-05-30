@@ -114,11 +114,7 @@ class TestTableTEDS:
         gold = {
             "rows": 3,
             "cols": 3,
-            "cells": [
-                {"row": i, "col": j, "text": f"{i}{j}"}
-                for i in range(3)
-                for j in range(3)
-            ],
+            "cells": [{"row": i, "col": j, "text": f"{i}{j}"} for i in range(3) for j in range(3)],
         }
 
         score = table_teds(predicted, gold)

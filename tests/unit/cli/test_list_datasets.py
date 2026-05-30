@@ -5,7 +5,6 @@ Tests dataset listing with version information and cache status.
 """
 
 from pathlib import Path
-from unittest.mock import patch
 
 import pytest
 from click.testing import CliRunner
@@ -144,5 +143,5 @@ class TestListDatasetsBasic:
 
         assert result.exit_code == 0
         # Should have headers and data rows
-        lines = result.output.strip().split('\n')
+        lines = result.output.strip().split("\n")
         assert len(lines) >= 3  # Header + separator + at least one data row

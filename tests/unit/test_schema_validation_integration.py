@@ -4,9 +4,7 @@ Tests for prediction schema validation integration (Task Group 5).
 Tests the integration of schema validation for predictions loaded from files.
 """
 
-import json
 from pathlib import Path
-from unittest.mock import patch
 
 import pytest
 
@@ -81,9 +79,7 @@ def schema_path(tmp_path):
 class TestPredictionSchemaValidation:
     """Tests for schema validation of predictions."""
 
-    def test_valid_prediction_passes_validation(
-        self, sample_valid_prediction, schema_path
-    ):
+    def test_valid_prediction_passes_validation(self, sample_valid_prediction, schema_path):
         """Valid prediction should pass schema validation."""
         # This test assumes schema_path exists
         if not schema_path.exists():
@@ -92,9 +88,7 @@ class TestPredictionSchemaValidation:
         # Should not raise any exception
         validate(sample_valid_prediction, schema_path)
 
-    def test_invalid_prediction_fails_validation(
-        self, sample_invalid_prediction, schema_path
-    ):
+    def test_invalid_prediction_fails_validation(self, sample_invalid_prediction, schema_path):
         """Invalid prediction should fail with SchemaValidationError."""
         if not schema_path.exists():
             pytest.skip(f"Schema file not found: {schema_path}")
@@ -104,9 +98,7 @@ class TestPredictionSchemaValidation:
 
         assert exc_info.value.field_path != "" or exc_info.value.original_error != ""
 
-    def test_invalid_field_type_fails_validation(
-        self, sample_invalid_field_type, schema_path
-    ):
+    def test_invalid_field_type_fails_validation(self, sample_invalid_field_type, schema_path):
         """Prediction with invalid field type should fail validation."""
         if not schema_path.exists():
             pytest.skip(f"Schema file not found: {schema_path}")
@@ -117,9 +109,7 @@ class TestPredictionSchemaValidation:
         # Should include field path in error
         assert exc_info.value.field_path or exc_info.value.original_error
 
-    def test_validation_error_contains_field_path(
-        self, sample_invalid_prediction, schema_path
-    ):
+    def test_validation_error_contains_field_path(self, sample_invalid_prediction, schema_path):
         """SchemaValidationError should contain field path for debugging."""
         if not schema_path.exists():
             pytest.skip(f"Schema file not found: {schema_path}")

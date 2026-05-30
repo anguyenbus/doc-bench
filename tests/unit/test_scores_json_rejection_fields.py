@@ -5,10 +5,6 @@ Tests the evaluated_samples and rejected_samples fields in scores.json output.
 """
 
 import json
-from pathlib import Path
-from unittest.mock import patch, MagicMock
-
-import pytest
 
 
 class TestScoresJsonRejectionFields:
@@ -29,15 +25,15 @@ class TestScoresJsonRejectionFields:
                 "MISSING_PREDICTION": 1,
                 "INVALID_JSON": 0,
                 "INVALID_SCHEMA": 2,
-                "EVALUATION_ERROR": 0
-            }
+                "EVALUATION_ERROR": 0,
+            },
         }
 
         with open(scores_file, "w") as f:
             json.dump(sample_scores, f)
 
         # Read back and verify
-        with open(scores_file, "r") as f:
+        with open(scores_file) as f:
             loaded = json.load(f)
 
         assert "evaluated_samples" in loaded
@@ -57,15 +53,15 @@ class TestScoresJsonRejectionFields:
                 "MISSING_PREDICTION": 1,
                 "INVALID_JSON": 0,
                 "INVALID_SCHEMA": 2,
-                "EVALUATION_ERROR": 0
-            }
+                "EVALUATION_ERROR": 0,
+            },
         }
 
         with open(scores_file, "w") as f:
             json.dump(sample_scores, f)
 
         # Read back and verify
-        with open(scores_file, "r") as f:
+        with open(scores_file) as f:
             loaded = json.load(f)
 
         assert "rejected_samples" in loaded
@@ -84,18 +80,23 @@ class TestScoresJsonRejectionFields:
                 "MISSING_PREDICTION": 1,
                 "INVALID_JSON": 0,
                 "INVALID_SCHEMA": 2,
-                "EVALUATION_ERROR": 0
-            }
+                "EVALUATION_ERROR": 0,
+            },
         }
 
         with open(scores_file, "w") as f:
             json.dump(sample_scores, f)
 
         # Read back and verify
-        with open(scores_file, "r") as f:
+        with open(scores_file) as f:
             loaded = json.load(f)
 
-        expected_reasons = {"MISSING_PREDICTION", "INVALID_JSON", "INVALID_SCHEMA", "EVALUATION_ERROR"}
+        expected_reasons = {
+            "MISSING_PREDICTION",
+            "INVALID_JSON",
+            "INVALID_SCHEMA",
+            "EVALUATION_ERROR",
+        }
         actual_reasons = set(loaded["rejected_samples"].keys())
         assert actual_reasons == expected_reasons
 
@@ -109,14 +110,14 @@ class TestScoresJsonRejectionFields:
             "csv_file": "results.csv",
             "metrics_avg": {"nid": 0.85, "teds": 0.90},
             "total_processed": 10,
-            "errors": 1
+            "errors": 1,
         }
 
         with open(scores_file, "w") as f:
             json.dump(sample_scores, f)
 
         # Read back and verify
-        with open(scores_file, "r") as f:
+        with open(scores_file) as f:
             loaded = json.load(f)
 
         assert "total_processed" in loaded
@@ -134,14 +135,14 @@ class TestScoresJsonRejectionFields:
             "csv_file": "results.csv",
             "metrics_avg": {"nid": 0.85},
             "total_processed": 10,
-            "errors": 1
+            "errors": 1,
         }
 
         with open(scores_file, "w") as f:
             json.dump(sample_scores, f)
 
         # Read back and verify
-        with open(scores_file, "r") as f:
+        with open(scores_file) as f:
             loaded = json.load(f)
 
         assert "evaluated_samples" not in loaded
@@ -161,7 +162,7 @@ class TestRejectionCountsAccuracy:
             "MISSING_PREDICTION": 2,
             "INVALID_JSON": 1,
             "INVALID_SCHEMA": 3,
-            "EVALUATION_ERROR": 0
+            "EVALUATION_ERROR": 0,
         }
 
         total = sum(rejection_counts.values())
@@ -174,7 +175,7 @@ class TestRejectionCountsAccuracy:
             "MISSING_PREDICTION": 1,
             "INVALID_JSON": 0,
             "INVALID_SCHEMA": 2,
-            "EVALUATION_ERROR": 0
+            "EVALUATION_ERROR": 0,
         }
 
         total = evaluated + sum(rejected.values())
@@ -191,15 +192,15 @@ class TestRejectionCountsAccuracy:
                 "MISSING_PREDICTION": 1,
                 "INVALID_JSON": 0,
                 "INVALID_SCHEMA": 2,
-                "EVALUATION_ERROR": 0
-            }
+                "EVALUATION_ERROR": 0,
+            },
         }
 
         with open(scores_file, "w") as f:
             json.dump(sample_scores, f)
 
         # Should be able to load without error
-        with open(scores_file, "r") as f:
+        with open(scores_file) as f:
             loaded = json.load(f)
 
         assert loaded is not None

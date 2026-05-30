@@ -5,7 +5,6 @@ Verifies that deleted RAG/replay/observability test files are gone
 and that kept parsing tests still work.
 """
 
-import os
 from pathlib import Path
 
 

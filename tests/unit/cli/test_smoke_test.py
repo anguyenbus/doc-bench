@@ -5,9 +5,8 @@ Tests smoke test mode with bundled fixtures, per-type breakdown reporting,
 and pass/fail criteria based on rejections.
 """
 
-from pathlib import Path
-from unittest.mock import Mock, patch, MagicMock
 import json
+from unittest.mock import patch
 
 import pytest
 from click.testing import CliRunner
@@ -117,7 +116,9 @@ class TestSmokeTestBasic:
                 },
             }
 
-            result = runner.invoke(main, ["--data", str(mock_fixtures), "--predictions", str(mock_predictions)])
+            result = runner.invoke(
+                main, ["--data", str(mock_fixtures), "--predictions", str(mock_predictions)]
+            )
 
             # Should pass with exit code 0 (5% < 10% threshold)
             assert result.exit_code == 0
@@ -142,7 +143,9 @@ class TestSmokeTestBasic:
                 },
             }
 
-            result = runner.invoke(main, ["--data", str(mock_fixtures), "--predictions", str(mock_predictions)])
+            result = runner.invoke(
+                main, ["--data", str(mock_fixtures), "--predictions", str(mock_predictions)]
+            )
 
             # Should fail with non-zero exit code (15% >= 10% threshold)
             assert result.exit_code != 0

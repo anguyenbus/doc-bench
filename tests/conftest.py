@@ -1,4 +1,5 @@
 """Pytest configuration for test path modifications."""
+
 import sys
 from pathlib import Path
 

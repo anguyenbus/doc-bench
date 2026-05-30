@@ -6,10 +6,7 @@ dataset_version, doc_bench_version, document_count, timestamp,
 smoke-test labeling, and SHA-256 hashes.
 """
 
-import json
-import pytest
 from pathlib import Path
-from unittest.mock import patch, MagicMock
 
 
 class TestResultMetadataFields:
@@ -86,8 +83,9 @@ class TestPredictionsSHA256:
 
     def test_compute_sha256_known_content(self, tmp_path):
         """Test SHA-256 computation for known content."""
-        from doc_bench.runners.run_parsing_eval import _compute_sha256
         import hashlib
+
+        from doc_bench.runners.run_parsing_eval import _compute_sha256
 
         test_file = tmp_path / "test.json"
         test_file.write_text('{"test": "data"}')
@@ -160,8 +158,8 @@ class TestResultsValidation:
     def test_results_complete_metadata(self, tmp_path):
         """Test results.json includes complete metadata."""
         from doc_bench.runners.run_parsing_eval import (
-            _get_doc_bench_version,
             _get_dataset_version,
+            _get_doc_bench_version,
         )
 
         results = {

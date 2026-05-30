@@ -12,6 +12,8 @@ from typing import Any
 
 import click
 
+from doc_bench import get_bundled_schema_path
+
 
 def _load_fixtures_manifest(fixtures_dir: Path) -> dict[str, Any] | None:
     """
@@ -60,7 +62,31 @@ def _run_evaluation(
             "by_element_category": {},
         }
 
-    documents = manifest.get("documents", [])
+    # Process both DP-Bench and OmniDocBench fixtures
+    documents = []
+
+    # Add DP-Bench fixtures
+    dp_bench_fixtures = manifest.get("dp_bench", [])
+    for fixture in dp_bench_fixtures:
+        documents.append(
+            {
+                "doc_id": fixture.get("doc_id"),
+                "doc_type": fixture.get("category", "unknown"),
+                "dataset": "dp_bench",
+            }
+        )
+
+    # Add OmniDocBench fixtures
+    omnidoc_fixtures = manifest.get("omnidocbench", [])
+    for fixture in omnidoc_fixtures:
+        documents.append(
+            {
+                "doc_id": fixture.get("doc_id"),
+                "doc_type": fixture.get("doc_type", "unknown"),
+                "dataset": "omnidocbench",
+            }
+        )
+
     total_docs = len(documents)
 
     # For smoke test, we'll simulate evaluation
@@ -166,12 +192,23 @@ def _check_global_guard(results: dict[str, Any], threshold: float = 10.0) -> boo
     help="Path to predictions directory (optional)",
 )
 @click.option(
+    "--schema",
+    type=click.Path(path_type=Path),
+    default=None,
+    help="Path to schema file (default: bundled in fixtures)",
+)
+@click.option(
     "--threshold",
     type=float,
     default=10.0,
     help="Rejection rate threshold for failure (default: 10%%)",
 )
-def main(data: Path | None, predictions: Path | None, threshold: float) -> None:
+def main(
+    data: Path | None,
+    predictions: Path | None,
+    schema: Path | None,
+    threshold: float,
+) -> None:
     """
     Run smoke test against bundled fixtures.
 
@@ -202,8 +239,25 @@ def main(data: Path | None, predictions: Path | None, threshold: float) -> None:
         click.echo(f"ERROR: Fixtures directory not found: {fixtures_dir}")
         sys.exit(1)
 
+    # Determine schema path
+    if schema:
+        schema_path = schema
+    else:
+        schema_path = get_bundled_schema_path()
+
+    if not schema_path.exists():
+        click.echo(f"WARNING: Schema file not found: {schema_path}")
+        click.echo("Schema validation will be skipped")
+
+    # Report schema location
+    click.echo(f"Using fixtures from: {fixtures_dir}")
+    if schema_path.exists():
+        click.echo(f"Using schema: {schema_path}")
+    else:
+        click.echo("No schema available for validation")
+
     # Run evaluation
-    click.echo(f"Running smoke test with fixtures from: {fixtures_dir}")
+    click.echo()
     results = _run_evaluation(fixtures_dir, predictions)
 
     total_docs = results["total_docs"]

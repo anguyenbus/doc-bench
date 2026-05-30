@@ -1,7 +1,6 @@
 """Tests for dump-dataset CLI command."""
 
 import json
-from pathlib import Path
 
 from click.testing import CliRunner
 
@@ -50,10 +49,14 @@ class TestDumpDatasetCommand:
         result = runner.invoke(
             dump_dataset,
             [
-                "--dataset", "dp_bench",
-                "--output", str(output_dir),
-                "--config", str(config_path),
-                "--limit", "2",
+                "--dataset",
+                "dp_bench",
+                "--output",
+                str(output_dir),
+                "--config",
+                str(config_path),
+                "--limit",
+                "2",
             ],
             catch_exceptions=False,
         )
@@ -139,10 +142,14 @@ class TestDumpDatasetCommand:
         result = runner.invoke(
             dump_dataset,
             [
-                "--dataset", "omnidocbench",
-                "--output", str(output_dir),
-                "--config", str(config_path),
-                "--limit", "2",
+                "--dataset",
+                "omnidocbench",
+                "--output",
+                str(output_dir),
+                "--config",
+                str(config_path),
+                "--limit",
+                "2",
             ],
             catch_exceptions=False,
         )
@@ -196,9 +203,12 @@ class TestDumpDatasetCommand:
         result = runner.invoke(
             dump_dataset,
             [
-                "--dataset", "dp_bench",
-                "--output", str(output_dir),
-                "--config", str(config_path),
+                "--dataset",
+                "dp_bench",
+                "--output",
+                str(output_dir),
+                "--config",
+                str(config_path),
             ],
             catch_exceptions=False,
         )
@@ -272,9 +282,12 @@ class TestDumpDatasetCommand:
         result = runner.invoke(
             dump_dataset,
             [
-                "--dataset", "dp_bench",
-                "--output", str(output_dir),
-                "--config", str(config_path),
+                "--dataset",
+                "dp_bench",
+                "--output",
+                str(output_dir),
+                "--config",
+                str(config_path),
             ],
             catch_exceptions=False,
         )

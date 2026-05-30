@@ -4,9 +4,9 @@ Tests for final integration validation.
 Verifies end-to-end functionality after all restructuring changes.
 """
 
-from pathlib import Path
 import subprocess
 import sys
+from pathlib import Path
 
 
 def test_doc_bench_package_importable() -> None:
@@ -20,14 +20,14 @@ def test_doc_bench_package_importable() -> None:
 def test_all_parsing_metrics_importable() -> None:
     """Test that all parsing metrics are importable."""
     from doc_bench.metrics.parsing import (
-        nid,
-        table_teds,
-        text_similarity,
-        reading_order,
-        mhs,
-        structure_recall,
-        text_fidelity,
         layout_map,
+        mhs,
+        nid,
+        reading_order,
+        structure_recall,
+        table_teds,
+        text_fidelity,
+        text_similarity,
     )
 
     assert nid is not None
@@ -72,7 +72,7 @@ def test_no_rag_modules_importable() -> None:
     for module_name, description in modules_to_test:
         try:
             __import__(module_name)
-            assert False, f"{description} ({module_name}) should not be importable"
+            raise AssertionError(f"{description} ({module_name}) should not be importable")
         except ImportError:
             pass  # Expected
 
@@ -105,21 +105,24 @@ def test_config_required_sections_correct() -> None:
     from doc_bench.config import REQUIRED_SECTIONS
 
     expected = {"datasets", "metrics", "models"}
-    assert REQUIRED_SECTIONS == expected, \
+    assert REQUIRED_SECTIONS == expected, (
         f"REQUIRED_SECTIONS should be {expected}, got {REQUIRED_SECTIONS}"
+    )
 
 
 def test_no_phoenix_dependencies() -> None:
     """Test that Phoenix dependencies are not installed."""
     try:
-        import phoenix
-        assert False, "Phoenix should not be installed"
+        import phoenix  # noqa: F401
+
+        raise AssertionError("Phoenix should not be installed")
     except ImportError:
         pass  # Expected
 
     try:
-        import arize
-        assert False, "Arize Phoenix should not be installed"
+        import arize  # noqa: F401
+
+        raise AssertionError("Arize Phoenix should not be installed")
     except ImportError:
         pass  # Expected
 
@@ -127,32 +130,35 @@ def test_no_phoenix_dependencies() -> None:
 def test_no_rag_dependencies() -> None:
     """Test that RAG dependencies are not installed."""
     try:
-        import chromadb
-        assert False, "ChromaDB should not be installed"
+        import chromadb  # noqa: F401
+
+        raise AssertionError("ChromaDB should not be installed")
     except ImportError:
         pass  # Expected
 
     try:
-        import deepeval
-        assert False, "DeepEval should not be installed"
+        import deepeval  # noqa: F401
+
+        raise AssertionError("DeepEval should not be installed")
     except ImportError:
         pass  # Expected
 
     try:
-        import openai
-        assert False, "OpenAI should not be installed"
+        import openai  # noqa: F401
+
+        raise AssertionError("OpenAI should not be installed")
     except ImportError:
         pass  # Expected
 
 
 def test_parsing_dependencies_installed() -> None:
     """Test that parsing dependencies are installed."""
-    import torch
-    import torchmetrics
-    import polars
     import docling
     import jsonschema
+    import polars
     import pydantic
+    import torch
+    import torchmetrics
 
     assert torch is not None
     assert torchmetrics is not None

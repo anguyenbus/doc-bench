@@ -39,7 +39,7 @@ class TestEntryPoint:
     def test_entrypoint_exec_form(self, dockerfile_content: str) -> None:
         """Test that ENTRYPOINT uses JSON array exec form."""
         assert re.search(
-            r'ENTRYPOINT\s+\[',
+            r"ENTRYPOINT\s+\[",
             dockerfile_content,
         ), "ENTRYPOINT should use exec form (JSON array)"
 
@@ -57,7 +57,7 @@ class TestDefaultCommand:
     def test_cmd_exec_form(self, dockerfile_content: str) -> None:
         """Test that CMD uses JSON array exec form."""
         assert re.search(
-            r'CMD\s+\[',
+            r"CMD\s+\[",
             dockerfile_content,
         ), "CMD should use exec form (JSON array)"
 
@@ -68,17 +68,18 @@ class TestCommandOverride:
     def test_entrypoint_after_all_copy(self, dockerfile_content: str) -> None:
         """Test that ENTRYPOINT comes after all COPY commands (allows command override)."""
         # Find all COPY lines
-        copy_matches = list(re.finditer(r'^\s*COPY', dockerfile_content, re.MULTILINE))
+        copy_matches = list(re.finditer(r"^\s*COPY", dockerfile_content, re.MULTILINE))
         # Find ENTRYPOINT
-        entrypoint_match = re.search(r'ENTRYPOINT', dockerfile_content)
+        entrypoint_match = re.search(r"ENTRYPOINT", dockerfile_content)
 
         assert entrypoint_match, "ENTRYPOINT should be defined"
 
         # ENTRYPOINT should come after the last COPY
         if copy_matches:
             last_copy_pos = copy_matches[-1].end()
-            assert entrypoint_match.start() > last_copy_pos, \
+            assert entrypoint_match.start() > last_copy_pos, (
                 "ENTRYPOINT should come after COPY operations to allow command override"
+            )
 
 
 class TestCliCommandsAvailable:

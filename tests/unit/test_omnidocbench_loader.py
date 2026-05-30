@@ -184,6 +184,4 @@ class TestOmniDocBenchLoader:
 
         # Should only yield research_report
         assert len(pages) == 1
-        assert (
-            pages[0]["page_info"]["page_attribute"]["data_source"] == "research_report"
-        )
+        assert pages[0]["page_info"]["page_attribute"]["data_source"] == "research_report"

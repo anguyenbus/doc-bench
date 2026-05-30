@@ -76,8 +76,9 @@ class TestNonRootExecution:
             pytest.skip("Container not built or run failed")
 
         # sudo should not be available
-        assert result.returncode != 0 or not result.stdout.strip(), \
+        assert result.returncode != 0 or not result.stdout.strip(), (
             "sudo should not be available to non-root user"
+        )
 
 
 @docker_available
@@ -108,23 +109,22 @@ class TestDockerfileSecurity:
     def test_no_secrets_in_dockerfile(self, dockerfile_content: str) -> None:
         """Test that no secrets are present in Dockerfile."""
         # Check for common secret patterns
-        assert "api_key" not in dockerfile_content.lower(), \
-            "API keys should not be in Dockerfile"
-        assert "password" not in dockerfile_content.lower(), \
-            "Passwords should not be in Dockerfile"
-        assert "secret" not in dockerfile_content.lower(), \
-            "Secrets should not be in Dockerfile"
+        assert "api_key" not in dockerfile_content.lower(), "API keys should not be in Dockerfile"
+        assert "password" not in dockerfile_content.lower(), "Passwords should not be in Dockerfile"
+        assert "secret" not in dockerfile_content.lower(), "Secrets should not be in Dockerfile"
 
     def test_no_unnecessary_packages(self, dockerfile_content: str) -> None:
         """Test that unnecessary packages are not installed."""
         # Check for common unnecessary packages
-        assert "vim" not in dockerfile_content.lower(), \
+        assert "vim" not in dockerfile_content.lower(), (
             "vim should not be installed (minimal image)"
-        assert "nano" not in dockerfile_content.lower(), \
+        )
+        assert "nano" not in dockerfile_content.lower(), (
             "nano should not be installed (minimal image)"
-        assert "wget" not in dockerfile_content.lower() or \
-               dockerfile_content.count("wget") <= 1, \
+        )
+        assert "wget" not in dockerfile_content.lower() or dockerfile_content.count("wget") <= 1, (
             "wget should be minimized (use curl instead)"
+        )
 
 
 @docker_available
@@ -135,12 +135,16 @@ class TestReadOnlyFilesystem:
         """Test that container can run with read-only root filesystem."""
         result = subprocess.run(
             [
-                "docker", "run", "--rm",
+                "docker",
+                "run",
+                "--rm",
                 "--read-only",
-                "--tmpfs", "/tmp",
-                "--tmpfs", "/work",
+                "--tmpfs",
+                "/tmp",
+                "--tmpfs",
+                "/work",
                 "doc-bench:test",
-                "id"
+                "id",
             ],
             capture_output=True,
             text=True,
@@ -150,5 +154,6 @@ class TestReadOnlyFilesystem:
             pytest.skip("Container not built or read-only test failed")
 
         # Should succeed with tmpfs mounts
-        assert result.returncode == 0, \
+        assert result.returncode == 0, (
             "Container should run with read-only root filesystem when tmpfs is provided"
+        )

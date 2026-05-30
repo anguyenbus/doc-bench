@@ -7,11 +7,10 @@ and cache management.
 
 import hashlib
 from pathlib import Path
-from unittest.mock import Mock, patch
+from unittest.mock import patch
 
 import pytest
 from click.testing import CliRunner
-
 
 # Import will be added after implementation
 # from doc_bench.cli.download import main, _compute_sha256, _verify_hash, _get_cache_dir
@@ -150,9 +149,12 @@ class TestDownloadValidation:
         result = runner.invoke(
             main,
             [
-                "--dataset", "dp_bench",
-                "--version", "v2.0",  # Non-existent version
-                "--manifest", str(mock_manifest),
+                "--dataset",
+                "dp_bench",
+                "--version",
+                "v2.0",  # Non-existent version
+                "--manifest",
+                str(mock_manifest),
             ],
         )
 
@@ -166,9 +168,12 @@ class TestDownloadValidation:
         result = runner.invoke(
             main,
             [
-                "--dataset", "dp_bench",
-                "--version", "latest",
-                "--manifest", str(mock_manifest),
+                "--dataset",
+                "dp_bench",
+                "--version",
+                "latest",
+                "--manifest",
+                str(mock_manifest),
             ],
         )
 

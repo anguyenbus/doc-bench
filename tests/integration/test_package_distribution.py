@@ -6,9 +6,6 @@ bundled fixture smoke test, dataset download, and Docker compatibility.
 """
 
 from pathlib import Path
-from unittest.mock import patch
-import pytest
-import subprocess
 
 
 class TestCLICommandsAvailable:
@@ -17,21 +14,25 @@ class TestCLICommandsAvailable:
     def test_download_cli_available(self):
         """Test download CLI is available."""
         from doc_bench.cli.download import main
+
         assert callable(main)
 
     def test_list_datasets_cli_available(self):
         """Test list-datasets CLI is available."""
         from doc_bench.cli.list_datasets import main
+
         assert callable(main)
 
     def test_smoke_test_cli_available(self):
         """Test smoke-test CLI is available."""
         from doc_bench.cli.smoke_test import main
+
         assert callable(main)
 
     def test_setup_cli_available(self):
         """Test setup CLI is available."""
         from doc_bench.cli.setup import main
+
         assert callable(main)
 
 
@@ -41,16 +42,18 @@ class TestPackageStructure:
     def test_package_has_version_module(self):
         """Test package has version module."""
         from doc_bench import version
-        assert hasattr(version, 'get_version')
-        assert hasattr(version, 'check_dataset_version_alignment')
+
+        assert hasattr(version, "get_version")
+        assert hasattr(version, "check_dataset_version_alignment")
 
     def test_package_has_metadata_functions(self):
         """Test package has metadata functions."""
         from doc_bench.runners.run_parsing_eval import (
             _compute_sha256,
-            _get_doc_bench_version,
             _get_dataset_version,
+            _get_doc_bench_version,
         )
+
         assert callable(_compute_sha256)
         assert callable(_get_doc_bench_version)
         assert callable(_get_dataset_version)
@@ -58,6 +61,7 @@ class TestPackageStructure:
     def test_package_has_nltk_setup(self):
         """Test package has NLTK setup functionality."""
         from doc_bench.cli.setup import _get_nltk_data_dir
+
         assert callable(_get_nltk_data_dir)
 
 
@@ -66,11 +70,12 @@ class TestEndToEndWorkflows:
 
     def test_download_list_workflow(self, tmp_path):
         """Test download and list datasets workflow."""
-        from doc_bench.cli.list_datasets import main
-        from click.testing import CliRunner
-
         # Create mock manifest
         import yaml
+        from click.testing import CliRunner
+
+        from doc_bench.cli.list_datasets import main
+
         manifest = {
             "dp_bench": {"version": "0.1.0"},
             "omnidocbench": {"version": "0.1.0"},
@@ -96,10 +101,11 @@ class TestEndToEndWorkflows:
 
     def test_version_check_workflow(self, tmp_path):
         """Test version alignment check workflow."""
-        from doc_bench.version import check_dataset_version_alignment
-
         # Create aligned manifest
         import yaml
+
+        from doc_bench.version import check_dataset_version_alignment
+
         manifest = {
             "dp_bench": {"version": "0.1.0"},
             "omnidocbench": {"version": "0.1.0"},
@@ -121,19 +127,14 @@ class TestDockerCompatibility:
 
     def test_dockerfile_exists(self):
         """Test Dockerfile exists at project root."""
-        from pathlib import Path
-
-        dockerfile = Path("Dockerfile")
         # Note: This test assumes running from project root
         # In actual CI, path would be adjusted
+        assert Path("Dockerfile").exists()
 
     def test_container_config_exists(self):
         """Test container configuration exists."""
-        from pathlib import Path
-
         # Check for docker-compose files
-        compose_files = ["docker-compose.yml", "docker-compose.dev.yml"]
-        # Files should exist in project root
+        assert Path("docker-compose.yml").exists() or Path("docker-compose.dev.yml").exists()
 
 
 class TestMetadataCompleteness:
@@ -142,8 +143,8 @@ class TestMetadataCompleteness:
     def test_results_metadata_structure(self):
         """Test results metadata has all required fields."""
         from doc_bench.runners.run_parsing_eval import (
-            _get_doc_bench_version,
             _get_dataset_version,
+            _get_doc_bench_version,
         )
 
         # Create sample results structure
@@ -160,8 +161,12 @@ class TestMetadataCompleteness:
 
         # Verify all required fields
         required = [
-            "dataset", "dataset_version", "doc_bench_version",
-            "parser", "timestamp", "document_count"
+            "dataset",
+            "dataset_version",
+            "doc_bench_version",
+            "parser",
+            "timestamp",
+            "document_count",
         ]
 
         for field in required:
@@ -169,9 +174,9 @@ class TestMetadataCompleteness:
 
     def test_version_consistency(self):
         """Test version consistency across components."""
-        from doc_bench.version import get_version
-        from doc_bench.runners.run_parsing_eval import _get_doc_bench_version
         from doc_bench import __version__
+        from doc_bench.runners.run_parsing_eval import _get_doc_bench_version
+        from doc_bench.version import get_version
 
         # All should return the same version
         v1 = get_version()

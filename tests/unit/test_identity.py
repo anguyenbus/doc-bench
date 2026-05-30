@@ -15,14 +15,10 @@ class TestDocumentIdentityConvention:
 
         # Simulate what the DP-Bench loader provides
         pdf_filename = "01030000000001.pdf"
-        doc_id = pdf_filename.replace(".pdf", "")
+        pdf_filename.replace(".pdf", "")
 
         # Create a mock item that represents what reference.json contains
-        item = {
-            "elements": [
-                {"category": "Paragraph", "content": {"text": "Sample"}, "page": 1}
-            ]
-        }
+        item = {"elements": [{"category": "Paragraph", "content": {"text": "Sample"}, "page": 1}]}
 
         # For DP-Bench, doc_id_for should extract from the pdf_filename
         # The loader passes the pdf_filename as part of context

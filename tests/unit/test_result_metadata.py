@@ -6,9 +6,7 @@ dataset_version, doc_bench_version, document_count, timestamp,
 smoke-test labeling, and SHA-256 hashes.
 """
 
-from pathlib import Path
-from unittest.mock import patch, MagicMock
-import pytest
+from unittest.mock import patch
 
 
 class TestMetadataHelperFunctions:
@@ -16,8 +14,9 @@ class TestMetadataHelperFunctions:
 
     def test_compute_sha256_known_content(self, tmp_path):
         """Test SHA-256 computation for known content."""
-        from doc_bench.runners.run_parsing_eval import _compute_sha256
         import hashlib
+
+        from doc_bench.runners.run_parsing_eval import _compute_sha256
 
         test_file = tmp_path / "test.txt"
         test_file.write_text("Hello, World!")
@@ -27,8 +26,9 @@ class TestMetadataHelperFunctions:
 
     def test_compute_sha256_binary_content(self, tmp_path):
         """Test SHA-256 computation for binary content."""
-        from doc_bench.runners.run_parsing_eval import _compute_sha256
         import hashlib
+
+        from doc_bench.runners.run_parsing_eval import _compute_sha256
 
         test_file = tmp_path / "test.bin"
         test_file.write_bytes(b"\x00\x01\x02\x03")
@@ -70,8 +70,8 @@ class TestResultsMetadataFields:
         """Test results.json includes all required top-level fields."""
         # Test that we can create a results dict with all required fields
         from doc_bench.runners.run_parsing_eval import (
-            _get_doc_bench_version,
             _get_dataset_version,
+            _get_doc_bench_version,
         )
 
         results = {
@@ -111,8 +111,9 @@ class TestSmokeTestLabeling:
 
     def test_smoke_test_results_labeled_bundled(self, tmp_path):
         """Test smoke-test results are labeled 'bundled-smoke-stratified'."""
-        from doc_bench.cli.smoke_test import main
         from click.testing import CliRunner
+
+        from doc_bench.cli.smoke_test import main
 
         runner = CliRunner()
         fixtures_dir = tmp_path / "fixtures"
@@ -120,6 +121,7 @@ class TestSmokeTestLabeling:
 
         # Create fixture manifest
         import json
+
         manifest = {
             "dataset_name": "bundled-smoke-stratified",
             "documents": [],

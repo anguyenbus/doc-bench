@@ -1,0 +1,93 @@
+{
+  "name": "bundled-smoke-stratified",
+  "description": "Stratified fixture set for smoke testing",
+  "dp_bench": [
+    {
+      "doc_id": "01030000000001",
+      "category": "Paragraph",
+      "pdf": "dp_bench/01030000000001.pdf",
+      "gold": "dp_bench/01030000000001.json"
+    },
+    {
+      "doc_id": "01030000000002",
+      "category": "Paragraph",
+      "pdf": "dp_bench/01030000000002.pdf",
+      "gold": "dp_bench/01030000000002.json"
+    },
+    {
+      "doc_id": "01030000000076",
+      "category": "Caption",
+      "pdf": "dp_bench/01030000000076.pdf",
+      "gold": "dp_bench/01030000000076.json"
+    },
+    {
+      "doc_id": "01030000000083",
+      "category": "Caption",
+      "pdf": "dp_bench/01030000000083.pdf",
+      "gold": "dp_bench/01030000000083.json"
+    }
+  ],
+  "omnidocbench": [
+    {
+      "doc_id": "page-bd6eb36e-0856-4d9d-b587-21b4a0209c8b",
+      "doc_type": "academic_literature",
+      "page": "omnidocbench/page-bd6eb36e-0856-4d9d-b587-21b4a0209c8b.json",
+      "image": "omnidocbench/page-bd6eb36e-0856-4d9d-b587-21b4a0209c8b.png"
+    },
+    {
+      "doc_id": "page-f9583127-1277-4424-be9d-35430e0aedd6",
+      "doc_type": "academic_literature",
+      "page": "omnidocbench/page-f9583127-1277-4424-be9d-35430e0aedd6.json",
+      "image": "omnidocbench/page-f9583127-1277-4424-be9d-35430e0aedd6.png"
+    },
+    {
+      "doc_id": "page-d271a2ab-4523-44c4-94b5-303bf54b69e9",
+      "doc_type": "exam_paper",
+      "page": "omnidocbench/page-d271a2ab-4523-44c4-94b5-303bf54b69e9.json",
+      "image": "omnidocbench/page-d271a2ab-4523-44c4-94b5-303bf54b69e9.png"
+    },
+    {
+      "doc_id": "page-21ad32ba-fd62-43e5-964a-f5e95c0e0441",
+      "doc_type": "exam_paper",
+      "page": "omnidocbench/page-21ad32ba-fd62-43e5-964a-f5e95c0e0441.json",
+      "image": "omnidocbench/page-21ad32ba-fd62-43e5-964a-f5e95c0e0441.png"
+    },
+    {
+      "doc_id": "jiaocai_P0-9.pdf_9",
+      "doc_type": "colorful_textbook",
+      "page": "omnidocbench/jiaocai_P0-9.pdf_9.json",
+      "image": "omnidocbench/jiaocai_P0-9.pdf_9.jpg"
+    },
+    {
+      "doc_id": "jiaocai_jiaocai_en_595",
+      "doc_type": "colorful_textbook",
+      "page": "omnidocbench/jiaocai_jiaocai_en_595.json",
+      "image": "omnidocbench/jiaocai_jiaocai_en_595.jpg"
+    },
+    {
+      "doc_id": "page-d1561665-5359-42fe-920c-d6e3bff81953",
+      "doc_type": "book",
+      "page": "omnidocbench/page-d1561665-5359-42fe-920c-d6e3bff81953.json",
+      "image": "omnidocbench/page-d1561665-5359-42fe-920c-d6e3bff81953.png"
+    },
+    {
+      "doc_id": "page-0a262e27-b24d-4429-9b21-90563d4fada7",
+      "doc_type": "book",
+      "page": "omnidocbench/page-0a262e27-b24d-4429-9b21-90563d4fada7.json",
+      "image": "omnidocbench/page-0a262e27-b24d-4429-9b21-90563d4fada7.png"
+    },
+    {
+      "doc_id": "page-48687e49-b9db-4251-96cf-124144aa4d08",
+      "doc_type": "PPT2PDF",
+      "page": "omnidocbench/page-48687e49-b9db-4251-96cf-124144aa4d08.json",
+      "image": "omnidocbench/page-48687e49-b9db-4251-96cf-124144aa4d08.png"
+    },
+    {
+      "doc_id": "yanbaopptmerge_PattPatelCh12.pdf_27",
+      "doc_type": "PPT2PDF",
+      "page": "omnidocbench/yanbaopptmerge_PattPatelCh12.pdf_27.json",
+      "image": "omnidocbench/yanbaopptmerge_PattPatelCh12.pdf_27.jpg"
+    }
+  ],
+  "total": 14
+}

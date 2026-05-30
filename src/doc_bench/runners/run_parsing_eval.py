@@ -221,13 +221,17 @@ def _get_pdf_path_for_page(page: dict, dataset_root: Path) -> Path:
         Path to the image file.
 
     """
-    # OmniDocBench structure: root/images/{filename}
+    # OmniDocBench structure: root/images/{filename} or root/{filename} (baseline)
     page_info = page.get("page_info", {})
     image_name = page_info.get("image_path", "")
 
-    # Try images directory
+    # Try standard images directory first
     image_path = dataset_root / "images" / image_name
+    if image_path.exists():
+        return image_path
 
+    # Fallback to flat layout (baseline structure)
+    image_path = dataset_root / image_name
     return image_path
 
 
@@ -361,7 +365,9 @@ def main() -> None:
         rejection_tracker = RejectionTracker(rejected_csv)
 
     # Path to parser output schema for validation
-    schema_path = Path("contracts/parser_output.schema.json")
+    from doc_bench import get_bundled_schema_path
+
+    schema_path = get_bundled_schema_path()
 
     # Define all CSV columns
     fieldnames = [

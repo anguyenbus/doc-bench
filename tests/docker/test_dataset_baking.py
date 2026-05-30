@@ -53,9 +53,9 @@ class TestDownloadTarget:
     def test_download_to_opt_docbench_data(self, dockerfile_content: str) -> None:
         """Test that datasets are downloaded to /opt/doc-bench/data."""
         # This could be via --output-dir flag or working directory
-        assert "/opt/doc-bench/data" in dockerfile_content or \
-               "/opt/doc-bench" in dockerfile_content, \
-               "Datasets should be downloaded to /opt/doc-bench/data"
+        assert (
+            "/opt/doc-bench/data" in dockerfile_content or "/opt/doc-bench" in dockerfile_content
+        ), "Datasets should be downloaded to /opt/doc-bench/data"
 
     def test_omnidocbench_dataset_specified(self, dockerfile_content: str) -> None:
         """Test that OmniDocBench dataset is specified for download."""

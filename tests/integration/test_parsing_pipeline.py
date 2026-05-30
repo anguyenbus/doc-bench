@@ -80,9 +80,7 @@ class TestParsingPipeline:
 
         # Should complete successfully
         assert exc_info.value.code == 0
-        assert elapsed < 30, (
-            "Pipeline should complete in under 30 seconds for single page"
-        )
+        assert elapsed < 30, "Pipeline should complete in under 30 seconds for single page"
 
     def test_csv_output_generation(self, tmp_path):
         """Test that CSV output is generated correctly."""

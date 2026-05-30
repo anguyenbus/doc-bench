@@ -5,8 +5,6 @@ Tests that build_gold_markdown() sorts elements by (page, y, x) coordinates
 and produces consistent output for grading.
 """
 
-import pytest
-
 
 class TestReadingOrderSorting:
     """Tests for element sorting by reading order."""
@@ -22,45 +20,48 @@ class TestReadingOrderSorting:
                     "page": 2,
                     "coordinates": [{"x": 100, "y": 200}],
                     "category": "Paragraph",
-                    "content": {"text": "Page 2, y=200, x=100"}
+                    "content": {"text": "Page 2, y=200, x=100"},
                 },
                 {
                     "page": 1,
                     "coordinates": [{"x": 200, "y": 300}],
                     "category": "Paragraph",
-                    "content": {"text": "Page 1, y=300, x=200"}
+                    "content": {"text": "Page 1, y=300, x=200"},
                 },
                 {
                     "page": 1,
                     "coordinates": [{"x": 100, "y": 200}],
                     "category": "Paragraph",
-                    "content": {"text": "Page 1, y=200, x=100"}
+                    "content": {"text": "Page 1, y=200, x=100"},
                 },
                 {
                     "page": 1,
                     "coordinates": [{"x": 100, "y": 300}],
                     "category": "Paragraph",
-                    "content": {"text": "Page 1, y=300, x=100"}
+                    "content": {"text": "Page 1, y=300, x=100"},
                 },
             ]
         }
 
         result = build_gold_markdown(elements)
 
-        # Expected order: page 1, y=200, x=100 -> page 1, y=300, x=100 -> page 1, y=300, x=200 -> page 2, y=200, x=100
+        # Expected order: page 1, y=200, x=100 -> page 1, y=300, x=100 ->
+        # page 1, y=300, x=200 -> page 2, y=200, x=100
         expected_texts = [
             "Page 1, y=200, x=100",
             "Page 1, y=300, x=100",
             "Page 1, y=300, x=200",
-            "Page 2, y=200, x=100"
+            "Page 2, y=200, x=100",
         ]
 
         # Check elements appear in correct order
         result_clean = result.replace("\n\n", "\n")  # Remove blank lines for checking
-        lines = [line for line in result_clean.split('\n') if line]  # Get non-empty lines
+        lines = [line for line in result_clean.split("\n") if line]  # Get non-empty lines
 
         for i, expected in enumerate(expected_texts):
-            assert i < len(lines), f"Not enough lines, expected {len(expected_texts)}, got {len(lines)}"
+            assert i < len(lines), (
+                f"Not enough lines, expected {len(expected_texts)}, got {len(lines)}"
+            )
             assert expected in lines[i], f"Line {i} should contain '{expected}', got '{lines[i]}'"
 
     def test_header_category_markup(self):
@@ -73,7 +74,7 @@ class TestReadingOrderSorting:
                     "page": 1,
                     "coordinates": [{"x": 100, "y": 100}],
                     "category": "Header",
-                    "content": {"text": "Test Header"}
+                    "content": {"text": "Test Header"},
                 },
             ]
         }
@@ -91,7 +92,7 @@ class TestReadingOrderSorting:
                     "page": 1,
                     "coordinates": [{"x": 100, "y": 100}],
                     "category": "Table",
-                    "content": {"text": "Table Content"}
+                    "content": {"text": "Table Content"},
                 },
             ]
         }
@@ -109,7 +110,7 @@ class TestReadingOrderSorting:
                     "page": 1,
                     "coordinates": [{"x": 100, "y": 100}],
                     "category": "List",
-                    "content": {"text": "List Item"}
+                    "content": {"text": "List Item"},
                 },
             ]
         }
@@ -127,7 +128,7 @@ class TestReadingOrderSorting:
                     "page": 1,
                     "coordinates": [{"x": 100, "y": 100}],
                     "category": "Paragraph",
-                    "content": {"text": "Plain paragraph text"}
+                    "content": {"text": "Plain paragraph text"},
                 },
             ]
         }
@@ -148,13 +149,13 @@ class TestReadingOrderSorting:
                     "page": 1,
                     "coordinates": [{"x": 100, "y": 100}],
                     "category": "Paragraph",
-                    "content": {"text": ""}
+                    "content": {"text": ""},
                 },
                 {
                     "page": 1,
                     "coordinates": [{"x": 100, "y": 200}],
                     "category": "Paragraph",
-                    "content": {"text": "Valid text"}
+                    "content": {"text": "Valid text"},
                 },
             ]
         }
@@ -163,7 +164,7 @@ class TestReadingOrderSorting:
         assert "Valid text" in result
         # Only one element produces text, so we get "Valid text\n\n" (one trailing blank line)
         # Count non-empty lines to verify only one element
-        non_empty_lines = [l for l in result.split('\n') if l]
+        non_empty_lines = [line for line in result.split("\n") if line]
         assert len(non_empty_lines) == 1
 
     def test_missing_fields_handled(self):
@@ -173,11 +174,7 @@ class TestReadingOrderSorting:
         # Element without coordinates
         elements = {
             "elements": [
-                {
-                    "page": 1,
-                    "category": "Paragraph",
-                    "content": {"text": "No coords"}
-                },
+                {"page": 1, "category": "Paragraph", "content": {"text": "No coords"}},
             ]
         }
 
@@ -195,13 +192,13 @@ class TestReadingOrderSorting:
                     "page": 1,
                     "coordinates": [{"x": 100, "y": 100}],
                     "category": "Paragraph",
-                    "content": {"text": "First"}
+                    "content": {"text": "First"},
                 },
                 {
                     "page": 1,
                     "coordinates": [{"x": 100, "y": 200}],
                     "category": "Paragraph",
-                    "content": {"text": "Second"}
+                    "content": {"text": "Second"},
                 },
             ]
         }

@@ -5,6 +5,10 @@ Shared utilities for CLI modules.
 import os
 from pathlib import Path
 
+from doc_bench import get_bundled_schema_path
+
+__all__ = ["get_bundled_schema_path", "get_manifest_path"]
+
 
 def get_manifest_path(manifest_arg: Path | None = None) -> Path:
     """

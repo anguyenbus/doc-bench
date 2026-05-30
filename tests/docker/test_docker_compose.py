@@ -106,18 +106,22 @@ class TestEnvironmentVariables:
         if isinstance(env, dict):
             assert "DOC_BENCH_LOG_LEVEL" in env, "DOC_BENCH_LOG_LEVEL should be in environment"
         else:
-            assert any("DOC_BENCH_LOG_LEVEL" in str(e) for e in env), \
+            assert any("DOC_BENCH_LOG_LEVEL" in str(e) for e in env), (
                 "DOC_BENCH_LOG_LEVEL should be in environment"
+            )
 
     def test_output_format_env_passed(self, compose_content: dict) -> None:
         """Test that DOC_BENCH_OUTPUT_FORMAT is passed."""
         service = compose_content["services"]["doc-bench"]
         env = service.get("environment", [])
         if isinstance(env, dict):
-            assert "DOC_BENCH_OUTPUT_FORMAT" in env, "DOC_BENCH_OUTPUT_FORMAT should be in environment"
-        else:
-            assert any("DOC_BENCH_OUTPUT_FORMAT" in str(e) for e in env), \
+            assert "DOC_BENCH_OUTPUT_FORMAT" in env, (
                 "DOC_BENCH_OUTPUT_FORMAT should be in environment"
+            )
+        else:
+            assert any("DOC_BENCH_OUTPUT_FORMAT" in str(e) for e in env), (
+                "DOC_BENCH_OUTPUT_FORMAT should be in environment"
+            )
 
 
 class TestRestartPolicy:
@@ -127,8 +131,9 @@ class TestRestartPolicy:
         """Test that restart policy is set to 'no' for development."""
         service = compose_content["services"]["doc-bench"]
         restart = service.get("restart")
-        assert restart == "no" or restart is False, \
+        assert restart == "no" or restart is False, (
             "restart policy should be 'no' or False for development"
+        )
 
 
 class TestDevCompose:

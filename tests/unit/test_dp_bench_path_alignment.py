@@ -6,9 +6,8 @@ for Docker container compatibility.
 """
 
 import json
+
 import pytest
-from pathlib import Path
-from unittest.mock import patch
 
 
 class TestDPBenchPathFlexibility:
@@ -30,7 +29,7 @@ class TestDPBenchPathFlexibility:
                         "page": 1,
                         "coordinates": [{"x": 100, "y": 100}],
                         "category": "Paragraph",
-                        "content": {"text": "Test content"}
+                        "content": {"text": "Test content"},
                     }
                 ]
             }
@@ -71,7 +70,7 @@ class TestDPBenchPathFlexibility:
                         "page": 1,
                         "coordinates": [{"x": 100, "y": 100}],
                         "category": "Header",
-                        "content": {"text": "Header"}
+                        "content": {"text": "Header"},
                     }
                 ]
             }
@@ -111,7 +110,7 @@ class TestDPBenchPathFlexibility:
                         "page": 1,
                         "coordinates": [{"x": 100, "y": 100}],
                         "category": "Table",
-                        "content": {"text": "Table data"}
+                        "content": {"text": "Table data"},
                     }
                 ]
             }
@@ -151,11 +150,25 @@ class TestDPBenchPathFlexibility:
 
         reference = {
             "exists.pdf": {
-                "elements": [{"page": 1, "coordinates": [{"x": 100, "y": 100}], "category": "Paragraph", "content": {"text": "Exists"}}]
+                "elements": [
+                    {
+                        "page": 1,
+                        "coordinates": [{"x": 100, "y": 100}],
+                        "category": "Paragraph",
+                        "content": {"text": "Exists"},
+                    }
+                ]
             },
             "missing.pdf": {
-                "elements": [{"page": 1, "coordinates": [{"x": 100, "y": 100}], "category": "Paragraph", "content": {"text": "Missing"}}]
-            }
+                "elements": [
+                    {
+                        "page": 1,
+                        "coordinates": [{"x": 100, "y": 100}],
+                        "category": "Paragraph",
+                        "content": {"text": "Missing"},
+                    }
+                ]
+            },
         }
 
         with open(dp_bench_dir / "reference.json", "w") as f:

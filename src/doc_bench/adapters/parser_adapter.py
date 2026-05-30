@@ -9,6 +9,7 @@ from collections.abc import Callable
 from pathlib import Path
 from typing import Any
 
+from doc_bench import get_bundled_schema_path
 from doc_bench.adapters.schema_validator import (
     validate as schema_validate,
 )
@@ -74,7 +75,7 @@ class ParserAdapter:
         output = self._parse(pdf_path)
 
         # Validate against schema
-        schema_path = Path("contracts/parser_output.schema.json")
+        schema_path = get_bundled_schema_path()
         schema_validate(output, schema_path)
 
         return output

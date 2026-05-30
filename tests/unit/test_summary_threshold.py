@@ -5,11 +5,6 @@ Tests the configurable rejection threshold and warning logic.
 """
 
 import os
-from pathlib import Path
-from unittest.mock import patch, MagicMock
-from io import StringIO
-
-import pytest
 
 
 class TestRejectionThreshold:
@@ -97,7 +92,10 @@ class TestEndOfRunSummary:
 
         # Format matches expected output
         summary_line = f"Evaluated: {evaluated} / Total documents"
-        rejection_line = f"Rejected: {total_rejected} ({rejected_missing} missing, {rejected_schema} bad schema, {rejected_json} bad json)"
+        rejection_line = (
+            f"Rejected: {total_rejected} ({rejected_missing} missing, "
+            f"{rejected_schema} bad schema, {rejected_json} bad json)"
+        )
 
         assert "Evaluated: 10" in summary_line
         assert "Rejected: 3" in rejection_line
@@ -119,10 +117,13 @@ class TestEndOfRunSummary:
             "MISSING_PREDICTION": 1,
             "INVALID_JSON": 0,
             "INVALID_SCHEMA": 2,
-            "EVALUATION_ERROR": 0
+            "EVALUATION_ERROR": 0,
         }
 
-        breakdown = f"Rejected: {sum(counts.values())} ({counts['MISSING_PREDICTION']} missing, {counts['INVALID_SCHEMA']} bad schema, {counts['INVALID_JSON']} bad json)"
+        breakdown = (
+            f"Rejected: {sum(counts.values())} ({counts['MISSING_PREDICTION']} missing, "
+            f"{counts['INVALID_SCHEMA']} bad schema, {counts['INVALID_JSON']} bad json)"
+        )
 
         assert "1 missing" in breakdown
         assert "2 bad schema" in breakdown
@@ -130,16 +131,20 @@ class TestEndOfRunSummary:
 
     def test_summary_with_zero_rejections(self):
         """Summary should handle zero rejections gracefully."""
-        evaluated = 10
         total_rejected = 0
         counts = {
             "MISSING_PREDICTION": 0,
             "INVALID_JSON": 0,
             "INVALID_SCHEMA": 0,
-            "EVALUATION_ERROR": 0
+            "EVALUATION_ERROR": 0,
         }
 
-        rejection_line = f"Rejected: {total_rejected} ({counts['MISSING_PREDICTION']} missing, {counts['INVALID_SCHEMA']} bad schema, {counts['INVALID_JSON']} bad json)"
+        rejection_line = (
+            f"Rejected: {total_rejected} "
+            f"({counts['MISSING_PREDICTION']} missing, "
+            f"{counts['INVALID_SCHEMA']} bad schema, "
+            f"{counts['INVALID_JSON']} bad json)"
+        )
 
         assert "Rejected: 0" in rejection_line
 
@@ -151,11 +156,16 @@ class TestEndOfRunSummary:
             "MISSING_PREDICTION": 5,
             "INVALID_JSON": 2,
             "INVALID_SCHEMA": 3,
-            "EVALUATION_ERROR": 0
+            "EVALUATION_ERROR": 0,
         }
 
         summary_line = f"Evaluated: {evaluated} / Total documents"
-        rejection_line = f"Rejected: {total_rejected} ({counts['MISSING_PREDICTION']} missing, {counts['INVALID_SCHEMA']} bad schema, {counts['INVALID_JSON']} bad json)"
+        rejection_line = (
+            f"Rejected: {total_rejected} "
+            f"({counts['MISSING_PREDICTION']} missing, "
+            f"{counts['INVALID_SCHEMA']} bad schema, "
+            f"{counts['INVALID_JSON']} bad json)"
+        )
 
         assert "Evaluated: 0" in summary_line
         assert "Rejected: 10" in rejection_line

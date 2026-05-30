@@ -28,9 +28,7 @@ class TestBLEUScore:
 
     def test_partial_match(self):
         """Test BLEU score for partial overlap."""
-        score = bleu_score(
-            "This is a sample text for evaluation", "This is a sample text"
-        )
+        score = bleu_score("This is a sample text for evaluation", "This is a sample text")
         # Partial match should give intermediate score
         assert 0.0 <= score <= 1.0
 

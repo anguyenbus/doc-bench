@@ -48,7 +48,9 @@ class TestMultiStageBuild:
     def test_stages_are_separate(self, dockerfile_content: str) -> None:
         """Test that builder and runtime stages are separate FROM instructions."""
         from_count = len(re.findall(r"^FROM\s+", dockerfile_content, re.MULTILINE))
-        assert from_count >= 2, "Dockerfile must have at least 2 FROM instructions for multi-stage build"
+        assert from_count >= 2, (
+            "Dockerfile must have at least 2 FROM instructions for multi-stage build"
+        )
 
 
 class TestBaseImage:
