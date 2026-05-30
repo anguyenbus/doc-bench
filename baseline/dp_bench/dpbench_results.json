@@ -3,15 +3,15 @@
   "successful": 12,
   "errors": 0,
   "averages": {
-    "nid": 0.9587,
-    "nid_s": 0.9587,
+    "nid": 0.9593,
+    "nid_s": 0.9593,
     "teds": 0.0,
     "teds_s": 0.0,
-    "mhs": 0.1115,
+    "mhs": 0.1114,
     "mhs_s": 0.2274,
-    "ard": 0.5868,
-    "bleu": 0.8744,
-    "meteor": 0.9413
+    "ard": 0.5883,
+    "bleu": 0.8768,
+    "meteor": 0.9475
   },
   "results": [
     {
@@ -60,15 +60,15 @@
       "query_id": "dpbench_3",
       "pdf": "01030000000027.pdf",
       "error": "",
-      "nid": 0.7353,
-      "nid_s": 0.7353,
+      "nid": 0.7461,
+      "nid_s": 0.7461,
       "teds": 0.0,
       "teds_s": 0.0,
       "mhs": 0.0,
       "mhs_s": 0.0,
       "ard": 0.0,
-      "bleu": 0.4202,
-      "meteor": 0.5608
+      "bleu": 0.4523,
+      "meteor": 0.6277
     },
     {
       "query_id": "dpbench_4",
@@ -116,29 +116,29 @@
       "query_id": "dpbench_7",
       "pdf": "01030000000118.pdf",
       "error": "",
-      "nid": 0.961,
-      "nid_s": 0.961,
+      "nid": 0.9585,
+      "nid_s": 0.9585,
       "teds": 0.0,
       "teds_s": 0.0,
-      "mhs": 0.3805,
+      "mhs": 0.3791,
       "mhs_s": 0.8,
-      "ard": 0.6483,
-      "bleu": 0.8618,
-      "meteor": 0.9604
+      "ard": 0.6678,
+      "bleu": 0.8681,
+      "meteor": 0.9687
     },
     {
       "query_id": "dpbench_8",
       "pdf": "01030000000120.pdf",
       "error": "",
-      "nid": 0.9954,
-      "nid_s": 0.9954,
+      "nid": 0.9942,
+      "nid_s": 0.9942,
       "teds": 0.0,
       "teds_s": 0.0,
       "mhs": 0.0,
       "mhs_s": 0.0,
-      "ard": 0.5235,
-      "bleu": 0.9453,
-      "meteor": 0.9765
+      "ard": 0.5225,
+      "bleu": 0.9355,
+      "meteor": 0.9759
     },
     {
       "query_id": "dpbench_9",

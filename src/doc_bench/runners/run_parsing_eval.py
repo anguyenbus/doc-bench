@@ -20,6 +20,7 @@ import pandas as pd
 from doc_bench.adapters.parser_adapter import ParserAdapter
 from doc_bench.adapters.schema_validator import validate, SchemaValidationError
 from doc_bench.config import load_config
+from doc_bench.datasets.dp_bench import build_gold_markdown
 from doc_bench.identity import doc_id_for
 from doc_bench.metrics.parsing.markdown_converter import parser_output_to_markdown
 from doc_bench.metrics.parsing.mhs import evaluate_heading_level
@@ -540,28 +541,8 @@ def main() -> None:
                 # Convert parser output to markdown for comparison
                 pred_markdown = parser_output_to_markdown(prediction_dict)
 
-                # Build ground truth markdown from DP-Bench elements
-                gt_lines = []
-                for elem in gold_elements.get("elements", []):
-                    category = elem.get("category", "")
-                    text = elem.get("content", {}).get("text", "")
-
-                    if not text:
-                        continue
-
-                    if category == "Header":
-                        gt_lines.append(f"# {text}")
-                    elif category == "Paragraph":
-                        gt_lines.append(text)
-                    elif category == "Table":
-                        gt_lines.append(f"[TABLE: {text}]")
-                    elif category == "List":
-                        gt_lines.append(f"- {text}")
-                    else:
-                        gt_lines.append(text)
-                    gt_lines.append("")  # Blank line between elements
-
-                gt_markdown = "\n".join(gt_lines)
+                # Build ground truth markdown from DP-Bench elements (shared function)
+                gt_markdown = build_gold_markdown(gold_elements)
 
                 # Calculate all metrics
                 nid, nid_s = evaluate_nid(gt_markdown, pred_markdown)

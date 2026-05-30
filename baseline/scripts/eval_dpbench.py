@@ -20,14 +20,14 @@ script_dir = Path(__file__).parent
 repo_root = script_dir.parent.parent
 sys.path.insert(0, str(repo_root / "src"))
 
-from eval_harness.stubs.docling_parser import parse as docling_parse
-from eval_harness.datasets.dp_bench import build_gold_markdown
-from eval_harness.metrics.parsing.nid import evaluate_reading_order as evaluate_nid
-from eval_harness.metrics.parsing.table_teds import evaluate_table
-from eval_harness.metrics.parsing.mhs import evaluate_heading_level
-from eval_harness.metrics.parsing.reading_order import ard_score
-from eval_harness.metrics.parsing.text_similarity import bleu_score, meteor_score
-from eval_harness.metrics.parsing.markdown_converter import parser_output_to_markdown
+from doc_bench.stubs.docling_parser import parse as docling_parse
+from doc_bench.datasets.dp_bench import build_gold_markdown
+from doc_bench.metrics.parsing.nid import evaluate_reading_order as evaluate_nid
+from doc_bench.metrics.parsing.table_teds import evaluate_table
+from doc_bench.metrics.parsing.mhs import evaluate_heading_level
+from doc_bench.metrics.parsing.reading_order import ard_score
+from doc_bench.metrics.parsing.text_similarity import bleu_score, meteor_score
+from doc_bench.metrics.parsing.markdown_converter import parser_output_to_markdown
 
 
 def safe_float(x):

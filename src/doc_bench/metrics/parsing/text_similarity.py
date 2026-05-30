@@ -21,6 +21,7 @@ _BLEU_WEIGHTS: Final[tuple[float, ...]] = (0.25, 0.25, 0.25, 0.25)
 # Cached model instances (loaded once, reused)
 _wordnet_checked = False
 _punkt_checked = False
+_omw_checked = False
 
 
 def _ensure_nltk_data() -> None:
@@ -30,7 +31,7 @@ def _ensure_nltk_data() -> None:
     NOTE: This function is idempotent and safe to call multiple times.
     It downloads the minimum required data for METEOR and tokenization.
     """
-    global _wordnet_checked, _punkt_checked
+    global _wordnet_checked, _punkt_checked, _omw_checked
 
     if not _punkt_checked:
         try:
@@ -46,6 +47,13 @@ def _ensure_nltk_data() -> None:
         except LookupError:
             nltk.download("wordnet", quiet=True)
         _wordnet_checked = True
+
+    if not _omw_checked:
+        try:
+            nltk.data.find("corpora/omw-1.4")
+        except LookupError:
+            nltk.download("omw-1.4", quiet=True)
+        _omw_checked = True
 
 
 @beartype

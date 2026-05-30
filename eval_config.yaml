@@ -1,11 +1,11 @@
 # Default evaluation config for Docker container
-# Datasets are baked-in at /opt/doc-bench/data
+# Datasets are baked-in at /opt/doc-bench/data or baseline/
 
 datasets:
   omnidocbench:
     path: /opt/doc-bench/data/parsing/omnidocbench_english_large
   dp_bench:
-    path: /opt/doc-bench/data/parsing/dp_bench
+    path: /opt/doc-bench/baseline/dp_bench  # Flat layout with reference.json + pdfs/
 
 metrics:
   parsing:
