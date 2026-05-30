@@ -6,6 +6,7 @@ import pathlib
 import shutil
 import sys
 
+
 def main():
     # Representative PDFs for each element type (2 each)
     selected_pdfs = [

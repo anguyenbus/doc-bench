@@ -6,6 +6,7 @@ import pathlib
 import shutil
 import sys
 
+
 def main():
     keep_count = 50  # Keep only 50 files for minimal image
 

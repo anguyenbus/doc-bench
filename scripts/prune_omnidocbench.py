@@ -6,6 +6,7 @@ import pathlib
 import shutil
 import sys
 
+
 def main():
     # Sample 2 pages from each document type for representative baseline
     samples_per_type = 2

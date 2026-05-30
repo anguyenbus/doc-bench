@@ -73,6 +73,30 @@
       "category": "Paragraph",
       "pdf": "dp_bench/01030000000193.pdf",
       "gold": "dp_bench/01030000000193.json"
+    },
+    {
+      "doc_id": "01030000000172",
+      "category": "Index",
+      "pdf": "dp_bench/01030000000172.pdf",
+      "gold": "dp_bench/01030000000172.json"
+    },
+    {
+      "doc_id": "01030000000018",
+      "category": "Heading1",
+      "pdf": "dp_bench/01030000000018.pdf",
+      "gold": "dp_bench/01030000000018.json"
+    },
+    {
+      "doc_id": "01030000000141",
+      "category": "Paragraph",
+      "pdf": "dp_bench/01030000000141.pdf",
+      "gold": "dp_bench/01030000000141.json"
+    },
+    {
+      "doc_id": "01030000000121",
+      "category": "Paragraph",
+      "pdf": "dp_bench/01030000000121.pdf",
+      "gold": "dp_bench/01030000000121.json"
     }
   ],
   "omnidocbench": [
@@ -137,5 +161,5 @@
       "image": "omnidocbench/page-21ad32ba-fd62-43e5-964a-f5e95c0e0441.png"
     }
   ],
-  "total": 22
+  "total": 26
 }

@@ -52,14 +52,15 @@ uv sync --extra docling
 
 ## Smoke Test
 
-Validate installation with bundled fixtures (22 documents, no download required):
+Validate installation with bundled fixtures (26 documents, no download required):
 
 ```bash
 doc-bench-smoke-test
 ```
 
 Tests:
-- 4 DP-Bench documents (Paragraph, Caption categories)
+- 16 DP-Bench documents (Paragraph, Caption, Chart, Heading1, Index categories)
+  - Includes 4 problematic PDFs known to challenge docling: 172, 018, 141, 121
 - 10 OmniDocBench documents (academic_literature, exam_paper, colorful_textbook, book, PPT2PDF)
 - Schema validation (bundled parser_output.schema.json)
 
@@ -96,8 +97,14 @@ doc-bench --dataset dp_bench --predictions ./predictions --output-dir ./results
 
 | Dataset | Documents | Categories |
 |---------|-----------|------------|
-| DP-Bench | 12 docs | Paragraph (8), Caption (2), Chart (1), Heading1 (1) |
+| DP-Bench | 16 docs | Paragraph (10), Caption (2), Chart (1), Heading1 (2), Index (1) |
 | OmniDocBench | 10 docs | academic_literature (2), exam_paper (2), colorful_textbook (2), book (2), PPT2PDF (2) |
+
+**Problematic PDFs included** (known docling challenges):
+- 01030000000172.pdf (Index)
+- 01030000000018.pdf (Heading1)
+- 01030000000141.pdf (Paragraph, 29 elements)
+- 01030000000121.pdf (Paragraph, 16 elements)
 
 Included in wheel - no download required for smoke testing.
 
@@ -105,10 +112,14 @@ Included in wheel - no download required for smoke testing.
 
 Bundled reference scores for comparison (from bundled fixture evaluation):
 
-| Dataset | NID | TEDS | MHS | ARD | BLEU | METEOR |
-|---------|-----|------|-----|-----|------|--------|
-| DP-Bench | 0.9587 | 0.0 | 0.1115 | 0.5868 | 0.8744 | 0.9413 |
-| OmniDocBench | 0.8230 | 0.0 | 0.0 | 0.75 | 0.7352 | 0.7941 |
+| Dataset | Docs | NID | TEDS | MHS | ARD | BLEU | METEOR |
+|---------|------|-----|------|-----|-----|------|--------|
+| DP-Bench | 12 | 0.9587 | 0.0 | 0.1115 | 0.5868 | 0.8744 | 0.9413 |
+| OmniDocBench | 10 | 0.8230 | 0.0 | 0.0 | 0.75 | 0.7352 | 0.7941 |
+
+**Note:** Baseline scores cover the original stratified sample (12 DP-Bench + 10 OmniDocBench).
+The 4 additional problematic DP-Bench PDFs (172/018/141/121) are included for parser robustness
+testing but not part of the baseline averages.
 
 Located at:
 - `doc_bench/fixtures/dpbench_results.json`

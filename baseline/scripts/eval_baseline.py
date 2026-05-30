@@ -6,11 +6,12 @@ Usage:
     uv run python eval_baseline.py
 """
 import json
-import sys
-from pathlib import Path
 
 # Force CPU usage for docling
 import os
+import sys
+from pathlib import Path
+
 os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 os.environ["DOCLING_DEVICE"] = "cpu"
 
@@ -19,14 +20,13 @@ script_dir = Path(__file__).parent
 repo_root = script_dir.parent.parent
 sys.path.insert(0, str(repo_root / "src"))
 
-from eval_harness.stubs.docling_parser import parse as docling_parse
-from eval_harness.metrics.parsing.nid import evaluate_reading_order as evaluate_nid
-from eval_harness.metrics.parsing.table_teds import evaluate_table
-from eval_harness.metrics.parsing.mhs import evaluate_heading_level
-from eval_harness.metrics.parsing.reading_order import ard_score
-from eval_harness.metrics.parsing.text_similarity import bleu_score, meteor_score
 from eval_harness.metrics.parsing.markdown_converter import parser_output_to_markdown
-
+from eval_harness.metrics.parsing.mhs import evaluate_heading_level
+from eval_harness.metrics.parsing.nid import evaluate_reading_order as evaluate_nid
+from eval_harness.metrics.parsing.reading_order import ard_score
+from eval_harness.metrics.parsing.table_teds import evaluate_table
+from eval_harness.metrics.parsing.text_similarity import bleu_score, meteor_score
+from eval_harness.stubs.docling_parser import parse as docling_parse
 
 # Resolve paths relative to repo root
 script_dir = Path(__file__).parent
@@ -91,7 +91,7 @@ def main():
             results.append({
                 "query_id": query_id,
                 "image": image_name,
-                "error": f"Image not found",
+                "error": "Image not found",
                 "nid": 0.0, "nid_s": 0.0,
                 "teds": 0.0, "teds_s": 0.0,
                 "mhs": 0.0, "mhs_s": 0.0,
@@ -105,7 +105,7 @@ def main():
             gold_text = extract_gold_text(page)
 
             if not gold_text:
-                print(f"  WARNING: No gold text found")
+                print("  WARNING: No gold text found")
                 results.append({
                     "query_id": query_id,
                     "image": image_name,
@@ -122,7 +122,7 @@ def main():
             print(f"  Gold text length: {len(gold_text)} chars")
 
             # Parse image with docling
-            print(f"  Parsing with docling...")
+            print("  Parsing with docling...")
             output = docling_parse(image_path)
 
             # Convert to markdown

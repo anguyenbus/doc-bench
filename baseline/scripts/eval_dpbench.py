@@ -7,11 +7,12 @@ Usage:
     python baseline/scripts/eval_dpbench.py  # in container
 """
 import json
-import sys
-from pathlib import Path
 
 # Force CPU usage for docling
 import os
+import sys
+from pathlib import Path
+
 os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 os.environ["DOCLING_DEVICE"] = "cpu"
 
@@ -20,14 +21,14 @@ script_dir = Path(__file__).parent
 repo_root = script_dir.parent.parent
 sys.path.insert(0, str(repo_root / "src"))
 
-from eval_harness.stubs.docling_parser import parse as docling_parse
-from eval_harness.datasets.dp_bench import build_gold_markdown
-from eval_harness.metrics.parsing.nid import evaluate_reading_order as evaluate_nid
-from eval_harness.metrics.parsing.table_teds import evaluate_table
-from eval_harness.metrics.parsing.mhs import evaluate_heading_level
-from eval_harness.metrics.parsing.reading_order import ard_score
-from eval_harness.metrics.parsing.text_similarity import bleu_score, meteor_score
-from eval_harness.metrics.parsing.markdown_converter import parser_output_to_markdown
+from doc_bench.adapters.parser_adapter import docling_parse
+from doc_bench.datasets.dp_bench import build_gold_markdown
+from doc_bench.metrics.parsing.markdown_converter import parser_output_to_markdown
+from doc_bench.metrics.parsing.mhs import evaluate_heading_level
+from doc_bench.metrics.parsing.nid import evaluate_reading_order as evaluate_nid
+from doc_bench.metrics.parsing.reading_order import ard_score
+from doc_bench.metrics.parsing.table_teds import evaluate_table
+from doc_bench.metrics.parsing.text_similarity import bleu_score, meteor_score
 
 
 def safe_float(x):
@@ -69,7 +70,7 @@ def main():
             results.append({
                 "query_id": query_id,
                 "pdf": pdf_name,
-                "error": f"PDF not found",
+                "error": "PDF not found",
                 "nid": 0.0, "nid_s": 0.0,
                 "teds": 0.0, "teds_s": 0.0,
                 "mhs": 0.0, "mhs_s": 0.0,
@@ -83,7 +84,7 @@ def main():
             gt_markdown = build_gold_markdown(ref_data[pdf_name])
 
             if not gt_markdown:
-                print(f"  WARNING: No gold text found")
+                print("  WARNING: No gold text found")
                 results.append({
                     "query_id": query_id,
                     "pdf": pdf_name,
@@ -100,7 +101,7 @@ def main():
             print(f"  Gold markdown length: {len(gt_markdown)} chars")
 
             # Parse PDF with docling
-            print(f"  Parsing with docling...")
+            print("  Parsing with docling...")
             output = docling_parse(pdf_path)
 
             # Convert to markdown

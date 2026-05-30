@@ -5,6 +5,7 @@ import json
 import pathlib
 from collections import defaultdict
 
+
 def main():
     # Download reference.json from HuggingFace
     temp_dir = pathlib.Path("/tmp/dp_bench_analysis")
