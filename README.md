@@ -101,6 +101,21 @@ doc-bench --dataset dp_bench --predictions ./predictions --output-dir ./results
 
 Included in wheel - no download required for smoke testing.
 
+#### Baseline Scores
+
+Bundled reference scores for comparison (from bundled fixture evaluation):
+
+| Dataset | NID | TEDS | MHS | ARD | BLEU | METEOR |
+|---------|-----|------|-----|-----|------|--------|
+| DP-Bench | 0.9587 | 0.0 | 0.1115 | 0.5868 | 0.8744 | 0.9413 |
+| OmniDocBench | 0.8230 | 0.0 | 0.0 | 0.75 | 0.7352 | 0.7941 |
+
+Located at:
+- `doc_bench/fixtures/dpbench_results.json`
+- `doc_bench/fixtures/omnidocbench_results.json`
+
+Compare your parser output against these baselines.
+
 #### Full Benchmarks
 
 | Dataset | Description | Documents | Source |
