@@ -20,9 +20,7 @@ from pathlib import Path
 try:
     from huggingface_hub import snapshot_download
 except ImportError as err:
-    raise ImportError(
-        "huggingface_hub required. Install: pip install huggingface_hub"
-    ) from err
+    raise ImportError("huggingface_hub required. Install: pip install huggingface_hub") from err
 
 # HuggingFace dataset info
 HF_REPO = "opendatalab/OmniDocBench"
@@ -100,9 +98,7 @@ def filter_pages(pages: list[dict], images_dir: Path) -> Iterator[dict]:
             },
             "extra": page.get("extra", {}),
             "_eval_tags": {
-                "is_clean": not (
-                    attrs.get("fuzzy_scan", False) or attrs.get("watermark", False)
-                ),
+                "is_clean": not (attrs.get("fuzzy_scan", False) or attrs.get("watermark", False)),
                 "has_watermark": attrs.get("watermark", False),
                 "has_fuzzy_scan": attrs.get("fuzzy_scan", False),
                 "has_colorful_bg": attrs.get("colorful_backgroud", False),

@@ -5,7 +5,10 @@ datasets:
   omnidocbench:
     path: /opt/doc-bench/data/parsing/omnidocbench_english_large
   dp_bench:
-    path: /opt/doc-bench/baseline/dp_bench  # Flat layout with reference.json + pdfs/
+    # Primary path: dataset downloaded via download script (dataset/ subdirectory layout)
+    path: /opt/doc-bench/data/parsing/dp_bench
+    # Fallback path: baseline directory for container compatibility (flat layout)
+    # The loader supports both layouts automatically
 
 metrics:
   parsing:

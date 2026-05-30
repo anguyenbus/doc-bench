@@ -1,0 +1,37 @@
+# Dataset Manifest for doc-bench
+# This file tracks dataset versions and SHA-256 hashes for verification
+# Dataset versions align with doc-bench package version for reproducibility
+
+omnidocbench:
+  version: "0.1.0"
+  sha256: abc123def456  # Placeholder, will be updated on download
+  repo_id: opendatalab/OmniDocBench
+
+omnidocbench_nano:
+  version: "0.1.0"
+  sha256: placeholder_nano_hash
+  repo_id: opendatalab/OmniDocBench
+  slice: nano
+
+omnidocbench_mini:
+  version: "0.1.0"
+  sha256: placeholder_mini_hash
+  repo_id: opendatalab/OmniDocBench
+  slice: mini
+
+omnidocbench_medium:
+  version: "0.1.0"
+  sha256: placeholder_medium_hash
+  repo_id: opendatalab/OmniDocBench
+  slice: medium
+
+dp_bench:
+  version: "0.1.0"
+  sha256: fed654cba321  # Placeholder, will be updated on download
+  repo_id: upstage/dp-bench
+
+legalbench_rag:
+  version: "0.1.0"
+  sha256: manual  # Manual download only
+  repo_id: null
+  url: https://github.com/zeroentropy-cc/legalbenchrag

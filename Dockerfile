@@ -48,12 +48,15 @@ COPY --chown=root:root scripts /opt/doc-bench/scripts
 WORKDIR /opt/doc-bench
 ENV PYTHONPATH=/opt/doc-bench/src
 RUN /opt/venv/bin/python scripts/download_datasets.py \
-    --datasets omnidocbench \
+    --datasets omnidocbench dp_bench \
     --omnidocbench-slices large \
     --output-dir /opt/doc-bench/data
 
 # Prune OmniDocBench to minimal size for testing
 RUN /opt/venv/bin/python scripts/prune_omnidocbench.py
+
+# Prune DP-Bench to representative set (12 docs for testing)
+RUN /opt/venv/bin/python scripts/prune_dp_bench.py
 
 # Verify datasets
 RUN test -d /opt/doc-bench/data/parsing/omnidocbench_english_large && \
@@ -98,7 +101,7 @@ RUN /opt/venv/bin/python -m sysconfig && \
     done
 # Download NLTK data for METEOR metric (to shared location)
 RUN mkdir -p /opt/nltk_data && \
-    /opt/venv/bin/python -c "import nltk; nltk.download('wordnet', download_dir='/opt/nltk_data'); nltk.download('punkt', download_dir='/opt/nltk_data')" && \
+    /opt/venv/bin/python -c "import nltk; nltk.download('wordnet', download_dir='/opt/nltk_data'); nltk.download('punkt', download_dir='/opt/nltk_data'); nltk.download('omw-1.4', download_dir='/opt/nltk_data')" && \
     chown -R docbench:docbench /opt/nltk_data
 
 # Copy baked datasets from datasets stage

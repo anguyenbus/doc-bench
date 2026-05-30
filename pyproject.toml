@@ -7,7 +7,7 @@ name = "doc-bench"
 version = "0.1.0"
 description = "Local evaluation framework for document parsing systems"
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.12"
 dependencies = [
     "pydantic>=2",
     "jsonschema>=4",
@@ -34,9 +34,29 @@ bedrock = [
 docling = [
     "docling>=2",
 ]
+
 [project.scripts]
 doc-bench = "doc_bench.runners.run_parsing_eval:main"
 doc-bench-dump-dataset = "doc_bench.cli.dump_dataset:main"
+doc-bench-download = "doc_bench.cli.download:main"
+doc-bench-list-datasets = "doc_bench.cli.list_datasets:main"
+doc-bench-smoke-test = "doc_bench.cli.smoke_test:main"
+doc-bench-setup = "doc_bench.cli.setup:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/doc_bench"]
+
+[tool.hatch.build.targets.wheel.shared-data]
+"src/doc_bench/fixtures" = "doc_bench/fixtures"
+"src/doc_bench/MANIFEST.yaml" = "doc_bench/MANIFEST.yaml"
+
+[tool.hatch.build]
+include = [
+    "src/doc_bench/**/*.py",
+    "src/doc_bench/fixtures/**/*",
+    "src/doc_bench/MANIFEST.yaml",
+]
+
 
 [dependency-groups]
 dev = [
@@ -51,13 +71,19 @@ dev = [
 
 [tool.ruff]
 target-version = "py313"
+line-length = 100
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "B", "UP", "D"]
-ignore = ["D203", "D212"]
+ignore = ["D203", "D212", "D200", "B904", "B007", "UP042"]
 
 [tool.ruff.lint.per-file-ignores]
 "tests/**/*.py" = ["D"]  # Allow docstring issues in tests
+"src/doc_bench/runners/run_parsing_eval.py" = ["E501"]  # Long format strings
+"src/doc_bench/identity.py" = ["E501"]  # Long docstring lines
+"src/doc_bench/rejections.py" = ["E501"]  # Long docstring lines
+"src/doc_bench/cli/__init__.py" = ["F401"]  # Unused os import for future use
+"src/doc_bench/metrics/parsing/__init__.py" = ["F401"]  # Conditional imports
 
 [tool.black]
 line-length = 100

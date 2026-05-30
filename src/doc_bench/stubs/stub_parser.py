@@ -1,4 +1,5 @@
-"""Stub parser for testing parsing evaluation.
+"""
+Stub parser for testing parsing evaluation.
 
 Returns a minimal parser_output that passes schema validation.
 """
@@ -46,7 +47,5 @@ def parse(pdf_path: Path) -> dict[str, Any]:
                 "content": {"kind": "text"},
             }
         ],
-        "warnings": [
-            {"code": "STUB_OUTPUT", "message": "This is stub parser output"}
-        ],
+        "warnings": [{"code": "STUB_OUTPUT", "message": "This is stub parser output"}],
     }

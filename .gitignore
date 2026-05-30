@@ -232,3 +232,5 @@ results/
 .claude/
 agent-os/
 specs/
+dist/
+.venv-test/

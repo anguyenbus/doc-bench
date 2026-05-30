@@ -115,9 +115,7 @@ def validate(output: dict, schema_path: Path) -> None:
     # Verify schema is Draft 2020-12
     schema_version = schema.get("$schema", "")
     if "2020-12" not in schema_version:
-        raise ValueError(
-            f"Schema must use JSON Schema Draft 2020-12, got: {schema_version}"
-        )
+        raise ValueError(f"Schema must use JSON Schema Draft 2020-12, got: {schema_version}")
 
     validator = Draft202012Validator(schema)
     errors = list(validator.iter_errors(output))

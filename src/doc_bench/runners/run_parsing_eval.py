@@ -9,6 +9,7 @@ Usage:
 """
 
 import csv
+import hashlib
 import json
 import os
 import sys
@@ -18,7 +19,7 @@ from pathlib import Path
 import pandas as pd
 
 from doc_bench.adapters.parser_adapter import ParserAdapter
-from doc_bench.adapters.schema_validator import validate, SchemaValidationError
+from doc_bench.adapters.schema_validator import SchemaValidationError, validate
 from doc_bench.config import load_config
 from doc_bench.datasets.dp_bench import build_gold_markdown
 from doc_bench.identity import doc_id_for
@@ -29,7 +30,80 @@ from doc_bench.metrics.parsing.reading_order import ard_score
 from doc_bench.metrics.parsing.table_teds import evaluate_table
 from doc_bench.metrics.parsing.text_similarity import bleu_score, meteor_score
 from doc_bench.predictions import load_prediction
-from doc_bench.rejections import RejectionTracker, RejectionReason, format_rejection_detail
+from doc_bench.rejections import (
+    RejectionReason,
+    RejectionTracker,
+    format_rejection_detail,
+)
+
+
+def _compute_sha256(file_path: Path) -> str:
+    """
+    Compute SHA-256 hash of a file.
+
+    Args:
+        file_path: Path to the file.
+
+    Returns:
+        Hexadecimal SHA-256 hash string.
+
+    """
+    sha256 = hashlib.sha256()
+    with open(file_path, "rb") as f:
+        for chunk in iter(lambda: f.read(8192), b""):
+            sha256.update(chunk)
+    return sha256.hexdigest()
+
+
+def _get_doc_bench_version() -> str:
+    """
+    Get doc-bench package version.
+
+    Returns:
+        Version string.
+
+    """
+    try:
+        from importlib.metadata import version
+
+        return version("doc-bench")
+    except Exception:
+        # Fallback to reading from package
+        try:
+            from doc_bench import __version__
+
+            return __version__
+        except Exception:
+            return "0.1.0"
+
+
+def _get_dataset_version(dataset_name: str, config: dict) -> str:
+    """
+    Get dataset version from config or manifest.
+
+    Args:
+        dataset_name: Name of dataset.
+        config: Configuration dictionary.
+
+    Returns:
+        Version string.
+
+    """
+    # Try to read from MANIFEST.yaml if available
+    manifest_path = Path("data/MANIFEST.yaml")
+    if manifest_path.exists():
+        try:
+            import yaml
+
+            with open(manifest_path) as f:
+                manifest = yaml.safe_load(f)
+            if dataset_name in manifest:
+                return manifest[dataset_name].get("version", "unknown")
+        except Exception:
+            pass
+
+    # Fallback to current date-based version
+    return "2026.05"
 
 
 def load_dataset(dataset_name: str, config: dict):
@@ -161,9 +235,7 @@ def main() -> None:
     """Run the parsing evaluation CLI."""
     import argparse
 
-    parser = argparse.ArgumentParser(
-        description="Evaluate document parsing on public benchmarks"
-    )
+    parser = argparse.ArgumentParser(description="Evaluate document parsing on public benchmarks")
     parser.add_argument(
         "--dataset",
         choices=["omnidocbench", "dp_bench"],
@@ -281,13 +353,13 @@ def main() -> None:
     filename = f"{args.dataset}_{parser_type}_results_{timestamp}.csv"
     output_file = args.output_dir / filename
     file_exists = output_file.exists()
-    
+
     # Setup rejection tracker for file-based evaluation
     rejection_tracker = None
     if predictions_mode:
         rejected_csv = args.output_dir / f"{args.dataset}_{parser_type}_rejected_{timestamp}.csv"
         rejection_tracker = RejectionTracker(rejected_csv)
-    
+
     # Path to parser output schema for validation
     schema_path = Path("contracts/parser_output.schema.json")
 
@@ -377,8 +449,10 @@ def main() -> None:
                         else:
                             reason = RejectionReason.INVALID_JSON
                             source_file = f"{doc_id}.json"
-                            detail = format_rejection_detail(reason, "File exists but contains invalid JSON")
-                        
+                            detail = format_rejection_detail(
+                                reason, "File exists but contains invalid JSON"
+                            )
+
                         rejection_tracker.record_rejection(doc_id, reason, source_file, detail)
                         writer.writerow(
                             {
@@ -398,14 +472,21 @@ def main() -> None:
                         csv_file.flush()
                         errors += 1
                         continue
-                    
+
                     # Validate prediction against schema
                     try:
                         validate(prediction_dict, schema_path)
                     except SchemaValidationError as e:
                         reason = RejectionReason.INVALID_SCHEMA
                         source_file = f"{doc_id}.json"
-                        detail = format_rejection_detail(reason, f"{e.field_path}: {e.original_error}" if e.field_path else e.original_error)
+                        detail = format_rejection_detail(
+                            reason,
+                            (
+                                f"{e.field_path}: {e.original_error}"
+                                if e.field_path
+                                else e.original_error
+                            ),
+                        )
                         rejection_tracker.record_rejection(doc_id, reason, source_file, detail)
                         writer.writerow(
                             {
@@ -485,8 +566,10 @@ def main() -> None:
                         else:
                             reason = RejectionReason.INVALID_JSON
                             source_file = f"{doc_id}.json"
-                            detail = format_rejection_detail(reason, "File exists but contains invalid JSON")
-                        
+                            detail = format_rejection_detail(
+                                reason, "File exists but contains invalid JSON"
+                            )
+
                         rejection_tracker.record_rejection(doc_id, reason, source_file, detail)
                         writer.writerow(
                             {
@@ -506,14 +589,21 @@ def main() -> None:
                         csv_file.flush()
                         errors += 1
                         continue
-                    
+
                     # Validate prediction against schema
                     try:
                         validate(prediction_dict, schema_path)
                     except SchemaValidationError as e:
                         reason = RejectionReason.INVALID_SCHEMA
                         source_file = f"{doc_id}.json"
-                        detail = format_rejection_detail(reason, f"{e.field_path}: {e.original_error}" if e.field_path else e.original_error)
+                        detail = format_rejection_detail(
+                            reason,
+                            (
+                                f"{e.field_path}: {e.original_error}"
+                                if e.field_path
+                                else e.original_error
+                            ),
+                        )
                         rejection_tracker.record_rejection(doc_id, reason, source_file, detail)
                         writer.writerow(
                             {
@@ -595,7 +685,7 @@ def main() -> None:
 
     # Close CSV file
     csv_file.close()
-    
+
     # Close rejection tracker
     if rejection_tracker:
         rejection_tracker.close()
@@ -605,10 +695,12 @@ def main() -> None:
     if rejection_tracker and predictions_mode:
         total_rejections = rejection_tracker.get_total_rejections()
         rejection_counts = rejection_tracker.get_rejection_counts()
-        
+
         print(f"Evaluated: {processed} / Total documents")
-        print(f"Rejected: {total_rejections} ({rejection_counts[RejectionReason.MISSING_PREDICTION]} missing, {rejection_counts[RejectionReason.INVALID_SCHEMA]} bad schema, {rejection_counts[RejectionReason.INVALID_JSON]} bad json, {rejection_counts[RejectionReason.EVALUATION_ERROR]} eval errors)")
-        
+        print(
+            f"Rejected: {total_rejections} ({rejection_counts[RejectionReason.MISSING_PREDICTION]} missing, {rejection_counts[RejectionReason.INVALID_SCHEMA]} bad schema, {rejection_counts[RejectionReason.INVALID_JSON]} bad json, {rejection_counts[RejectionReason.EVALUATION_ERROR]} eval errors)"
+        )
+
         # Get path to rejected.csv
         rejected_csv_path = rejection_tracker.output_path
         print(f"→ see {rejected_csv_path} for the full list")
@@ -619,7 +711,9 @@ def main() -> None:
     # Calculate rejection rate
     total = processed + (rejection_tracker.get_total_rejections() if rejection_tracker else errors)
     if total > 0 and rejection_threshold > 0:
-        rejection_rate = (rejection_tracker.get_total_rejections() if rejection_tracker else errors) / total
+        rejection_rate = (
+            rejection_tracker.get_total_rejections() if rejection_tracker else errors
+        ) / total
         if rejection_rate > rejection_threshold:
             print(
                 f"WARNING: Rejection rate ({rejection_rate:.1%}) exceeds threshold "
@@ -660,7 +754,7 @@ def main() -> None:
         "csv_file": str(output_file.name),
         "metrics_avg": averages,
     }
-    
+
     # Add evaluated_samples and rejected_samples for file-based evaluation
     if rejection_tracker and predictions_mode:
         summary["evaluated_samples"] = processed
@@ -669,7 +763,7 @@ def main() -> None:
         # For parser mode, use legacy fields
         summary["total_processed"] = processed
         summary["errors"] = errors
-    
+
     with open(json_file, "w") as f:
         json.dump(summary, f, indent=2)
     print(f"\nSummary written to: {json_file}")

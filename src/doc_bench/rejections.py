@@ -84,11 +84,7 @@ class RejectionTracker:
         self._initialized = True
 
     def record_rejection(
-        self,
-        doc_id: str,
-        reason: RejectionReason,
-        source_file: str,
-        detail: str = ""
+        self, doc_id: str, reason: RejectionReason, source_file: str, detail: str = ""
     ) -> None:
         """
         Record a rejected prediction.
@@ -107,12 +103,14 @@ class RejectionTracker:
             detail = format_rejection_detail(reason)
 
         # Write to CSV
-        self._writer.writerow({
-            "doc_id": doc_id,
-            "reason": reason.value,
-            "source_file": source_file,
-            "detail": detail
-        })
+        self._writer.writerow(
+            {
+                "doc_id": doc_id,
+                "reason": reason.value,
+                "source_file": source_file,
+                "detail": detail,
+            }
+        )
         self._file.flush()
 
         # Update count

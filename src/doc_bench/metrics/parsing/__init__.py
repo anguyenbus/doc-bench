@@ -21,6 +21,7 @@ try:
         scaled,
         to_top_left_origin,
     )
+
     _LAYOUT_AVAILABLE = True
 except ImportError:
     _LAYOUT_AVAILABLE = False
@@ -40,9 +41,11 @@ __all__ = [
 
 # Add layout metrics if available
 if _LAYOUT_AVAILABLE:
-    __all__.extend([
-        "layout_map_score",
-        "normalized",
-        "scaled",
-        "to_top_left_origin",
-    ])
+    __all__.extend(
+        [
+            "layout_map_score",
+            "normalized",
+            "scaled",
+            "to_top_left_origin",
+        ]
+    )

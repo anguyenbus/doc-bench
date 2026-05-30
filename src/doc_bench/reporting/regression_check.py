@@ -4,9 +4,7 @@ import json
 from pathlib import Path
 
 
-def check_regression(
-    current_results: Path, baseline_path: Path, threshold: float = 0.05
-) -> None:
+def check_regression(current_results: Path, baseline_path: Path, threshold: float = 0.05) -> None:
     """
     Compare current results against baseline and check for regressions.
 

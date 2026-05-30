@@ -1,4 +1,5 @@
-"""Fast stub parser for digital PDFs (pypdf-based).
+"""
+Fast stub parser for digital PDFs (pypdf-based).
 
 Returns a minimal parser_output that passes schema validation.
 """

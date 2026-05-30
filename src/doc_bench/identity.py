@@ -16,7 +16,6 @@ the stem of the corresponding <doc_id>.<ext> file produced by dump-dataset.
 import re
 from pathlib import Path
 
-
 # Sanitization pattern for filesystem-hostile characters
 # Matches characters that are problematic on most filesystems
 _FS_UNSAFE_PATTERN = re.compile(r'[<>:"/\\|?*\x00-\x1f]')

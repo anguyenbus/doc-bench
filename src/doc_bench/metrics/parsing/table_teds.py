@@ -97,9 +97,7 @@ class CustomConfig(Config):
 class TEDSEvaluator:
     """Tree Edit Distance based Similarity evaluator."""
 
-    def __init__(
-        self, structure_only: bool = False, n_jobs: int = 1, ignore_nodes=None
-    ):
+    def __init__(self, structure_only: bool = False, n_jobs: int = 1, ignore_nodes=None):
         """Initialize TEDS evaluator with structure-only mode and job parallelism."""
         self.structure_only = structure_only
         self.n_jobs = n_jobs
@@ -167,9 +165,7 @@ class TEDSEvaluator:
             n_nodes = max(n_nodes_pred, n_nodes_true)
             tree_pred = self.load_html_tree(pred)
             tree_true = self.load_html_tree(true)
-            distance = APTED(
-                tree_pred, tree_true, CustomConfig()
-            ).compute_edit_distance()
+            distance = APTED(tree_pred, tree_true, CustomConfig()).compute_edit_distance()
             return 1.0 - (float(distance) / n_nodes)
         return 0.0
 
@@ -179,9 +175,7 @@ def _markdown_table_to_html(table_markdown: str) -> str:
     if not table_markdown.strip():
         return ""
 
-    lines = [
-        line.strip() for line in table_markdown.strip().splitlines() if line.strip()
-    ]
+    lines = [line.strip() for line in table_markdown.strip().splitlines() if line.strip()]
     if len(lines) < 2:
         return ""
 

@@ -56,7 +56,9 @@ def load_dp_bench(root: Path) -> Iterator[tuple[str, Path, dict]]:
         pdfs_dir = dataset_dir / "pdfs"
 
         if not dataset_dir.exists():
-            raise FileNotFoundError(f"DP-Bench not found at {root} (tried flat and dataset/ layouts)")
+            raise FileNotFoundError(
+                f"DP-Bench not found at {root} (tried flat and dataset/ layouts)"
+            )
 
     if not reference_path.exists():
         raise FileNotFoundError(f"DP-Bench reference.json not found at {root}")
@@ -81,6 +83,34 @@ def load_dp_bench(root: Path) -> Iterator[tuple[str, Path, dict]]:
         yield doc_id, pdf_path, gold_elements
 
 
+def _get_sort_key(element: dict) -> tuple:
+    """
+    Get sort key for element in reading order.
+
+    Elements are sorted by (page, y, x) coordinates to match
+    natural reading order (top-to-bottom, left-to-right).
+
+    Args:
+        element: DP-Bench element dict with page and coordinates.
+
+    Returns:
+        Sort key tuple (page, y, x). Missing values sort last.
+
+    """
+    page = element.get("page", float("inf"))
+
+    # Get y coordinate from first point in coordinates
+    coordinates = element.get("coordinates", [])
+    if coordinates and isinstance(coordinates, list) and len(coordinates) > 0:
+        y = coordinates[0].get("y", float("inf"))
+        x = coordinates[0].get("x", float("inf"))
+    else:
+        y = float("inf")
+        x = float("inf")
+
+    return (page, y, x)
+
+
 def build_gold_markdown(gold_elements: dict) -> str:
     """
     Build gold markdown text from DP-Bench elements.
@@ -101,9 +131,13 @@ def build_gold_markdown(gold_elements: dict) -> str:
 
     Returns:
         Gold markdown text string.
+
     """
+    # Process elements in JSON order (no sorting)
+    elements = gold_elements.get("elements", [])
+
     gt_lines = []
-    for elem in gold_elements.get("elements", []):
+    for elem in elements:
         category = elem.get("category", "")
         content = elem.get("content", {})
         text = content.get("text", "") if isinstance(content, dict) else ""

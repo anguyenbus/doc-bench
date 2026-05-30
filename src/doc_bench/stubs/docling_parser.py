@@ -48,25 +48,29 @@ except ImportError:
 # Map docling labels to our schema types
 # Schema allows: heading, paragraph, list, list, table, figure, caption,
 #                footnote, header, footer, page_number, code_block, equation
-DOCLING_LABEL_MAP: dict = {} if not DOCLING_AVAILABLE else {
-    DocItemLabel.TITLE: "heading",
-    DocItemLabel.DOCUMENT_INDEX: "heading",
-    DocItemLabel.SECTION_HEADER: "heading",
-    DocItemLabel.PARAGRAPH: "paragraph",
-    DocItemLabel.TABLE: "table",
-    DocItemLabel.PICTURE: "figure",
-    DocItemLabel.FORMULA: "equation",
-    DocItemLabel.TEXT: "paragraph",
-    DocItemLabel.LIST_ITEM: "list_item",
-    DocItemLabel.CODE: "code_block",
-    DocItemLabel.CAPTION: "caption",
-    DocItemLabel.PAGE_HEADER: "header",
-    DocItemLabel.PAGE_FOOTER: "footer",
-    DocItemLabel.FOOTNOTE: "footnote",
-    DocItemLabel.CHECKBOX_UNSELECTED: "paragraph",
-    DocItemLabel.CHECKBOX_SELECTED: "paragraph",
-    DocItemLabel.REFERENCE: "paragraph",
-}
+DOCLING_LABEL_MAP: dict = (
+    {}
+    if not DOCLING_AVAILABLE
+    else {
+        DocItemLabel.TITLE: "heading",
+        DocItemLabel.DOCUMENT_INDEX: "heading",
+        DocItemLabel.SECTION_HEADER: "heading",
+        DocItemLabel.PARAGRAPH: "paragraph",
+        DocItemLabel.TABLE: "table",
+        DocItemLabel.PICTURE: "figure",
+        DocItemLabel.FORMULA: "equation",
+        DocItemLabel.TEXT: "paragraph",
+        DocItemLabel.LIST_ITEM: "list_item",
+        DocItemLabel.CODE: "code_block",
+        DocItemLabel.CAPTION: "caption",
+        DocItemLabel.PAGE_HEADER: "header",
+        DocItemLabel.PAGE_FOOTER: "footer",
+        DocItemLabel.FOOTNOTE: "footnote",
+        DocItemLabel.CHECKBOX_UNSELECTED: "paragraph",
+        DocItemLabel.CHECKBOX_SELECTED: "paragraph",
+        DocItemLabel.REFERENCE: "paragraph",
+    }
+)
 
 
 def _get_doc_id(pdf_path: Path) -> str:
@@ -289,9 +293,7 @@ def parse(pdf_path: Path) -> dict[str, Any]:
         # Build output
         docling_version = result._version if hasattr(result, "_version") else "unknown"
         parsed_at = (
-            result._time_started
-            if hasattr(result, "_time_started")
-            else "2025-01-01T00:00:00Z"
+            result._time_started if hasattr(result, "_time_started") else "2025-01-01T00:00:00Z"
         )
         output = {
             "schema_version": "1.0.0",

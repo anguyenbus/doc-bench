@@ -106,6 +106,7 @@ def load_config(config_path: Path, default_env_val: str | None = None) -> dict:
     Example:
         >>> config = load_config(Path("eval_config.yaml"))
         >>> omnidocbench_path = config["datasets"]["omnidocbench"]["path"]
+
     """
     if not config_path.exists():
         raise FileNotFoundError(f"Config file not found: {config_path}")

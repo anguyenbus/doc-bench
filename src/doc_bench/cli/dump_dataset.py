@@ -68,11 +68,13 @@ def _dump_dp_bench(root: Path, output_dir: Path, limit: int | None) -> dict:
         # Compute hash
         sha256 = _compute_sha256(output_file)
 
-        documents.append({
-            "doc_id": doc_id,
-            "file": f"{doc_id}.pdf",
-            "sha256": sha256,
-        })
+        documents.append(
+            {
+                "doc_id": doc_id,
+                "file": f"{doc_id}.pdf",
+                "sha256": sha256,
+            }
+        )
 
         count += 1
 
@@ -132,11 +134,13 @@ def _dump_omnidocbench(root: Path, output_dir: Path, limit: int | None) -> dict:
         # Compute hash
         sha256 = _compute_sha256(output_file)
 
-        documents.append({
-            "doc_id": doc_id,
-            "file": f"{doc_id}{ext}",
-            "sha256": sha256,
-        })
+        documents.append(
+            {
+                "doc_id": doc_id,
+                "file": f"{doc_id}{ext}",
+                "sha256": sha256,
+            }
+        )
 
         count += 1
 
@@ -222,6 +226,7 @@ def main(dataset: str, output: Path, config: Path, limit: int | None) -> None:
 
     Example:
         doc-bench dump-dataset --dataset dp_bench --output ./dumped --limit 10
+
     """
     # Load configuration to get dataset paths
     try:
