@@ -70,11 +70,11 @@ def main():
     with open(json_file) as f:
         ref_data = json.load(f)
 
-    # Get first 10 PDFs
-    pdf_names = sorted(ref_data.keys())[:10]
+    # Get all PDFs in the reference (new representative set: 12 docs)
+    pdf_names = sorted(ref_data.keys())
 
     print(f"Loaded {len(ref_data)} docs from {json_file}")
-    print(f"Evaluating first {len(pdf_names)} docs")
+    print(f"Evaluating all {len(pdf_names)} docs")
 
     results = []
     errors = 0
@@ -197,7 +197,7 @@ def main():
             print(f"  {metric:8s}: {avg:.4f}")
 
     # Save JSON results
-    output_file = base_dir / "dpbench_results.json"
+    output_file = dp_bench_dir / "dpbench_results.json"
     with open(output_file, "w") as f:
         json.dump({
             "total": len(pdf_names),

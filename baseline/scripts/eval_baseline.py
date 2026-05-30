@@ -186,7 +186,7 @@ def main():
             print(f"  {metric:8s}: {avg:.4f}")
 
     # Save JSON results
-    output_file = base_dir / "baseline_results.json"
+    output_file = omnidir / "omnidocbench_results.json"
     with open(output_file, "w") as f:
         json.dump({
             "total": len(pages),
