@@ -3,7 +3,8 @@
 Evaluate dp-bench PDFs with docling parser.
 
 Usage:
-    uv run python eval_dpbench.py
+    uv run python baseline/scripts/eval_dpbench.py
+    python baseline/scripts/eval_dpbench.py  # in container
 """
 import json
 import sys
@@ -14,10 +15,13 @@ import os
 os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 os.environ["DOCLING_DEVICE"] = "cpu"
 
-# Add src to path
-sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
+# Add src to path (handles both repo and container contexts)
+script_dir = Path(__file__).parent
+repo_root = script_dir.parent.parent
+sys.path.insert(0, str(repo_root / "src"))
 
 from eval_harness.stubs.docling_parser import parse as docling_parse
+from eval_harness.datasets.dp_bench import build_gold_markdown
 from eval_harness.metrics.parsing.nid import evaluate_reading_order as evaluate_nid
 from eval_harness.metrics.parsing.table_teds import evaluate_table
 from eval_harness.metrics.parsing.mhs import evaluate_heading_level
@@ -26,42 +30,15 @@ from eval_harness.metrics.parsing.text_similarity import bleu_score, meteor_scor
 from eval_harness.metrics.parsing.markdown_converter import parser_output_to_markdown
 
 
-def extract_gold_text(doc_data: dict) -> str:
-    """Extract gold text from dp-bench document annotations."""
-    elements = doc_data.get("elements", [])
-
-    # Sort by page, then by reading order (dp-bench uses coordinates)
-    def sort_key(x):
-        page = x.get("page", 0)
-        # Use top-left coordinate for rough reading order
-        coords = x.get("coordinates", [])
-        if coords:
-            y = coords[0].get("y", 0)
-            x = coords[0].get("x", 0)
-            return (page, y, x)
-        return (page, 0, 0)
-
-    sorted_elements = sorted(elements, key=sort_key)
-
-    # Extract text
-    texts = []
-    for elem in sorted_elements:
-        content = elem.get("content", {})
-        text = content.get("text", "") if isinstance(content, dict) else ""
-        if text:
-            texts.append(text)
-
-    return " ".join(texts)
-
-
 def safe_float(x):
     """Convert to float, return 0.0 if None."""
     return round(x, 4) if x is not None else 0.0
 
 
 def main():
-    base_dir = Path("/home/an/atoprojects/evaluation/baseline")
-    dp_bench_dir = base_dir / "dp_bench"
+    # Resolve paths relative to repo root
+    baseline_dir = repo_root / "baseline"
+    dp_bench_dir = baseline_dir / "dp_bench"
 
     json_file = dp_bench_dir / "reference.json"
     pdfs_dir = dp_bench_dir / "pdfs"
@@ -70,7 +47,7 @@ def main():
     with open(json_file) as f:
         ref_data = json.load(f)
 
-    # Get all PDFs in the reference (new representative set: 12 docs)
+    # Get all PDFs in the reference (representative set: 12 docs)
     pdf_names = sorted(ref_data.keys())
 
     print(f"Loaded {len(ref_data)} docs from {json_file}")
@@ -102,10 +79,10 @@ def main():
             continue
 
         try:
-            # Extract gold text
-            gold_text = extract_gold_text(ref_data[pdf_name])
+            # Build gold markdown from reference (shared function with grader)
+            gt_markdown = build_gold_markdown(ref_data[pdf_name])
 
-            if not gold_text:
+            if not gt_markdown:
                 print(f"  WARNING: No gold text found")
                 results.append({
                     "query_id": query_id,
@@ -120,7 +97,7 @@ def main():
                 errors += 1
                 continue
 
-            print(f"  Gold text length: {len(gold_text)} chars")
+            print(f"  Gold markdown length: {len(gt_markdown)} chars")
 
             # Parse PDF with docling
             print(f"  Parsing with docling...")
@@ -128,15 +105,15 @@ def main():
 
             # Convert to markdown
             pred_markdown = parser_output_to_markdown(output)
-            print(f"  Pred text length: {len(pred_markdown)} chars")
+            print(f"  Pred markdown length: {len(pred_markdown)} chars")
 
             # Calculate metrics
-            nid, nid_s = evaluate_nid(gold_text, pred_markdown)
-            teds, teds_s = evaluate_table(gold_text, pred_markdown)
-            mhs, mhs_s = evaluate_heading_level(gold_text, pred_markdown)
-            ard = ard_score(gold_text.split(), pred_markdown.split())
-            bleu = bleu_score(gold_text, pred_markdown)
-            meteor = meteor_score(gold_text, pred_markdown)
+            nid, nid_s = evaluate_nid(gt_markdown, pred_markdown)
+            teds, teds_s = evaluate_table(gt_markdown, pred_markdown)
+            mhs, mhs_s = evaluate_heading_level(gt_markdown, pred_markdown)
+            ard = ard_score(gt_markdown.split(), pred_markdown.split())
+            bleu = bleu_score(gt_markdown, pred_markdown)
+            meteor = meteor_score(gt_markdown, pred_markdown)
 
             result = {
                 "query_id": query_id,
@@ -180,7 +157,7 @@ def main():
 
     # Calculate averages
     print("\n" + "="*60)
-    print("DP-BENCH EVALUATION RESULTS (DOCILING)")
+    print("DP-BENCH EVALUATION RESULTS (DOCLING)")
     print("="*60)
 
     metrics = ["nid", "nid_s", "teds", "teds_s", "mhs", "mhs_s", "ard", "bleu", "meteor"]

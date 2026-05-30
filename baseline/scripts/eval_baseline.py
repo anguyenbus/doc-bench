@@ -14,8 +14,10 @@ import os
 os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 os.environ["DOCLING_DEVICE"] = "cpu"
 
-# Add src to path
-sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
+# Add src to path (handles both repo and container contexts)
+script_dir = Path(__file__).parent
+repo_root = script_dir.parent.parent
+sys.path.insert(0, str(repo_root / "src"))
 
 from eval_harness.stubs.docling_parser import parse as docling_parse
 from eval_harness.metrics.parsing.nid import evaluate_reading_order as evaluate_nid
@@ -24,6 +26,11 @@ from eval_harness.metrics.parsing.mhs import evaluate_heading_level
 from eval_harness.metrics.parsing.reading_order import ard_score
 from eval_harness.metrics.parsing.text_similarity import bleu_score, meteor_score
 from eval_harness.metrics.parsing.markdown_converter import parser_output_to_markdown
+
+
+# Resolve paths relative to repo root
+script_dir = Path(__file__).parent
+repo_root = script_dir.parent.parent
 
 
 def extract_gold_text(page: dict) -> str:
@@ -55,8 +62,9 @@ def safe_float(x):
 
 
 def main():
-    base_dir = Path("/home/an/atoprojects/evaluation/baseline")
-    omnidir = base_dir / "omnidocbench"
+    # Resolve paths relative to repo root
+    baseline_dir = repo_root / "baseline"
+    omnidir = baseline_dir / "omnidocbench"
     json_file = omnidir / "OmniDocBench.json"
 
     # Load ground truth
