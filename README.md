@@ -116,6 +116,65 @@ Located at:
 
 Compare your parser output against these baselines.
 
+#### Custom Data Evaluation
+
+Evaluate on your own datasets with ground truth annotations.
+
+**DP-Bench Format:**
+```bash
+my_data/
+├── reference.json          # Ground truth (required)
+└── pdfs/                   # Source PDFs (required for reference)
+    ├── doc1.pdf
+    └── doc2.pdf
+```
+
+**reference.json format (DP-Bench):**
+```json
+{
+  "doc1.pdf": {
+    "elements": [
+      {
+        "page": 1,
+        "coordinates": [{"x": 100, "y": 200}],
+        "category": "Paragraph",
+        "content": {"text": "Your document text"}
+      }
+    ]
+  }
+}
+```
+
+**Required element fields:**
+- `page` - Page number (int)
+- `coordinates` - Array of `[{"x": num, "y": num}]` for position
+- `category` - Element type (Paragraph, Table, List, Figure, Caption, Header, etc.)
+- `content.text` - Text content (string)
+
+**OmniDocBench Format:**
+```bash
+my_data/
+├── OmniDocBench.json       # Ground truth (required)
+└── images/                 # Source images (optional for evaluation)
+    ├── page1.png
+    └── page2.png
+```
+
+**Run evaluation:**
+```bash
+doc-bench --dataset dp_bench --data-dir /path/to/my_data --predictions ./predictions
+```
+
+**Output:**
+- `results/dp_bench_predictions_results_TIMESTAMP.csv` - Per-document metrics
+- `results/dp_bench_predictions_rejected_TIMESTAMP.csv` - Rejection details
+- `results/dp_bench_predictions_results_TIMESTAMP.json` - Summary with averages
+
+**Prediction file naming:**
+- Files must be named `<doc_id>.json` (without .pdf extension)
+- Example: For `doc1.pdf` in reference.json, prediction must be `doc1.json`
+- Use `doc-bench-dump-dataset` to see expected doc_id values
+
 #### Full Benchmarks
 
 | Dataset | Description | Documents | Source |
@@ -131,14 +190,67 @@ Compare your parser output against these baselines.
 # Smoke test (bundled fixtures)
 doc-bench-smoke-test
 
-# Grade pre-computed predictions
+# Grade pre-computed predictions (uses eval_config.yaml path)
 doc-bench --dataset dp_bench --predictions ./predictions --output-dir ./results
+
+# Grade with custom data directory
+doc-bench --dataset dp_bench --data-dir /path/to/my_data --predictions ./predictions
 
 # Limit processing (for testing)
 doc-bench --dataset dp_bench --predictions ./predictions --limit 10
 
 # Dump dataset for external processing
 doc-bench-dump-dataset --dataset dp_bench --output ./pdfs --limit 10
+```
+
+### Complete Workflow Example
+
+**Step 1: Prepare your data**
+```bash
+# Create data directory structure
+mkdir -p my_evaluation_data/{reference,pdfs,predictions}
+
+# Add your PDFs
+cp doc1.pdf doc2.pdf my_evaluation_data/pdfs/
+
+# Create reference.json with ground truth
+cat > my_evaluation_data/reference.json << 'EOF'
+{
+  "doc1.pdf": {
+    "elements": [
+      {"page": 1, "coordinates": [{"x": 100, "y": 200}], "category": "Paragraph", "content": {"text": "..."}}
+    ]
+  },
+  "doc2.pdf": {
+    "elements": [...]
+  }
+}
+EOF
+```
+
+**Step 2: Generate predictions**
+```bash
+# Run your parser, output to predictions/
+your_parser my_evaluation_data/pdfs/doc1.pdf > my_evaluation_data/predictions/doc1.json
+
+# Prediction format must match parser_output.schema.json
+```
+
+**Step 3: Evaluate**
+```bash
+doc-bench --dataset dp_bench \
+  --data-dir my_evaluation_data \
+  --predictions my_evaluation_data/predictions \
+  --output-dir results
+```
+
+**Step 4: Check results**
+```bash
+cat results/dp_bench_predictions_results_*.csv
+# CSV with NID, TEDS, MHS, ARD, BLEU, METEOR per document
+
+cat results/dp_bench_predictions_results_*.json
+# Summary with averages
 ```
 
 ### Document Identity Convention
@@ -274,13 +386,33 @@ The wheel package includes:
 
 | Component | Location | Purpose |
 |-----------|----------|---------|
-| Fixtures | `doc_bench/fixtures/` | 14 bundled test documents |
+| Fixtures | `doc_bench/fixtures/` | 22 bundled test documents |
 | Schema | `doc_bench/fixtures/parser_output.schema.json` | Parser output validation |
+| Baselines | `doc_bench/fixtures/*_results.json` | Reference scores for comparison |
 | Manifest | `doc_bench/MANIFEST.yaml` | Dataset version tracking |
 
 **Schema resolution** (automatic, no CWD `contracts/` needed):
 1. Bundled fixtures (installed package)
 2. Fallback to `contracts/parser_output.schema.json` (dev)
+
+### Accessing Baseline Scores
+
+```python
+from importlib.resources import files
+import json
+
+# Load DP-Bench baseline
+dp_baseline = json.loads(
+    (files("doc_bench") / "fixtures" / "dpbench_results.json").read_text()
+)
+print(f"DP-Bench NID: {dp_baseline['averages']['nid']}")
+
+# Load OmniDocBench baseline
+omni_baseline = json.loads(
+    (files("doc_bench") / "fixtures" / "omnidocbench_results.json").read_text()
+)
+print(f"OmniDocBench NID: {omni_baseline['averages']['nid']}")
+```
 
 ## Docker
 

@@ -194,6 +194,16 @@ def main() -> None:
         help="Output directory for CSV results",
     )
     parser.add_argument(
+        "--data-dir",
+        type=Path,
+        default=None,
+        help=(
+            "Path to dataset directory containing ground truth. "
+            "Overrides eval_config.yaml. Expected structure: "
+            "DP-Bench: reference.json + pdfs/; OmniDocBench: OmniDocBench.json + images/"
+        ),
+    )
+    parser.add_argument(
         "--limit",
         type=int,
         default=None,
@@ -232,6 +242,12 @@ def main() -> None:
     except ValueError as e:
         print(f"ERROR: {e}")
         sys.exit(1)
+
+    # Override data path if --data-dir provided
+    if args.data_dir:
+        data_path = args.data_dir.resolve()
+        config["datasets"][args.dataset]["path"] = str(data_path)
+        print(f"Using data directory: {data_path}")
 
     # Create output directory
     args.output_dir.mkdir(parents=True, exist_ok=True)
