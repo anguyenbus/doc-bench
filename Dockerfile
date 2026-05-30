@@ -44,14 +44,16 @@ COPY --from=builder /opt/venv /opt/venv
 COPY --chown=root:root src /opt/doc-bench/src
 COPY --chown=root:root scripts /opt/doc-bench/scripts
 
-# Download datasets: DP-Bench + OmniDocBench large slice only
-# (nano/mini/medium are subsets of large - slice at runtime)
+# Download datasets: DP-Bench + OmniDocBench sample (10 files for testing)
 WORKDIR /opt/doc-bench
 ENV PYTHONPATH=/opt/doc-bench/src
 RUN /opt/venv/bin/python scripts/download_datasets.py \
     --datasets dp_bench omnidocbench \
     --omnidocbench-slices large \
     --output-dir /opt/doc-bench/data
+
+# Keep only 10 OmniDocBench files for minimal image
+RUN /opt/venv/bin/python scripts/prune_omnidocbench.py
 
 # Verify datasets
 RUN test -d /opt/doc-bench/data/parsing/omnidocbench_english_large && \
@@ -108,6 +110,7 @@ COPY --chown=docbench:docbench src /opt/doc-bench/src
 COPY --chown=docbench:docbench scripts /opt/doc-bench/scripts
 COPY --chown=docbench:docbench contracts /opt/doc-bench/contracts
 COPY --chown=docbench:docbench eval_config.yaml /opt/doc-bench/eval_config.yaml
+COPY --chown=docbench:docbench baseline /opt/doc-bench/baseline
 
 # Set ownership
 RUN chown -R docbench:docbench /opt/doc-bench /work

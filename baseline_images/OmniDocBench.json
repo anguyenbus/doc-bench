@@ -1,0 +1,1830 @@
+[
+  {
+    "layout_dets": [
+      {
+        "category_type": "title",
+        "anno_id": 2,
+        "order": 1,
+        "ignore": false,
+        "poly": [
+          109.33333333333333,
+          276,
+          357.3333333333333,
+          276,
+          357.3333333333333,
+          325.3333333333333,
+          109.33333333333333,
+          325.3333333333333
+        ],
+        "attribute": {},
+        "text": "9. References"
+      },
+      {
+        "category_type": "reference",
+        "anno_id": 3,
+        "order": 2,
+        "ignore": false,
+        "poly": [
+          93.81552786244404,
+          386.66666666666714,
+          1865.5796029294686,
+          386.66666666666714,
+          1865.5796029294686,
+          484.80786416443203,
+          93.81552786244404,
+          484.80786416443203
+        ],
+        "attribute": {},
+        "text": "Baxter, J. 1991.\u2018How should I speak English? Americanly, Japanesely, or internationally?' in Brown, A. (ed.) 1991: op. cit. (53-71)."
+      },
+      {
+        "category_type": "reference",
+        "anno_id": 7,
+        "order": 3,
+        "ignore": false,
+        "poly": [
+          98.38946466852796,
+          485.74168142717946,
+          1751.562642853885,
+          485.74168142717946,
+          1751.562642853885,
+          545.8729760782556,
+          98.38946466852796,
+          545.8729760782556
+        ],
+        "attribute": {},
+        "text": "Brown, A. (ed.) 1991. Teaching English Pronunciation: a book of readings. London: Routledge."
+      },
+      {
+        "category_type": "reference",
+        "anno_id": 8,
+        "order": 4,
+        "ignore": false,
+        "poly": [
+          101.5784955173652,
+          551.5079402956026,
+          1894.6281161785355,
+          551.5079402956026,
+          1894.6281161785355,
+          639.9360826529551,
+          101.5784955173652,
+          639.9360826529551
+        ],
+        "attribute": {},
+        "text": "Campbell, D., P. Ekniyom, A. Haque, and L. E. Smith. 1983. 'English in international settings: problems and their causes' in Smith, L. E. (ed.) 1983: op. cit. (35-47)."
+      },
+      {
+        "category_type": "reference",
+        "anno_id": 9,
+        "order": 5,
+        "ignore": false,
+        "poly": [
+          104.9119639970198,
+          646.0104367802409,
+          1814.3397983954756,
+          646.0104367802409,
+          1814.3397983954756,
+          701.5805430897143,
+          104.9119639970198,
+          701.5805430897143
+        ],
+        "attribute": {},
+        "text": "Smith, L. E. (ed.) 1983. Readings in English as an international language. Oxford: Pergamon Press."
+      },
+      {
+        "category_type": "reference",
+        "anno_id": 10,
+        "order": 6,
+        "ignore": false,
+        "poly": [
+          106.9338280896752,
+          712.1986412418264,
+          1914.5791021181092,
+          712.1986412418264,
+          1914.5791021181092,
+          799.2486961506515,
+          106.9338280896752,
+          799.2486961506515
+        ],
+        "attribute": {},
+        "text": "Gnutzmann, C. 1999. 'English as a global language: Perspectives for English language teaching and for\nteacher education in Germany' in C. Gnutzmann (ed.) 1999: op. cit. (157-169)."
+      },
+      {
+        "category_type": "reference",
+        "anno_id": 11,
+        "order": 7,
+        "ignore": false,
+        "poly": [
+          106.20262448527389,
+          802.6725173965841,
+          1903.2613169672088,
+          802.6725173965841,
+          1903.2613169672088,
+          904.080303318954,
+          106.20262448527389,
+          904.080303318954
+        ],
+        "attribute": {},
+        "text": "Gnutzmann, C. (ed.) 1999. Teaching and learning English as a Global Language.: native and non-native perspectives. T\u00fcbingen: Stauffenburg-Verlag."
+      },
+      {
+        "category_type": "reference",
+        "anno_id": 12,
+        "order": 8,
+        "ignore": false,
+        "poly": [
+          106.71061904853927,
+          906.0415720742104,
+          1793.1765949225978,
+          906.0415720742104,
+          1793.1765949225978,
+          1001.3334786606142,
+          106.71061904853927,
+          1001.3334786606142
+        ],
+        "attribute": {},
+        "text": "Guerra, L. 2009. Teaching and Learning English as an International Language in Portugal: Policy,\npractice and perceptions. Saarbrucken: VDM Verlag Dr. Muller."
+      },
+      {
+        "category_type": "reference",
+        "anno_id": 13,
+        "order": 9,
+        "ignore": false,
+        "poly": [
+          101.40572055332967,
+          1010.7071244982717,
+          1716.1809764380123,
+          1010.7071244982717,
+          1716.1809764380123,
+          1067.4457811597665,
+          101.40572055332967,
+          1067.4457811597665
+        ],
+        "attribute": {},
+        "text": "Kachru, B. B. 1992. 'Teaching World Englishes' in B. B. Kachru (ed.) 1992: op. cit. (355-365)."
+      },
+      {
+        "category_type": "reference",
+        "anno_id": 14,
+        "order": 10,
+        "ignore": false,
+        "poly": [
+          104.61635271464954,
+          1073.0746370028417,
+          1878.3938154751772,
+          1073.0746370028417,
+          1878.3938154751772,
+          1168.8412731380474,
+          104.61635271464954,
+          1168.8412731380474
+        ],
+        "attribute": {},
+        "text": "Kachru, B. B. (ed.) 1992. The Other Tongue: English across Cultures. Urbana & Chicago: University of\nIllinois Press."
+      },
+      {
+        "category_type": "reference",
+        "anno_id": 15,
+        "order": 11,
+        "ignore": false,
+        "poly": [
+          102.72962604900134,
+          1176.6575315384573,
+          1566.9167043857622,
+          1176.6575315384573,
+          1566.9167043857622,
+          1235.0959507843245,
+          102.72962604900134,
+          1235.0959507843245
+        ],
+        "attribute": {},
+        "text": "McArthur, T. 1998. The English Languages. Cambridge: Cambridge University Press."
+      },
+      {
+        "category_type": "reference",
+        "anno_id": 16,
+        "order": 12,
+        "ignore": false,
+        "poly": [
+          97.03874769871584,
+          1233.9269266422714,
+          1809.0496192044554,
+          1233.9269266422714,
+          1809.0496192044554,
+          1319.4206091986573,
+          97.03874769871584,
+          1319.4206091986573
+        ],
+        "attribute": {},
+        "text": "Modiano, M. 1999. 'Standard English(es) and educational practices for the world's lingua franca' in\nEnglish Today 60: 3-13."
+      },
+      {
+        "category_type": "abandon",
+        "anno_id": 5,
+        "order": null,
+        "ignore": false,
+        "poly": [
+          9.335137886556643,
+          14.227445436315293,
+          210.13141346300753,
+          14.227445436315293,
+          210.13141346300753,
+          199.72536845296372,
+          9.335137886556643,
+          199.72536845296372
+        ],
+        "attribute": {}
+      },
+      {
+        "category_type": "header",
+        "anno_id": 1,
+        "order": null,
+        "ignore": false,
+        "poly": [
+          412,
+          72,
+          1689.3333333333333,
+          72,
+          1689.3333333333333,
+          142.66666666666666,
+          412,
+          142.66666666666666
+        ],
+        "attribute": {},
+        "text": "Thirteen Fallacies about the Users and Uses of EIL"
+      }
+    ],
+    "page_info": {
+      "page_no": 10,
+      "height": 1500,
+      "width": 2000,
+      "image_path": "PPT_13 fallacies LALT2012_page_010.png",
+      "page_attribute": {
+        "data_source": "PPT2PDF",
+        "language": "english",
+        "layout": "single_column",
+        "special_issue": [
+          "None"
+        ],
+        "subset": "v1.5"
+      }
+    },
+    "extra": {
+      "relation": []
+    },
+    "_eval_tags": {
+      "is_clean": true,
+      "has_watermark": false,
+      "has_fuzzy_scan": false,
+      "has_colorful_bg": false,
+      "layout": "single_column"
+    }
+  },
+  {
+    "layout_dets": [
+      {
+        "category_type": "text_block",
+        "anno_id": 1,
+        "order": 1,
+        "ignore": false,
+        "poly": [
+          73.33333333333316,
+          368.00000000000045,
+          1873.3333333333335,
+          368.00000000000045,
+          1873.3333333333335,
+          532.9392133492249,
+          73.33333333333316,
+          532.9392133492249
+        ],
+        "attribute": {},
+        "text": "Mostly based on asking language learners and showed that language proficiency was seen as one important factor"
+      },
+      {
+        "category_type": "text_block",
+        "anno_id": 2,
+        "order": 2,
+        "ignore": false,
+        "poly": [
+          73.33333333333333,
+          558.6666666666666,
+          1905.3333333333333,
+          558.6666666666666,
+          1905.3333333333333,
+          718.6666666666666,
+          73.33333333333333,
+          718.6666666666666
+        ],
+        "attribute": {},
+        "text": "Eg: Girard (1977- French learners of English), teaches good pronunciation, explains clearly, speaks good English,"
+      },
+      {
+        "category_type": "text_block",
+        "anno_id": 3,
+        "order": 3,
+        "ignore": false,
+        "poly": [
+          76,
+          752,
+          586.6666666666666,
+          752,
+          586.6666666666666,
+          829.3333333333334,
+          76,
+          829.3333333333334
+        ],
+        "attribute": {},
+        "text": "Eg: Brosh (1996)"
+      },
+      {
+        "category_type": "text_block",
+        "anno_id": 4,
+        "order": 4,
+        "ignore": false,
+        "poly": [
+          73.33333333333333,
+          865.3333333333334,
+          1612,
+          865.3333333333334,
+          1612,
+          940,
+          73.33333333333333,
+          940
+        ],
+        "attribute": {},
+        "text": "\u00b7 knowledge and command of the target language;"
+      },
+      {
+        "category_type": "text_block",
+        "anno_id": 5,
+        "order": 5,
+        "ignore": false,
+        "poly": [
+          64,
+          974.6666666666666,
+          1874.6666666666667,
+          974.6666666666666,
+          1874.6666666666667,
+          1212,
+          64,
+          1212
+        ],
+        "attribute": {},
+        "text": "Teacher Evaluation \u2013 context universal-Evaluation fairly\nsimple - based on visible behaviours/learner outcomes\nin \u2018objective\u2019 tests"
+      },
+      {
+        "category_type": "header",
+        "anno_id": 6,
+        "order": null,
+        "ignore": false,
+        "poly": [
+          53.90759703569547,
+          84.52546874674067,
+          1938.3308955004845,
+          84.52546874674067,
+          1938.3308955004845,
+          272.99596815627353,
+          53.90759703569547,
+          272.99596815627353
+        ],
+        "attribute": {},
+        "text": "Good Language Teachers                                       UNIVERSITY OF LEEDS"
+      }
+    ],
+    "page_info": {
+      "page_no": 10,
+      "height": 1500,
+      "width": 2000,
+      "image_path": "PPT_11.2013EvaluatingTraineeteacherproficiency_page_010.png",
+      "page_attribute": {
+        "data_source": "PPT2PDF",
+        "language": "english",
+        "layout": "single_column",
+        "special_issue": [
+          "None"
+        ],
+        "subset": "v1.5"
+      }
+    },
+    "extra": {
+      "relation": []
+    },
+    "_eval_tags": {
+      "is_clean": true,
+      "has_watermark": false,
+      "has_fuzzy_scan": false,
+      "has_colorful_bg": false,
+      "layout": "single_column"
+    }
+  },
+  {
+    "layout_dets": [
+      {
+        "category_type": "title",
+        "anno_id": 1,
+        "order": 1,
+        "ignore": false,
+        "poly": [
+          717.3333333333333,
+          129.98927613941032,
+          1277.333333333333,
+          129.98927613941032,
+          1277.333333333333,
+          239.32260947274347,
+          717.3333333333333,
+          239.32260947274347
+        ],
+        "attribute": {},
+        "text": "Who Am I?"
+      },
+      {
+        "category_type": "text_block",
+        "anno_id": 2,
+        "order": 2,
+        "ignore": false,
+        "poly": [
+          111.61394101876648,
+          362.6881143878465,
+          1884.6988382484362,
+          362.6881143878465,
+          1884.6988382484362,
+          1317.333333333333,
+          111.61394101876648,
+          1317.333333333333
+        ],
+        "attribute": {},
+        "text": "\u2022 Min-Te Sun (Peter) Sun\n\\t\u2013 An associate professor of Computer Science &\nInformation Engineering, National Central University\n\\t\u2013 Studied in US for a long time\n(from 1993 ~ 2002)\n\\t\u2013 Worked as a CS professor at Auburn University,\nAlabama between 2002 and 2008 (before coming back\nto Taiwan)\n\\t\u2013 Have taught CS courses in English for more than 10\n  years",
+        "merge_list": [
+          {
+            "category_type": "text_block",
+            "anno_id": 3,
+            "order": null,
+            "ignore": false,
+            "poly": [
+              122.81501340482545,
+              365.3861148346742,
+              990.4557640750667,
+              365.3861148346742,
+              990.4557640750667,
+              460.64438114387843,
+              122.81501340482545,
+              460.64438114387843
+            ],
+            "line_with_spans": [],
+            "attribute": {},
+            "text": "\u2022 Min-Te Sun (Peter) Sun"
+          },
+          {
+            "category_type": "text_block",
+            "anno_id": 4,
+            "order": null,
+            "ignore": false,
+            "poly": [
+              195.20107238605868,
+              482.00809874888324,
+              1832.949061662198,
+              482.00809874888324,
+              1832.949061662198,
+              651.6631478999102,
+              195.20107238605868,
+              651.6631478999102
+            ],
+            "line_with_spans": [],
+            "attribute": {},
+            "text": "\\t\u2013 An associate professor of Computer Science &\nInformation Engineering, National Central University"
+          },
+          {
+            "category_type": "text_block",
+            "anno_id": 5,
+            "order": null,
+            "ignore": false,
+            "poly": [
+              203.2439678284181,
+              662.9732462019662,
+              1143.2707774798926,
+              662.9732462019662,
+              1143.2707774798926,
+              836.6497430741731,
+              203.2439678284181,
+              836.6497430741731
+            ],
+            "line_with_spans": [],
+            "attribute": {},
+            "text": "\\t\u2013 Studied in US for a long time\n(from 1993 ~ 2002)"
+          },
+          {
+            "category_type": "text_block",
+            "anno_id": 6,
+            "order": null,
+            "ignore": false,
+            "poly": [
+              199.22252010723847,
+              862.0349084003577,
+              1865.1206434316348,
+              862.0349084003577,
+              1865.1206434316348,
+              1120.1618074173364,
+              199.22252010723847,
+              1120.1618074173364
+            ],
+            "line_with_spans": [],
+            "attribute": {},
+            "text": "\\t\u2013 Worked as a CS professor at Auburn University,\nAlabama between 2002 and 2008 (before coming back\nto Taiwan)"
+          },
+          {
+            "category_type": "text_block",
+            "anno_id": 7,
+            "order": null,
+            "ignore": false,
+            "poly": [
+              195.20107238605905,
+              1135.493353440572,
+              1792.734584450402,
+              1135.493353440572,
+              1792.734584450402,
+              1301.1269548704197,
+              195.20107238605905,
+              1301.1269548704197
+            ],
+            "line_with_spans": [],
+            "attribute": {},
+            "text": "\\t\u2013 Have taught CS courses in English for more than 10\n  years"
+          }
+        ]
+      }
+    ],
+    "page_info": {
+      "page_no": 3,
+      "height": 1500,
+      "width": 2000,
+      "image_path": "PPT_1001115_eng_page_003.png",
+      "page_attribute": {
+        "data_source": "PPT2PDF",
+        "language": "english",
+        "layout": "single_column",
+        "special_issue": [
+          "None"
+        ],
+        "subset": "v1.5"
+      }
+    },
+    "extra": {
+      "relation": []
+    },
+    "_eval_tags": {
+      "is_clean": true,
+      "has_watermark": false,
+      "has_fuzzy_scan": false,
+      "has_colorful_bg": false,
+      "layout": "single_column"
+    }
+  },
+  {
+    "layout_dets": [
+      {
+        "category_type": "title",
+        "anno_id": 1,
+        "order": 1,
+        "ignore": false,
+        "poly": [
+          434.6666666666667,
+          65.33333333333333,
+          1565.3333333333333,
+          65.33333333333333,
+          1565.3333333333333,
+          314.6666666666667,
+          434.6666666666667,
+          314.6666666666667
+        ],
+        "attribute": {},
+        "text": "English Pronunciation American English Accent"
+      },
+      {
+        "category_type": "text_block",
+        "anno_id": 3,
+        "order": 2,
+        "ignore": false,
+        "poly": [
+          105.08467015026716,
+          376.8023981189878,
+          1885.807177243111,
+          376.8023981189878,
+          1885.807177243111,
+          927.3452757176124,
+          105.08467015026716,
+          927.3452757176124
+        ],
+        "attribute": {},
+        "text": "\u2022 Resources\n\\t\u2013http://www.uiowa.edu/~acadtech/phonetics/english/frameset.html\n\u2022 Tools\n\\t\u2013 Audacity",
+        "merge_list": [
+          {
+            "category_type": "text_block",
+            "anno_id": 6,
+            "order": null,
+            "ignore": false,
+            "poly": [
+              119.83735478105419,
+              386.4066689008047,
+              577.2135835567467,
+              386.4066689008047,
+              577.2135835567467,
+              469.78468498659504,
+              119.83735478105419,
+              469.78468498659504
+            ],
+            "line_with_spans": [],
+            "attribute": {},
+            "text": "\u2022 Resources"
+          },
+          {
+            "category_type": "text_block",
+            "anno_id": 7,
+            "order": null,
+            "ignore": false,
+            "poly": [
+              212.33065236818567,
+              482.9214142091155,
+              1878.1519213583554,
+              482.9214142091155,
+              1878.1519213583554,
+              676.8892426273455,
+              212.33065236818567,
+              676.8892426273455
+            ],
+            "line_with_spans": [],
+            "attribute": {},
+            "text": "\\t\u2013http://www.uiowa.edu/~acadtech/phonetics/english/frameset.html"
+          },
+          {
+            "category_type": "text_block",
+            "anno_id": 4,
+            "order": null,
+            "ignore": false,
+            "poly": [
+              121.35478105451294,
+              706.6666666666671,
+              411.84092940125095,
+              706.6666666666671,
+              411.84092940125095,
+              798.0875781948171,
+              121.35478105451294,
+              798.0875781948171
+            ],
+            "line_with_spans": [],
+            "attribute": {},
+            "text": "\u2022 Tools"
+          },
+          {
+            "category_type": "text_block",
+            "anno_id": 8,
+            "order": null,
+            "ignore": false,
+            "poly": [
+              203.28239499553163,
+              824.7444705093837,
+              572.186773905272,
+              824.7444705093837,
+              572.186773905272,
+              916.1653820375335,
+              203.28239499553163,
+              916.1653820375335
+            ],
+            "line_with_spans": [],
+            "attribute": {},
+            "text": "\\t\u2013 Audacity"
+          }
+        ]
+      },
+      {
+        "category_type": "figure",
+        "anno_id": 5,
+        "order": 3,
+        "ignore": false,
+        "poly": [
+          232.69465543999462,
+          942.6666666666671,
+          1841.9892761394105,
+          942.6666666666671,
+          1841.9892761394105,
+          1306.9107126444005,
+          232.69465543999462,
+          1306.9107126444005
+        ],
+        "attribute": {}
+      },
+      {
+        "category_type": "text_mask",
+        "anno_id": 9,
+        "order": null,
+        "ignore": false,
+        "poly": [
+          249.64944945284657,
+          945.7889998186985,
+          784.507269063098,
+          945.7889998186985,
+          784.507269063098,
+          1007.249951247804,
+          249.64944945284657,
+          1007.249951247804
+        ],
+        "attribute": {}
+      },
+      {
+        "category_type": "text_mask",
+        "anno_id": 11,
+        "order": null,
+        "ignore": false,
+        "poly": [
+          252.88113086562552,
+          1130.2553720940698,
+          372.31571883040226,
+          1130.2553720940698,
+          372.31571883040226,
+          1219.4199644665086,
+          252.88113086562552,
+          1219.4199644665086
+        ],
+        "attribute": {}
+      },
+      {
+        "category_type": "text_mask",
+        "anno_id": 12,
+        "order": null,
+        "ignore": false,
+        "poly": [
+          284.0902590403894,
+          1087.4951335826293,
+          1837.5087228723908,
+          1087.4951335826293,
+          1837.5087228723908,
+          1111.0884113541158,
+          284.0902590403894,
+          1111.0884113541158
+        ],
+        "attribute": {}
+      },
+      {
+        "category_type": "text_mask",
+        "anno_id": 13,
+        "order": null,
+        "ignore": false,
+        "poly": [
+          386.1702327010836,
+          1129.32148482607,
+          425.88908114815024,
+          1129.32148482607,
+          425.88908114815024,
+          1305.1262238540694,
+          386.1702327010836,
+          1305.1262238540694
+        ],
+        "attribute": {}
+      },
+      {
+        "category_type": "text_mask",
+        "anno_id": 14,
+        "order": null,
+        "ignore": false,
+        "poly": [
+          914.9191217102072,
+          1054.7518819840152,
+          1106.0046254186404,
+          1054.7518819840152,
+          1106.0046254186404,
+          1083.3048882852754,
+          914.9191217102072,
+          1083.3048882852754
+        ],
+        "attribute": {}
+      }
+    ],
+    "page_info": {
+      "page_no": 15,
+      "height": 1500,
+      "width": 2000,
+      "image_path": "PPT_1001115_eng_page_015.png",
+      "page_attribute": {
+        "data_source": "PPT2PDF",
+        "language": "english",
+        "layout": "single_column",
+        "special_issue": [
+          "None"
+        ],
+        "subset": "v1.5"
+      }
+    },
+    "extra": {
+      "relation": []
+    },
+    "_eval_tags": {
+      "is_clean": true,
+      "has_watermark": false,
+      "has_fuzzy_scan": false,
+      "has_colorful_bg": false,
+      "layout": "single_column"
+    }
+  },
+  {
+    "layout_dets": [
+      {
+        "category_type": "title",
+        "anno_id": 1,
+        "order": 1,
+        "ignore": false,
+        "poly": [
+          322.6666666666667,
+          130.66666666666666,
+          1676,
+          130.66666666666666,
+          1676,
+          252,
+          322.6666666666667,
+          252
+        ],
+        "attribute": {},
+        "text": "Is Good English Important?"
+      },
+      {
+        "category_type": "text_block",
+        "anno_id": 2,
+        "order": 2,
+        "ignore": false,
+        "poly": [
+          116.87725703330047,
+          353.333333333334,
+          1835.0300493431344,
+          353.333333333334,
+          1835.0300493431344,
+          1315.0572412739464,
+          116.87725703330047,
+          1315.0572412739464
+        ],
+        "attribute": {},
+        "text": "\u2022 For Individual\n\\t\u2013 Reading \u2013 lifelong learning to improve your\ncompetiveness, especially when you want to acquire\nthe most up-to-date knowledge\n\\t\u2013 Writing \u2013 emails with foreign friends/co-workers/customers\n\\t\u2013 Listening - Q/A with foreign customers/boss/etc\n\\t\u2013 Speaking \u2013 presentation in front of foreign\ncustomers/boss/etc, traveling abroad\n\u2022 At University level\n\\t\u2013 Internationalization is one of the most prioritized\n  tasks",
+        "merge_list": [
+          {
+            "category_type": "text_block",
+            "anno_id": 3,
+            "order": null,
+            "ignore": false,
+            "poly": [
+              120.65594280607674,
+              356.81680071492445,
+              670.2160769329248,
+              356.81680071492445,
+              670.2160769329248,
+              442.657204220708,
+              120.65594280607674,
+              442.657204220708
+            ],
+            "line_with_spans": [],
+            "attribute": {},
+            "text": "\u2022 For Individual"
+          },
+          {
+            "category_type": "text_block",
+            "anno_id": 4,
+            "order": null,
+            "ignore": false,
+            "poly": [
+              210.11001386138972,
+              459.37081328414126,
+              1820.996756735847,
+              459.37081328414126,
+              1820.996756735847,
+              661.4620015208999,
+              210.11001386138972,
+              661.4620015208999
+            ],
+            "line_with_spans": [],
+            "attribute": {},
+            "text": "\\t\u2013 Reading \u2013 lifelong learning to improve your\ncompetiveness, especially when you want to acquire\nthe most up-to-date knowledge"
+          },
+          {
+            "category_type": "text_block",
+            "anno_id": 5,
+            "order": null,
+            "ignore": false,
+            "poly": [
+              203.65163693189137,
+              683.0615461969278,
+              1481.4981218100797,
+              683.0615461969278,
+              1481.4981218100797,
+              820.7686324485327,
+              203.65163693189137,
+              820.7686324485327
+            ],
+            "line_with_spans": [],
+            "attribute": {},
+            "text": "\\t\u2013 Writing \u2013 emails with foreign friends/co-workers/customers"
+          },
+          {
+            "category_type": "text_block",
+            "anno_id": 6,
+            "order": null,
+            "ignore": false,
+            "poly": [
+              201.49884462205867,
+              831.8038828852292,
+              1711.2043489343705,
+              831.8038828852292,
+              1711.2043489343705,
+              909.0331171516809,
+              201.49884462205867,
+              909.0331171516809
+            ],
+            "line_with_spans": [],
+            "attribute": {},
+            "text": "\\t\u2013 Listening - Q/A with foreign customers/boss/etc"
+          },
+          {
+            "category_type": "text_block",
+            "anno_id": 7,
+            "order": null,
+            "ignore": false,
+            "poly": [
+              207.62917744166367,
+              924.3739522080432,
+              1528.2170025985756,
+              924.3739522080432,
+              1528.2170025985756,
+              1063.2354942203165,
+              207.62917744166367,
+              1063.2354942203165
+            ],
+            "line_with_spans": [],
+            "attribute": {},
+            "text": "\\t\u2013 Speaking \u2013 presentation in front of foreign\ncustomers/boss/etc, traveling abroad"
+          },
+          {
+            "category_type": "text_block",
+            "anno_id": 8,
+            "order": null,
+            "ignore": false,
+            "poly": [
+              119.69273684840957,
+              1085.78982734718,
+              813.4899557340603,
+              1085.78982734718,
+              813.4899557340603,
+              1156.604232782462,
+              119.69273684840957,
+              1156.604232782462
+            ],
+            "line_with_spans": [],
+            "attribute": {},
+            "text": "\u2022 At University level"
+          },
+          {
+            "category_type": "text_block",
+            "anno_id": 9,
+            "order": null,
+            "ignore": false,
+            "poly": [
+              216.56839079088877,
+              1169.7922755289906,
+              1724.1211027933678,
+              1169.7922755289906,
+              1724.1211027933678,
+              1313.7580714002613,
+              216.56839079088877,
+              1313.7580714002613
+            ],
+            "line_with_spans": [],
+            "attribute": {},
+            "text": "\\t\u2013 Internationalization is one of the most prioritized\n  tasks"
+          }
+        ]
+      }
+    ],
+    "page_info": {
+      "page_no": 5,
+      "height": 1500,
+      "width": 2000,
+      "image_path": "PPT_1001115_eng_page_005.png",
+      "page_attribute": {
+        "data_source": "PPT2PDF",
+        "language": "english",
+        "layout": "single_column",
+        "special_issue": [
+          "None"
+        ],
+        "subset": "v1.5"
+      }
+    },
+    "extra": {
+      "relation": []
+    },
+    "_eval_tags": {
+      "is_clean": true,
+      "has_watermark": false,
+      "has_fuzzy_scan": false,
+      "has_colorful_bg": false,
+      "layout": "single_column"
+    }
+  },
+  {
+    "layout_dets": [
+      {
+        "category_type": "title",
+        "anno_id": 2,
+        "order": 1,
+        "ignore": false,
+        "poly": [
+          138.66666666666666,
+          354.6666666666667,
+          412,
+          354.6666666666667,
+          412,
+          410.6666666666667,
+          138.66666666666666,
+          410.6666666666667
+        ],
+        "attribute": {},
+        "text": "8. Conclusion"
+      },
+      {
+        "category_type": "text_block",
+        "anno_id": 3,
+        "order": 2,
+        "ignore": false,
+        "poly": [
+          337.3333333333333,
+          513.3333333333334,
+          1660,
+          513.3333333333334,
+          1660,
+          573.3333333333334,
+          337.3333333333333,
+          573.3333333333334
+        ],
+        "attribute": {},
+        "text": "Native English as the norm and native speakers as norm providers:"
+      },
+      {
+        "category_type": "text_block",
+        "anno_id": 4,
+        "order": 3,
+        "ignore": false,
+        "poly": [
+          562.6666666666666,
+          621.3333333333334,
+          1438.6666666666667,
+          621.3333333333334,
+          1438.6666666666667,
+          680,
+          562.6666666666666,
+          680
+        ],
+        "attribute": {},
+        "text": "linguacentric and ethnocentric attitudes"
+      },
+      {
+        "category_type": "text_block",
+        "anno_id": 5,
+        "order": 4,
+        "ignore": false,
+        "poly": [
+          128,
+          780,
+          1838.6666666666667,
+          780,
+          1838.6666666666667,
+          1109.3333333333333,
+          128,
+          1109.3333333333333
+        ],
+        "attribute": {},
+        "text": "\"A linguistic chauvinism, or if you will, ethnocentricity, is so deeply rooted, not only in British culture, but also in the minds and hearts of a large number of language teachers working abroad, that many of the people who embrace such bias find it difficult to accept that other varieties of English, for some learners, are better choices for the educational model in the teaching of English as a foreign or second language\" (Modiano, 1999)"
+      },
+      {
+        "category_type": "header",
+        "anno_id": 1,
+        "order": null,
+        "ignore": false,
+        "poly": [
+          410.6666666666667,
+          72,
+          1689.3333333333333,
+          72,
+          1689.3333333333333,
+          144,
+          410.6666666666667,
+          144
+        ],
+        "attribute": {},
+        "text": "Thirteen Fallacies about the Users and Uses of EIL"
+      },
+      {
+        "category_type": "abandon",
+        "anno_id": 6,
+        "order": null,
+        "ignore": false,
+        "poly": [
+          7.513252766470533,
+          9.742814568304652,
+          175.11330843380753,
+          9.742814568304652,
+          175.11330843380753,
+          191.00537895347418,
+          7.513252766470533,
+          191.00537895347418
+        ],
+        "attribute": {}
+      }
+    ],
+    "page_info": {
+      "page_no": 9,
+      "height": 1500,
+      "width": 2000,
+      "image_path": "PPT_13 fallacies LALT2012_page_009.png",
+      "page_attribute": {
+        "data_source": "PPT2PDF",
+        "language": "english",
+        "layout": "single_column",
+        "special_issue": [
+          "None"
+        ],
+        "subset": "v1.5"
+      }
+    },
+    "extra": {
+      "relation": []
+    },
+    "_eval_tags": {
+      "is_clean": true,
+      "has_watermark": false,
+      "has_fuzzy_scan": false,
+      "has_colorful_bg": false,
+      "layout": "single_column"
+    }
+  },
+  {
+    "layout_dets": [
+      {
+        "category_type": "title",
+        "anno_id": 1,
+        "order": 1,
+        "ignore": false,
+        "poly": [
+          623.3226094727436,
+          135.34405719392328,
+          1376.6559428060768,
+          135.34405719392328,
+          1376.6559428060768,
+          254.01072386058968,
+          623.3226094727436,
+          254.01072386058968
+        ],
+        "attribute": {},
+        "text": "English Writing"
+      },
+      {
+        "category_type": "text_block",
+        "anno_id": 2,
+        "order": 2,
+        "ignore": false,
+        "poly": [
+          103.67610321877692,
+          300.20105653451344,
+          1888.4911166236045,
+          300.20105653451344,
+          1888.4911166236045,
+          1383.2305471511324,
+          103.67610321877692,
+          1383.2305471511324
+        ],
+        "attribute": {},
+        "text": "\u2022 You should have received enough grammar knowledge from your high school English classes\n\u2022 Never trust Google translation\n\\t\u2013  Better choices out there\n\\t\\t\u2022 http://www.grammarly.com/\n\\t\\t\u2022 http://www.grammarcheck.net/\n\u2022 How to improve your writing\n\\t\u2013  Reading, reading, and more reading\n\\t\u2013  Spelling and grammar check tools are your best friends\n\\t\u2013 Imitate Good Sentences\n\u2022 Write English emails (and do it w/ care) daily/often to\n\\t\u2013 International Pen Pals\n\\t\\t\u2022 http://www.interpals.net/\n\\t\u2013 Your professors/advisors (and ask them to correct your grammar whenever there is a mistake)",
+        "merge_list": [
+          {
+            "category_type": "text_block",
+            "anno_id": 3,
+            "order": null,
+            "ignore": false,
+            "poly": [
+              110.62377122430735,
+              303.22788203753373,
+              1753.6782841823056,
+              303.22788203753373,
+              1753.6782841823056,
+              441.1653261840926,
+              110.62377122430735,
+              441.1653261840926
+            ],
+            "line_with_spans": [],
+            "attribute": {},
+            "text": "\u2022 You should have received enough grammar knowledge from your high school English classes"
+          },
+          {
+            "category_type": "text_block",
+            "anno_id": 7,
+            "order": null,
+            "ignore": false,
+            "poly": [
+              116.25349875826593,
+              453.6309763181423,
+              1076.2347495954568,
+              453.6309763181423,
+              1076.2347495954568,
+              519.8628433602917,
+              116.25349875826593,
+              519.8628433602917
+            ],
+            "line_with_spans": [],
+            "attribute": {},
+            "text": "\u2022 Never trust Google translation"
+          },
+          {
+            "category_type": "text_block",
+            "anno_id": 16,
+            "order": null,
+            "ignore": false,
+            "poly": [
+              209.90421471802,
+              529.9181999072234,
+              897.6726198278267,
+              529.9181999072234,
+              897.6726198278267,
+              587.3690074097799,
+              209.90421471802,
+              587.3690074097799
+            ],
+            "line_with_spans": [],
+            "attribute": {},
+            "text": "\\t\u2013  Better choices out there"
+          },
+          {
+            "category_type": "text_block",
+            "anno_id": 8,
+            "order": null,
+            "ignore": false,
+            "poly": [
+              315.20196604110794,
+              590.3601988382488,
+              1009.1948168007151,
+              590.3601988382488,
+              1009.1948168007151,
+              651.8901362823946,
+              315.20196604110794,
+              651.8901362823946
+            ],
+            "line_with_spans": [],
+            "attribute": {},
+            "text": "\\t\\t\u2022 http://www.grammarly.com/"
+          },
+          {
+            "category_type": "text_block",
+            "anno_id": 12,
+            "order": null,
+            "ignore": false,
+            "poly": [
+              317.2126899016978,
+              656.7140862377126,
+              1074.4356247919015,
+              656.7140862377126,
+              1074.4356247919015,
+              728.5907647214106,
+              317.2126899016978,
+              728.5907647214106
+            ],
+            "line_with_spans": [],
+            "attribute": {},
+            "text": "\\t\\t\u2022 http://www.grammarcheck.net/"
+          },
+          {
+            "category_type": "text_block",
+            "anno_id": 5,
+            "order": null,
+            "ignore": false,
+            "poly": [
+              105.81877022653725,
+              733.236245954693,
+              1019.0322012875677,
+              733.236245954693,
+              1019.0322012875677,
+              803.0165681097488,
+              105.81877022653725,
+              803.0165681097488
+            ],
+            "line_with_spans": [],
+            "attribute": {},
+            "text": "\u2022 How to improve your writing"
+          },
+          {
+            "category_type": "text_block",
+            "anno_id": 9,
+            "order": null,
+            "ignore": false,
+            "poly": [
+              201.58490828777963,
+              805.9271814659852,
+              1176.3378085411377,
+              805.9271814659852,
+              1176.3378085411377,
+              881.8080472899702,
+              201.58490828777963,
+              881.8080472899702
+            ],
+            "line_with_spans": [],
+            "attribute": {},
+            "text": "\\t\u2013  Reading, reading, and more reading"
+          },
+          {
+            "category_type": "text_block",
+            "anno_id": 6,
+            "order": null,
+            "ignore": false,
+            "poly": [
+              203.97779234992097,
+              883.6957846788072,
+              1651.2227590159387,
+              883.6957846788072,
+              1651.2227590159387,
+              951.3840744874519,
+              203.97779234992097,
+              951.3840744874519
+            ],
+            "line_with_spans": [],
+            "attribute": {},
+            "text": "\\t\u2013  Spelling and grammar check tools are your best friends"
+          },
+          {
+            "category_type": "text_block",
+            "anno_id": 10,
+            "order": null,
+            "ignore": false,
+            "poly": [
+              217.23987224675585,
+              958.3055660788095,
+              902.3954069947688,
+              958.3055660788095,
+              902.3954069947688,
+              1016.6832944271962,
+              217.23987224675585,
+              1016.6832944271962
+            ],
+            "line_with_spans": [],
+            "attribute": {},
+            "text": "\\t\u2013 Imitate Good Sentences"
+          },
+          {
+            "category_type": "text_block",
+            "anno_id": 11,
+            "order": null,
+            "ignore": false,
+            "poly": [
+              114.63071397895153,
+              1037.9559192229513,
+              1710.6883201610015,
+              1037.9559192229513,
+              1710.6883201610015,
+              1104.6706607795857,
+              114.63071397895153,
+              1104.6706607795857
+            ],
+            "line_with_spans": [],
+            "attribute": {},
+            "text": "\u2022 Write English emails (and do it w/ care) daily/often to"
+          },
+          {
+            "category_type": "text_block",
+            "anno_id": 13,
+            "order": null,
+            "ignore": false,
+            "poly": [
+              213.84703298186523,
+              1111.6478259181333,
+              832.8110865308728,
+              1111.6478259181333,
+              832.8110865308728,
+              1176.9078826227633,
+              213.84703298186523,
+              1176.9078826227633
+            ],
+            "line_with_spans": [],
+            "attribute": {},
+            "text": "\\t\u2013 International Pen Pals"
+          },
+          {
+            "category_type": "text_block",
+            "anno_id": 14,
+            "order": null,
+            "ignore": false,
+            "poly": [
+              301.74932767447433,
+              1183.571669960452,
+              958.0602448205664,
+              1183.571669960452,
+              958.0602448205664,
+              1253.272085119821,
+              301.74932767447433,
+              1253.272085119821
+            ],
+            "line_with_spans": [],
+            "attribute": {},
+            "text": "\\t\\t\u2022 http://www.interpals.net/"
+          },
+          {
+            "category_type": "text_block",
+            "anno_id": 15,
+            "order": null,
+            "ignore": false,
+            "poly": [
+              207.30550257351786,
+              1258.2951405896752,
+              1877.469082528195,
+              1258.2951405896752,
+              1877.469082528195,
+              1372.460739661394,
+              207.30550257351786,
+              1372.460739661394
+            ],
+            "line_with_spans": [],
+            "attribute": {},
+            "text": "\\t\u2013 Your professors/advisors (and ask them to correct your grammar whenever there is a mistake)"
+          }
+        ]
+      }
+    ],
+    "page_info": {
+      "page_no": 11,
+      "height": 1500,
+      "width": 2000,
+      "image_path": "PPT_1001115_eng_page_011.png",
+      "page_attribute": {
+        "data_source": "PPT2PDF",
+        "language": "english",
+        "layout": "single_column",
+        "special_issue": [
+          "None"
+        ],
+        "subset": "v1.5"
+      }
+    },
+    "extra": {
+      "relation": []
+    },
+    "_eval_tags": {
+      "is_clean": true,
+      "has_watermark": false,
+      "has_fuzzy_scan": false,
+      "has_colorful_bg": false,
+      "layout": "single_column"
+    }
+  },
+  {
+    "layout_dets": [
+      {
+        "category_type": "title",
+        "anno_id": 1,
+        "order": 1,
+        "ignore": false,
+        "poly": [
+          190.66666666666666,
+          469.3333333333333,
+          1772,
+          469.3333333333333,
+          1772,
+          850.6666666666666,
+          190.66666666666666,
+          850.6666666666666
+        ],
+        "attribute": {},
+        "text": "AIMS AND OBJECTIVES OF LEARNING ENGLISH IN INDIA TODAY"
+      },
+      {
+        "category_type": "text_block",
+        "anno_id": 2,
+        "order": 2,
+        "ignore": false,
+        "poly": [
+          1250.6478134793213,
+          983.1741410495046,
+          1654.7629202203368,
+          983.1741410495046,
+          1654.7629202203368,
+          1057.1197277089477,
+          1250.6478134793213,
+          1057.1197277089477
+        ],
+        "attribute": {},
+        "text": "Jatin Sharma"
+      },
+      {
+        "category_type": "text_block",
+        "anno_id": 3,
+        "order": 3,
+        "ignore": false,
+        "poly": [
+          443.1177308774971,
+          1057.317318952032,
+          1659.6055761058972,
+          1057.317318952032,
+          1659.6055761058972,
+          1140.6990069805938,
+          443.1177308774971,
+          1140.6990069805938
+        ],
+        "attribute": {},
+        "text": "Lecturer, Dr.B.K.B. College, Puranigudam,"
+      },
+      {
+        "category_type": "text_block",
+        "anno_id": 4,
+        "order": 4,
+        "ignore": false,
+        "poly": [
+          1166.729940587511,
+          1144.3239129785104,
+          1641.3160818855101,
+          1144.3239129785104,
+          1641.3160818855101,
+          1223.8595286979198,
+          1166.729940587511,
+          1223.8595286979198
+        ],
+        "attribute": {},
+        "text": "Nagaon, Assam"
+      }
+    ],
+    "page_info": {
+      "page_no": 1,
+      "height": 1500,
+      "width": 2000,
+      "image_path": "PPT_1637904769_page_001.png",
+      "page_attribute": {
+        "data_source": "PPT2PDF",
+        "language": "english",
+        "layout": "single_column",
+        "special_issue": [
+          "None"
+        ],
+        "subset": "v1.5"
+      }
+    },
+    "extra": {
+      "relation": []
+    },
+    "_eval_tags": {
+      "is_clean": true,
+      "has_watermark": false,
+      "has_fuzzy_scan": false,
+      "has_colorful_bg": false,
+      "layout": "single_column"
+    }
+  },
+  {
+    "layout_dets": [
+      {
+        "category_type": "title",
+        "anno_id": 1,
+        "order": 1,
+        "ignore": false,
+        "poly": [
+          218.66666666666666,
+          360,
+          1788,
+          360,
+          1788,
+          549.3333333333334,
+          218.66666666666666,
+          549.3333333333334
+        ],
+        "attribute": {},
+        "text": "International Meeting on Languages, Applied Linguistics and Translation"
+      },
+      {
+        "category_type": "text_block",
+        "anno_id": 2,
+        "order": 2,
+        "ignore": false,
+        "poly": [
+          604,
+          581.3333333333334,
+          1396,
+          581.3333333333334,
+          1396,
+          640,
+          604,
+          640
+        ],
+        "attribute": {},
+        "text": "University of \u00c9vora, 6-7 December 2012"
+      },
+      {
+        "category_type": "title",
+        "anno_id": 3,
+        "order": 3,
+        "ignore": false,
+        "poly": [
+          256,
+          820,
+          1748,
+          820,
+          1748,
+          988,
+          256,
+          988
+        ],
+        "attribute": {},
+        "text": "Thirteen Fallacies about the Users and Uses of English as an International Language"
+      },
+      {
+        "category_type": "text_block",
+        "anno_id": 4,
+        "order": 4,
+        "ignore": false,
+        "poly": [
+          878.9238184771438,
+          1101.3333333333333,
+          1121.7479912257324,
+          1101.3333333333333,
+          1121.7479912257324,
+          1151.9074253482281,
+          878.9238184771438,
+          1151.9074253482281
+        ],
+        "attribute": {},
+        "text": "Luis Guerra"
+      },
+      {
+        "category_type": "text_block",
+        "anno_id": 8,
+        "order": 5,
+        "ignore": false,
+        "poly": [
+          710.0638314379502,
+          1157.8774895155748,
+          1280.0586884017405,
+          1157.8774895155748,
+          1280.0586884017405,
+          1213.459296084784,
+          710.0638314379502,
+          1213.459296084784
+        ],
+        "attribute": {},
+        "text": "University of \u00c9vora, Portugal"
+      },
+      {
+        "category_type": "abandon",
+        "anno_id": 5,
+        "order": null,
+        "ignore": false,
+        "poly": [
+          225.26967328855113,
+          49.87608590832701,
+          524.6005912571406,
+          49.87608590832701,
+          524.6005912571406,
+          330.12681810446077,
+          225.26967328855113,
+          330.12681810446077
+        ],
+        "attribute": {}
+      },
+      {
+        "category_type": "abandon",
+        "anno_id": 6,
+        "order": null,
+        "ignore": false,
+        "poly": [
+          1509.4779322256072,
+          95.33478533972709,
+          1800.2853440508093,
+          95.33478533972709,
+          1800.2853440508093,
+          327.2856493899979,
+          1509.4779322256072,
+          327.2856493899979
+        ],
+        "attribute": {}
+      },
+      {
+        "category_type": "abandon",
+        "anno_id": 7,
+        "order": null,
+        "ignore": false,
+        "poly": [
+          803.4475066816723,
+          29.987904907089387,
+          1102.7784246502615,
+          29.987904907089387,
+          1102.7784246502615,
+          310.23863710322314,
+          803.4475066816723,
+          310.23863710322314
+        ],
+        "attribute": {}
+      }
+    ],
+    "page_info": {
+      "page_no": 1,
+      "height": 1500,
+      "width": 2000,
+      "image_path": "PPT_13 fallacies LALT2012_page_001.png",
+      "page_attribute": {
+        "data_source": "PPT2PDF",
+        "language": "english",
+        "layout": "single_column",
+        "special_issue": [
+          "None"
+        ],
+        "subset": "v1.5"
+      }
+    },
+    "extra": {
+      "relation": []
+    },
+    "_eval_tags": {
+      "is_clean": true,
+      "has_watermark": false,
+      "has_fuzzy_scan": false,
+      "has_colorful_bg": false,
+      "layout": "single_column"
+    }
+  },
+  {
+    "layout_dets": [
+      {
+        "category_type": "text_block",
+        "anno_id": 1,
+        "order": 1,
+        "ignore": false,
+        "poly": [
+          73.33333333333333,
+          366.6666666666667,
+          1860,
+          366.6666666666667,
+          1860,
+          605.3333333333334,
+          73.33333333333333,
+          605.3333333333334
+        ],
+        "attribute": {},
+        "text": "Yilmaz 2011 looked at the relationships between Turkish\nprimary and secondary school teachers' perceptions of self-efficacy, English proficiency, and instructional strategies"
+      },
+      {
+        "category_type": "text_block",
+        "anno_id": 2,
+        "order": 2,
+        "ignore": false,
+        "poly": [
+          78.66666666666667,
+          640,
+          1802.6666666666667,
+          640,
+          1802.6666666666667,
+          797.3333333333334,
+          78.66666666666667,
+          797.3333333333334
+        ],
+        "attribute": {},
+        "text": "Results indicated that teachers' perceived efficacy was\ncorrelated with their self-reported English proficiency"
+      },
+      {
+        "category_type": "header",
+        "anno_id": 3,
+        "order": null,
+        "ignore": false,
+        "poly": [
+          69.93987780847516,
+          77.4449586055423,
+          1948.0710349596884,
+          77.4449586055423,
+          1948.0710349596884,
+          252.08648193302577,
+          69.93987780847516,
+          252.08648193302577
+        ],
+        "attribute": {},
+        "text": "Turkey  UNIVERSITY OF LEEDS"
+      }
+    ],
+    "page_info": {
+      "page_no": 29,
+      "height": 1500,
+      "width": 2000,
+      "image_path": "PPT_11.2013EvaluatingTraineeteacherproficiency_page_029.png",
+      "page_attribute": {
+        "data_source": "PPT2PDF",
+        "language": "english",
+        "layout": "single_column",
+        "special_issue": [
+          "None"
+        ],
+        "subset": "v1.5"
+      }
+    },
+    "extra": {
+      "relation": []
+    },
+    "_eval_tags": {
+      "is_clean": true,
+      "has_watermark": false,
+      "has_fuzzy_scan": false,
+      "has_colorful_bg": false,
+      "layout": "single_column"
+    }
+  }
+]
