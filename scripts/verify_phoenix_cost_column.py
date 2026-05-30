@@ -14,7 +14,6 @@ with the actual Phoenix version and date.
 NOTE: This is a manual debugging tool, NOT a pytest test.
 """
 
-from pathlib import Path
 from typing import Any
 
 
@@ -164,12 +163,12 @@ def verify_cost_column() -> None:
         for col in df.columns.tolist():
             print(f"  - {col}")
 
-        print(f"\nDataFrame dtypes:")
+        print("\nDataFrame dtypes:")
         for col, dtype in df.dtypes.items():
             print(f"  - {col}: {dtype}")
 
         # Find cost-related columns
-        print(f"\n[INFO] Searching for cost-related columns...")
+        print("\n[INFO] Searching for cost-related columns...")
         cost_columns = [col for col in df.columns if "cost" in col.lower()]
         if cost_columns:
             print(f"Cost-related columns found: {cost_columns}")
@@ -195,7 +194,7 @@ def verify_cost_column() -> None:
             print("[WARN] No known cost column found. Check columns list above.")
 
         # Print first row as example
-        print(f"\n[INFO] First row data:")
+        print("\n[INFO] First row data:")
         print(df.iloc[0].to_dict())
 
     except Exception as err:
@@ -212,9 +211,9 @@ def verify_cost_column() -> None:
         print("\n" + "=" * 60)
         print("VERIFICATION COMPLETE")
         print("=" * 60)
-        print(f"\nUpdate APP_COST_COLUMN constant in cost_summary.py with:")
+        print("\nUpdate APP_COST_COLUMN constant in cost_summary.py with:")
         print(f"# Verified against arize-phoenix=={phoenix_version} on [CURRENT_DATE]")
-        print(f"# Re-run scripts/verify_phoenix_cost_column.py if upgrading Phoenix.")
+        print("# Re-run scripts/verify_phoenix_cost_column.py if upgrading Phoenix.")
         if found_cost_col:
             print(f"APP_COST_COLUMN: Final[str] = \"{found_cost_col}\"")
         else:
