@@ -1,11 +1,11 @@
 """
 CLI runner for parsing evaluation.
 
+File-based evaluation only (pre-computed predictions).
+
 Usage:
-    uv run eval-parsing --dataset omnidocbench --parser docling
-    uv run eval-parsing --dataset omnidocbench --parser stub
-    uv run eval-parsing --dataset dp_bench --parser stub
-    uv run eval-parsing --dataset dp_bench --predictions ./predictions
+    doc-bench --dataset dp_bench --predictions ./predictions
+    doc-bench --dataset omnidocbench --predictions ./predictions
 """
 
 import csv
@@ -18,7 +18,6 @@ from pathlib import Path
 
 import pandas as pd
 
-from doc_bench.adapters.parser_adapter import ParserAdapter
 from doc_bench.adapters.schema_validator import SchemaValidationError, validate
 from doc_bench.config import load_config
 from doc_bench.datasets.dp_bench import build_gold_markdown
@@ -136,45 +135,6 @@ def load_dataset(dataset_name: str, config: dict):
         sys.exit(1)
 
 
-def get_parser(parser_name: str) -> tuple[ParserAdapter, str]:
-    """
-    Get parser adapter by name.
-
-    Args:
-        parser_name: Name of parser ('stub', 'docling', or path to parser module).
-
-    Returns:
-        Tuple of (ParserAdapter instance, parser_type).
-
-    """
-    if parser_name == "stub":
-        from doc_bench.stubs.stub_parser import parse as parse_func
-
-        return ParserAdapter(parse_func), "stub"
-
-    elif parser_name == "fast":
-        from doc_bench.stubs.digital_pdf_parser import parse as parse_func
-
-        return ParserAdapter(parse_func), "fast"
-
-    elif parser_name == "docling":
-        try:
-            from doc_bench.stubs.docling_parser import parse as parse_func
-
-            return ParserAdapter(parse_func), "docling"
-        except ImportError as e:
-            print(f"ERROR: {e}")
-            print("Install docling with: uv add docling")
-            sys.exit(1)
-
-    else:
-        # For future: import custom parser module
-        print(f"WARNING: Custom parser '{parser_name}' not implemented, using stub")
-        from doc_bench.stubs.stub_parser import parse as parse_func
-
-        return ParserAdapter(parse_func), "stub"
-
-
 def _extract_gold_text_from_omnidocbench(page: dict) -> str:
     """
     Extract gold text from OmniDocBench page annotations.
@@ -207,34 +167,6 @@ def _extract_gold_text_from_omnidocbench(page: dict) -> str:
     return " ".join(texts)
 
 
-def _get_pdf_path_for_page(page: dict, dataset_root: Path) -> Path:
-    """
-    Get image/PDF path for an OmniDocBench page.
-
-    OmniDocBench uses PNG images, not PDFs.
-
-    Args:
-        page: OmniDocBench page dict.
-        dataset_root: Root path of dataset.
-
-    Returns:
-        Path to the image file.
-
-    """
-    # OmniDocBench structure: root/images/{filename} or root/{filename} (baseline)
-    page_info = page.get("page_info", {})
-    image_name = page_info.get("image_path", "")
-
-    # Try standard images directory first
-    image_path = dataset_root / "images" / image_name
-    if image_path.exists():
-        return image_path
-
-    # Fallback to flat layout (baseline structure)
-    image_path = dataset_root / image_name
-    return image_path
-
-
 def main() -> None:
     """Run the parsing evaluation CLI."""
     import argparse
@@ -247,28 +179,13 @@ def main() -> None:
         help="Dataset to evaluate on",
     )
     parser.add_argument(
-        "--parser",
-        default=None,
-        choices=["stub", "fast", "docling"],
-        help=(
-            "Parser to use (fast=pypdf for digital PDFs, docling=full parsing with OCR). "
-            "Exactly one of --parser or --predictions must be specified."
-        ),
-    )
-    parser.add_argument(
         "--predictions",
         type=Path,
-        default=None,
+        required=True,
         help=(
             "Directory containing pre-computed prediction JSON files (<doc_id>.json). "
-            "Exactly one of --parser or --predictions must be specified."
+            "Predictions must follow parser_output.schema.json format."
         ),
-    )
-    parser.add_argument(
-        "--config",
-        type=Path,
-        default=Path("eval_config.yaml"),
-        help="Path to eval_config.yaml",
     )
     parser.add_argument(
         "--output-dir",
@@ -296,34 +213,19 @@ def main() -> None:
 
     args = parser.parse_args()
 
-    # Validate mutual exclusivity of --parser and --predictions
-    has_parser = args.parser is not None
-    has_predictions = args.predictions is not None
-
-    if has_parser and has_predictions:
-        print(
-            "ERROR: Specify exactly one of --parser (run a parser in-process) "
-            "or --predictions (grade pre-computed predictions). You provided both."
-        )
-        sys.exit(1)
-
-    if not has_parser and not has_predictions:
-        print(
-            "ERROR: Specify exactly one of --parser (run a parser in-process) "
-            "or --predictions (grade pre-computed predictions). You provided neither."
-        )
+    # Verify predictions directory exists
+    if not args.predictions.exists():
+        print(f"ERROR: Predictions directory not found: {args.predictions}")
         sys.exit(1)
 
     # Get rejection threshold from CLI flag, env var, or default
     rejection_threshold = args.max_rejection_rate
     if rejection_threshold is None:
         rejection_threshold = float(os.environ.get("DOC_BENCH_MAX_REJECTION_RATE", "0.5"))
-    if rejection_threshold is None:
-        rejection_threshold = 0.5
 
     # Load configuration
     try:
-        config = load_config(args.config)
+        config = load_config(Path("eval_config.yaml"))
     except FileNotFoundError as e:
         print(f"ERROR: {e}")
         sys.exit(1)
@@ -338,19 +240,9 @@ def main() -> None:
     print(f"Loading dataset: {args.dataset}")
     dataset = load_dataset(args.dataset, config)
 
-    # Get evaluation mode info
-    if has_parser:
-        print(f"Using parser: {args.parser}")
-        parser_adapter, parser_type = get_parser(args.parser)
-        predictions_mode = False
-    else:
-        print(f"Using predictions from: {args.predictions}")
-        parser_type = "predictions"  # For naming output files
-        predictions_mode = True
-        # Verify predictions directory exists
-        if not args.predictions.exists():
-            print(f"ERROR: Predictions directory not found: {args.predictions}")
-            sys.exit(1)
+    # File-based evaluation mode
+    print(f"Using predictions from: {args.predictions}")
+    parser_type = "predictions"  # For naming output files
 
     # Setup output file for incremental writes with timestamp
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -358,11 +250,9 @@ def main() -> None:
     output_file = args.output_dir / filename
     file_exists = output_file.exists()
 
-    # Setup rejection tracker for file-based evaluation
-    rejection_tracker = None
-    if predictions_mode:
-        rejected_csv = args.output_dir / f"{args.dataset}_{parser_type}_rejected_{timestamp}.csv"
-        rejection_tracker = RejectionTracker(rejected_csv)
+    # Setup rejection tracker
+    rejected_csv = args.output_dir / f"{args.dataset}_{parser_type}_rejected_{timestamp}.csv"
+    rejection_tracker = RejectionTracker(rejected_csv)
 
     # Path to parser output schema for validation
     from doc_bench import get_bundled_schema_path
@@ -415,15 +305,29 @@ def main() -> None:
                 # Get doc_id
                 doc_id = doc_id_for("omnidocbench", item)
 
-                # Get PDF path for parser mode
-                dataset_root = Path(config["datasets"]["omnidocbench"]["path"])
-                pdf_path = _get_pdf_path_for_page(item, dataset_root)
+                print(f"Processing page {idx + 1}...")
 
-                if predictions_mode and not pdf_path.exists():
+                # Load prediction from file
+                prediction_dict = load_prediction(args.predictions, doc_id)
+                if prediction_dict is None:
+                    # Distinguish between missing and invalid JSON
+                    prediction_path = args.predictions / f"{doc_id}.json"
+                    if not prediction_path.exists():
+                        reason = RejectionReason.MISSING_PREDICTION
+                        source_file = f"{doc_id}.json"
+                        detail = ""
+                    else:
+                        reason = RejectionReason.INVALID_JSON
+                        source_file = f"{doc_id}.json"
+                        detail = format_rejection_detail(
+                            reason, "File exists but contains invalid JSON"
+                        )
+
+                    rejection_tracker.record_rejection(doc_id, reason, source_file, detail)
                     writer.writerow(
                         {
                             "query_id": query_id,
-                            "error": f"Image not found: {pdf_path}",
+                            "error": f"{reason.value}: {detail}" if detail else reason.value,
                             "nid": 0.0,
                             "nid_s": 0.0,
                             "teds": 0.0,
@@ -439,83 +343,39 @@ def main() -> None:
                     errors += 1
                     continue
 
-                print(f"Processing page {idx + 1}...")
-
-                # Get prediction (either from file or parser)
-                if predictions_mode:
-                    # Load prediction from file
-                    prediction_dict = load_prediction(args.predictions, doc_id)
-                    if prediction_dict is None:
-                        # Distinguish between missing and invalid JSON
-                        prediction_path = args.predictions / f"{doc_id}.json"
-                        if not prediction_path.exists():
-                            reason = RejectionReason.MISSING_PREDICTION
-                            source_file = f"{doc_id}.json"
-                            detail = ""
-                        else:
-                            reason = RejectionReason.INVALID_JSON
-                            source_file = f"{doc_id}.json"
-                            detail = format_rejection_detail(
-                                reason, "File exists but contains invalid JSON"
-                            )
-
-                        rejection_tracker.record_rejection(doc_id, reason, source_file, detail)
-                        writer.writerow(
-                            {
-                                "query_id": query_id,
-                                "error": f"{reason.value}: {detail}" if detail else reason.value,
-                                "nid": 0.0,
-                                "nid_s": 0.0,
-                                "teds": 0.0,
-                                "teds_s": 0.0,
-                                "mhs": 0.0,
-                                "mhs_s": 0.0,
-                                "ard": 0.0,
-                                "bleu": 0.0,
-                                "meteor": 0.0,
-                            }
-                        )
-                        csv_file.flush()
-                        errors += 1
-                        continue
-
-                    # Validate prediction against schema
-                    try:
-                        validate(prediction_dict, schema_path)
-                    except SchemaValidationError as e:
-                        reason = RejectionReason.INVALID_SCHEMA
-                        source_file = f"{doc_id}.json"
-                        detail = format_rejection_detail(
-                            reason,
-                            (
-                                f"{e.field_path}: {e.original_error}"
-                                if e.field_path
-                                else e.original_error
-                            ),
-                        )
-                        rejection_tracker.record_rejection(doc_id, reason, source_file, detail)
-                        writer.writerow(
-                            {
-                                "query_id": query_id,
-                                "error": f"{reason.value}: {detail}",
-                                "nid": 0.0,
-                                "nid_s": 0.0,
-                                "teds": 0.0,
-                                "teds_s": 0.0,
-                                "mhs": 0.0,
-                                "mhs_s": 0.0,
-                                "ard": 0.0,
-                                "bleu": 0.0,
-                                "meteor": 0.0,
-                            }
-                        )
-                        csv_file.flush()
-                        errors += 1
-                        continue
-                else:
-                    # Parse document
-                    output = parser_adapter.parse(pdf_path)
-                    prediction_dict = output
+                # Validate prediction against schema
+                try:
+                    validate(prediction_dict, schema_path)
+                except SchemaValidationError as e:
+                    reason = RejectionReason.INVALID_SCHEMA
+                    source_file = f"{doc_id}.json"
+                    detail = format_rejection_detail(
+                        reason,
+                        (
+                            f"{e.field_path}: {e.original_error}"
+                            if e.field_path
+                            else e.original_error
+                        ),
+                    )
+                    rejection_tracker.record_rejection(doc_id, reason, source_file, detail)
+                    writer.writerow(
+                        {
+                            "query_id": query_id,
+                            "error": f"{reason.value}: {detail}",
+                            "nid": 0.0,
+                            "nid_s": 0.0,
+                            "teds": 0.0,
+                            "teds_s": 0.0,
+                            "mhs": 0.0,
+                            "mhs_s": 0.0,
+                            "ard": 0.0,
+                            "bleu": 0.0,
+                            "meteor": 0.0,
+                        }
+                    )
+                    csv_file.flush()
+                    errors += 1
+                    continue
 
                 # Convert parser output to markdown for comparison
                 pred_markdown = parser_output_to_markdown(prediction_dict)
@@ -558,81 +418,75 @@ def main() -> None:
                 doc_id, pdf_path, gold_elements = item
                 print(f"Processing document {doc_id}...")
 
-                # Get prediction (either from file or parser)
-                if predictions_mode:
-                    # Load prediction from file
-                    prediction_dict = load_prediction(args.predictions, doc_id)
-                    if prediction_dict is None:
-                        # Distinguish between missing and invalid JSON
-                        prediction_path = args.predictions / f"{doc_id}.json"
-                        if not prediction_path.exists():
-                            reason = RejectionReason.MISSING_PREDICTION
-                            source_file = f"{doc_id}.json"
-                            detail = ""
-                        else:
-                            reason = RejectionReason.INVALID_JSON
-                            source_file = f"{doc_id}.json"
-                            detail = format_rejection_detail(
-                                reason, "File exists but contains invalid JSON"
-                            )
-
-                        rejection_tracker.record_rejection(doc_id, reason, source_file, detail)
-                        writer.writerow(
-                            {
-                                "query_id": doc_id,
-                                "error": f"{reason.value}: {detail}" if detail else reason.value,
-                                "nid": 0.0,
-                                "nid_s": 0.0,
-                                "teds": 0.0,
-                                "teds_s": 0.0,
-                                "mhs": 0.0,
-                                "mhs_s": 0.0,
-                                "ard": 0.0,
-                                "bleu": 0.0,
-                                "meteor": 0.0,
-                            }
-                        )
-                        csv_file.flush()
-                        errors += 1
-                        continue
-
-                    # Validate prediction against schema
-                    try:
-                        validate(prediction_dict, schema_path)
-                    except SchemaValidationError as e:
-                        reason = RejectionReason.INVALID_SCHEMA
+                # Load prediction from file
+                prediction_dict = load_prediction(args.predictions, doc_id)
+                if prediction_dict is None:
+                    # Distinguish between missing and invalid JSON
+                    prediction_path = args.predictions / f"{doc_id}.json"
+                    if not prediction_path.exists():
+                        reason = RejectionReason.MISSING_PREDICTION
+                        source_file = f"{doc_id}.json"
+                        detail = ""
+                    else:
+                        reason = RejectionReason.INVALID_JSON
                         source_file = f"{doc_id}.json"
                         detail = format_rejection_detail(
-                            reason,
-                            (
-                                f"{e.field_path}: {e.original_error}"
-                                if e.field_path
-                                else e.original_error
-                            ),
+                            reason, "File exists but contains invalid JSON"
                         )
-                        rejection_tracker.record_rejection(doc_id, reason, source_file, detail)
-                        writer.writerow(
-                            {
-                                "query_id": doc_id,
-                                "error": f"{reason.value}: {detail}",
-                                "nid": 0.0,
-                                "nid_s": 0.0,
-                                "teds": 0.0,
-                                "teds_s": 0.0,
-                                "mhs": 0.0,
-                                "mhs_s": 0.0,
-                                "ard": 0.0,
-                                "bleu": 0.0,
-                                "meteor": 0.0,
-                            }
-                        )
-                        csv_file.flush()
-                        errors += 1
-                        continue
-                else:
-                    # Parse document
-                    output = parser_adapter.parse(pdf_path)
-                    prediction_dict = output
+
+                    rejection_tracker.record_rejection(doc_id, reason, source_file, detail)
+                    writer.writerow(
+                        {
+                            "query_id": doc_id,
+                            "error": f"{reason.value}: {detail}" if detail else reason.value,
+                            "nid": 0.0,
+                            "nid_s": 0.0,
+                            "teds": 0.0,
+                            "teds_s": 0.0,
+                            "mhs": 0.0,
+                            "mhs_s": 0.0,
+                            "ard": 0.0,
+                            "bleu": 0.0,
+                            "meteor": 0.0,
+                        }
+                    )
+                    csv_file.flush()
+                    errors += 1
+                    continue
+
+                # Validate prediction against schema
+                try:
+                    validate(prediction_dict, schema_path)
+                except SchemaValidationError as e:
+                    reason = RejectionReason.INVALID_SCHEMA
+                    source_file = f"{doc_id}.json"
+                    detail = format_rejection_detail(
+                        reason,
+                        (
+                            f"{e.field_path}: {e.original_error}"
+                            if e.field_path
+                            else e.original_error
+                        ),
+                    )
+                    rejection_tracker.record_rejection(doc_id, reason, source_file, detail)
+                    writer.writerow(
+                        {
+                            "query_id": doc_id,
+                            "error": f"{reason.value}: {detail}",
+                            "nid": 0.0,
+                            "nid_s": 0.0,
+                            "teds": 0.0,
+                            "teds_s": 0.0,
+                            "mhs": 0.0,
+                            "mhs_s": 0.0,
+                            "ard": 0.0,
+                            "bleu": 0.0,
+                            "meteor": 0.0,
+                        }
+                    )
+                    csv_file.flush()
+                    errors += 1
+                    continue
 
                 # Convert parser output to markdown for comparison
                 pred_markdown = parser_output_to_markdown(prediction_dict)
@@ -698,7 +552,7 @@ def main() -> None:
 
     # Print summary
     print(f"\nResults written to: {output_file}")
-    if rejection_tracker and predictions_mode:
+    if rejection_tracker:
         total_rejections = rejection_tracker.get_total_rejections()
         rejection_counts = rejection_tracker.get_rejection_counts()
 
@@ -762,7 +616,7 @@ def main() -> None:
     }
 
     # Add evaluated_samples and rejected_samples for file-based evaluation
-    if rejection_tracker and predictions_mode:
+    if rejection_tracker:
         summary["evaluated_samples"] = processed
         summary["rejected_samples"] = rejection_tracker.get_rejection_counts_serializable()
     else:

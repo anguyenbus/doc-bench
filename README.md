@@ -5,84 +5,125 @@ Evaluation framework for document parsing systems. Supports deterministic metric
 ## Quick Start
 
 ```bash
-# Install dependencies
-uv sync
+# Install from wheel
+pip install doc-bench-0.1.0-py3-none-any.whl
 
-# Run parsing evaluation with stub parser (for testing)
-uv run doc-bench evaluate --dataset dp_bench --parser stub --limit 10
+# Run smoke test (bundled fixtures, no data download needed)
+doc-bench-smoke-test
 
-# Run with fast digital PDF parser
-uv run doc-bench evaluate --dataset dp_bench --parser fast
-
-# Run with OmniDocBench medium slice (100 docs)
-uv run doc-bench evaluate --dataset omnidocbench_english_medium --parser docling
+# Grade pre-computed predictions
+doc-bench --dataset dp_bench --predictions ./predictions
 ```
 
 ## Installation
 
+### From Wheel (Recommended)
+
 ```bash
-# Core dependencies
+# Install wheel with bundled fixtures and schema
+pip install doc-bench-0.1.0-py3-none-any.whl
+
+# Verify installation
+doc-bench-smoke-test
+```
+
+### From Source
+
+```bash
+# Clone and install
+git clone <repo>
+cd doc-bench
 uv sync
 
-# Optional: AWS Bedrock support
+# Build wheel
+uv build --wheel
+pip install dist/doc_bench-0.1.0-py3-none-any.whl
+```
+
+### Optional Dependencies
+
+```bash
+# AWS Bedrock support
 uv sync --extra bedrock
+
+# Docling OCR support
+uv sync --extra docling
+```
+
+## Smoke Test
+
+Validate installation with bundled fixtures (22 documents, no download required):
+
+```bash
+doc-bench-smoke-test
+```
+
+Tests:
+- 4 DP-Bench documents (Paragraph, Caption categories)
+- 10 OmniDocBench documents (academic_literature, exam_paper, colorful_textbook, book, PPT2PDF)
+- Schema validation (bundled parser_output.schema.json)
+
+Output:
+```
+Smoke Test Results
+========================================
+Total documents: 22
+Rejected: 0 (0.0%)
+
+PASS: Rejection rate (0.0%) < threshold (10%)
 ```
 
 ## Parsing Evaluation
 
-Evaluate document parsers on layout-aware benchmarks. Two modes available:
+File-based evaluation of pre-computed parser predictions.
 
-### Modes
+### Workflow
 
-**In-Process Mode** — Run parser inside doc-bench
-```bash
-uv run doc-bench evaluate --dataset dp_bench --parser stub --limit 10
-```
-
-**File-Based Mode** — Grade pre-computed predictions
+**File-Based Evaluation** — Grade pre-computed predictions
 ```bash
 # 1. Export dataset documents
-docker run --rm --entrypoint /opt/venv/bin/doc-bench-dump-dataset \
-  -v ./pdfs:/work/output doc-bench --dataset dp_bench --output /work/output --limit 10
+doc-bench-dump-dataset --dataset dp_bench --output ./pdfs --limit 10
 
 # 2. Run your parser, write predictions as ./predictions/<doc_id>.json
 
 # 3. Grade predictions
-docker run --rm -v ./predictions:/work/predictions -v ./results:/work/results \
-  doc-bench --dataset dp_bench --predictions /work/predictions
+doc-bench --dataset dp_bench --predictions ./predictions --output-dir ./results
 ```
 
 ### Datasets
 
-| Dataset | Description | Documents | Notes |
-|---------|-------------|-----------|-------|
-| `omnidocbench` | English-only sample | 10 pages | Docker baseline (pruned from 593) |
-| `dp_bench` | Digital PDF benchmark | 1,052 docs | Not in Docker image - use local data |
+#### Bundled Fixtures (Smoke Test)
 
-**Note:** The Docker image includes a minimal 10-page OmniDocBench sample for fast iteration. DP-Bench PDFs are not available via HuggingFace and must be obtained separately.
+| Dataset | Documents | Categories |
+|---------|-----------|------------|
+| DP-Bench | 12 docs | Paragraph (8), Caption (2), Chart (1), Heading1 (1) |
+| OmniDocBench | 10 docs | academic_literature (2), exam_paper (2), colorful_textbook (2), book (2), PPT2PDF (2) |
 
-### Parsers
+Included in wheel - no download required for smoke testing.
 
-| Parser | Description |
-|--------|-------------|
-| `stub` | Stub implementation for testing |
-| `fast` | pypdf - fast digital PDF parsing |
-| `docling` | Full OCR pipeline with layout analysis |
+#### Full Benchmarks
+
+| Dataset | Description | Documents | Source |
+|---------|-------------|-----------|--------|
+| `dp_bench` | Digital PDF benchmark | 1,052 docs | Contact authors |
+| `omnidocbench` | English-only sample | 593 pages | [HuggingFace](https://huggingface.co/datasets/jianxiao-o0/omnidocbench) |
+
+**Dataset versions** tracked in `MANIFEST.yaml` (bundled with package).
 
 ### Commands
 
 ```bash
-# Evaluate on OmniDocBench with fast parser
-uv run doc-bench evaluate --dataset omnidocbench --parser fast
+# Smoke test (bundled fixtures)
+doc-bench-smoke-test
 
-# Evaluate on DP-Bench with stub parser (limited samples)
-uv run doc-bench evaluate --dataset dp_bench --parser stub --limit 10
+# Grade pre-computed predictions
+doc-bench --dataset dp_bench --predictions ./predictions --output-dir ./results
 
-# File-based: grade pre-computed predictions
-uv run doc-bench evaluate --dataset dp_bench --predictions ./predictions
+# Limit processing (for testing)
+doc-bench --dataset dp_bench --predictions ./predictions --limit 10
 
-# Custom output directory
-uv run doc-bench evaluate --dataset omnidocbench --parser docling --output-dir ./my_results
+# Dump dataset for external processing
+doc-bench-dump-dataset --dataset dp_bench --output ./pdfs --limit 10
 ```
 
 ### Document Identity Convention
@@ -121,90 +162,73 @@ doc_id,reason,source_file,detail
 
 ## Configuration
 
-Edit `eval_config.yaml` for dataset paths and metric settings:
+Dataset locations specified via `eval_config.yaml`:
 
-```yaml
-datasets:
-  omnidocbench:
-    path: /path/to/omnidocbench
-  dp_bench:
-    path: /path/to/dp_bench
-
-metrics:
-  parsing:
-    enabled:
-      - nid
-      - teds
-      - mhs
-      - ard
-      - bleu
-      - meteor
-
-models:
-  parser: stub
+```bash
+doc-bench --dataset dp_bench --predictions ./predictions
 ```
+
+For OmniDocBench, supports both layouts:
+- `root/images/{filename}.png` (standard HuggingFace layout)
+- `root/{filename}.png` (flat baseline layout)
 
 ## Project Structure
 
 ```
 .
 ├── pyproject.toml          # Package configuration
-├── eval_config.yaml        # Dataset paths and settings
 ├── README.md
 │
-├── contracts/              # JSON Schema contracts
-│   ├── parser_output.schema.json  # Input contract for parsers
-│   └── results_v1.schema.json      # Output contract for evaluation
+├── contracts/              # JSON Schema contracts (dev)
+│   ├── parser_output.schema.json  # Input contract (bundled in fixtures)
+│   └── results_v1.schema.json      # Output contract
 │
 ├── scripts/                # Dataset utilities
-│   └── download_datasets.py
+│   └── generate_fixtures.py
 │
 ├── src/doc_bench/
-│   ├── __init__.py
-│   ├── config.py           # Config loader
+│   ├── __init__.py         # get_bundled_schema_path()
+│   ├── MANIFEST.yaml       # Dataset versions (bundled)
+│   ├── fixtures/           # Bundled test data (22 docs)
+│   │   ├── manifest.json
+│   │   ├── parser_output.schema.json
+│   │   ├── dp_bench/
+│   │   └── omnidocbench/
 │   ├── adapters/           # Parser adapter pattern
-│   │   ├── parser_adapter.py
-│   │   └── schema_validator.py
 │   ├── datasets/           # Benchmark loaders
-│   │   ├── omnidocbench.py
-│   │   └── dp_bench.py
-│   ├── metrics/            # Parsing evaluation metrics
-│   │   └── parsing/        # NID, TEDS, MHS, BLEU, METEOR
+│   ├── metrics/            # NID, TEDS, MHS, BLEU, METEOR
 │   ├── runners/            # CLI entry points
-│   │   └── run_parsing_eval.py
-│   └── stubs/              # Reference parsers (stub, fast, docling)
+│   └── cli/                # CLI commands
 │
 ├── tests/                  # Unit and integration tests
 │
-├── data/                   # Benchmark datasets (gitignored)
-│   └── parsing/
-│       ├── omnidocbench/
-│       └── dp_bench/
+├── data/                   # Local benchmark datasets (gitignored)
 │
 └── results/                # CSV outputs (gitignored)
 ```
 
 ## Dependencies
 
-**Parsing:**
-- `pypdf` - Fast digital PDF parsing
-- `docling` - OCR and layout analysis
-- `sacrebleu` - BLEU score
-- `nltk` - METEOR score
-- `torch` + `torchmetrics[detection]` - Layout mAP calculation
-
 **Core:**
 - `pydantic` - Data validation
 - `jsonschema` - Schema validation
 - `polars` - Data processing
+- `pandas` - CSV output handling
+
+**Metrics:**
+- `sacrebleu` - BLEU score
+- `nltk` - METEOR score
+- `rapidfuzz` - NID calculation
+- `apted` - TEDS calculation
+- `beautifulsoup4` + `lxml` - HTML parsing
 
 ## Using Your Own Parser
 
-doc-bench evaluates **your** document parser. The stub parsers in `stubs/` are for demonstration only.
+doc-bench evaluates **your** document parser via file-based predictions.
 
 ### Integration Pattern
 
-1. Implement a parse function with signature:
+1. Run your parser and output predictions following `parser_output.schema.json`:
    ```python
    def parse(pdf_path: Path) -> dict:
        # Your parsing logic here
@@ -217,19 +241,35 @@ doc-bench evaluates **your** document parser. The stub parsers in `stubs/` are f
        }
    ```
 
-2. Wrap with `ParserAdapter`:
-   ```python
-   from doc_bench.adapters.parser_adapter import ParserAdapter
+2. Save predictions as `<doc_id>.json`:
+   ```bash
+   parse(input.pdf) > predictions/01030000000001.json
+   ```
 
-   adapter = ParserAdapter(parse_callable=parse)
-   output = adapter.parse(pdf_path)
+3. Grade predictions:
+   ```bash
+   doc-bench --dataset dp_bench --predictions ./predictions
    ```
 
 See `contracts/parser_output.schema.json` for the complete output schema.
 
+## Wheel Distribution
+
+The wheel package includes:
+
+| Component | Location | Purpose |
+|-----------|----------|---------|
+| Fixtures | `doc_bench/fixtures/` | 14 bundled test documents |
+| Schema | `doc_bench/fixtures/parser_output.schema.json` | Parser output validation |
+| Manifest | `doc_bench/MANIFEST.yaml` | Dataset version tracking |
+
+**Schema resolution** (automatic, no CWD `contracts/` needed):
+1. Bundled fixtures (installed package)
+2. Fallback to `contracts/parser_output.schema.json` (dev)
+
 ## Docker
 
-doc-bench provides a containerized image with **baked-in datasets** for reproducible benchmarking.
+Alternative: Containerized image with baked-in datasets for reproducible benchmarking.
 
 ### Build
 
@@ -266,18 +306,12 @@ Use for comparing against new parsing methods.
 ### Run
 
 ```bash
-# In-process evaluation (stub parser)
-docker run -v ./results:/work/results doc-bench --dataset omnidocbench --parser stub
-
 # File-based evaluation (grade pre-computed predictions)
-docker run --rm --entrypoint /opt/venv/bin/doc-bench-dump-dataset \
-  -v ./pdfs:/work/output doc-bench --dataset dp_bench --output /work/output --limit 10
-# Run your parser over ./pdfs, write predictions to ./predictions/<doc_id>.json
 docker run --rm -v ./predictions:/work/predictions -v ./results:/work/results \
-  doc-bench --dataset dp_bench --predictions /work/predictions
+  doc-bench doc-bench --dataset dp_bench --predictions /work/predictions
 
 # View available commands
-docker run --rm doc-bench --help
+docker run --rm doc-bench doc-bench --help
 ```
 
 ### Volume Mounts
@@ -299,11 +333,8 @@ docker run --rm doc-bench --help
 ### Docker Compose
 
 ```bash
-# Start evaluation with Compose
-docker compose run doc-bench doc-bench evaluate --dataset omnidocbench_english_mini --parser fast
-
-# Development mode (source hot-reload)
-docker compose -f docker-compose.yml -f docker-compose.dev.yml run doc-bench doc-bench evaluate --dataset omnidocbench_english_nano --parser stub
+# Grade predictions with Compose
+docker compose run doc-bench doc-bench --dataset omnidocbench --predictions /work/predictions
 ```
 
 ## Contracts
@@ -312,6 +343,7 @@ See [contracts/README.md](contracts/README.md) for schema documentation.
 
 ## Documentation
 
+- [Smoke Test Guide](#smoke-test) - Quick validation with bundled fixtures
 - [File-Based Evaluation Guide](docs/file-based-evaluation.md) - Dump, predict, grade workflow
 - [Document Identity Convention](docs/document-identity.md) - Naming rules for prediction files
 - [contracts/README.md](contracts/README.md) - Parser output schema

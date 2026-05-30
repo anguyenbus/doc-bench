@@ -2,253 +2,158 @@
 """
 Generate bundled fixture sets for smoke testing.
 
-This maintainer-only script creates stratified fixture samples from
-DP-Bench and OmniDocBench datasets for fast smoke testing.
+This maintainer-only script copies stratified fixtures from the baseline
+directory (which already has representative samples with pre-computed scores).
 
 Usage:
-    uv run python scripts/generate_fixtures.py --data-dir /path/to/data
+    uv run python scripts/generate_fixtures.py
 
 Fixtures are written to src/doc_bench/fixtures/ and bundled with the package.
 """
 
-import argparse
 import json
 import shutil
-from collections import defaultdict
-from collections.abc import Iterator
 from pathlib import Path
 
-# Element categories for DP-Bench stratification
-DP_BENCH_CATEGORIES = ["Header", "Paragraph", "Table", "List", "Figure", "Caption"]
 
-# Document types for OmniDocBench stratification
-OMNIDOC_TYPES = [
-    "academic_literature",
-    "research_report",
-    "exam_paper",
-    "colorful_textbook",
-    "book",
-    "PPT2PDF",
-]
-
-FIXTURE_COUNT_PER_TYPE = 2  # 2 fixtures per type
-
-
-def load_dp_bench(root: Path) -> Iterator[tuple[str, Path, dict]]:
-    """Load DP-Bench dataset."""
-    from doc_bench.datasets.dp_bench import load_dp_bench as dp_bench_loader
-    yield from dp_bench_loader(root)
-
-
-def load_omnidocbench(root: Path) -> Iterator[tuple[str, dict]]:
-    """Load OmniDocBench dataset."""
-    from doc_bench.datasets import load_omnidocbench
-    yield from load_omnidocbench(root)
-
-
-def categorize_dp_bench_element(elements: dict) -> str | None:
+def generate_dp_bench_fixtures(
+    baseline_root: Path,
+    output_dir: Path,
+) -> list[dict]:
     """
-    Get primary category from DP-Bench elements.
-
-    Returns the most common category in the document, or None if empty.
+    Copy DP-Bench fixtures from baseline directory.
 
     Args:
-        elements: DP-Bench gold elements dict.
+        baseline_root: Path to baseline/dp_bench/.
+        output_dir: Output fixtures directory.
 
     Returns:
-        Category name or None.
+        List of fixture entries for manifest.
 
     """
-    element_list = elements.get("elements", [])
-    if not element_list:
-        return None
-
-    category_counts = defaultdict(int)
-    for elem in element_list:
-        category = elem.get("category", "")
-        if category:
-            category_counts[category] += 1
-
-    if not category_counts:
-        return None
-
-    # Return most common category
-    return max(category_counts.items(), key=lambda x: x[1])[0]
-
-
-def categorize_omnidocbench_doc(page: dict) -> str | None:
-    """
-    Get document type from OmniDocBench page metadata.
-
-    Args:
-        page: OmniDocBench page dict.
-
-    Returns:
-        Document type or None.
-
-    """
-    page_info = page.get("page_info", {})
-    page_attr = page_info.get("page_attribute", {})
-
-    # Try data_source first (baseline format)
-    doc_type = page_attr.get("data_source")
-    if doc_type:
-        return doc_type
-
-    # Fall back to doc_type (full dataset format)
-    return page_info.get("doc_type")
-
-
-def select_dp_bench_fixtures(root: Path) -> list[tuple[str, Path, dict, str]]:
-    """
-    Select stratified DP-Bench fixtures.
-
-    Selects 2 documents per element category.
-
-    Args:
-        root: Path to DP-Bench dataset.
-
-    Returns:
-        List of (doc_id, pdf_path, gold_elements, category) tuples.
-
-    """
-    fixtures_by_category: dict[str, list] = {cat: [] for cat in DP_BENCH_CATEGORIES}
-
-    for doc_id, pdf_path, gold_elements in load_dp_bench(root):
-        category = categorize_dp_bench_element(gold_elements)
-        if category and category in fixtures_by_category:
-            if len(fixtures_by_category[category]) < FIXTURE_COUNT_PER_TYPE:
-                fixtures_by_category[category].append((doc_id, pdf_path, gold_elements, category))
-
-    # Flatten selected fixtures
-    selected = []
-    for category, fixtures in fixtures_by_category.items():
-        selected.extend(fixtures)
-
-    return selected
-
-
-def select_omnidocbench_fixtures(root: Path) -> list[tuple[str, dict, str]]:
-    """
-    Select stratified OmniDocBench fixtures.
-
-    Selects 2 documents per document type.
-
-    Args:
-        root: Path to OmniDocBench dataset.
-
-    Returns:
-        List of (doc_id, page, doc_type) tuples.
-
-    """
-    fixtures_by_type: dict[str, list] = {doc_type: [] for doc_type in OMNIDOC_TYPES}
-
-    for doc_id, page in load_omnidocbench(root):
-        doc_type = categorize_omnidocbench_doc(page)
-        if doc_type and doc_type in fixtures_by_type:
-            if len(fixtures_by_type[doc_type]) < FIXTURE_COUNT_PER_TYPE:
-                fixtures_by_type[doc_type].append((doc_id, page, doc_type))
-
-    # Flatten selected fixtures
-    selected = []
-    for doc_type, fixtures in fixtures_by_type.items():
-        selected.extend(fixtures)
-
-    return selected
-
-
-def select_baseline_dp_bench_fixtures(root: Path) -> list[tuple[str, Path, dict, str]]:
-    """
-    Select stratified DP-Bench fixtures from baseline directory.
-
-    Selects 2 documents per element category from baseline/ structure.
-
-    Args:
-        root: Path to baseline/dp_bench/ directory.
-
-    Returns:
-        List of (doc_id, pdf_path, gold_elements, category) tuples.
-    """
-    import json
-
-    reference_path = root / "reference.json"
-    pdfs_dir = root / "pdfs"
+    reference_path = baseline_root / "reference.json"
+    pdfs_dir = baseline_root / "pdfs"
 
     if not reference_path.exists() or not pdfs_dir.exists():
+        print(f"  ERROR: Missing reference.json or pdfs/ in {baseline_root}")
         return []
 
     with open(reference_path) as f:
         reference = json.load(f)
 
-    fixtures_by_category: dict[str, list] = {cat: [] for cat in DP_BENCH_CATEGORIES}
+    fixtures = []
+    output_dp_dir = output_dir / "dp_bench"
+    output_dp_dir.mkdir(parents=True, exist_ok=True)
 
-    for pdf_filename, gold_elements in reference.items():
-        category = categorize_dp_bench_element(gold_elements)
-        if category and category in fixtures_by_category:
-            if len(fixtures_by_category[category]) < FIXTURE_COUNT_PER_TYPE:
-                pdf_path = pdfs_dir / pdf_filename
-                if pdf_path.exists():
-                    doc_id = pdf_filename.replace(".pdf", "")
-                    fixtures_by_category[category].append((doc_id, pdf_path, gold_elements, category))
+    for pdf_name, gold_elements in reference.items():
+        pdf_path = pdfs_dir / pdf_name
+        if not pdf_path.exists():
+            continue
 
-    # Flatten selected fixtures
-    selected = []
-    for category, fixtures in fixtures_by_category.items():
-        selected.extend(fixtures)
+        doc_id = pdf_name.replace(".pdf", "")
 
-    return selected
+        # Copy PDF
+        dest_pdf = output_dp_dir / pdf_name
+        shutil.copy2(pdf_path, dest_pdf)
+
+        # Save gold elements
+        gold_path = output_dp_dir / f"{doc_id}.json"
+        with open(gold_path, "w") as f:
+            json.dump(gold_elements, f)
+
+        # Get primary category (most common element type)
+        element_list = gold_elements.get("elements", [])
+        if element_list:
+            from collections import Counter
+            categories = [e.get("category", "") for e in element_list if e.get("category")]
+            if categories:
+                category = Counter(categories).most_common(1)[0][0]
+            else:
+                category = "unknown"
+        else:
+            category = "unknown"
+
+        fixtures.append({
+            "doc_id": doc_id,
+            "category": category,
+            "pdf": f"dp_bench/{pdf_name}",
+            "gold": f"dp_bench/{doc_id}.json",
+        })
+
+    return fixtures
 
 
-def select_baseline_omnidocbench_fixtures(root: Path) -> list[tuple[str, dict, str, str]]:
+def generate_omnidocbench_fixtures(
+    baseline_root: Path,
+    output_dir: Path,
+) -> list[dict]:
     """
-    Select stratified OmniDocBench fixtures from baseline directory.
-
-    Selects 2 documents per document type from baseline/ structure.
+    Copy OmniDocBench fixtures from baseline directory.
 
     Args:
-        root: Path to baseline/omnidocbench/ directory.
+        baseline_root: Path to baseline/omnidocbench/.
+        output_dir: Output fixtures directory.
 
     Returns:
-        List of (doc_id, page, doc_type, image_name) tuples.
-    """
-    import json
+        List of fixture entries for manifest.
 
-    json_path = root / "OmniDocBench.json"
+    """
+    json_path = baseline_root / "OmniDocBench.json"
 
     if not json_path.exists():
+        print(f"  ERROR: Missing OmniDocBench.json in {baseline_root}")
         return []
 
     with open(json_path) as f:
         pages = json.load(f)
 
-    fixtures_by_type: dict[str, list] = {doc_type: [] for doc_type in OMNIDOC_TYPES}
+    fixtures = []
+    output_omni_dir = output_dir / "omnidocbench"
+    output_omni_dir.mkdir(parents=True, exist_ok=True)
 
     for page in pages:
         page_info = page.get("page_info", {})
+        page_attr = page_info.get("page_attribute", {})
+
         image_name = page_info.get("image_path", "")
-        doc_type = categorize_omnidocbench_doc(page)
+        if not image_name:
+            continue
 
-        # Generate doc_id from image_name
-        doc_id = image_name.replace(".png", "").replace(".jpg", "") if image_name else ""
+        doc_id = image_name.replace(".png", "").replace(".jpg", "")
 
-        if doc_id and doc_type and doc_type in fixtures_by_type:
-            if len(fixtures_by_type[doc_type]) < FIXTURE_COUNT_PER_TYPE:
-                fixtures_by_type[doc_type].append((doc_id, page, doc_type, image_name))
+        # Copy image if exists in baseline
+        source_image = baseline_root / image_name
+        if source_image.exists():
+            dest_image = output_omni_dir / image_name
+            shutil.copy2(source_image, dest_image)
 
-    # Flatten selected fixtures
-    selected = []
-    for doc_type, fixtures in fixtures_by_type.items():
-        selected.extend(fixtures)
+        # Save page metadata
+        page_path = output_omni_dir / f"{doc_id}.json"
+        with open(page_path, "w") as f:
+            json.dump(page, f)
 
-    return selected
+        # Get doc_type
+        doc_type = page_attr.get("data_source") or page_info.get("doc_type", "unknown")
+
+        fixtures.append({
+            "doc_id": doc_id,
+            "doc_type": doc_type,
+            "page": f"omnidocbench/{doc_id}.json",
+            "image": f"omnidocbench/{image_name}" if (baseline_root / image_name).exists() else None,
+        })
+
+    return fixtures
 
 
-def generate_fixtures(data_dir: Path, output_dir: Path) -> dict:
+def generate_fixtures(
+    data_dir: Path,
+    output_dir: Path,
+) -> dict:
     """
-    Generate bundled fixture sets.
+    Generate bundled fixture sets from baseline directory.
 
     Args:
-        data_dir: Root data directory containing datasets.
+        data_dir: Root data directory (baseline/).
         output_dir: Output directory for fixtures.
 
     Returns:
@@ -256,8 +161,8 @@ def generate_fixtures(data_dir: Path, output_dir: Path) -> dict:
 
     """
     manifest = {
-        "name": "bundled-smoke-stratified",
-        "description": "Stratified fixture set for smoke testing",
+        "name": "bundled-baseline-stratified",
+        "description": "Stratified fixture set from baseline evaluations",
         "dp_bench": [],
         "omnidocbench": [],
         "total": 0,
@@ -265,100 +170,19 @@ def generate_fixtures(data_dir: Path, output_dir: Path) -> dict:
 
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    # Try baseline structure first
+    # Copy DP-Bench fixtures
     dp_bench_baseline = data_dir / "dp_bench"
     if dp_bench_baseline.exists():
-        dp_fixtures = select_baseline_dp_bench_fixtures(dp_bench_baseline)
-        for doc_id, pdf_path, gold_elements, category in dp_fixtures:
-            # Copy PDF to fixtures
-            fixture_pdf = output_dir / "dp_bench" / f"{doc_id}.pdf"
-            fixture_pdf.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copy2(pdf_path, fixture_pdf)
+        print("  Processing DP-Bench fixtures...")
+        manifest["dp_bench"] = generate_dp_bench_fixtures(dp_bench_baseline, output_dir)
+        print(f"  Copied {len(manifest['dp_bench'])} DP-Bench documents")
 
-            # Save gold elements
-            fixture_gold = output_dir / "dp_bench" / f"{doc_id}.json"
-            with open(fixture_gold, "w") as f:
-                json.dump(gold_elements, f)
-
-            manifest["dp_bench"].append({
-                "doc_id": doc_id,
-                "category": category,
-                "pdf": f"dp_bench/{doc_id}.pdf",
-                "gold": f"dp_bench/{doc_id}.json",
-            })
-
-    # Select DP-Bench fixtures from full data
-    dp_bench_path = data_dir / "parsing" / "dp_bench"
-    if dp_bench_path.exists() and not manifest["dp_bench"]:
-        dp_fixtures = select_dp_bench_fixtures(dp_bench_path)
-        for doc_id, pdf_path, gold_elements, category in dp_fixtures:
-            # Copy PDF to fixtures
-            fixture_pdf = output_dir / "dp_bench" / f"{doc_id}.pdf"
-            fixture_pdf.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copy2(pdf_path, fixture_pdf)
-
-            # Save gold elements
-            fixture_gold = output_dir / "dp_bench" / f"{doc_id}.json"
-            with open(fixture_gold, "w") as f:
-                json.dump(gold_elements, f)
-
-            manifest["dp_bench"].append({
-                "doc_id": doc_id,
-                "category": category,
-                "pdf": f"dp_bench/{doc_id}.pdf",
-                "gold": f"dp_bench/{doc_id}.json",
-            })
-
-    # Try baseline OmniDocBench structure
+    # Copy OmniDocBench fixtures
     omnidoc_baseline = data_dir / "omnidocbench"
     if omnidoc_baseline.exists():
-        od_fixtures = select_baseline_omnidocbench_fixtures(omnidoc_baseline)
-        for doc_id, page, doc_type, image_name in od_fixtures:
-            # Save page metadata
-            fixture_page = output_dir / "omnidocbench" / f"{doc_id}.json"
-            fixture_page.parent.mkdir(parents=True, exist_ok=True)
-            with open(fixture_page, "w") as f:
-                json.dump(page, f)
-
-            # Copy image if exists
-            if image_name:
-                source_image = omnidoc_baseline / image_name
-                if source_image.exists():
-                    fixture_image = output_dir / "omnidocbench" / image_name
-                    shutil.copy2(source_image, fixture_image)
-
-            manifest["omnidocbench"].append({
-                "doc_id": doc_id,
-                "doc_type": doc_type,
-                "page": f"omnidocbench/{doc_id}.json",
-                "image": f"omnidocbench/{image_name}" if image_name else None,
-            })
-
-    # Select OmniDocBench fixtures from full data
-    omnidoc_path = data_dir / "parsing" / "omnidocbench_english_large"
-    if omnidoc_path.exists() and not manifest["omnidocbench"]:
-        od_fixtures = select_omnidocbench_fixtures(omnidoc_path)
-        for doc_id, page, doc_type in od_fixtures:
-            # Save page metadata
-            fixture_page = output_dir / "omnidocbench" / f"{doc_id}.json"
-            fixture_page.parent.mkdir(parents=True, exist_ok=True)
-            with open(fixture_page, "w") as f:
-                json.dump(page, f)
-
-            # Copy image if exists
-            page_info = page.get("page_info", {})
-            image_name = page_info.get("image_path", "")
-            if image_name:
-                source_image = omnidoc_path / "images" / image_name
-                if source_image.exists():
-                    fixture_image = output_dir / "omnidocbench" / image_name
-                    shutil.copy2(source_image, fixture_image)
-
-            manifest["omnidocbench"].append({
-                "doc_id": doc_id,
-                "doc_type": doc_type,
-                "page": f"omnidocbench/{doc_id}.json",
-            })
+        print("  Processing OmniDocBench fixtures...")
+        manifest["omnidocbench"] = generate_omnidocbench_fixtures(omnidoc_baseline, output_dir)
+        print(f"  Copied {len(manifest['omnidocbench'])} OmniDocBench documents")
 
     manifest["total"] = len(manifest["dp_bench"]) + len(manifest["omnidocbench"])
 
@@ -370,15 +194,17 @@ def generate_fixtures(data_dir: Path, output_dir: Path) -> dict:
 
 
 def main():
-    """Generate bundled fixtures."""
+    """Generate bundled fixtures from baseline directory."""
+    import argparse
+
     parser = argparse.ArgumentParser(
-        description="Generate bundled fixture sets for smoke testing"
+        description="Generate bundled fixtures from baseline directory"
     )
     parser.add_argument(
         "--data-dir",
         type=Path,
-        default=Path("data"),
-        help="Root data directory containing datasets",
+        default=Path("baseline"),
+        help="Baseline data directory (default: baseline/)",
     )
     parser.add_argument(
         "--output-dir",
@@ -393,10 +219,10 @@ def main():
         print(f"ERROR: Data directory not found: {args.data_dir}")
         return 1
 
-    print("Generating bundled fixtures...")
+    print("Generating bundled fixtures from baseline...")
     manifest = generate_fixtures(args.data_dir, args.output_dir)
 
-    print(f"Generated {manifest['total']} fixtures:")
+    print(f"\nGenerated {manifest['total']} fixtures:")
     print(f"  - DP-Bench: {len(manifest['dp_bench'])} documents")
     print(f"  - OmniDocBench: {len(manifest['omnidocbench'])} documents")
     print(f"\nFixtures written to: {args.output_dir}")
