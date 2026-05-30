@@ -60,11 +60,11 @@ def safe_float(x):
 
 
 def main():
-    base_dir = Path("/home/an/atoprojects/evaluation/baseline_images")
-    dp_bench_root = Path("/home/an/projects/docbenchmark/references/dp-bench/dataset")
+    base_dir = Path("/home/an/atoprojects/evaluation/baseline")
+    dp_bench_dir = base_dir / "dp_bench"
 
-    json_file = dp_bench_root / "reference.json"
-    pdfs_dir = base_dir  # Use local PDFs
+    json_file = dp_bench_dir / "reference.json"
+    pdfs_dir = dp_bench_dir / "pdfs"
 
     # Load ground truth
     with open(json_file) as f:

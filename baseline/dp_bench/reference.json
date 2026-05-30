@@ -1,0 +1,4082 @@
+{
+  "01030000000001.pdf": {
+    "elements": [
+      {
+        "coordinates": [
+          {
+            "x": 170.9176246670229,
+            "y": 102.3493458064781
+          },
+          {
+            "x": 208.5023846755278,
+            "y": 102.3493458064781
+          },
+          {
+            "x": 208.5023846755278,
+            "y": 120.6598699131856
+          },
+          {
+            "x": 170.9176246670229,
+            "y": 120.6598699131856
+          }
+        ],
+        "category": "Header",
+        "id": 0,
+        "page": 1,
+        "content": {
+          "text": "314",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 983.318030733286,
+            "y": 102.3493458064781
+          },
+          {
+            "x": 1079.872431445213,
+            "y": 102.3493458064781
+          },
+          {
+            "x": 1079.872431445213,
+            "y": 120.6598699131856
+          },
+          {
+            "x": 983.318030733286,
+            "y": 120.6598699131856
+          }
+        ],
+        "category": "Header",
+        "id": 1,
+        "page": 1,
+        "content": {
+          "text": "YARROW",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 170.18537282269165,
+            "y": 169.39723781817833
+          },
+          {
+            "x": 1080.6978511750278,
+            "y": 169.39723781817833
+          },
+          {
+            "x": 1080.6978511750278,
+            "y": 503.0565269474403
+          },
+          {
+            "x": 170.18537282269165,
+            "y": 503.0565269474403
+          }
+        ],
+        "category": "Paragraph",
+        "id": 2,
+        "page": 1,
+        "content": {
+          "text": "1999 such iterations to form parameter distributions. If these distributions are\nsymmetric, we can pretty much just read values straight out of them to form\nconfidence intervals (e.g., the 50th and 1950th values out of 1999 will give us a\nroughly 95% confidence interval). If they are not, we must do something more\ncomplicated, with the best choice being the bias-corrected and accelerated\n(BCa) approach. Because of the large number of fits that are required,\nbootstrapping is fairly slow. If the experiment contains many trials, the BCa\nmethod makes it even slower (because it incorporates additional \"jackknife\"\nresampling, implying one further fitting iteration for almost every trial).18",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 170.9176246670228,
+            "y": 505.32375733965745
+          },
+          {
+            "x": 1081.430103019359,
+            "y": 505.32375733965745
+          },
+          {
+            "x": 1081.430103019359,
+            "y": 838.9830464689194
+          },
+          {
+            "x": 170.9176246670228,
+            "y": 838.9830464689194
+          }
+        ],
+        "category": "Paragraph",
+        "id": 3,
+        "page": 1,
+        "content": {
+          "text": "The code accompanying this chapter offers options to generate confidence\nintervals on fitted parameters. Confidence intervals sometimes imply\nstatistical inference, as for example when they fail to overlap some value and\nthus imply that our statistic differs significantly from that value. However, in\nSJ experiments we are more likely to want to ask a question such as whether\na particular parameter differs between two conditions for a single observer.\nTo answer this kind of question, you will need to modify or develop the code.\nIf we take the example of whether parameters vary across conditions, my\nrecommendation would be to adopt a permutation test approach.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 170.91762466702298,
+            "y": 840.8005510046135
+          },
+          {
+            "x": 1081.4301030193592,
+            "y": 840.8005510046135
+          },
+          {
+            "x": 1081.4301030193592,
+            "y": 1320.2340302422144
+          },
+          {
+            "x": 170.91762466702298,
+            "y": 1320.2340302422144
+          }
+        ],
+        "category": "Paragraph",
+        "id": 4,
+        "page": 1,
+        "content": {
+          "text": "To do so, take the trials from both conditions and think of each trial as a\ncard in a deck of cards. Making sure you keep each trial intact (i.e., without\nbreaking the link between SOAS and responses) shuffle the trials and then deal\nthem at random into two new piles, each representing a pseudo-condition.\nIf your original conditions contained different numbers of trials, make sure\nthe two pseudo-conditions match the size of the original conditions. For each\npseudo-condition, perform a model fit. Now calculate the difference between\nmodel parameters in the two pseudo-conditions. This is the value you want to\nretain. Now repeat this whole process many times. What you are forming is a\nnull distribution of the expected difference between model parameters that\nwould occur just by chance. You can then compare the difference you actually\nobtained against this null distribution to generate a p value for your difference\nof interest.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 170.9176246670228,
+            "y": 1404.6773873732511
+          },
+          {
+            "x": 640.8909060745979,
+            "y": 1404.6773873732511
+          },
+          {
+            "x": 640.8909060745979,
+            "y": 1436.8720016218997
+          },
+          {
+            "x": 170.9176246670228,
+            "y": 1436.8720016218997
+          }
+        ],
+        "category": "Heading1",
+        "id": 5,
+        "page": 1,
+        "content": {
+          "text": "7 Variants of SJ Observer Models",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 170.9176246670229,
+            "y": 1477.955245417958
+          },
+          {
+            "x": 1081.4301030193592,
+            "y": 1477.955245417958
+          },
+          {
+            "x": 1081.4301030193592,
+            "y": 1587.3808293267416
+          },
+          {
+            "x": 170.9176246670229,
+            "y": 1587.3808293267416
+          }
+        ],
+        "category": "Paragraph",
+        "id": 6,
+        "page": 1,
+        "content": {
+          "text": "In this chapter, I have presented two variants of a latency-based observer mod-\nel applied to the SJ task. Both assume that a single SOA will generate an inter-\nnal response (\u25b3t) that is a Gaussian random variable. Both assume a simple",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 173.40739987552115,
+            "y": 1634.5605935031042
+          },
+          {
+            "x": 1079.872431445213,
+            "y": 1634.5605935031042
+          },
+          {
+            "x": 1079.872431445213,
+            "y": 1696.0426931217166
+          },
+          {
+            "x": 173.40739987552115,
+            "y": 1696.0426931217166
+          }
+        ],
+        "category": "Footnote",
+        "id": 7,
+        "page": 1,
+        "content": {
+          "text": "18 E.g., <SimultaneityNoisyCriteriaMultistart 225-386>. Note that Matlab has inbuilt func-\ntions, which could have done most of this if you have the statistics toolbox extensions.",
+          "html": "",
+          "markdown": ""
+        }
+      }
+    ]
+  },
+  "01030000000002.pdf": {
+    "elements": [
+      {
+        "coordinates": [
+          {
+            "x": 171.98400289328498,
+            "y": 102.44602939288887
+          },
+          {
+            "x": 209.61694849154435,
+            "y": 102.44602939288887
+          },
+          {
+            "x": 209.61694849154435,
+            "y": 120.99748144836882
+          },
+          {
+            "x": 171.98400289328498,
+            "y": 120.99748144836882
+          }
+        ],
+        "category": "Header",
+        "id": 0,
+        "page": 1,
+        "content": {
+          "text": "316",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 982.8430242605386,
+            "y": 102.44602939288885
+          },
+          {
+            "x": 1081.2976460718562,
+            "y": 102.44602939288885
+          },
+          {
+            "x": 1081.2976460718562,
+            "y": 120.9974814483688
+          },
+          {
+            "x": 982.8430242605386,
+            "y": 120.9974814483688
+          }
+        ],
+        "category": "Header",
+        "id": 1,
+        "page": 1,
+        "content": {
+          "text": "YARROW",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 170.2887053021687,
+            "y": 169.16478699516415
+          },
+          {
+            "x": 1081.2976460718564,
+            "y": 169.16478699516415
+          },
+          {
+            "x": 1081.2976460718564,
+            "y": 279.3360554126384
+          },
+          {
+            "x": 170.2887053021687,
+            "y": 279.3360554126384
+          }
+        ],
+        "category": "Paragraph",
+        "id": 2,
+        "page": 1,
+        "content": {
+          "text": "where SOAS below some threshold cannot be recovered, so that an observer\ncan only guess about order.19 However, either kind of model can easily be fitted\nand interpreted from either theoretical perspective.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 171.9840028932851,
+            "y": 357.74623743948945
+          },
+          {
+            "x": 1023.8679020501676,
+            "y": 357.74623743948945
+          },
+          {
+            "x": 1023.8679020501676,
+            "y": 391.49239172952656
+          },
+          {
+            "x": 171.9840028932851,
+            "y": 391.49239172952656
+          }
+        ],
+        "category": "Heading1",
+        "id": 3,
+        "page": 1,
+        "content": {
+          "text": "8 Choosing between Observer Models and Rejecting Participants",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 170.28870530216847,
+            "y": 430.20121576809856
+          },
+          {
+            "x": 1081.2976460718562,
+            "y": 430.20121576809856
+          },
+          {
+            "x": 1081.2976460718562,
+            "y": 613.8199964638891
+          },
+          {
+            "x": 170.28870530216847,
+            "y": 613.8199964638891
+          }
+        ],
+        "category": "Paragraph",
+        "id": 4,
+        "page": 1,
+        "content": {
+          "text": "Two further reasonable questions one might ask are: 1) could my observer\nmodel have generated these data? and 2) does another observer model de-\nscribe the data better? Model comparison is a large and complex topic, so once\nagain, what I have to say here should be treated as a brief introduction rather\nthan a comprehensive summary.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 170.28870530216835,
+            "y": 617.7901322627167
+          },
+          {
+            "x": 1081.2976460718562,
+            "y": 617.7901322627167
+          },
+          {
+            "x": 1081.2976460718562,
+            "y": 1249.0417242763533
+          },
+          {
+            "x": 170.28870530216835,
+            "y": 1249.0417242763533
+          }
+        ],
+        "category": "Paragraph",
+        "id": 5,
+        "page": 1,
+        "content": {
+          "text": "Let's begin by considering a metric I have not yet mentioned: Deviance. De-\nviance (sometimes called G2) is a measure based on log likelihood, but which\nlooks rather more like summed squared error, in that it is zero for a perfectly\nfitting model and large/positive for a poorly fitting model. Formally, deviance\nis two times the difference in log likelihood between the saturated model and\nthe model with our current set of parameters. A saturated model is one that\nexactly predicts the data (which can always be accomplished by a model that\nhas one parameter per data point). Hence it represents the situation with the\nmaximum possible log-likelihood when predicting this particular set of data.\nDeviance is closely related to a simpler calculation (-2 \u00d7 log likelihood) that\nforms the basis of a couple of well-known metrics for model comparison (the\nAkaike information criterion, AIC, and the Bayesian information criterion,\nBIC) and indeed is occasionally defined this way. That's because we are of-\nten only really interested in differences (in Deviance, or AIC, or BIC) between\nmodels, and the log-likelihood of the saturated model gets subtracted out in a\ncomparison between two models (because it has contributed to the deviance\nin the same way for both) SO calculating it is not necessary.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 170.28870530216835,
+            "y": 1254.0588540495637
+          },
+          {
+            "x": 1081.2976460718562,
+            "y": 1254.0588540495637
+          },
+          {
+            "x": 1081.2976460718562,
+            "y": 1474.5814795562276
+          },
+          {
+            "x": 170.28870530216835,
+            "y": 1474.5814795562276
+          }
+        ],
+        "category": "Paragraph",
+        "id": 6,
+        "page": 1,
+        "content": {
+          "text": "However, if you want to say something about the goodness of fit of a model\nwithout relating it to any other model, based on asymptotic statistical theory,\nyou do need to calculate deviance properly. Asymptotically, it turns out that\nthe deviance of a model fitted to data when that model actually generated those\ndata follows a chi-square (x2) distribution, with degrees of freedom equal to\nthe number of data points minus the number of model parameters (note: for",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 173.16477367023342,
+            "y": 1531.299174226926
+          },
+          {
+            "x": 1082.5629467130632,
+            "y": 1531.299174226926
+          },
+          {
+            "x": 1082.5629467130632,
+            "y": 1659.177357214504
+          },
+          {
+            "x": 173.16477367023342,
+            "y": 1659.177357214504
+          }
+        ],
+        "category": "Footnote",
+        "id": 7,
+        "page": 1,
+        "content": {
+          "text": "19 Garcia-Perez and Alcala-Quintana's commitment to this account is a little unclear, be-\ncause they often let \ufffd vary across experimental conditions, suggesting flexibility more\nakin to a criterion-based account. It may be that they believe a low-threshold exists, but\nthat synchrony is often additionally reported beyond this hard limit.",
+          "html": "",
+          "markdown": ""
+        }
+      }
+    ]
+  },
+  "01030000000017.pdf": {
+    "elements": [
+      {
+        "coordinates": [
+          {
+            "x": 153.17873511373506,
+            "y": 164.70530998354994
+          },
+          {
+            "x": 1067.3778475325512,
+            "y": 164.70530998354994
+          },
+          {
+            "x": 1067.3778475325512,
+            "y": 853.0647207178758
+          },
+          {
+            "x": 153.17873511373506,
+            "y": 853.0647207178758
+          }
+        ],
+        "category": "Figure",
+        "id": 0,
+        "page": 1,
+        "content": {
+          "text": "",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 148.35874787117427,
+            "y": 882.3735496931859
+          },
+          {
+            "x": 352.87310551938504,
+            "y": 882.3735496931859
+          },
+          {
+            "x": 352.87310551938504,
+            "y": 907.7396715720334
+          },
+          {
+            "x": 148.35874787117427,
+            "y": 907.7396715720334
+          }
+        ],
+        "category": "Paragraph",
+        "id": 1,
+        "page": 1,
+        "content": {
+          "text": "16 Face Your World",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 156.74466086174496,
+            "y": 912.4958194243176
+          },
+          {
+            "x": 1079.7859660184884,
+            "y": 912.4958194243176
+          },
+          {
+            "x": 1079.7859660184884,
+            "y": 1125.3985559085845
+          },
+          {
+            "x": 156.74466086174496,
+            "y": 1125.3985559085845
+          }
+        ],
+        "category": "Paragraph",
+        "id": 2,
+        "page": 1,
+        "content": {
+          "text": "A girl at work with the Interactor during the Face Your World participation process (image\ncourtesy of Van Heeswijk). On top of the workstation we see the drawing the girl made in an\nearlier stage of the process. The drawing depicts a large tree with a little house inside the tree\nand a rope ladder leading up to the little house. On the screen we see the girl working on a new\nobject for the library. She is digitally redrawing her design for a tree house. Once this drawing\nis finished, she can save it to the library of the Interactor and use it when designing the park.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 151.61665361087418,
+            "y": 1214.535387828133
+          },
+          {
+            "x": 1077.674433621071,
+            "y": 1214.535387828133
+          },
+          {
+            "x": 1077.674433621071,
+            "y": 1676.0560404065052
+          },
+          {
+            "x": 151.61665361087418,
+            "y": 1676.0560404065052
+          }
+        ],
+        "category": "Paragraph",
+        "id": 3,
+        "page": 1,
+        "content": {
+          "text": "ticipating in Face Your World Slotervaart made a total of 1216 sketches in this phase\nof the planning project and Kaspori considered this the most creative part of the\nprocess (interview with Kaspori, 2007). In the third phase of the game, children\nwould discuss each other's sketches, vote for the best sketch and write down why\nthey had voted for that particular sketch. In the final stage, children entered the\nmulti-player mode and had to start designing the park together. This final design-\ning phase was directed at cooperation between the children: they had to agree on\nhow to design the park and work together in order to be able to realize their ideas\n(interview with Heeswijk, 2007). To realize their ideas, players thus needed to\ncommunicate and cooperate. The discussion option of the game was facilitated\nthrough a chat function. This chat function was one of the few aspects of the\ngame that did not work as it had been intended and projected by the designers.\nChildren working with the Interactor did not use the chat function for communi-",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 151.6166536108741,
+            "y": 1745.0825489332192
+          },
+          {
+            "x": 573.004139440651,
+            "y": 1745.0825489332192
+          },
+          {
+            "x": 573.004139440651,
+            "y": 1766.612609870715
+          },
+          {
+            "x": 151.6166536108741,
+            "y": 1766.612609870715
+          }
+        ],
+        "category": "Footer",
+        "id": 4,
+        "page": 1,
+        "content": {
+          "text": "PART IV: SERIOUS GEOGRAPHIES OF PLAY",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 1036.8509938269867,
+            "y": 1744.1085922835894
+          },
+          {
+            "x": 1073.374368188115,
+            "y": 1744.1085922835894
+          },
+          {
+            "x": 1073.374368188115,
+            "y": 1770.3305020813232
+          },
+          {
+            "x": 1036.8509938269867,
+            "y": 1770.3305020813232
+          }
+        ],
+        "category": "Footer",
+        "id": 5,
+        "page": 1,
+        "content": {
+          "text": "115",
+          "html": "",
+          "markdown": ""
+        }
+      }
+    ]
+  },
+  "01030000000027.pdf": {
+    "elements": [
+      {
+        "coordinates": [
+          {
+            "x": 205.45454404617,
+            "y": 54.771511978878245
+          },
+          {
+            "x": 619.865868717498,
+            "y": 54.771511978878245
+          },
+          {
+            "x": 619.865868717498,
+            "y": 83.86545771778997
+          },
+          {
+            "x": 205.45454404617,
+            "y": 83.86545771778997
+          }
+        ],
+        "category": "Header",
+        "id": 0,
+        "page": 1,
+        "content": {
+          "text": "Probability, Combinatorics and Control",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 308.55075940612244,
+            "y": 151.4155983067134
+          },
+          {
+            "x": 1104.7977624350965,
+            "y": 151.4155983067134
+          },
+          {
+            "x": 1104.7977624350965,
+            "y": 611.7521766217408
+          },
+          {
+            "x": 308.55075940612244,
+            "y": 611.7521766217408
+          }
+        ],
+        "category": "Chart",
+        "id": 1,
+        "page": 1,
+        "content": {
+          "text": "\u25a0 single-frequence \u25a0 multi-frequence\n0,3\n0.25\ndamage\n0,2\n0.15\nof\nLevel\n0,1\n0.05\n0\n1 2 3 4 5 6\nNumber of impellers",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 204.29017331190707,
+            "y": 639.3580339060247
+          },
+          {
+            "x": 661.6273548034088,
+            "y": 639.3580339060247
+          },
+          {
+            "x": 661.6273548034088,
+            "y": 691.4711115612449
+          },
+          {
+            "x": 204.29017331190707,
+            "y": 691.4711115612449
+          }
+        ],
+        "category": "Caption",
+        "id": 2,
+        "page": 1,
+        "content": {
+          "text": "Figure 7.\nEstimated cumulative damage for impeller blades.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 308.5507594061223,
+            "y": 744.4264819695643
+          },
+          {
+            "x": 1104.7977624350965,
+            "y": 744.4264819695643
+          },
+          {
+            "x": 1104.7977624350965,
+            "y": 1204.7630602845916
+          },
+          {
+            "x": 308.5507594061223,
+            "y": 1204.7630602845916
+          }
+        ],
+        "category": "Chart",
+        "id": 3,
+        "page": 1,
+        "content": {
+          "text": "\u25a0 single-frequency \u25a0 multi-frequency\n8\n7\n6\nyears\n5\nResource,\n4\n3\n2\n1\n0\n1 2 3 4 5 6\nNumber of impellers",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 204.29017331190707,
+            "y": 1232.3689175688758
+          },
+          {
+            "x": 827.8501024967837,
+            "y": 1232.3689175688758
+          },
+          {
+            "x": 827.8501024967837,
+            "y": 1284.481995224096
+          },
+          {
+            "x": 204.29017331190707,
+            "y": 1284.481995224096
+          }
+        ],
+        "category": "Caption",
+        "id": 4,
+        "page": 1,
+        "content": {
+          "text": "Figure 8.\nEstimated residual life of impeller blades by the criterion of cracking.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 308.5507594061223,
+            "y": 1368.8849124933238
+          },
+          {
+            "x": 1104.7977624350965,
+            "y": 1368.8849124933238
+          },
+          {
+            "x": 1104.7977624350965,
+            "y": 1829.221490808351
+          },
+          {
+            "x": 308.5507594061223,
+            "y": 1829.221490808351
+          }
+        ],
+        "category": "Chart",
+        "id": 5,
+        "page": 1,
+        "content": {
+          "text": "\u25a0 single-frequence \u25a0 multi-frequence\n12\n10\nyears\n8\nResource,\n6\n4\n2\n0\n1 2 3 4 5 6\nNumber of impellers",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 204.29017331190707,
+            "y": 1857.9920720504467
+          },
+          {
+            "x": 884.3998571029872,
+            "y": 1857.9920720504467
+          },
+          {
+            "x": 884.3998571029872,
+            "y": 1910.105149705667
+          },
+          {
+            "x": 204.29017331190707,
+            "y": 1910.105149705667
+          }
+        ],
+        "category": "Caption",
+        "id": 6,
+        "page": 1,
+        "content": {
+          "text": "Figure 9.\nEstimated residual life of impeller blades at the stage of crack development.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 208.712570662554,
+            "y": 1963.874280805992
+          },
+          {
+            "x": 235.67832602314172,
+            "y": 1963.874280805992
+          },
+          {
+            "x": 235.67832602314172,
+            "y": 1981.9918976888864
+          },
+          {
+            "x": 208.712570662554,
+            "y": 1981.9918976888864
+          }
+        ],
+        "category": "Footer",
+        "id": 7,
+        "page": 1,
+        "content": {
+          "text": "48",
+          "html": "",
+          "markdown": ""
+        }
+      }
+    ]
+  },
+  "01030000000040.pdf": {
+    "elements": [
+      {
+        "coordinates": [
+          {
+            "x": 192.7590519500097,
+            "y": 198.5738179714754
+          },
+          {
+            "x": 767.0541900082022,
+            "y": 198.5738179714754
+          },
+          {
+            "x": 767.0541900082022,
+            "y": 524.4863088194996
+          },
+          {
+            "x": 192.7590519500097,
+            "y": 524.4863088194996
+          }
+        ],
+        "category": "Paragraph",
+        "id": 0,
+        "page": 1,
+        "content": {
+          "text": "Thailand, Philippines and Indonesia in\nparticular, identifying known experts at\nthe national, subnational and community\nlevel. The survey and interviews with\nkey informants asked key questions to\nregional experts on violent extremism to\nascertain if hostile sentiments espoused\nare exacerbating insecurities for women.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 192.7590519500097,
+            "y": 586.7996341034651
+          },
+          {
+            "x": 767.0541900082022,
+            "y": 586.7996341034651
+          },
+          {
+            "x": 767.0541900082022,
+            "y": 1120.7182296856963
+          },
+          {
+            "x": 192.7590519500097,
+            "y": 1120.7182296856963
+          }
+        ],
+        "category": "Paragraph",
+        "id": 1,
+        "page": 1,
+        "content": {
+          "text": "The survey was made available in\nEnglish, Bahasa, Thai and Tagalog. We\nused the Qualtrics platform to facilitate\nthe ease of dissemination and response\nfrom home computers, iPads or mobile\nphone survey options. Qualtrics, one of\nthe most widely used research platforms,\nsupports the implementation of both\nlarge-scale survey and experimental\nstudy designs. It is administered online\nwith responses gathered into a central\nand privacy protected database that only\nthe approved researchers have access to.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 192.7590519500097,
+            "y": 1185.9485836157328
+          },
+          {
+            "x": 767.0541900082022,
+            "y": 1185.9485836157328
+          },
+          {
+            "x": 767.0541900082022,
+            "y": 1552.0802476101296
+          },
+          {
+            "x": 192.7590519500097,
+            "y": 1552.0802476101296
+          }
+        ],
+        "category": "Paragraph",
+        "id": 2,
+        "page": 1,
+        "content": {
+          "text": "The platform allows for the easy\nmigration of data into various statistical\npackages, including STATA, the main\nstatistical analysis package that we will\nuse to analyse the data. A limitation\nof this study is that we were unable\nto translate the survey in all ASEAN\nlanguages, and there is a selection bias in\nthat we are focussing the survey in areas",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 872.9020528183605,
+            "y": 198.57381797147545
+          },
+          {
+            "x": 1452.2274653934724,
+            "y": 198.57381797147545
+          },
+          {
+            "x": 1452.2274653934724,
+            "y": 401.59548009438333
+          },
+          {
+            "x": 872.9020528183605,
+            "y": 401.59548009438333
+          }
+        ],
+        "category": "Paragraph",
+        "id": 3,
+        "page": 1,
+        "content": {
+          "text": "of the region that most experience violent\nextremism and terrorism. However,\nthrough our networks, where possible,\nwe disseminated the survey throughout\nall ASEAN countries.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 872.9020528183605,
+            "y": 464.5384174928061
+          },
+          {
+            "x": 1452.2274653934724,
+            "y": 464.5384174928061
+          },
+          {
+            "x": 1452.2274653934724,
+            "y": 959.2271404353244
+          },
+          {
+            "x": 872.9020528183605,
+            "y": 959.2271404353244
+          }
+        ],
+        "category": "Paragraph",
+        "id": 4,
+        "page": 1,
+        "content": {
+          "text": "It is important to note the limitations\nof this six-month study. Although the\nsurvey was disseminated among all\nmember states, the majority of expert\nrespondents came from Indonesia, the\nPhilippines and Thailand. While this can\nbe regarded as highly selective rather\nthan representative, it is important to\nnote that Indonesia, the Philippines and\nThailand are the countries that continue\nto face the most pressing threat of\nongoing violent extremism and conflict.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 872.9020528183605,
+            "y": 1022.1700778337472
+          },
+          {
+            "x": 1452.2274653934724,
+            "y": 1022.1700778337472
+          },
+          {
+            "x": 1452.2274653934724,
+            "y": 1554.8537435650271
+          },
+          {
+            "x": 872.9020528183605,
+            "y": 1554.8537435650271
+          }
+        ],
+        "category": "Paragraph",
+        "id": 5,
+        "page": 1,
+        "content": {
+          "text": "This is with the exception of Myanmar.\nGiven the current political circumstances\nand challenges posed by COVID-19, on\ntop of the short project time span, it was\nunfeasible to include Myanmar within the\nscope of this study. It is also important\nto note that the data derived from the\nsurveys and interviews were based on the\nperceptions of experts and key informants,\nwho are involved in peacebuilding, and\non P/CVE strategies throughout the\nregion. As a result, it is important to note\nthe subjectivity of responses.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 541.0788790662857,
+            "y": 1638.942873661824
+          },
+          {
+            "x": 1114.287483345917,
+            "y": 1638.942873661824
+          },
+          {
+            "x": 1114.287483345917,
+            "y": 1673.8430285349382
+          },
+          {
+            "x": 541.0788790662857,
+            "y": 1673.8430285349382
+          }
+        ],
+        "category": "Caption",
+        "id": 6,
+        "page": 1,
+        "content": {
+          "text": "Figure 1: Age by gender of respondents",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 180.44394537744017,
+            "y": 1705.5704420559514
+          },
+          {
+            "x": 1470.6920952319608,
+            "y": 1705.5704420559514
+          },
+          {
+            "x": 1470.6920952319608,
+            "y": 2185.711966673945
+          },
+          {
+            "x": 180.44394537744017,
+            "y": 2185.711966673945
+          }
+        ],
+        "category": "Chart",
+        "id": 7,
+        "page": 1,
+        "content": {
+          "text": "\u25a0 Male\nOVER 50\n\u25a0 Female\n41-50\n31-40\n25-30\n0 5 10 15 20",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 51.23370102253008,
+            "y": 2279.8264716927924
+          },
+          {
+            "x": 1185.4389480637658,
+            "y": 2279.8264716927924
+          },
+          {
+            "x": 1185.4389480637658,
+            "y": 2306.7990497513115
+          },
+          {
+            "x": 51.23370102253008,
+            "y": 2306.7990497513115
+          }
+        ],
+        "category": "Footer",
+        "id": 8,
+        "page": 1,
+        "content": {
+          "text": "Gender Analysis of Violent Extremism and the Impact of COVID-19 on Peace and Security in ASEAN",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 1531.2814462407557,
+            "y": 2281.3811951875377
+          },
+          {
+            "x": 1565.5219302931014,
+            "y": 2281.3811951875377
+          },
+          {
+            "x": 1565.5219302931014,
+            "y": 2302.940018479756
+          },
+          {
+            "x": 1531.2814462407557,
+            "y": 2302.940018479756
+          }
+        ],
+        "category": "Footer",
+        "id": 9,
+        "page": 1,
+        "content": {
+          "text": "26",
+          "html": "",
+          "markdown": ""
+        }
+      }
+    ]
+  },
+  "01030000000076.pdf": {
+    "elements": [
+      {
+        "coordinates": [
+          {
+            "x": 312.4791812542525,
+            "y": 194.703931479394
+          },
+          {
+            "x": 1088.489553754372,
+            "y": 194.703931479394
+          },
+          {
+            "x": 1088.489553754372,
+            "y": 230.9033782012258
+          },
+          {
+            "x": 312.4791812542525,
+            "y": 230.9033782012258
+          }
+        ],
+        "category": "Caption",
+        "id": 0,
+        "page": 1,
+        "content": {
+          "text": "Figure 1.6. Alien temporary work permits, Thailand",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 310.05491677897606,
+            "y": 256.3758881660062
+          },
+          {
+            "x": 1303.6861306974915,
+            "y": 256.3758881660062
+          },
+          {
+            "x": 1303.6861306974915,
+            "y": 718.0287466875083
+          },
+          {
+            "x": 310.05491677897606,
+            "y": 718.0287466875083
+          }
+        ],
+        "category": "Chart",
+        "id": 1,
+        "page": 1,
+        "content": {
+          "text": "140000\n120000\n100000\n80000\n60000\n40000\n20000\n0\n07/2020\n03/2019\n11/2020\n03/2020\n09/2020\n11/2019\n05/2020\n09/2019\n05/2019\n07/2019\n01/2019\n01/2020\n01/2022\n11/2021\n09/2021\n03/2021\n01/2021\n07/2021\n05/2021",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 312.47918125425247,
+            "y": 741.3305336178676
+          },
+          {
+            "x": 971.5842442354568,
+            "y": 741.3305336178676
+          },
+          {
+            "x": 971.5842442354568,
+            "y": 771.5450040086275
+          },
+          {
+            "x": 312.47918125425247,
+            "y": 771.5450040086275
+          }
+        ],
+        "category": "Paragraph",
+        "id": 2,
+        "page": 1,
+        "content": {
+          "text": "Source: Department of Employment, Thailand (2022)",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 312.4791812542525,
+            "y": 808.4340242238493
+          },
+          {
+            "x": 1236.5486808055489,
+            "y": 808.4340242238493
+          },
+          {
+            "x": 1236.5486808055489,
+            "y": 844.6334709456811
+          },
+          {
+            "x": 312.4791812542525,
+            "y": 844.6334709456811
+          }
+        ],
+        "category": "Caption",
+        "id": 3,
+        "page": 1,
+        "content": {
+          "text": "Figure 1.7. Non-citizen population in Malaysia (in thousands)",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 310.05491677897606,
+            "y": 870.1059809104615
+          },
+          {
+            "x": 1303.6861306974915,
+            "y": 870.1059809104615
+          },
+          {
+            "x": 1303.6861306974915,
+            "y": 1386.968637148779
+          },
+          {
+            "x": 310.05491677897606,
+            "y": 1386.968637148779
+          }
+        ],
+        "category": "Chart",
+        "id": 4,
+        "page": 1,
+        "content": {
+          "text": "3,500 3,230 3,288 3,323\n3,140\n2,907\n3,000\n2,693\n2,500\n2,000\n1,500\n1,000\n500\n0\n2016 2017 2018 2019 2020 2021",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 312.47918125425247,
+            "y": 1408.6296782157085
+          },
+          {
+            "x": 1330.1436348740758,
+            "y": 1408.6296782157085
+          },
+          {
+            "x": 1330.1436348740758,
+            "y": 1438.8441486064685
+          },
+          {
+            "x": 312.47918125425247,
+            "y": 1438.8441486064685
+          }
+        ],
+        "category": "Paragraph",
+        "id": 5,
+        "page": 1,
+        "content": {
+          "text": "Source: Department of Statistics, Malaysia (2022). Figure for 2021 is an estimate.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 312.47918125425235,
+            "y": 1476.1577622950774
+          },
+          {
+            "x": 1236.5486808055484,
+            "y": 1476.1577622950774
+          },
+          {
+            "x": 1236.5486808055484,
+            "y": 1512.357209016909
+          },
+          {
+            "x": 312.47918125425235,
+            "y": 1512.357209016909
+          }
+        ],
+        "category": "Caption",
+        "id": 6,
+        "page": 1,
+        "content": {
+          "text": "Figure 1.8. Singapore foreign workforce stock (in thousands)",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 310.05491677897595,
+            "y": 1537.7245796832522
+          },
+          {
+            "x": 1303.6861306974913,
+            "y": 1537.7245796832522
+          },
+          {
+            "x": 1303.6861306974913,
+            "y": 2054.5872359215696
+          },
+          {
+            "x": 310.05491677897595,
+            "y": 2054.5872359215696
+          }
+        ],
+        "category": "Chart",
+        "id": 7,
+        "page": 1,
+        "content": {
+          "text": "1,450 1,427\n1,393 1,386\n1,400 1,368\n1,350\n1,300\n1,250 1,232\n1,200\n1,200\n1,150\n1,100\n1,050\n2016 (Dec) 2017 (Dec) 2018 (Dec) 2019 (Dec) 2020 (Dec) 2021 (Dec)",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 312.4791812542526,
+            "y": 2076.962876374021
+          },
+          {
+            "x": 1457.2764261057284,
+            "y": 2076.962876374021
+          },
+          {
+            "x": 1457.2764261057284,
+            "y": 2142.0335640642165
+          },
+          {
+            "x": 312.4791812542526,
+            "y": 2142.0335640642165
+          }
+        ],
+        "category": "Paragraph",
+        "id": 8,
+        "page": 1,
+        "content": {
+          "text": "Source: Compilation by Manpower Research & Statistics Department (Ministry of Manpower,\nSingapore, 2022).",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 232.163471886724,
+            "y": 2225.2595553874135
+          },
+          {
+            "x": 695.6443067174891,
+            "y": 2225.2595553874135
+          },
+          {
+            "x": 695.6443067174891,
+            "y": 2261.4567003826855
+          },
+          {
+            "x": 232.163471886724,
+            "y": 2261.4567003826855
+          }
+        ],
+        "category": "Footer",
+        "id": 9,
+        "page": 1,
+        "content": {
+          "text": "ASEAN Migration Outlook",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 1538.2553525419708,
+            "y": 2227.6957423848576
+          },
+          {
+            "x": 1574.9003185660383,
+            "y": 2227.6957423848576
+          },
+          {
+            "x": 1574.9003185660383,
+            "y": 2254.9666032840764
+          },
+          {
+            "x": 1538.2553525419708,
+            "y": 2254.9666032840764
+          }
+        ],
+        "category": "Footer",
+        "id": 10,
+        "page": 1,
+        "content": {
+          "text": "19",
+          "html": "",
+          "markdown": ""
+        }
+      }
+    ]
+  },
+  "01030000000083.pdf": {
+    "elements": [
+      {
+        "coordinates": [
+          {
+            "x": 1211.7977602567676,
+            "y": 98.37152433886185
+          },
+          {
+            "x": 1378.5735531576574,
+            "y": 98.37152433886185
+          },
+          {
+            "x": 1378.5735531576574,
+            "y": 129.181510175974
+          },
+          {
+            "x": 1211.7977602567676,
+            "y": 129.181510175974
+          }
+        ],
+        "category": "Header",
+        "id": 0,
+        "page": 1,
+        "content": {
+          "text": "Appendices",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 272.00056667767,
+            "y": 270.1010761845049
+          },
+          {
+            "x": 1097.2790526319147,
+            "y": 270.1010761845049
+          },
+          {
+            "x": 1097.2790526319147,
+            "y": 350.5729425558057
+          },
+          {
+            "x": 272.00056667767,
+            "y": 350.5729425558057
+          }
+        ],
+        "category": "Caption",
+        "id": 1,
+        "page": 1,
+        "content": {
+          "text": "TABLE 35: UNION-STATE BREAKDOWN OF\nIMPRISONMENT CLAUSES BY CATEGORIES",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 275.48720551726433,
+            "y": 401.4399517279577
+          },
+          {
+            "x": 1377.7673206504523,
+            "y": 401.4399517279577
+          },
+          {
+            "x": 1377.7673206504523,
+            "y": 957.910577711532
+          },
+          {
+            "x": 275.48720551726433,
+            "y": 957.910577711532
+          }
+        ],
+        "category": "Table",
+        "id": 2,
+        "page": 1,
+        "content": {
+          "text": "",
+          "html": "<tr><td>Category</td><td>Number of clauses in Union laws</td><td>In percent</td><td>Number of clauses in State laws</td><td>In percent</td></tr><tr><td>Commercial</td><td>529</td><td>10.1%</td><td>817</td><td>3.9%</td></tr><tr><td>Environment, Health and Safety</td><td>834</td><td>15.9%</td><td>345</td><td>1.7%</td></tr><tr><td>Finance & Taxation</td><td>41</td><td>0.8%</td><td>888</td><td>4.2%</td></tr><tr><td>General</td><td>75</td><td>1.4%</td><td>360</td><td>1.7%</td></tr><tr><td>Industry Specific</td><td>2979</td><td>56.9%</td><td>1200</td><td>5.7%</td></tr><tr><td>Labour</td><td>534</td><td>10.2%</td><td>17285</td><td>82.7%</td></tr><tr><td>Secretarial</td><td>247</td><td>4.7%</td><td>0</td><td>0.0%</td></tr>",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 272.00056667767024,
+            "y": 1006.725347549533
+          },
+          {
+            "x": 1320.5981985272542,
+            "y": 1006.725347549533
+          },
+          {
+            "x": 1320.5981985272542,
+            "y": 1087.1972139208335
+          },
+          {
+            "x": 272.00056667767024,
+            "y": 1087.1972139208335
+          }
+        ],
+        "category": "Caption",
+        "id": 3,
+        "page": 1,
+        "content": {
+          "text": "TABLE 36: THREE CASE STUDIES ON MANUFACTURING\nCOMPLIANCES*",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 276.29343802446954,
+            "y": 1137.861453818703
+          },
+          {
+            "x": 1378.5735531576574,
+            "y": 1137.861453818703
+          },
+          {
+            "x": 1378.5735531576574,
+            "y": 1430.5858802786163
+          },
+          {
+            "x": 276.29343802446954,
+            "y": 1430.5858802786163
+          }
+        ],
+        "category": "Table",
+        "id": 4,
+        "page": 1,
+        "content": {
+          "text": "",
+          "html": "<tr><td></td><td>Small</td><td>Medium</td><td>Large</td></tr><tr><td>Total Applicable Compliances</td><td>669</td><td>3,109</td><td>5,796</td></tr><tr><td>Compliances with imprisonment</td><td>461</td><td>2,172</td><td>4,085</td></tr><tr><td>Percentage of imprisonment clauses</td><td>69%</td><td>70%</td><td>70%</td></tr>",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 272.9703860308061,
+            "y": 1436.353485352644
+          },
+          {
+            "x": 1381.5027516893515,
+            "y": 1436.353485352644
+          },
+          {
+            "x": 1381.5027516893515,
+            "y": 1513.0280919032314
+          },
+          {
+            "x": 272.9703860308061,
+            "y": 1513.0280919032314
+          }
+        ],
+        "category": "Paragraph",
+        "id": 5,
+        "page": 1,
+        "content": {
+          "text": "* These are real data from three companies operating in the automotive components\nbusiness",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 272.00056667766995,
+            "y": 1565.8843189133229
+          },
+          {
+            "x": 1353.8246165645724,
+            "y": 1565.8843189133229
+          },
+          {
+            "x": 1353.8246165645724,
+            "y": 1646.3561852846233
+          },
+          {
+            "x": 272.00056667766995,
+            "y": 1646.3561852846233
+          }
+        ],
+        "category": "Caption",
+        "id": 6,
+        "page": 1,
+        "content": {
+          "text": "TABLE 37: BREAKDOWN OF IMPRISONMENT CLAUSES IN\nMANUFACTURING CASE STUDIES*",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 275.48720551726444,
+            "y": 1698.1902138255132
+          },
+          {
+            "x": 1377.7673206504523,
+            "y": 1698.1902138255132
+          },
+          {
+            "x": 1377.7673206504523,
+            "y": 2040.523544158221
+          },
+          {
+            "x": 275.48720551726444,
+            "y": 2040.523544158221
+          }
+        ],
+        "category": "Table",
+        "id": 7,
+        "page": 1,
+        "content": {
+          "text": "",
+          "html": "<tr><td></td><td>Small</td><td>Medium</td><td>Large</td></tr><tr><td>Less than 3 months</td><td>25</td><td>82</td><td>185</td></tr><tr><td>3 months to less than 1 year</td><td>187</td><td>699</td><td>1,220</td></tr><tr><td>1 year to less than 3 years</td><td>178</td><td>1,070</td><td>1,964</td></tr><tr><td>3 years to less than 5 years</td><td>59</td><td>245</td><td>505</td></tr><tr><td>5 years to 10 years</td><td>12</td><td>76</td><td>211</td></tr>",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 273.55161605985427,
+            "y": 2051.067831408664
+          },
+          {
+            "x": 448.9989943630742,
+            "y": 2051.067831408664
+          },
+          {
+            "x": 448.9989943630742,
+            "y": 2078.8129982101036
+          },
+          {
+            "x": 273.55161605985427,
+            "y": 2078.8129982101036
+          }
+        ],
+        "category": "Paragraph",
+        "id": 8,
+        "page": 1,
+        "content": {
+          "text": "* In Table 36",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 802.6347575513153,
+            "y": 2222.2818651328935
+          },
+          {
+            "x": 851.5776246259367,
+            "y": 2222.2818651328935
+          },
+          {
+            "x": 851.5776246259367,
+            "y": 2257.8237090799403
+          },
+          {
+            "x": 802.6347575513153,
+            "y": 2257.8237090799403
+          }
+        ],
+        "category": "Footer",
+        "id": 9,
+        "page": 1,
+        "content": {
+          "text": "85",
+          "html": "",
+          "markdown": ""
+        }
+      }
+    ]
+  },
+  "01030000000118.pdf": {
+    "elements": [
+      {
+        "coordinates": [
+          {
+            "x": 214.05510515924797,
+            "y": 107.90539886519235
+          },
+          {
+            "x": 695.2653211968228,
+            "y": 107.90539886519235
+          },
+          {
+            "x": 695.2653211968228,
+            "y": 153.9983314358413
+          },
+          {
+            "x": 214.05510515924797,
+            "y": 153.9983314358413
+          }
+        ],
+        "category": "Header",
+        "id": 0,
+        "page": 1,
+        "content": {
+          "text": "MOHAVE COMMUNITY COLLEGE",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 1377.4407232424264,
+            "y": 111.59283347084428
+          },
+          {
+            "x": 1504.6572171374175,
+            "y": 111.59283347084428
+          },
+          {
+            "x": 1504.6572171374175,
+            "y": 153.9983314358413
+          },
+          {
+            "x": 1377.4407232424264,
+            "y": 153.9983314358413
+          }
+        ],
+        "category": "Header",
+        "id": 1,
+        "page": 1,
+        "content": {
+          "text": "BIO181",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 669.4532789572593,
+            "y": 205.62241591496803
+          },
+          {
+            "x": 1025.2907184026687,
+            "y": 205.62241591496803
+          },
+          {
+            "x": 1025.2907184026687,
+            "y": 253.55906578844292
+          },
+          {
+            "x": 669.4532789572593,
+            "y": 253.55906578844292
+          }
+        ],
+        "category": "Heading1",
+        "id": 2,
+        "page": 1,
+        "content": {
+          "text": "Cellular Replication",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 105.2757842925165,
+            "y": 271.9962388167025
+          },
+          {
+            "x": 1233.630773622002,
+            "y": 271.9962388167025
+          },
+          {
+            "x": 1233.630773622002,
+            "y": 970.76509658774
+          },
+          {
+            "x": 105.2757842925165,
+            "y": 970.76509658774
+          }
+        ],
+        "category": "Figure",
+        "id": 3,
+        "page": 1,
+        "content": {
+          "text": "",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 191.93049752533648,
+            "y": 1015.0143118555628
+          },
+          {
+            "x": 842.762705422899,
+            "y": 1015.0143118555628
+          },
+          {
+            "x": 842.762705422899,
+            "y": 1064.7946790318638
+          },
+          {
+            "x": 191.93049752533648,
+            "y": 1064.7946790318638
+          }
+        ],
+        "category": "Heading1",
+        "id": 4,
+        "page": 1,
+        "content": {
+          "text": "Growth and the Creation of Life",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 212.21138785642196,
+            "y": 1094.2941558770794
+          },
+          {
+            "x": 1111.9454316354884,
+            "y": 1094.2941558770794
+          },
+          {
+            "x": 1111.9454316354884,
+            "y": 1995.871916958972
+          },
+          {
+            "x": 212.21138785642196,
+            "y": 1995.871916958972
+          }
+        ],
+        "category": "Paragraph",
+        "id": 5,
+        "page": 1,
+        "content": {
+          "text": "One of the characteristics of living things is the ability\nto replicate and passon genetic information to the next\ngeneration. Cell division in individual bacteria and\narchaea usually occurs by binary fission. Mitochondria\nand chloroplasts also replicate by binary fission, which\nis evidence of the evolutionary relationship between\nthese organelles and prokaryotes.\nCell division in eukaryotes is more complex. It requires\nthe cell to manage acomplicated process of duplicating\nthe nucleus, other organelles, and multiple linear\nchromosomes. It is controlled in the cell cycle, which is\ndivided into three parts: interphase, mitosis, and\ncytokinesis. We spilt those further for ease of study.\nLet's start with interphase, which is broken into three\nstages. In the first growth phase (G1), the cell grows and\nprepares to duplicate its DNA. In the synthesis phase\n(S), the chromosomes are replicated. In the second\ngrowth phase (G2), the cell prepares to divide.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 1308.8879617100802,
+            "y": 298.3568250471894
+          },
+          {
+            "x": 1551.1615577012594,
+            "y": 298.3568250471894
+          },
+          {
+            "x": 1551.1615577012594,
+            "y": 546.7253542708513
+          },
+          {
+            "x": 1308.8879617100802,
+            "y": 546.7253542708513
+          }
+        ],
+        "category": "Figure",
+        "id": 6,
+        "page": 1,
+        "content": {
+          "text": "Growth\nM\nand\nand G2 G1 normal\npreparation metabolic\nfor maosis S\nrolea\nDNA\nreplication",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 1272.318362315185,
+            "y": 674.7189521529839
+          },
+          {
+            "x": 1534.400491311933,
+            "y": 674.7189521529839
+          },
+          {
+            "x": 1534.400491311933,
+            "y": 752.4293508671358
+          },
+          {
+            "x": 1272.318362315185,
+            "y": 752.4293508671358
+          }
+        ],
+        "category": "Heading1",
+        "id": 7,
+        "page": 1,
+        "content": {
+          "text": "Cellular Cycle\nand Replication",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 1301.269295169477,
+            "y": 819.4736164244432
+          },
+          {
+            "x": 1543.5428911606564,
+            "y": 819.4736164244432
+          },
+          {
+            "x": 1543.5428911606564,
+            "y": 1063.2709457237431
+          },
+          {
+            "x": 1301.269295169477,
+            "y": 1063.2709457237431
+          }
+        ],
+        "category": "Figure",
+        "id": 8,
+        "page": 1,
+        "content": {
+          "text": "",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 1275.3658289314262,
+            "y": 1134.8864112054123
+          },
+          {
+            "x": 1555.7327576256212,
+            "y": 1134.8864112054123
+          },
+          {
+            "x": 1555.7327576256212,
+            "y": 1308.592008331164
+          },
+          {
+            "x": 1275.3658289314262,
+            "y": 1308.592008331164
+          }
+        ],
+        "category": "Paragraph",
+        "id": 9,
+        "page": 1,
+        "content": {
+          "text": "A step by step\nguide to growing a\nhuman!",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 1299.7455618613565,
+            "y": 1349.732807650421
+          },
+          {
+            "x": 1548.1140910850183,
+            "y": 1349.732807650421
+          },
+          {
+            "x": 1548.1140910850183,
+            "y": 1588.9589370253589
+          },
+          {
+            "x": 1299.7455618613565,
+            "y": 1588.9589370253589
+          }
+        ],
+        "category": "Figure",
+        "id": 10,
+        "page": 1,
+        "content": {
+          "text": "",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 1272.318362315185,
+            "y": 1599.6250701822032
+          },
+          {
+            "x": 1474.9748922952283,
+            "y": 1599.6250701822032
+          },
+          {
+            "x": 1474.9748922952283,
+            "y": 1665.1456024313904
+          },
+          {
+            "x": 1272.318362315185,
+            "y": 1665.1456024313904
+          }
+        ],
+        "category": "Heading1",
+        "id": 11,
+        "page": 1,
+        "content": {
+          "text": "Mitosis and\nMeiosis",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 1273.8420956233058,
+            "y": 1692.5728019775618
+          },
+          {
+            "x": 1551.16155770126,
+            "y": 1692.5728019775618
+          },
+          {
+            "x": 1551.16155770126,
+            "y": 1825.1375997840555
+          },
+          {
+            "x": 1273.8420956233058,
+            "y": 1825.1375997840555
+          }
+        ],
+        "category": "Paragraph",
+        "id": 12,
+        "page": 1,
+        "content": {
+          "text": "Similiar processes\nwith VERY different\nresults!",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 835.0069028845658,
+            "y": 2137.5029279487844
+          },
+          {
+            "x": 874.6239688957019,
+            "y": 2137.5029279487844
+          },
+          {
+            "x": 874.6239688957019,
+            "y": 2172.548794035559
+          },
+          {
+            "x": 835.0069028845658,
+            "y": 2172.548794035559
+          }
+        ],
+        "category": "Footer",
+        "id": 13,
+        "page": 1,
+        "content": {
+          "text": "66",
+          "html": "",
+          "markdown": ""
+        }
+      }
+    ]
+  },
+  "01030000000120.pdf": {
+    "elements": [
+      {
+        "coordinates": [
+          {
+            "x": 194.99552428336497,
+            "y": 106.12444573974226
+          },
+          {
+            "x": 673.7931178050253,
+            "y": 106.12444573974226
+          },
+          {
+            "x": 673.7931178050253,
+            "y": 143.59556175448088
+          },
+          {
+            "x": 194.99552428336497,
+            "y": 143.59556175448088
+          }
+        ],
+        "category": "Header",
+        "id": 0,
+        "page": 1,
+        "content": {
+          "text": "MOHAVE COMMUNITY COLLEGE",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 1348.2732060703202,
+            "y": 110.2879030747132
+          },
+          {
+            "x": 1475.2586547869344,
+            "y": 110.2879030747132
+          },
+          {
+            "x": 1475.2586547869344,
+            "y": 143.59556175448088
+          },
+          {
+            "x": 1348.2732060703202,
+            "y": 143.59556175448088
+          }
+        ],
+        "category": "Header",
+        "id": 1,
+        "page": 1,
+        "content": {
+          "text": "BIO181",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 194.99552428336472,
+            "y": 203.96569311155977
+          },
+          {
+            "x": 1475.2586547869334,
+            "y": 203.96569311155977
+          },
+          {
+            "x": 1475.2586547869334,
+            "y": 316.3790411557756
+          },
+          {
+            "x": 194.99552428336472,
+            "y": 316.3790411557756
+          }
+        ],
+        "category": "Paragraph",
+        "id": 2,
+        "page": 1,
+        "content": {
+          "text": "Sickle cell hemoglobin and normal hemoglobin differ in only a single amino acid out of more than 100\namino acids in the complete hemoglobin protein. This difference in a single amino acid results in the\ndifferent properties of sickle cell hemoglobin compared to normal hemoglobin.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 190.8320669483942,
+            "y": 397.5664591877093
+          },
+          {
+            "x": 1475.2586547869334,
+            "y": 397.5664591877093
+          },
+          {
+            "x": 1475.2586547869334,
+            "y": 472.50869121718654
+          },
+          {
+            "x": 190.8320669483942,
+            "y": 472.50869121718654
+          }
+        ],
+        "category": "Paragraph",
+        "id": 3,
+        "page": 1,
+        "content": {
+          "text": "Hemoglobin is carried inside red blood cells. Normal hemoglobin dissolves in the watery cytosol of red\nblood cells. Sickle cell hemoglobin is less soluble in the cytosol because:",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 244.95701230301665,
+            "y": 505.81634989695425
+          },
+          {
+            "x": 1339.9462914003782,
+            "y": 505.81634989695425
+          },
+          {
+            "x": 1339.9462914003782,
+            "y": 576.5951245914606
+          },
+          {
+            "x": 244.95701230301665,
+            "y": 576.5951245914606
+          }
+        ],
+        "category": "List",
+        "id": 4,
+        "page": 1,
+        "content": {
+          "text": "\u00b7 Valine (Val) is much less water-soluble than glutamic acid (Glu).\n\u00b7 Amino acid 6 is in a crucial location on the outer surface of the hemoglobin protein.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 194.99552428336472,
+            "y": 574.5133959239752
+          },
+          {
+            "x": 1410.725066094885,
+            "y": 574.5133959239752
+          },
+          {
+            "x": 1410.725066094885,
+            "y": 659.8642712908796
+          },
+          {
+            "x": 194.99552428336472,
+            "y": 659.8642712908796
+          }
+        ],
+        "category": "Paragraph",
+        "id": 5,
+        "page": 1,
+        "content": {
+          "text": "The chart on the next page shows how the lower solubility of sickle cell hemoglobin results in the\nsymptoms of sickle cell anemia.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 136.7071215937717,
+            "y": 741.0516893228133
+          },
+          {
+            "x": 1560.6095301538396,
+            "y": 741.0516893228133
+          },
+          {
+            "x": 1560.6095301538396,
+            "y": 1819.3871390802913
+          },
+          {
+            "x": 136.7071215937717,
+            "y": 1819.3871390802913
+          }
+        ],
+        "category": "Table",
+        "id": 6,
+        "page": 1,
+        "content": {
+          "text": "",
+          "html": "<tr><td>Genes in DNA</td><td>\u2192</td><td>Protein</td><td>\u2192</td><td>Characteristics</td></tr><tr><td>2 copies of the allele that codes for normal hemoglobin (SS)</td><td>\u2192</td><td>Normal hemoglobin dissolves in the cytosol of red blood cells.</td><td>\u2192</td><td>Disk-shaped red blood cells can squeeze through the smallest blood vessels \u2192 normal health</td></tr><tr><td>2 copies of the allele that codes for sickle cell hemoglobin (ss)</td><td>\u2192</td><td>Sickle cell hemoglobin can clump in long rods in red blood cells.</td><td>\u2192</td><td>If sickle cell hemoglobin clumps in long rods \u2192 sickle-shaped red blood cells \u2192 clogged small blood vessels + fragile red blood cells \u2192 pain, damage to body organs + anemia = sickle cell anemia</td></tr>",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 707.1007764847931,
+            "y": 907.5899827216516
+          },
+          {
+            "x": 890.2928992235153,
+            "y": 907.5899827216516
+          },
+          {
+            "x": 890.2928992235153,
+            "y": 1113.681120802714
+          },
+          {
+            "x": 707.1007764847931,
+            "y": 1113.681120802714
+          }
+        ],
+        "category": "Figure",
+        "id": 7,
+        "page": 1,
+        "content": {
+          "text": "",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 1252.513687365988,
+            "y": 951.3062847388468
+          },
+          {
+            "x": 1416.9702520973417,
+            "y": 951.3062847388468
+          },
+          {
+            "x": 1416.9702520973417,
+            "y": 1119.9263068051705
+          },
+          {
+            "x": 1252.513687365988,
+            "y": 1119.9263068051705
+          }
+        ],
+        "category": "Figure",
+        "id": 8,
+        "page": 1,
+        "content": {
+          "text": "",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 682.1200324749674,
+            "y": 1490.4740096175858
+          },
+          {
+            "x": 904.8649998959136,
+            "y": 1490.4740096175858
+          },
+          {
+            "x": 904.8649998959136,
+            "y": 1698.6468763661337
+          },
+          {
+            "x": 682.1200324749674,
+            "y": 1698.6468763661337
+          }
+        ],
+        "category": "Figure",
+        "id": 9,
+        "page": 1,
+        "content": {
+          "text": "",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 1227.5329433561628,
+            "y": 1598.7239003268307
+          },
+          {
+            "x": 1427.3788954347683,
+            "y": 1598.7239003268307
+          },
+          {
+            "x": 1427.3788954347683,
+            "y": 1794.4063950704658
+          },
+          {
+            "x": 1227.5329433561628,
+            "y": 1794.4063950704658
+          }
+        ],
+        "category": "Figure",
+        "id": 10,
+        "page": 1,
+        "content": {
+          "text": "",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 190.83206694839416,
+            "y": 1877.675541769885
+          },
+          {
+            "x": 1196.3070133438807,
+            "y": 1877.675541769885
+          },
+          {
+            "x": 1196.3070133438807,
+            "y": 1913.064929117138
+          },
+          {
+            "x": 190.83206694839416,
+            "y": 1913.064929117138
+          }
+        ],
+        "category": "Paragraph",
+        "id": 11,
+        "page": 1,
+        "content": {
+          "text": "29a. Circle the arrows in the chart that represent transcription + translation.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 825.7593105314653,
+            "y": 2029.641734496325
+          },
+          {
+            "x": 879.8842558860878,
+            "y": 2029.641734496325
+          },
+          {
+            "x": 879.8842558860878,
+            "y": 2065.031121843578
+          },
+          {
+            "x": 825.7593105314653,
+            "y": 2065.031121843578
+          }
+        ],
+        "category": "Footer",
+        "id": 12,
+        "page": 1,
+        "content": {
+          "text": "115",
+          "html": "",
+          "markdown": ""
+        }
+      }
+    ]
+  },
+  "01030000000127.pdf": {
+    "elements": [
+      {
+        "coordinates": [
+          {
+            "x": 146.34553264488005,
+            "y": 143.63778313975197
+          },
+          {
+            "x": 1553.0739846473198,
+            "y": 143.63778313975197
+          },
+          {
+            "x": 1553.0739846473198,
+            "y": 598.1878426041096
+          },
+          {
+            "x": 146.34553264488005,
+            "y": 598.1878426041096
+          }
+        ],
+        "category": "Table",
+        "id": 0,
+        "page": 1,
+        "content": {
+          "text": "",
+          "html": "<tr><td>Year</td><td>3-Year</td><td>5-Year</td><td>7-Year</td></tr><tr><td>1</td><td>33.0%</td><td>20.00%</td><td>14.29%</td></tr><tr><td>2</td><td>44.45%</td><td>32.00%</td><td>24.49%</td></tr><tr><td>3</td><td>14.81%</td><td>19.20%</td><td>17.49%</td></tr><tr><td>4</td><td>7.41%</td><td>11.52%</td><td>12.49%</td></tr><tr><td>5</td><td></td><td>11.52%</td><td>8.93%</td></tr><tr><td>6</td><td></td><td>5.76%</td><td>8.93%</td></tr><tr><td>7</td><td></td><td></td><td>8.93%</td></tr><tr><td>8</td><td></td><td></td><td>4.46%</td></tr>",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 146.34553264488005,
+            "y": 641.2661162134768
+          },
+          {
+            "x": 1560.501273200659,
+            "y": 641.2661162134768
+          },
+          {
+            "x": 1560.501273200659,
+            "y": 761.5881907775714
+          },
+          {
+            "x": 146.34553264488005,
+            "y": 761.5881907775714
+          }
+        ],
+        "category": "Paragraph",
+        "id": 1,
+        "page": 1,
+        "content": {
+          "text": "Suppose your business just purchased a $100,000 asset that has a 3-year useful life, and falls into\n3-year class of assets. Using the SL method, the depreciation expense each year for the next 3 years\nwould be:",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 146.34553264488005,
+            "y": 803.1810066762707
+          },
+          {
+            "x": 1553.0739846473198,
+            "y": 803.1810066762707
+          },
+          {
+            "x": 1553.0739846473198,
+            "y": 1049.7669866471313
+          },
+          {
+            "x": 146.34553264488005,
+            "y": 1049.7669866471313
+          }
+        ],
+        "category": "Table",
+        "id": 2,
+        "page": 1,
+        "content": {
+          "text": "",
+          "html": "<tr><td>Year</td><td>Recovery Rate</td><td>Unadjusted Basis</td><td>Depreciation Expense</td><td>Accumulated Depreciation</td></tr><tr><td>1</td><td>.1667</td><td>$100,000</td><td>$16,670</td><td>$16,670</td></tr><tr><td>2</td><td>.3333</td><td>$100,000</td><td>$33,330</td><td>$50,000</td></tr><tr><td>3</td><td>.3333</td><td>$100,000</td><td>$33,330</td><td>$88,330</td></tr><tr><td>4</td><td>.1667</td><td>$100,000</td><td>$16,670</td><td>$100,000</td></tr>",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 146.34553264487988,
+            "y": 1098.78709109917
+          },
+          {
+            "x": 1560.5012732006587,
+            "y": 1098.78709109917
+          },
+          {
+            "x": 1560.5012732006587,
+            "y": 1219.1091656632643
+          },
+          {
+            "x": 146.34553264487988,
+            "y": 1219.1091656632643
+          }
+        ],
+        "category": "Paragraph",
+        "id": 3,
+        "page": 1,
+        "content": {
+          "text": "Note that the book value or basis of the asset (acquisition cost - accumulated depreciation) would\nbe $0 after it has been fully depreciated at the end of 4 years. Because of the half-year convention, it\ntakes 4 years to depreciate the asset, even though it falls into the 3-year classification.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 146.34553264488005,
+            "y": 1253.274693008625
+          },
+          {
+            "x": 1423.839163819218,
+            "y": 1253.274693008625
+          },
+          {
+            "x": 1423.839163819218,
+            "y": 1290.4111357753204
+          },
+          {
+            "x": 146.34553264488005,
+            "y": 1290.4111357753204
+          }
+        ],
+        "category": "Paragraph",
+        "id": 4,
+        "page": 1,
+        "content": {
+          "text": "Depreciation expense for the same asset using the MACRS method would be calculated as:",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 146.34553264488005,
+            "y": 1327.5475785420165
+          },
+          {
+            "x": 1553.0739846473198,
+            "y": 1327.5475785420165
+          },
+          {
+            "x": 1553.0739846473198,
+            "y": 1574.133558512877
+          },
+          {
+            "x": 146.34553264488005,
+            "y": 1574.133558512877
+          }
+        ],
+        "category": "Table",
+        "id": 5,
+        "page": 1,
+        "content": {
+          "text": "",
+          "html": "<tr><td>Year</td><td>Recovery Rate</td><td>Unadjusted Basis</td><td>Depreciation Expense</td><td>Accumulated Depreciation</td></tr><tr><td>1</td><td>.3333</td><td>$100,000</td><td>$33,333</td><td>$33,333</td></tr><tr><td>2</td><td>.4445</td><td>$100,000</td><td>$44,450</td><td>$77,780</td></tr><tr><td>3</td><td>.1481</td><td>$100,000</td><td>$14,810</td><td>$92,950</td></tr><tr><td>4</td><td>.741</td><td>$100,000</td><td>$7,410</td><td>$100,000</td></tr>",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 146.34553264488014,
+            "y": 1623.1536629649158
+          },
+          {
+            "x": 1560.501273200659,
+            "y": 1623.1536629649158
+          },
+          {
+            "x": 1560.501273200659,
+            "y": 1743.47573752901
+          },
+          {
+            "x": 146.34553264488014,
+            "y": 1743.47573752901
+          }
+        ],
+        "category": "Paragraph",
+        "id": 6,
+        "page": 1,
+        "content": {
+          "text": "Note again that the depreciation expense using MACRS is higher in the early years and lower in later\nyears than with the SL method and that the book value after 4 years is again zero. Businesses often\nuse MACRS for tax purposes and SL for profit reporting. Can you think of any reasons why?",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 146.34553264488014,
+            "y": 1780.6121802957064
+          },
+          {
+            "x": 1560.501273200659,
+            "y": 1780.6121802957064
+          },
+          {
+            "x": 1560.501273200659,
+            "y": 1988.576259789203
+          },
+          {
+            "x": 146.34553264488014,
+            "y": 1988.576259789203
+          }
+        ],
+        "category": "Paragraph",
+        "id": 7,
+        "page": 1,
+        "content": {
+          "text": "Some businesses that invest small amounts in capital assets are allowed to deduct up to $1,000,000\nof the cost of acquired depreciable property as a current expenditure instead of a capital expenditure.\nThis is known as direct expensing, and is available only to businesses that don't make large capital\npurchases each year. The allowable expensing amount is reduced by one dollar for each dollar of\ncapital investment expenditure over $2,500,000 during the year. Other restrictions also apply.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 148.56758095587915,
+            "y": 2089.9252417866683
+          },
+          {
+            "x": 534.1108703854106,
+            "y": 2089.9252417866683
+          },
+          {
+            "x": 534.1108703854106,
+            "y": 2117.3191070882403
+          },
+          {
+            "x": 148.56758095587915,
+            "y": 2117.3191070882403
+          }
+        ],
+        "category": "Footer",
+        "id": 8,
+        "page": 1,
+        "content": {
+          "text": "42 | Ch. 3. The Federal Tax System",
+          "html": "",
+          "markdown": ""
+        }
+      }
+    ]
+  },
+  "01030000000192.pdf": {
+    "elements": [
+      {
+        "coordinates": [
+          {
+            "x": 191.61778767565824,
+            "y": 202.42611951997247
+          },
+          {
+            "x": 808.7845114922594,
+            "y": 202.42611951997247
+          },
+          {
+            "x": 808.7845114922594,
+            "y": 384.8276208908708
+          },
+          {
+            "x": 191.61778767565824,
+            "y": 384.8276208908708
+          }
+        ],
+        "category": "Paragraph",
+        "id": 0,
+        "page": 1,
+        "content": {
+          "text": "Edward Beeching, Clementine Fourrier, Nathan\nHabib, Sheon Han, Nathan Lambert, Nazneen\nRajani, Omar Sanseviero, Lewis Tunstall, and\nThomas Wolf. 2023. Open llm leaderboard.\nhttps : //huggingface . co/spaces/\nHuggingFaceH4/open_llm_leaderboard.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 187.86981162009175,
+            "y": 409.8141279279801
+          },
+          {
+            "x": 806.2858607885485,
+            "y": 409.8141279279801
+          },
+          {
+            "x": 806.2858607885485,
+            "y": 585.969002539601
+          },
+          {
+            "x": 187.86981162009175,
+            "y": 585.969002539601
+          }
+        ],
+        "category": "Paragraph",
+        "id": 1,
+        "page": 1,
+        "content": {
+          "text": "Tom Brown, Benjamin Mann, Nick Ryder, Melanie\nSubbiah, Jared D Kaplan, Prafulla Dhariwal, Arvind\nNeelakantan, Pranav Shyam, Girish Sastry, Amanda\nAskell, et al. 2020. Language models are few-shot\nlearners. Advances in neural information processing\nsystems, 33:1877-1901.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 194.11643837936907,
+            "y": 609.7061842248548
+          },
+          {
+            "x": 812.5324875478258,
+            "y": 609.7061842248548
+          },
+          {
+            "x": 812.5324875478258,
+            "y": 763.3732025030773
+          },
+          {
+            "x": 194.11643837936907,
+            "y": 763.3732025030773
+          }
+        ],
+        "category": "Paragraph",
+        "id": 2,
+        "page": 1,
+        "content": {
+          "text": "Peter Clark, Isaac Cowhey, Oren Etzioni, Tushar Khot,\nAshish Sabharwal, Carissa Schoenick, and Oyvind\nTafjord. 2018. Think you have solved question an-\nswering? try arc, the ai2 reasoning challenge. arXiv\npreprint arXiv:1803.05457.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 195.3657637312246,
+            "y": 788.3597095401866
+          },
+          {
+            "x": 807.5351861404037,
+            "y": 788.3597095401866
+          },
+          {
+            "x": 807.5351861404037,
+            "y": 933.281450355421
+          },
+          {
+            "x": 195.3657637312246,
+            "y": 933.281450355421
+          }
+        ],
+        "category": "Paragraph",
+        "id": 3,
+        "page": 1,
+        "content": {
+          "text": "Karl Cobbe, Vineet Kosaraju, Mohammad Bavarian,\nMark Chen, Heewoo Jun, Lukasz Kaiser, Matthias\nPlappert, Jerry Tworek, Jacob Hilton, Reiichiro\nNakano, et al. 2021. Training verifiers to solve math\nword problems. arXiv preprint arXiv:2110.14168.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 194.116438379369,
+            "y": 959.5172827443856
+          },
+          {
+            "x": 810.0338368441148,
+            "y": 959.5172827443856
+          },
+          {
+            "x": 810.0338368441148,
+            "y": 1108.1869996151866
+          },
+          {
+            "x": 194.116438379369,
+            "y": 1108.1869996151866
+          }
+        ],
+        "category": "Paragraph",
+        "id": 4,
+        "page": 1,
+        "content": {
+          "text": "Ganqu Cui, Lifan Yuan, Ning Ding, Guanming Yao,\nWei Zhu, Yuan Ni, Guotong Xie, Zhiyuan Liu, and\nMaosong Sun. 2023. Ultrafeedback: Boosting lan-\nguage models with high-quality feedback. arXiv\npreprint arXiv:2310.01377.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 191.61778767565815,
+            "y": 1131.9241813004403
+          },
+          {
+            "x": 807.5351861404037,
+            "y": 1131.9241813004403
+          },
+          {
+            "x": 807.5351861404037,
+            "y": 1254.3580657822763
+          },
+          {
+            "x": 191.61778767565815,
+            "y": 1254.3580657822763
+          }
+        ],
+        "category": "Paragraph",
+        "id": 5,
+        "page": 1,
+        "content": {
+          "text": "Chunyuan Deng, Yilun Zhao, Xiangru Tang, Mark Ger-\nstein, and Arman Cohan. 2023. Investigating data\ncontamination in modern benchmarks for large lan-\nguage models. arXiv preprint arXiv:2311.09783.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 189.11913697194723,
+            "y": 1279.344572819386
+          },
+          {
+            "x": 807.5351861404037,
+            "y": 1279.344572819386
+          },
+          {
+            "x": 807.5351861404037,
+            "y": 1431.7622657457528
+          },
+          {
+            "x": 189.11913697194723,
+            "y": 1431.7622657457528
+          }
+        ],
+        "category": "Paragraph",
+        "id": 6,
+        "page": 1,
+        "content": {
+          "text": "Hanze Dong, Wei Xiong, Deepanshu Goyal, Rui Pan,\nShizhe Diao, Jipeng Zhang, Kashun Shum, and\nTong Zhang. 2023. Raft: Reward ranked finetuning\nfor generative foundation model alignment. arXiv\npreprint arXiv:2304.06767.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 191.61778767565815,
+            "y": 1453.000796727296
+          },
+          {
+            "x": 808.7845114922594,
+            "y": 1453.000796727296
+          },
+          {
+            "x": 808.7845114922594,
+            "y": 1599.1718628943854
+          },
+          {
+            "x": 191.61778767565815,
+            "y": 1599.1718628943854
+          }
+        ],
+        "category": "Paragraph",
+        "id": 7,
+        "page": 1,
+        "content": {
+          "text": "Mohammad Fraiwan and Natheer Khasawneh. 2023. A\nreview of chatgpt applications in education, market-\ning, software engineering, and healthcare: Benefits,\ndrawbacks, and research directions. arXiv preprint\narXiv:2305.00237.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 194.116438379369,
+            "y": 1625.4076952833502
+          },
+          {
+            "x": 806.2858607885481,
+            "y": 1625.4076952833502
+          },
+          {
+            "x": 806.2858607885481,
+            "y": 1750.340230468897
+          },
+          {
+            "x": 194.116438379369,
+            "y": 1750.340230468897
+          }
+        ],
+        "category": "Paragraph",
+        "id": 8,
+        "page": 1,
+        "content": {
+          "text": "Trevor Gale, Deepak Narayanan, Cliff Young, and Matei\nZaharia. 2023. Megablocks: Efficient sparse training\nwith mixture-of-experts. Proceedings of Machine\nLearning and Systems, 5.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 194.11643837936896,
+            "y": 1771.5787614504395
+          },
+          {
+            "x": 806.2858607885485,
+            "y": 1771.5787614504395
+          },
+          {
+            "x": 806.2858607885485,
+            "y": 1860.280861432178
+          },
+          {
+            "x": 194.11643837936896,
+            "y": 1860.280861432178
+          }
+        ],
+        "category": "Paragraph",
+        "id": 9,
+        "page": 1,
+        "content": {
+          "text": "Andrea Gesmundo and Kaitlin Maile. 2023. Compos-\nable function-preserving expansions for transformer\narchitectures. arXiv preprint arXiv:2308.06103.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 196.61508908308008,
+            "y": 1881.5193924137209
+          },
+          {
+            "x": 808.7845114922594,
+            "y": 1881.5193924137209
+          },
+          {
+            "x": 808.7845114922594,
+            "y": 1971.4708177473144
+          },
+          {
+            "x": 196.61508908308008,
+            "y": 1971.4708177473144
+          }
+        ],
+        "category": "Paragraph",
+        "id": 10,
+        "page": 1,
+        "content": {
+          "text": "Shahriar Golchin and Mihai Surdeanu. 2023. Time\ntravel in llms: Tracing data contamination in large\nlanguage models. arXiv preprint arXiv:2308.08493.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 191.61778767565824,
+            "y": 1998.9559754881348
+          },
+          {
+            "x": 810.0338368441148,
+            "y": 1998.9559754881348
+          },
+          {
+            "x": 810.0338368441148,
+            "y": 2147.6256923589353
+          },
+          {
+            "x": 191.61778767565824,
+            "y": 2147.6256923589353
+          }
+        ],
+        "category": "Paragraph",
+        "id": 11,
+        "page": 1,
+        "content": {
+          "text": "Dan Hendrycks, Collin Burns, Steven Basart, Andy Zou,\nMantas Mazeika, Dawn Song, and Jacob Steinhardt.\n2020. Measuring massive multitask language under-\nstanding. In International Conference on Learning\nRepresentations.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 848.5552428862823,
+            "y": 202.42611951997247
+          },
+          {
+            "x": 1465.5749220978944,
+            "y": 202.42611951997247
+          },
+          {
+            "x": 1465.5749220978944,
+            "y": 354.71639018237875
+          },
+          {
+            "x": 848.5552428862823,
+            "y": 354.71639018237875
+          }
+        ],
+        "category": "Paragraph",
+        "id": 12,
+        "page": 1,
+        "content": {
+          "text": "Dan Hendrycks, Collin Burns, Saurav Kadavath, Akul\nArora, Steven Basart, Eric Tang, Dawn Song, and Ja-\ncob Steinhardt. 2021. Measuring mathematical prob-\nlem solving with the math dataset. arXiv preprint\narXiv:2103.03874.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 846.3397323684669,
+            "y": 384.8276208908708
+          },
+          {
+            "x": 1470.0059431335253,
+            "y": 384.8276208908708
+          },
+          {
+            "x": 1470.0059431335253,
+            "y": 473.2462028855071
+          },
+          {
+            "x": 846.3397323684669,
+            "y": 473.2462028855071
+          }
+        ],
+        "category": "Paragraph",
+        "id": 13,
+        "page": 1,
+        "content": {
+          "text": "Danny Hernandez, Jared Kaplan, Tom Henighan, and\nSam McCandlish. 2021. Scaling laws for transfer.\narXiv preprint arXiv:2102.01293.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 845.2319771095592,
+            "y": 503.1555948760161
+          },
+          {
+            "x": 1460.0361458033558,
+            "y": 503.1555948760161
+          },
+          {
+            "x": 1460.0361458033558,
+            "y": 650.4870443107458
+          },
+          {
+            "x": 845.2319771095592,
+            "y": 650.4870443107458
+          }
+        ],
+        "category": "Paragraph",
+        "id": 14,
+        "page": 1,
+        "content": {
+          "text": "Changho Hwang, Wei Cui, Yifan Xiong, Ziyue Yang,\nZe Liu, Han Hu, Zilong Wang, Rafael Salas, Jithin\nJose, Prabhat Ram, et al. 2023. Tutel: Adaptive\nmixture-of-experts at scale. Proceedings of Machine\nLearning and Systems, 5.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 845.2319771095594,
+            "y": 682.6119468190703
+          },
+          {
+            "x": 1470.0059431335253,
+            "y": 682.6119468190703
+          },
+          {
+            "x": 1470.0059431335253,
+            "y": 742.4307308000884
+          },
+          {
+            "x": 845.2319771095594,
+            "y": 742.4307308000884
+          }
+        ],
+        "category": "Paragraph",
+        "id": 15,
+        "page": 1,
+        "content": {
+          "text": "Intel. 2023. Supervised fine-tuning and direct prefer-\nence optimization on intel gaudi2.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 841.9087113328359,
+            "y": 770.1246122727819
+          },
+          {
+            "x": 1461.1439010622637,
+            "y": 770.1246122727819
+          },
+          {
+            "x": 1461.1439010622637,
+            "y": 949.580964215836
+          },
+          {
+            "x": 841.9087113328359,
+            "y": 949.580964215836
+          }
+        ],
+        "category": "Paragraph",
+        "id": 16,
+        "page": 1,
+        "content": {
+          "text": "Hamish Ivison, Yizhong Wang, Valentina Pyatkin,\nNathan Lambert, Matthew Peters, Pradeep Dasigi,\nJoel Jang, David Wadden, Noah A. Smith, Iz Belt-\nagy, and Hannaneh Hajishirzi. 2023. Camels in a\nchanging climate: Enhancing lm adaptation with tulu\n2.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 846.3397323684669,
+            "y": 982.8136219830684
+          },
+          {
+            "x": 1464.4671668389867,
+            "y": 982.8136219830684
+          },
+          {
+            "x": 1464.4671668389867,
+            "y": 1130.145071417798
+          },
+          {
+            "x": 846.3397323684669,
+            "y": 1130.145071417798
+          }
+        ],
+        "category": "Paragraph",
+        "id": 17,
+        "page": 1,
+        "content": {
+          "text": "Albert Q Jiang, Alexandre Sablayrolles, Arthur Men-\nsch, Chris Bamford, Devendra Singh Chaplot, Diego\nde las Casas, Florian Bressand, Gianna Lengyel, Guil-\nlaume Lample, Lucile Saulnier, et al. 2023. Mistral\n7b. arXiv preprint arXiv:2310.06825.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 846.3397323684669,
+            "y": 1162.2699739261225
+          },
+          {
+            "x": 1463.3594115800788,
+            "y": 1162.2699739261225
+          },
+          {
+            "x": 1463.3594115800788,
+            "y": 1308.4936681019444
+          },
+          {
+            "x": 846.3397323684669,
+            "y": 1308.4936681019444
+          }
+        ],
+        "category": "Paragraph",
+        "id": 18,
+        "page": 1,
+        "content": {
+          "text": "Jean Kaddour, Oscar Key, Piotr Nawrot, Pasquale\nMinervini, and Matt J Kusner. 2023. No train no\ngain: Revisiting efficient training algorithms for\ntransformer-based language models. arXiv preprint\narXiv:2307.06440.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 844.1242218506513,
+            "y": 1338.4030600924534
+          },
+          {
+            "x": 1461.1439010622637,
+            "y": 1338.4030600924534
+          },
+          {
+            "x": 1461.1439010622637,
+            "y": 1489.0577753039065
+          },
+          {
+            "x": 844.1242218506513,
+            "y": 1489.0577753039065
+          }
+        ],
+        "category": "Paragraph",
+        "id": 19,
+        "page": 1,
+        "content": {
+          "text": "Jared Kaplan, Sam McCandlish, Tom Henighan, Tom B\nBrown, Benjamin Chess, Rewon Child, Scott Gray,\nAlec Radford, Jeffrey Wu, and Dario Amodei. 2020.\nScaling laws for neural language models. arXiv\npreprint arXiv:2001.08361.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 844.1242218506513,
+            "y": 1521.1826778122308
+          },
+          {
+            "x": 1458.928390544448,
+            "y": 1521.1826778122308
+          },
+          {
+            "x": 1458.928390544448,
+            "y": 1698.4235192374697
+          },
+          {
+            "x": 844.1242218506513,
+            "y": 1698.4235192374697
+          }
+        ],
+        "category": "Paragraph",
+        "id": 20,
+        "page": 1,
+        "content": {
+          "text": "Aran Komatsuzaki, Joan Puigcerver, James Lee-Thorp,\nCarlos Riquelme Ruiz, Basil Mustafa, Joshua Ainslie,\nYi Tay, Mostafa Dehghani, and Neil Houlsby.\n2022. Sparse upcycling: Training mixture-of-\nexperts from dense checkpoints. arXiv preprint\narXiv:2212.05055.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 848.5552428862823,
+            "y": 1729.4406664868864
+          },
+          {
+            "x": 1468.8981878746176,
+            "y": 1729.4406664868864
+          },
+          {
+            "x": 1468.8981878746176,
+            "y": 1783.720674173366
+          },
+          {
+            "x": 848.5552428862823,
+            "y": 1783.720674173366
+          }
+        ],
+        "category": "Paragraph",
+        "id": 21,
+        "page": 1,
+        "content": {
+          "text": "Wing Lian. 2023. https : //huggingface . co/\nwinglian/omega-3b.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 846.3397323684669,
+            "y": 1818.0610871995057
+          },
+          {
+            "x": 1462.2516563211711,
+            "y": 1818.0610871995057
+          },
+          {
+            "x": 1462.2516563211711,
+            "y": 1969.8235576698664
+          },
+          {
+            "x": 846.3397323684669,
+            "y": 1969.8235576698664
+          }
+        ],
+        "category": "Paragraph",
+        "id": 22,
+        "page": 1,
+        "content": {
+          "text": "Stephanie Lin, Jacob Hilton, and Owain Evans. 2022.\nTruthfulqa: Measuring how models mimic human\nfalsehoods. In Proceedings of the 60th Annual Meet-\ning of the Association for Computational Linguistics\n(Volume 1: Long Papers), pages 3214-3252.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 845.2319771095594,
+            "y": 1997.51743914256
+          },
+          {
+            "x": 1463.359411580079,
+            "y": 1997.51743914256
+          },
+          {
+            "x": 1463.359411580079,
+            "y": 2149.2799096129206
+          },
+          {
+            "x": 845.2319771095594,
+            "y": 2149.2799096129206
+          }
+        ],
+        "category": "Paragraph",
+        "id": 23,
+        "page": 1,
+        "content": {
+          "text": "Shayne Longpre, Le Hou, Tu Vu, Albert Webson,\nHyung Won Chung, Yi Tay, Denny Zhou, Quoc V\nLe, Barret Zoph, Jason Wei, et al. 2023. The flan\ncollection: Designing data and methods for effective\ninstruction tuning. arXiv preprint arXiv:2301.13688.",
+          "html": "",
+          "markdown": ""
+        }
+      }
+    ]
+  },
+  "01030000000193.pdf": {
+    "elements": [
+      {
+        "coordinates": [
+          {
+            "x": 195.64677480245751,
+            "y": 204.3365352958415
+          },
+          {
+            "x": 811.0334067290444,
+            "y": 204.3365352958415
+          },
+          {
+            "x": 811.0334067290444,
+            "y": 357.30070766765084
+          },
+          {
+            "x": 195.64677480245751,
+            "y": 357.30070766765084
+          }
+        ],
+        "category": "Paragraph",
+        "id": 0,
+        "page": 1,
+        "content": {
+          "text": "Subhabrata Mukherjee, Arindam Mitra, Ganesh Jawa-\nhar, Sahaj Agarwal, Hamid Palangi, and Ahmed\nAwadallah. 2023. Orca: Progressive learning from\ncomplex explanation traces of gpt-4. arXiv preprint\narXiv:2306.02707.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 192.11683236310807,
+            "y": 389.07018962179586
+          },
+          {
+            "x": 626.2997524030901,
+            "y": 389.07018962179586
+          },
+          {
+            "x": 626.2997524030901,
+            "y": 423.1929665355072
+          },
+          {
+            "x": 192.11683236310807,
+            "y": 423.1929665355072
+          }
+        ],
+        "category": "Paragraph",
+        "id": 1,
+        "page": 1,
+        "content": {
+          "text": "OpenAI. 2023. Gpt-4 technical report.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 192.11683236310807,
+            "y": 447.90256361095334
+          },
+          {
+            "x": 811.0334067290441,
+            "y": 447.90256361095334
+          },
+          {
+            "x": 811.0334067290441,
+            "y": 570.273901508401
+          },
+          {
+            "x": 192.11683236310807,
+            "y": 570.273901508401
+          }
+        ],
+        "category": "Paragraph",
+        "id": 2,
+        "page": 1,
+        "content": {
+          "text": "Yu Pan, Ye Yuan, Yichun Yin, Zenglin Xu, Lifeng\nShang, Xin Jiang, and Qun Liu. 2023. Reusing pre-\ntrained models by multi-linear operators for efficient\ntraining. arXiv preprint arXiv:2310.10699.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 189.8506964761183,
+            "y": 604.5855230793615
+          },
+          {
+            "x": 811.0334067290446,
+            "y": 604.5855230793615
+          },
+          {
+            "x": 811.0334067290446,
+            "y": 697.5552004943263
+          },
+          {
+            "x": 189.8506964761183,
+            "y": 697.5552004943263
+          }
+        ],
+        "category": "Paragraph",
+        "id": 3,
+        "page": 1,
+        "content": {
+          "text": "Baolin Peng, Chunyuan Li, Pengcheng He, Michel Gal-\nley, and Jianfeng Gao. 2023. Instruction tuning with\ngpt-4. arXiv preprint arXiv:2304.03277.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 195.64677480245751,
+            "y": 729.5135271057205
+          },
+          {
+            "x": 811.0334067290446,
+            "y": 729.5135271057205
+          },
+          {
+            "x": 811.0334067290446,
+            "y": 850.0835775032532
+          },
+          {
+            "x": 195.64677480245751,
+            "y": 850.0835775032532
+          }
+        ],
+        "category": "Paragraph",
+        "id": 4,
+        "page": 1,
+        "content": {
+          "text": "Alec Radford, Jeffrey Wu, Rewon Child, David Luan,\nDario Amodei, Ilya Sutskever, et al. 2019. Language\nmodels are unsupervised multitask learners. OpenAI\nblog, 1(8):9.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 192.11683236310807,
+            "y": 883.4945553242562
+          },
+          {
+            "x": 808.6801117694783,
+            "y": 883.4945553242562
+          },
+          {
+            "x": 808.6801117694783,
+            "y": 1067.9812589445771
+          },
+          {
+            "x": 192.11683236310807,
+            "y": 1067.9812589445771
+          }
+        ],
+        "category": "Paragraph",
+        "id": 5,
+        "page": 1,
+        "content": {
+          "text": "Jack W Rae, Sebastian Borgeaud, Trevor Cai, Katie\nMillican, Jordan Hoffmann, Francis Song, John\nAslanides, Sarah Henderson, Roman Ring, Susan-\nnah Young, et al. 2021. Scaling language models:\nMethods, analysis & insights from training gopher.\narXiv preprint arXiv:2112.11446.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 192.1168323631081,
+            "y": 1098.4869343463624
+          },
+          {
+            "x": 811.0334067290445,
+            "y": 1098.4869343463624
+          },
+          {
+            "x": 811.0334067290445,
+            "y": 1248.1100089360714
+          },
+          {
+            "x": 192.1168323631081,
+            "y": 1248.1100089360714
+          }
+        ],
+        "category": "Paragraph",
+        "id": 6,
+        "page": 1,
+        "content": {
+          "text": "Rafael Rafailov, Archit Sharma, Eric Mitchell, Stefano\nErmon, Christopher D Manning, and Chelsea Finn.\n2023. Direct preference optimization: Your language\nmodel is secretly a reward model. arXiv preprint\narXiv:2305.18290.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 195.64677480245751,
+            "y": 1285.878940385901
+          },
+          {
+            "x": 808.6801117694785,
+            "y": 1285.878940385901
+          },
+          {
+            "x": 808.6801117694785,
+            "y": 1438.4073173948275
+          },
+          {
+            "x": 195.64677480245751,
+            "y": 1438.4073173948275
+          }
+        ],
+        "category": "Paragraph",
+        "id": 7,
+        "page": 1,
+        "content": {
+          "text": "Oscar Sainz, Jon Ander Campos, Iker Garcia-Ferrero,\nJulen Etxaniz, Oier Lopez de Lacalle, and Eneko\nAgirre. 2023. Nlp evaluation in trouble: On the\nneed to measure llm data contamination for each\nbenchmark. arXiv preprint arXiv:2310.18018.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 192.11683236310807,
+            "y": 1467.4603415870042
+          },
+          {
+            "x": 811.0334067290445,
+            "y": 1467.4603415870042
+          },
+          {
+            "x": 811.0334067290445,
+            "y": 1590.9356944037545
+          },
+          {
+            "x": 192.11683236310807,
+            "y": 1590.9356944037545
+          }
+        ],
+        "category": "Paragraph",
+        "id": 8,
+        "page": 1,
+        "content": {
+          "text": "Keisuke Sakaguchi, Ronan Le Bras, Chandra Bhagavat-\nula, and Yejin Choi. 2021. Winogrande: An adver-\nsarial winograd schema challenge at scale. Commu-\nnications of the ACM, 64(9):99-106.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 189.8506964761183,
+            "y": 1624.346672224758
+          },
+          {
+            "x": 811.0334067290445,
+            "y": 1624.346672224758
+          },
+          {
+            "x": 811.0334067290445,
+            "y": 1778.3277004432932
+          },
+          {
+            "x": 189.8506964761183,
+            "y": 1778.3277004432932
+          }
+        ],
+        "category": "Paragraph",
+        "id": 9,
+        "page": 1,
+        "content": {
+          "text": "Malik Sallam, Nesreen Salim, Muna Barakat, and Alaa\nAl-Tammemi. 2023. Chatgpt applications in medical,\ndental, pharmacy, and public health education: A\ndescriptive study highlighting the advantages and\nlimitations. Narra J, 3(1):e103-e103.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 195.64677480245751,
+            "y": 1807.3807246354695
+          },
+          {
+            "x": 811.0334067290441,
+            "y": 1807.3807246354695
+          },
+          {
+            "x": 811.0334067290441,
+            "y": 1964.267055273223
+          },
+          {
+            "x": 195.64677480245751,
+            "y": 1964.267055273223
+          }
+        ],
+        "category": "Paragraph",
+        "id": 10,
+        "page": 1,
+        "content": {
+          "text": "Noam Shazeer, Azalia Mirhoseini, Krzysztof Maziarz,\nAndy Davis, Quoc Le, Geoffrey Hinton, and Jeff\nDean. 2017. Outrageously large neural networks:\nThe sparsely-gated mixture-of-experts layer. arXiv\npreprint arXiv:1701.06538.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 192.11683236310813,
+            "y": 1993.3200794653992
+          },
+          {
+            "x": 807.2274605598695,
+            "y": 1993.3200794653992
+          },
+          {
+            "x": 807.2274605598695,
+            "y": 2145.848456474326
+          },
+          {
+            "x": 192.11683236310813,
+            "y": 2145.848456474326
+          }
+        ],
+        "category": "Paragraph",
+        "id": 11,
+        "page": 1,
+        "content": {
+          "text": "Tianxiao Shen, Myle Ott, Michael Auli, and\nMarc' Aurelio Ranzato. 2019. Mixture models for\ndiverse machine translation: Tricks of the trade. In\nInternational conference on machine learning, pages\n5719-5728. PMLR.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 847.5486525047212,
+            "y": 201.21591969834688
+          },
+          {
+            "x": 1464.2063066839091,
+            "y": 201.21591969834688
+          },
+          {
+            "x": 1464.2063066839091,
+            "y": 350.7596015020192
+          },
+          {
+            "x": 847.5486525047212,
+            "y": 350.7596015020192
+          }
+        ],
+        "category": "Paragraph",
+        "id": 12,
+        "page": 1,
+        "content": {
+          "text": "Weijia Shi, Anirudh Ajith, Mengzhou Xia, Yangsibo\nHuang, Daogao Liu, Terra Blevins, Danqi Chen,\nand Luke Zettlemoyer. 2023. Detecting pretraining\ndata from large language models. arXiv preprint\narXiv:2310.16789.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 850.0570587528229,
+            "y": 375.9724296787128
+          },
+          {
+            "x": 1467.374952724541,
+            "y": 375.9724296787128
+          },
+          {
+            "x": 1467.374952724541,
+            "y": 502.21330779153845
+          },
+          {
+            "x": 850.0570587528229,
+            "y": 502.21330779153845
+          }
+        ],
+        "category": "Paragraph",
+        "id": 13,
+        "page": 1,
+        "content": {
+          "text": "Ken Shoemake. 1985. Animating rotation with quater-\nnion curves. In Proceedings of the 12th annual con-\nference on Computer graphics and interactive tech-\nniques, pages 245-254.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 845.0074236283099,
+            "y": 517.3622131650775
+          },
+          {
+            "x": 1467.374952724541,
+            "y": 517.3622131650775
+          },
+          {
+            "x": 1467.374952724541,
+            "y": 642.3406824967751
+          },
+          {
+            "x": 845.0074236283099,
+            "y": 642.3406824967751
+          }
+        ],
+        "category": "Paragraph",
+        "id": 14,
+        "page": 1,
+        "content": {
+          "text": "Mingxing Tan and Quoc Le. 2019. Efficientnet: Re-\nthinking model scaling for convolutional neural net-\nworks. In International conference on machine learn-\ning, pages 6105-6114. PMLR.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 846.2698324094381,
+            "y": 661.276814213699
+          },
+          {
+            "x": 1464.2063066839091,
+            "y": 661.276814213699
+          },
+          {
+            "x": 1464.2063066839091,
+            "y": 843.063678696168
+          },
+          {
+            "x": 846.2698324094381,
+            "y": 843.063678696168
+          }
+        ],
+        "category": "Paragraph",
+        "id": 15,
+        "page": 1,
+        "content": {
+          "text": "Hugo Touvron, Louis Martin, Kevin Stone, Peter Al-\nbert, Amjad Almahairi, Yasmine Babaei, Nikolay\nBashlykov, Soumya Batra, Prajjwal Bhargava, Shruti\nBhosale, et al. 2023. Llama 2: Open founda-\ntion and fine-tuned chat models. arXiv preprint\narXiv:2307.09288.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 846.2698324094381,
+            "y": 867.0494455376049
+          },
+          {
+            "x": 1464.2063066839091,
+            "y": 867.0494455376049
+          },
+          {
+            "x": 1464.2063066839091,
+            "y": 1047.5739012389456
+          },
+          {
+            "x": 846.2698324094381,
+            "y": 1047.5739012389456
+          }
+        ],
+        "category": "Paragraph",
+        "id": 16,
+        "page": 1,
+        "content": {
+          "text": "Lewis Tunstall, Edward Beeching, Nathan Lambert,\nNazneen Rajani, Kashif Rasul, Younes Belkada,\nShengyi Huang, Leandro von Werra, Clementine\nFourrier, Nathan Habib, et al. 2023. Zephyr: Di-\nrect distillation of lm alignment. arXiv preprint\narXiv:2310.16944.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 847.5486525047211,
+            "y": 1067.981258944577
+          },
+          {
+            "x": 1464.2063066839091,
+            "y": 1067.981258944577
+          },
+          {
+            "x": 1464.2063066839091,
+            "y": 1248.1100089360712
+          },
+          {
+            "x": 847.5486525047211,
+            "y": 1248.1100089360712
+          }
+        ],
+        "category": "Paragraph",
+        "id": 17,
+        "page": 1,
+        "content": {
+          "text": "Peihao Wang, Rameswar Panda, Lucas Torroba Hen-\nnigen, Philip Greengard, Leonid Karlinsky, Roge-\nrio Feris, David Daniel Cox, Zhangyang Wang, and\nYoon Kim. 2023. Learning to grow pretrained mod-\nels for efficient transformer training. arXiv preprint\narXiv:2303.00980.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 850.0570587528226,
+            "y": 1271.0202554986472
+          },
+          {
+            "x": 1464.2063066839091,
+            "y": 1271.0202554986472
+          },
+          {
+            "x": 1464.2063066839091,
+            "y": 1426.2965355774231
+          },
+          {
+            "x": 850.0570587528226,
+            "y": 1426.2965355774231
+          }
+        ],
+        "category": "Paragraph",
+        "id": 18,
+        "page": 1,
+        "content": {
+          "text": "Yizhong Wang, Yeganeh Kordi, Swaroop Mishra, Al-\nisa Liu, Noah A Smith, Daniel Khashabi, and Han-\nnaneh Hajishirzi. 2022. Self-instruct: Aligning lan-\nguage model with self generated instructions. arXiv\npreprint arXiv:2212.10560.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 846.2698324094381,
+            "y": 1445.2326672943468
+          },
+          {
+            "x": 1464.2063066839091,
+            "y": 1445.2326672943468
+          },
+          {
+            "x": 1464.2063066839091,
+            "y": 1595.4593122486092
+          },
+          {
+            "x": 846.2698324094381,
+            "y": 1595.4593122486092
+          }
+        ],
+        "category": "Paragraph",
+        "id": 19,
+        "page": 1,
+        "content": {
+          "text": "Jason Wei, Maarten Bosma, Vincent Y Zhao, Kelvin\nGuu, Adams Wei Yu, Brian Lester, Nan Du, An-\ndrew M Dai, and Quoc V Le. 2021. Finetuned lan-\nguage models are zero-shot learners. arXiv preprint\narXiv:2109.01652.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 846.2698324094381,
+            "y": 1620.7074878711746
+          },
+          {
+            "x": 1462.3253176000276,
+            "y": 1620.7074878711746
+          },
+          {
+            "x": 1462.3253176000276,
+            "y": 1772.1965416065657
+          },
+          {
+            "x": 846.2698324094381,
+            "y": 1772.1965416065657
+          }
+        ],
+        "category": "Paragraph",
+        "id": 20,
+        "page": 1,
+        "content": {
+          "text": "Jason Wei, Yi Tay, Rishi Bommasani, Colin Raffel,\nBarret Zoph, Sebastian Borgeaud, Dani Yogatama,\nMaarten Bosma, Denny Zhou, Donald Metzler, et al.\n2022a. Emergent abilities of large language models.\narXiv preprint arXiv:2206.07682.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 846.2698324094379,
+            "y": 1790.9924056811417
+          },
+          {
+            "x": 1464.206306683909,
+            "y": 1790.9924056811417
+          },
+          {
+            "x": 1464.206306683909,
+            "y": 1943.8841358400089
+          },
+          {
+            "x": 846.2698324094379,
+            "y": 1943.8841358400089
+          }
+        ],
+        "category": "Paragraph",
+        "id": 21,
+        "page": 1,
+        "content": {
+          "text": "Jason Wei, Xuezhi Wang, Dale Schuurmans, Maarten\nBosma, Fei Xia, Ed Chi, Quoc V Le, Denny Zhou,\net al. 2022b. Chain-of-thought prompting elicits rea-\nsoning in large language models. Advances in Neural\nInformation Processing Systems, 35:24824-24837.",
+          "html": "",
+          "markdown": ""
+        }
+      },
+      {
+        "coordinates": [
+          {
+            "x": 846.2698324094381,
+            "y": 1962.118929345194
+          },
+          {
+            "x": 1462.3253176000271,
+            "y": 1962.118929345194
+          },
+          {
+            "x": 1462.3253176000271,
+            "y": 2150.0775700909567
+          },
+          {
+            "x": 846.2698324094381,
+            "y": 2150.0775700909567
+          }
+        ],
+        "category": "Paragraph",
+        "id": 22,
+        "page": 1,
+        "content": {
+          "text": "Thomas Wolf, Lysandre Debut, Victor Sanh, Julien\nChaumond, Clement Delangue, Anthony Moi, Pier-\nric Cistac, Tim Rault, Remi Louf, Morgan Funtowicz,\net al. 2019. Huggingface's transformers: State-of-\nthe-art natural language processing. arXiv preprint\narXiv:1910.03771.",
+          "html": "",
+          "markdown": ""
+        }
+      }
+    ]
+  }
+}

@@ -55,8 +55,9 @@ def safe_float(x):
 
 
 def main():
-    base_dir = Path("/home/an/atoprojects/evaluation/baseline_images")
-    json_file = base_dir / "OmniDocBench.json"
+    base_dir = Path("/home/an/atoprojects/evaluation/baseline")
+    omnidir = base_dir / "omnidocbench"
+    json_file = omnidir / "OmniDocBench.json"
 
     # Load ground truth
     with open(json_file) as f:
@@ -70,7 +71,7 @@ def main():
     for idx, page in enumerate(pages):
         page_info = page.get("page_info", {})
         image_name = page_info.get("image_path", "")
-        image_path = base_dir / image_name
+        image_path = omnidir / image_name
 
         query_id = f"baseline_{idx}"
 
