@@ -44,20 +44,19 @@ COPY --from=builder /opt/venv /opt/venv
 COPY --chown=root:root src /opt/doc-bench/src
 COPY --chown=root:root scripts /opt/doc-bench/scripts
 
-# Download datasets: DP-Bench + OmniDocBench sample (10 files for testing)
+# Download datasets: OmniDocBench sample (10 files for testing)
 WORKDIR /opt/doc-bench
 ENV PYTHONPATH=/opt/doc-bench/src
 RUN /opt/venv/bin/python scripts/download_datasets.py \
-    --datasets dp_bench omnidocbench \
+    --datasets omnidocbench \
     --omnidocbench-slices large \
     --output-dir /opt/doc-bench/data
 
-# Keep only 10 OmniDocBench files for minimal image
+# Prune OmniDocBench to minimal size for testing
 RUN /opt/venv/bin/python scripts/prune_omnidocbench.py
 
 # Verify datasets
 RUN test -d /opt/doc-bench/data/parsing/omnidocbench_english_large && \
-    test -d /opt/doc-bench/data/parsing/dp_bench && \
     test -f /opt/doc-bench/data/MANIFEST.yaml || \
     (echo "ERROR: Dataset download failed" && exit 1)
 

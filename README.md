@@ -57,9 +57,9 @@ docker run --rm -v ./predictions:/work/predictions -v ./results:/work/results \
 | Dataset | Description | Documents | Notes |
 |---------|-------------|-----------|-------|
 | `omnidocbench` | English-only sample | 10 pages | Docker baseline (pruned from 593) |
-| `dp_bench` | Digital PDF benchmark | 1,052 docs | Full dataset included |
+| `dp_bench` | Digital PDF benchmark | 1,052 docs | Not in Docker image - use local data |
 
-**Note:** The Docker image includes a minimal 10-page OmniDocBench sample for fast iteration. For full evaluation, use local datasets or mount additional data.
+**Note:** The Docker image includes a minimal 10-page OmniDocBench sample for fast iteration. DP-Bench PDFs are not available via HuggingFace and must be obtained separately.
 
 ### Parsers
 
@@ -238,14 +238,15 @@ doc-bench provides a containerized image with **baked-in datasets** for reproduc
 docker build -t doc-bench .
 ```
 
-**Image size:** 769MB (includes DP-Bench + 10 OmniDocBench English pages)
+**Image size:** 649MB (includes 10 OmniDocBench English pages)
 
 ### Included Datasets
 
 | Dataset | Documents | Purpose |
 |---------|-----------|---------|
-| `omnidocbench_english_large` | 10 pages | Minimal test sample (pruned from 593) |
-| `dp_bench` | 1,052 docs | Full digital PDF benchmark |
+| `omnidocbench` | 10 pages | Minimal test sample (pruned from 593) |
+
+**Note:** DP-Bench is not included in the minimal Docker image. Use local datasets or mount data for DP-Bench evaluation.
 
 ### Baseline Results
 
