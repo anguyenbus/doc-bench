@@ -58,13 +58,13 @@ Validate installation with bundled fixtures (26 documents, no download required)
 doc-bench-smoke-test
 ```
 
-Tests:
+**Tests:**
 - 16 DP-Bench documents (Paragraph, Caption, Chart, Heading1, Index categories)
   - Includes 4 problematic PDFs known to challenge docling: 172, 018, 141, 121
 - 10 OmniDocBench documents (academic_literature, exam_paper, colorful_textbook, book, PPT2PDF)
-- Schema validation (bundled parser_output.schema.json)
+- Schema validation (bundled `parser_output.schema.json`)
 
-Output:
+**Output:**
 ```
 Smoke Test Results
 ========================================
@@ -101,10 +101,10 @@ doc-bench --dataset dp_bench --predictions ./predictions --output-dir ./results
 | OmniDocBench | 10 docs | academic_literature (2), exam_paper (2), colorful_textbook (2), book (2), PPT2PDF (2) |
 
 **Problematic PDFs included** (known docling challenges):
-- 01030000000172.pdf (Index)
-- 01030000000018.pdf (Heading1)
-- 01030000000141.pdf (Paragraph, 29 elements)
-- 01030000000121.pdf (Paragraph, 16 elements)
+- `01030000000172.pdf` (Index)
+- `01030000000018.pdf` (Heading1)
+- `01030000000141.pdf` (Paragraph, 29 elements)
+- `01030000000121.pdf` (Paragraph, 16 elements)
 
 Included in wheel - no download required for smoke testing.
 
@@ -124,8 +124,6 @@ testing but not part of the baseline averages.
 Located at:
 - `doc_bench/fixtures/dpbench_results.json`
 - `doc_bench/fixtures/omnidocbench_results.json`
-
-Compare your parser output against these baselines.
 
 #### Custom Data Evaluation
 
@@ -182,7 +180,7 @@ doc-bench --dataset dp_bench --data-dir /path/to/my_data --predictions ./predict
 - `results/dp_bench_predictions_results_TIMESTAMP.json` - Summary with averages
 
 **Prediction file naming:**
-- Files must be named `<doc_id>.json` (without .pdf extension)
+- Files must be named `<doc_id>.json` (without `.pdf` extension)
 - Example: For `doc1.pdf` in reference.json, prediction must be `doc1.json`
 - Use `doc-bench-dump-dataset` to see expected doc_id values
 
@@ -194,6 +192,48 @@ doc-bench --dataset dp_bench --data-dir /path/to/my_data --predictions ./predict
 | `omnidocbench` | English-only sample | 593 pages | [HuggingFace](https://huggingface.co/datasets/jianxiao-o0/omnidocbench) |
 
 **Dataset versions** tracked in `MANIFEST.yaml` (bundled with package).
+
+### ⚠️ Benchmark Limitations
+
+#### DP-Bench: Single-Page Documents Only
+
+**Important:** DP-Bench gold annotations are **single-page only**. Each `doc_id` in `reference.json` represents exactly one page of content, not a multi-page document.
+
+**Implications:**
+- Cross-page elements (tables, figures spanning pages) are NOT represented in gold
+- Multi-page reading order is NOT evaluated
+- Metrics reflect page-level extraction quality, NOT document-level parsing
+
+**For production evaluation:** Use DP-Bench for page-level component extraction quality. Complement with multi-page benchmarks for complete document parsing assessment.
+
+#### OmniDocBench: Multi-Page but Sparse Annotations
+
+**Structure:** OmniDocBench provides page-level annotations (593 pages across multiple documents). Each page is evaluated independently.
+
+**Annotation density:** Sparse. Layout detections (`layout_dets`) cover key elements but not all content on each page. Text extraction is evaluated only on annotated regions.
+
+**Implications:**
+- Metrics reflect quality on annotated elements only, not full-page OCR
+- Unannotated content (background text, marginalia) is not evaluated
+- Page-level scores aggregate sparse detections, not complete document coverage
+
+**For parser evaluation:** Use OmniDocBench for layout detection quality on annotated elements. Complement with dense-annotation benchmarks for full-page extraction assessment.
+
+#### Table Metrics: Gold Rendering
+
+**Current state:** DP-Bench gold renders tables from `content.html` → Markdown pipe-tables (matching prediction format).
+
+**Table rendering behavior:**
+- Gold: `content.html` table grid → `| cell1 | cell2 |` pipe-table format
+- Prediction: `content.cells` → same pipe-table format
+- Empty `content.text` no longer drops tables (fixed)
+
+**Impact on metrics:**
+- NID/BLEU: Table cells now comparable between gold and prediction
+- TEDS: Requires markdown tables in both gold and prediction — now supported
+- Table-heavy documents: Scores reflect extraction quality, not format mismatch
+
+**Prior bug (fixed):** Tables with empty `content.text` were silently dropped from gold, penalizing faithful extraction. Fix: `build_gold_markdown` renders from `content.html` first.
 
 ### Commands
 

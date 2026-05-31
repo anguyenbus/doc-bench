@@ -1,0 +1,339 @@
+{
+  "layout_dets": [
+    {
+      "category_type": "text_block",
+      "poly": [
+        137.085174,
+        159.324243,
+        805.180432,
+        159.324243,
+        805.180432,
+        536.856723,
+        137.085174,
+        536.856723
+      ],
+      "ignore": false,
+      "order": 1,
+      "anno_id": 7,
+      "text": "Velho to Rio Comprido, with 772 m length each roughly. The tunnel cross section is 81 $ m^{2} $ in both bores. A concrete wall separates the north-bound traffic from the south-bound traffic. Each gallery has three lanes. CO concentrations and the 1 h average traffic flow are currently monitored. The tunnel ventilation system is composed of 78 fans placed near the roof (Reboucas 2006). The daily traffic volume ranges from 180,000 to 190,000 vehicles $ day^{-1} $ . Light duty vehicles (LDV) represent roughly 95% of the local traffic, while diesel vehicles and motorcycles account for 2.8% and 2.2% , respectively (Moreira et al. 2006).",
+      "attribute": {}
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        139.061704,
+        542.786426,
+        804.19134,
+        542.786426,
+        804.19134,
+        851.137573,
+        139.061704,
+        851.137573
+      ],
+      "ignore": false,
+      "order": 2,
+      "anno_id": 8,
+      "text": "Aromatic compounds were sampled and analyzed using a methodology based on US-EPA methods (1998). Aromatic compounds were sampled by drawing air through tubes 7 cm long, 4 mm ID, containing 2 sections of activated coconut shell charcoal (main section 100 mg ,second section 50 mg ) separated by a 2 mm urethane foam (SKC Inc), during 1 h , at a flow rate of 1.0 L $ min^{-1} $ .The second section of tube was analyzed in order to detect breakthrough.",
+      "attribute": {}
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        139.56121199999998,
+        852.2888009999999,
+        805.951196,
+        852.2888009999999,
+        805.951196,
+        1401.31251,
+        139.56121199999998,
+        1401.31251
+      ],
+      "ignore": false,
+      "order": 3,
+      "anno_id": 14,
+      "text": "Charcoal beds in the sorbent tubes were transferred to 2 mL vials and extracted by adding 1.0 mL of $ \\mathrm{C H_{2} C l_{2}} $ with occasional agitation for 30 min . Bromofluorbenzene was added prior to extraction as internal standard. The samples were analyzed using a Trace GC coupled DSQ Quadrupole Mass Spectrometer (Thermo Finnigan). The column used was a DB-5 ( 5% phenyl-methyl-siloxane) J&W Scientifics, 60 m long with 0.25 mm internal diameter and $ 0. 2 5 \\, \\mu\\mathrm{m} $ thickness phase. Carrier gas was helium at 1 mL $ min^{-1} $ and 25 cm $ s^{-1} $ linear velocity. The injection mode was splitless with inlet temperature of $ 2 5 0^{\\circ} \\mathrm{C} $ .Temperature program was: $ 4 5^{\\circ} \\mathrm{C} $ ,held for 2 min, $ 4 5-2 0 0^{\\circ} \\mathrm{C} $ at $ 6^{\\circ} \\mathrm{C} $ $ min^{-1} $ , held for 5 min .Mass spectrometer ionization was electronic impact and ion source, quadrupole and GC/MS interface temperatures were 230, 150 and $250^{\\circ} \\mathbf{C}$ , respectively.",
+      "attribute": {}
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        137.946908,
+        1408.004572,
+        804.446056,
+        1408.004572,
+        804.446056,
+        1751.055137,
+        137.946908,
+        1751.055137
+      ],
+      "ignore": false,
+      "order": 4,
+      "anno_id": 1,
+      "text": "The MS was run in selective ion monitoring mode. For each compound, two ions (one target and one qualifier) were monitored. Compounds were identified based on their relative retention times and ion ratios. Identified compounds were quantified using internal calibration procedure, with five levels of calibration as follows: 0.1; 1; 5; 25; $ 1 0 0 ~ \\mu\\mathrm{g} ~ \\mathrm{m L}^{-1} $ in $ \\mathrm{C H_{2} C l_{2}} $ ,with $ 1 \\, \\mu g \\ \\mathrm{m L}^{-1} $ of bromofluorbenzene in all solutions. All calibration solutions were purchased from Supelco. Correlation coefficients were evaluated and 0.99 was considered acceptable",
+      "attribute": {}
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        139.036894,
+        1753.2323640000002,
+        805.534388,
+        1753.2323640000002,
+        805.534388,
+        1993.913714,
+        139.036894,
+        1993.913714
+      ],
+      "ignore": false,
+      "order": 5,
+      "anno_id": 6,
+      "text": "The reproducibility of the results was checked by analyzing duplicated samples and the difference was always below 10% Blank runs were performed before each sample analyses. The uncertainties of the results were calculated, using the data of the calibration curves, as: benzene 18% ,toluene 10% ,ethylbenzene 21% , m, p-xylene 8% and o-xylene 12%.",
+      "attribute": {}
+    },
+    {
+      "category_type": "title",
+      "poly": [
+        849.095786,
+        161.04229700000002,
+        1127.892372,
+        161.04229700000002,
+        1127.892372,
+        187.180006,
+        849.095786,
+        187.180006
+      ],
+      "ignore": false,
+      "order": 6,
+      "anno_id": 10,
+      "text": "Results and Discussion",
+      "attribute": {}
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        849.095786,
+        230.742122,
+        1512.328284,
+        230.742122,
+        1512.328284,
+        435.482749,
+        849.095786,
+        435.482749
+      ],
+      "ignore": false,
+      "order": 7,
+      "anno_id": 12,
+      "text": "Compounds were monitored in L1 gallery in two locations: station 1 (S1), roughly 500 m from the entrance, and station 2 (S2) about 1000 m apart from S1. A total of five samples were collected, in each location, in 20 October 2005 (at 11:00 am and 1:00 pm ) and on 21 October 2005 (at 9:00 am, 11:00 am and 1:00 pm).",
+      "attribute": {}
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        848.0074539999999,
+        438.749688,
+        1512.328284,
+        438.749688,
+        1512.328284,
+        673.984675,
+        848.0074539999999,
+        673.984675
+      ],
+      "ignore": false,
+      "order": 8,
+      "anno_id": 13,
+      "text": "Traffic volume through the tunnel is currently counted. As shown in Fig. 1, the fleet profile is quite constant with time between 9:00 am and 8:00 pm . Also the vehicular flux during the two sampling days was very similar to mean values for 2005, showing that those days may be considered representative of the current conditions within the tunnel.",
+      "attribute": {}
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        849.095786,
+        679.431038,
+        1515.5949340000002,
+        679.431038,
+        1515.5949340000002,
+        843.876488,
+        849.095786,
+        843.876488
+      ],
+      "ignore": false,
+      "order": 9,
+      "anno_id": 5,
+      "text": "The mean concentrations (5 samples), maximum and minimum values and standard deviations of 14 VACs are summarized in Table 1. The mean mass contribution of each target compound and ratio compound/toluene are also shown.",
+      "attribute": {}
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        850.1857719999999,
+        852.5897900000001,
+        1515.5949340000002,
+        852.5897900000001,
+        1515.5949340000002,
+        1188.016765,
+        850.1857719999999,
+        1188.016765
+      ],
+      "ignore": false,
+      "order": 10,
+      "anno_id": 11,
+      "text": "As shown in Table 1, concentrations in S2 are about 2.4-2.7 higher than in S1. Also f-test shows that levels in the two locations are statistically different. These were the expected results for a one-way tunnel, where the vehicles enter one direction and the wind speed increases with the passing of cars, creating a piston effect. The entrance of the tunnel may be considered the upwind area and the exit of tunnel becomes downwind (Hsieh et al. 1999). Thus, higher concentrations may be expected in S2, 500 m from the exit of the tunnel.",
+      "attribute": {}
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        848.0074539999999,
+        1199.9970059999998,
+        1514.504948,
+        1199.9970059999998,
+        1514.504948,
+        1535.423981,
+        848.0074539999999,
+        1535.423981
+      ],
+      "ignore": false,
+      "order": 11,
+      "anno_id": 9,
+      "text": "The profiles of VACs were consistent in both stations, showing nearly the same mass composition. The most abundant species were toluene and xylenes. Although a direct comparison is not valid, since different fuels are used, the same major VACs were reported in other tunnels (Tsai et al. 1997; Chan et al. 1995; Sagebiel et al. 1995; Hsieh et al. 1999). They were also the most abundant V A Cs in Sao Paulo (Martins et al. 2006a, b). Benzene, toluene, ethylbenzene and xylenes represent 67.3% of the total VACs mixture.",
+      "attribute": {}
+    },
+    {
+      "category_type": "figure",
+      "poly": [
+        852.3723600000001,
+        1610.2186490000001,
+        1510.270708,
+        1610.2186490000001,
+        1510.270708,
+        1905.9150759999998,
+        852.3723600000001,
+        1905.9150759999998
+      ],
+      "ignore": false,
+      "order": 12,
+      "anno_id": 2,
+      "attribute": {}
+    },
+    {
+      "category_type": "figure_caption",
+      "poly": [
+        846.978666,
+        1937.371722,
+        1510.270708,
+        1937.371722,
+        1510.270708,
+        1989.730626,
+        846.978666,
+        1989.730626
+      ],
+      "ignore": false,
+      "order": 13,
+      "anno_id": 4,
+      "text": "Fig. 1 Traffic volume for the monitoring campaign period and mean value for 2005 (vehicles per hour)",
+      "attribute": {}
+    },
+    {
+      "category_type": "page_number",
+      "poly": [
+        1474.9636519280946,
+        82.41497349902602,
+        1515.4266464115228,
+        82.41497349902602,
+        1515.4266464115228,
+        118.50359020046199,
+        1474.9636519280946,
+        118.50359020046199
+      ],
+      "ignore": false,
+      "order": null,
+      "anno_id": 15,
+      "text": "305",
+      "attribute": {}
+    },
+    {
+      "category_type": "header",
+      "poly": [
+        140.01606199999978,
+        90.21541100000024,
+        627.465306924769,
+        90.21541100000024,
+        627.465306924769,
+        116.08508600000005,
+        140.01606199999978,
+        116.08508600000005
+      ],
+      "ignore": false,
+      "order": null,
+      "anno_id": 0,
+      "text": "Bull Environ Contam Toxicol (2007) 78:304-307",
+      "attribute": {}
+    },
+    {
+      "category_type": "abandon",
+      "poly": [
+        1395.1768305803514,
+        2044.1038820153726,
+        1424.0031097195736,
+        2044.1038820153726,
+        1424.0031097195736,
+        2075.5081210776143,
+        1395.1768305803514,
+        2075.5081210776143
+      ],
+      "ignore": false,
+      "order": null,
+      "anno_id": 16,
+      "attribute": {}
+    },
+    {
+      "category_type": "footer",
+      "poly": [
+        1425.0360011462208,
+        2048.6978267620616,
+        1512.966728,
+        2048.6978267620616,
+        1512.966728,
+        2077.579868,
+        1425.0360011462208,
+        2077.579868
+      ],
+      "ignore": false,
+      "order": null,
+      "anno_id": 3,
+      "text": "Springer",
+      "attribute": {}
+    }
+  ],
+  "page_info": {
+    "page_no": 2,
+    "height": 2197,
+    "width": 1654,
+    "image_path": "docstructbench_llm-raw-scihub-o.O-s00128-007-9171-1.pdf_2.jpg",
+    "page_attribute": {
+      "data_source": "academic_literature",
+      "language": "english",
+      "layout": "double_column",
+      "special_issue": [
+        "None"
+      ],
+      "subset": "v1.5"
+    }
+  },
+  "extra": {
+    "relation": [
+      {
+        "source_anno_id": 2,
+        "target_anno_id": 4,
+        "relation_type": "parent_son"
+      }
+    ]
+  },
+  "_eval_tags": {
+    "is_clean": true,
+    "has_watermark": false,
+    "has_fuzzy_scan": false,
+    "has_colorful_bg": false,
+    "layout": "double_column"
+  }
+}

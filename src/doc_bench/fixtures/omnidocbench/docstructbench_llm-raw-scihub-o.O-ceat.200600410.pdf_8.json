@@ -1,0 +1,337 @@
+{
+  "layout_dets": [
+    {
+      "category_type": "figure",
+      "poly": [
+        190.916541,
+        199.351808,
+        835.151802,
+        199.351808,
+        835.151802,
+        713.647618,
+        190.916541,
+        713.647618
+      ],
+      "ignore": false,
+      "order": 1,
+      "anno_id": 10,
+      "attribute": {}
+    },
+    {
+      "category_type": "figure_caption",
+      "poly": [
+        190.916541,
+        727.324818,
+        825.577626,
+        727.324818,
+        825.577626,
+        760.152304,
+        190.916541,
+        760.152304
+      ],
+      "ignore": false,
+      "order": 2,
+      "anno_id": 2,
+      "text": "Figure 12. Degree of similarity of case 1 in the historical dataset.",
+      "attribute": {}
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        902.17434,
+        189.77776799999998,
+        1540.938171,
+        189.77776799999998,
+        1540.938171,
+        556.3487879999999,
+        902.17434,
+        556.3487879999999
+      ],
+      "ignore": false,
+      "order": 3,
+      "anno_id": 12,
+      "text": "pose is to verify the efficiency of the PCA plus kernel FDA method. The results that indicate the time consumed are shown in Tab. 3. From Tab. 3, it is seen that the proposed method is competitive with kernel FDA. The computation time is different with the different numbers of PCs reserved in PCA. The time consumed becomes longer with the increase of PCs. Although the entire time consumed owith PCA plus KFDA is longer than PCA, it is much less than that for the kernel FDA method alone. The results show that if one chooses the appropriate number of PCs, then the proposed method is more preferable for real-time process monitoring and fault diagnosis.",
+      "attribute": {}
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        900.807309,
+        560.451948,
+        1545.04257,
+        560.451948,
+        1545.04257,
+        649.360366,
+        900.807309,
+        649.360366
+      ],
+      "ignore": false,
+      "order": 4,
+      "anno_id": 4,
+      "text": "In order to evaluate the ability of the proposed approach to identify disturbance, the detection results were classified as 4 levels (A, B, C, and D) and listed as follows:",
+      "attribute": {}
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        899.438625,
+        652.095806,
+        1540.938171,
+        652.095806,
+        1540.938171,
+        713.647618,
+        899.438625,
+        713.647618
+      ],
+      "ignore": false,
+      "order": 5,
+      "anno_id": 13,
+      "text": "- A: The method can detect the occurrence of the disturbance and the result is excellent.",
+      "attribute": {}
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        900.807309,
+        715.015338,
+        1542.3068549999998,
+        715.015338,
+        1542.3068549999998,
+        769.726344,
+        900.807309,
+        769.726344
+      ],
+      "ignore": false,
+      "order": 6,
+      "anno_id": 11,
+      "text": "- B: The method can detect the occurrence of the disturbance and the result is clear.",
+      "attribute": {}
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        902.17434,
+        771.094064,
+        1540.938171,
+        771.094064,
+        1540.938171,
+        838.116756,
+        902.17434,
+        838.116756
+      ],
+      "ignore": false,
+      "order": 7,
+      "anno_id": 9,
+      "text": "- C: The method can detect the occurrence of the disturbance and the result is not very clear.",
+      "attribute": {}
+    },
+    {
+      "category_type": "table_caption",
+      "poly": [
+        190.916541,
+        872.311962,
+        1324.8266039999999,
+        872.311962,
+        1324.8266039999999,
+        902.404008,
+        190.916541,
+        902.404008
+      ],
+      "ignore": false,
+      "order": 8,
+      "anno_id": 1,
+      "text": "Table 3. Comparison of the time consumed for fault detection and diagnosis between PCA, KFDA and PCA + KFDA.",
+      "attribute": {}
+    },
+    {
+      "category_type": "table",
+      "poly": [
+        188.180826,
+        909.2426079999999,
+        1540.938171,
+        909.2426079999999,
+        1540.938171,
+        1404.388132,
+        188.180826,
+        1404.388132
+      ],
+      "ignore": false,
+      "order": 9,
+      "anno_id": 6,
+      "html": "<table border=\"1\"><tr><td rowspan=\"3\">Fault Number</td><td colspan=\"7\">Time consumed(s)</td></tr><tr><td colspan=\"2\">PCs=8(60% variance)</td><td colspan=\"2\">PCs=15(95% variance)</td><td colspan=\"3\">PCs=19(99% variance)</td></tr><tr><td>PCA</td><td>PCA+KFDA</td><td>PCA</td><td>PCA+KFDA</td><td>PCA</td><td>PCA+KFDA</td><td>KFDA</td></tr><tr><td>1</td><td>5.2</td><td>14.1</td><td>5.4</td><td>23.7</td><td>5.5</td><td>36.2</td><td>56.3</td></tr><tr><td>2</td><td>4.7</td><td>13.9</td><td>4.8</td><td>21.2</td><td>4.8</td><td>32.1</td><td>51.7</td></tr><tr><td>3</td><td>5.0</td><td>13.4</td><td>5.1</td><td>22.1</td><td>5.0</td><td>34.4</td><td>53.6</td></tr><tr><td>4</td><td>6.0</td><td>16.8</td><td>6.3</td><td>27.1</td><td>6.1</td><td>45.2</td><td>64.3</td></tr><tr><td>5</td><td>5.5</td><td>14.7</td><td>5.7</td><td>24.6</td><td>5.5</td><td>36.8</td><td>59.5</td></tr><tr><td>6</td><td>5.1</td><td>14.1</td><td>5.2</td><td>23.9</td><td>5.1</td><td>35.1</td><td>57.4</td></tr><tr><td>7</td><td>5.1</td><td>14.9</td><td>5.3</td><td>24.2</td><td>5.2</td><td>35.8</td><td>58.9</td></tr><tr><td>8</td><td>5.8</td><td>16.2</td><td>6.1</td><td>26.5</td><td>6.0</td><td>43.9</td><td>61.5</td></tr></table>",
+      "attribute": {},
+      "table_edit_status": "good"
+    },
+    {
+      "category_type": "table_caption",
+      "poly": [
+        189.54951,
+        1453.628258,
+        995.1853440000001,
+        1453.628258,
+        995.1853440000001,
+        1487.823464,
+        189.54951,
+        1487.823464
+      ],
+      "ignore": false,
+      "order": 10,
+      "anno_id": 8,
+      "text": "Table 4. Comparison of fault detection ability among PCA, KFDA and PCA + KFDA.",
+      "attribute": {}
+    },
+    {
+      "category_type": "table",
+      "poly": [
+        185.81539401333416,
+        1494.6620640000003,
+        1544.0441690133343,
+        1494.6620640000003,
+        1544.0441690133343,
+        1983.8171820800035,
+        185.81539401333416,
+        1983.8171820800035
+      ],
+      "ignore": false,
+      "order": 11,
+      "anno_id": 14,
+      "html": "<table border=\"1\"><tr><td rowspan=\"3\">Fault Number</td><td colspan=\"7\">Detection Results</td></tr><tr><td colspan=\"2\">PCs = 8(60% variance)</td><td colspan=\"2\">PCs = 15(95% variance)</td><td colspan=\"3\">PCs = 19(99% variance)</td></tr><tr><td>PCA</td><td>PCA + KFDA</td><td>PCA</td><td>PCA + KFDA</td><td>PCA</td><td>PCA + KFDA</td><td>KFDA</td></tr><tr><td>1</td><td>C</td><td>B</td><td>C</td><td>A</td><td>C</td><td>B</td><td>B</td></tr><tr><td>2</td><td>D</td><td>B</td><td>C</td><td>A</td><td>D</td><td>A</td><td>A</td></tr><tr><td>3</td><td>D</td><td>B</td><td>C</td><td>A</td><td>C</td><td>B</td><td>B</td></tr><tr><td>4</td><td>C</td><td>A</td><td>B</td><td>A</td><td>C</td><td>A</td><td>A</td></tr><tr><td>5</td><td>C</td><td>A</td><td>B</td><td>A</td><td>C</td><td>A</td><td>A</td></tr><tr><td>6</td><td>B</td><td>B</td><td>C</td><td>B</td><td>B</td><td>B</td><td>B</td></tr><tr><td>7</td><td>C</td><td>B</td><td>C</td><td>A</td><td>C</td><td>B</td><td>B</td></tr><tr><td>8</td><td>D</td><td>B</td><td>B</td><td>A</td><td>C</td><td>A</td><td>A</td></tr></table>",
+      "attribute": {},
+      "table_edit_status": "good"
+    },
+    {
+      "category_type": "page_number",
+      "poly": [
+        192.28522499999974,
+        135.06676200000015,
+        250.78267592025122,
+        135.06676200000015,
+        250.78267592025122,
+        166.5243220000002,
+        192.28522499999974,
+        166.5243220000002
+      ],
+      "ignore": false,
+      "order": null,
+      "anno_id": 0,
+      "text": "1210",
+      "attribute": {}
+    },
+    {
+      "category_type": "header",
+      "poly": [
+        288.8400140585645,
+        135.95502807017613,
+        427.52384946398496,
+        135.95502807017613,
+        427.52384946398496,
+        168.54572939044965,
+        288.8400140585645,
+        168.54572939044965
+      ],
+      "ignore": false,
+      "order": null,
+      "anno_id": 15,
+      "text": "X. Zhang et al.",
+      "attribute": {}
+    },
+    {
+      "category_type": "header",
+      "poly": [
+        1099.139208,
+        137.802202,
+        1540.938171,
+        137.802202,
+        1540.938171,
+        167.89204199999998,
+        1099.139208,
+        167.89204199999998
+      ],
+      "ignore": false,
+      "order": null,
+      "anno_id": 7,
+      "text": "Chem. Eng. Technol. 2007, 30, No. 9, 1203-1211",
+      "attribute": {}
+    },
+    {
+      "category_type": "footer",
+      "poly": [
+        1272.849672,
+        2052.72712,
+        1531.363995,
+        2052.72712,
+        1531.363995,
+        2085.5524,
+        1272.849672,
+        2085.5524
+      ],
+      "ignore": false,
+      "order": null,
+      "anno_id": 3,
+      "text": "http://www.cet-journal.com",
+      "attribute": {}
+    },
+    {
+      "category_type": "footer",
+      "poly": [
+        193.65225600000002,
+        2054.0948399999997,
+        739.406736,
+        2054.0948399999997,
+        739.406736,
+        2078.7138,
+        193.65225600000002,
+        2078.7138
+      ],
+      "ignore": false,
+      "order": null,
+      "anno_id": 5,
+      "text": "2007 WILEY-VCH Verlag GmbH & Co. KGaA, Weinheim",
+      "attribute": {}
+    }
+  ],
+  "page_info": {
+    "page_no": 203,
+    "height": 2206,
+    "width": 1653,
+    "image_path": "docstructbench_llm-raw-scihub-o.O-ceat.200600410.pdf_8.jpg",
+    "page_attribute": {
+      "data_source": "academic_literature",
+      "language": "english",
+      "layout": "1andmore_column",
+      "special_issue": [
+        "table_fewer_line",
+        "table_horizontal",
+        "table_span",
+        "table_with_formula"
+      ],
+      "subset": "v1.5"
+    }
+  },
+  "extra": {
+    "relation": [
+      {
+        "source_anno_id": 10,
+        "target_anno_id": 2,
+        "relation_type": "parent_son"
+      },
+      {
+        "source_anno_id": 6,
+        "target_anno_id": 1,
+        "relation_type": "parent_son"
+      },
+      {
+        "source_anno_id": 14,
+        "target_anno_id": 8,
+        "relation_type": "parent_son"
+      }
+    ]
+  },
+  "_eval_tags": {
+    "is_clean": true,
+    "has_watermark": false,
+    "has_fuzzy_scan": false,
+    "has_colorful_bg": false,
+    "layout": "1andmore_column"
+  }
+}

@@ -159,7 +159,43 @@
       "doc_type": "exam_paper",
       "page": "omnidocbench/page-21ad32ba-fd62-43e5-964a-f5e95c0e0441.json",
       "image": "omnidocbench/page-21ad32ba-fd62-43e5-964a-f5e95c0e0441.png"
+    },
+    {
+      "doc_id": "docstructbench_llm-raw-scihub-o.O-s00128-007-9171-1.pdf_2",
+      "doc_type": "academic_literature",
+      "page": "omnidocbench/docstructbench_llm-raw-scihub-o.O-s00128-007-9171-1.pdf_2.json",
+      "image": "omnidocbench/docstructbench_llm-raw-scihub-o.O-s00128-007-9171-1.pdf_2.jpg"
+    },
+    {
+      "doc_id": "docstructbench_llm-raw-scihub-o.O-s00128-007-9171-1.pdf_3",
+      "doc_type": "academic_literature",
+      "page": "omnidocbench/docstructbench_llm-raw-scihub-o.O-s00128-007-9171-1.pdf_3.json",
+      "image": "omnidocbench/docstructbench_llm-raw-scihub-o.O-s00128-007-9171-1.pdf_3.jpg"
+    },
+    {
+      "doc_id": "docstructbench_llm-raw-scihub-o.O-j.1365-2818.2000.00739.x.pdf_4",
+      "doc_type": "academic_literature",
+      "page": "omnidocbench/docstructbench_llm-raw-scihub-o.O-j.1365-2818.2000.00739.x.pdf_4.json",
+      "image": "omnidocbench/docstructbench_llm-raw-scihub-o.O-j.1365-2818.2000.00739.x.pdf_4.jpg"
+    },
+    {
+      "doc_id": "docstructbench_llm-raw-scihub-o.O-j.1365-2818.2000.00739.x.pdf_8",
+      "doc_type": "academic_literature",
+      "page": "omnidocbench/docstructbench_llm-raw-scihub-o.O-j.1365-2818.2000.00739.x.pdf_8.json",
+      "image": "omnidocbench/docstructbench_llm-raw-scihub-o.O-j.1365-2818.2000.00739.x.pdf_8.jpg"
+    },
+    {
+      "doc_id": "docstructbench_llm-raw-scihub-o.O-ceat.200600410.pdf_5",
+      "doc_type": "academic_literature",
+      "page": "omnidocbench/docstructbench_llm-raw-scihub-o.O-ceat.200600410.pdf_5.json",
+      "image": "omnidocbench/docstructbench_llm-raw-scihub-o.O-ceat.200600410.pdf_5.jpg"
+    },
+    {
+      "doc_id": "docstructbench_llm-raw-scihub-o.O-ceat.200600410.pdf_8",
+      "doc_type": "academic_literature",
+      "page": "omnidocbench/docstructbench_llm-raw-scihub-o.O-ceat.200600410.pdf_8.json",
+      "image": "omnidocbench/docstructbench_llm-raw-scihub-o.O-ceat.200600410.pdf_8.jpg"
     }
   ],
-  "total": 26
+  "total": 32
 }
