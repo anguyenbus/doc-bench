@@ -540,11 +540,39 @@ def main() -> None:
                 csv_file.flush()
                 processed += 1
 
-        except Exception as e:
+        except FileNotFoundError as e:
+            # Schema file not found - record as rejection
+            reason = RejectionReason.INVALID_SCHEMA
+            source_file = "schema"
+            detail = format_rejection_detail(reason, str(e))
+            rejection_tracker.record_rejection(query_id, reason, source_file, detail)
             writer.writerow(
                 {
                     "query_id": query_id,
-                    "error": str(e),
+                    "error": f"{reason.value}: {detail}",
+                    "nid": 0.0,
+                    "nid_s": 0.0,
+                    "teds": 0.0,
+                    "teds_s": 0.0,
+                    "mhs": 0.0,
+                    "mhs_s": 0.0,
+                    "ard": 0.0,
+                    "bleu": 0.0,
+                    "meteor": 0.0,
+                }
+            )
+            csv_file.flush()
+            errors += 1
+        except Exception as e:
+            # Other evaluation errors - record as rejection
+            reason = RejectionReason.EVALUATION_ERROR
+            source_file = query_id
+            detail = format_rejection_detail(reason, str(e))
+            rejection_tracker.record_rejection(query_id, reason, source_file, detail)
+            writer.writerow(
+                {
+                    "query_id": query_id,
+                    "error": f"{reason.value}: {detail}",
                     "nid": 0.0,
                     "nid_s": 0.0,
                     "teds": 0.0,
