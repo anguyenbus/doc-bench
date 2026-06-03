@@ -50,6 +50,68 @@ uv sync --extra bedrock
 uv sync --extra docling
 ```
 
+## Development
+
+### Regenerating Baseline Fixtures
+
+The DP-Bench and OmniDocBench baseline-score fixtures under
+`src/doc_bench/fixtures/` are produced by a vendored copy of the
+`docling-baseline` generator (`src/docling_baseline/`). That generator pulls
+heavy dependencies (`docling` brings a full torch tree), so they are confined to
+a dev-only `generator` dependency-group and are **not** shipped in the doc-bench
+wheel and **not** part of the runtime dependencies. A plain `uv sync` never
+installs them.
+
+Regenerate all in-scope baselines in-place:
+
+```bash
+make regen-fixtures
+```
+
+Regenerate a single dataset:
+
+```bash
+make regen-fixtures DATASET=dp_bench
+```
+
+Both targets run the generator under the dev `generator` group on Python 3.13
+(`uv` auto-provisions the interpreter; doc-bench core stays `requires-python
+>=3.12`):
+
+```bash
+uv run --python 3.13 --group generator python scripts/regenerate_fixtures.py
+```
+
+The generator is invoked as a module (`python -m docling_baseline.cli ...`); it
+is not registered as a doc-bench console script. ATO-Bench is out of scope for
+this target.
+
+### Vendoring Guards
+
+Because the generator is vendored verbatim, it keeps a second copy of the metric
+implementations (NID / TEDS / MHS) and the parser-output schema. Two CI guards
+protect against that duplication causing trouble:
+
+- **Byte-equality drift guard** (`tests/test_metric_drift_guard.py`) -- runs in
+  the fast suite (`make test`). It asserts each vendored metric/schema file is
+  byte-identical to its doc-bench counterpart, modulo a documented, pinned
+  allow-list (exactly the legacy-alias functions appended to `nid.py` and
+  `table_teds.py`). Any unreviewed divergence fails the build.
+- **Wheel-leak guard** (`tests/test_wheel_no_generator_leak.py`) -- marked
+  `build` and deselected from the default fast loop. Run it explicitly:
+
+  ```bash
+  uv run pytest -m build
+  ```
+
+  It builds the wheel and asserts zero `docling_baseline` paths leak into the
+  artifact while doc-bench paths are present.
+
+The `make ci` target runs lint, typecheck, the fast suite (which includes the
+drift guard) and `make test-build` (the wheel-leak guard), so both guards are
+enforced in CI. See `docs/runbook.md` for provenance, the isolation guarantee,
+and what to do when a guard fires.
+
 ## Smoke Test
 
 Validate installation with bundled fixtures (26 documents, no download required):

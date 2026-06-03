@@ -68,10 +68,39 @@ dev = [
     "types-pyyaml",
     "types-jsonschema",
 ]
+# NOTE: Dev-only generator group for the vendored docling-baseline fixture
+# generator (src/docling_baseline). These deps are heavy (docling pulls a torch
+# tree) and are intentionally confined here: they NEVER appear in
+# [project.dependencies] nor in the [docling] runtime extra. A no-group
+# `uv sync` must not install docling/docling-core. Authoritative dep list comes
+# from @references/docling-baseline/pyproject.toml. Invoked via
+# `uv run --python 3.13 --group generator` (see `make regen-fixtures`); the
+# generator assumes Python 3.13 while doc-bench core stays requires-python >=3.12.
+generator = [
+    "docling>=2",
+    "docling-core",
+    "apted>=1",
+    "rapidfuzz>=3",
+    "beautifulsoup4>=4",
+    "lxml>=5",
+    "nltk",
+    "sacrebleu>=2.6.0",
+    "jsonschema>=4",
+    "polars>=1.41.0",
+    "click>=8.0.0",
+    "pydantic>=2",
+    "beartype",
+]
 
 [tool.ruff]
 target-version = "py313"
 line-length = 100
+# NOTE: src/docling_baseline is a verbatim vendored third-party generator and is
+# intentionally exempt from doc-bench lint standards (see spec FR1/AC1).
+# force-exclude keeps the vendored tree quiet even when ruff is handed an
+# explicit path (e.g. pre-commit), not just on a `ruff check .` directory scan.
+extend-exclude = ["src/docling_baseline"]
+force-exclude = true
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "B", "UP", "D"]
@@ -88,6 +117,11 @@ ignore = ["D203", "D212", "D200", "B904", "B007", "UP042"]
 [tool.black]
 line-length = 100
 target-version = ["py313"]
+# NOTE: src/docling_baseline is a verbatim vendored third-party generator and is
+# intentionally exempt from doc-bench formatting (see spec FR1/AC1). black's
+# extend-exclude is a regex applied to paths; without this, `black --check .`
+# (run by `make lint` / CI) would scan the vendored tree and fail.
+extend-exclude = "src/docling_baseline"
 
 [tool.mypy]
 python_version = "3.13"
@@ -95,19 +129,39 @@ strict = true
 warn_return_any = true
 warn_unused_ignores = true
 disallow_untyped_defs = true
+# NOTE: src/docling_baseline is a verbatim vendored third-party generator and is
+# intentionally exempt from doc-bench type checking (see spec FR1/AC1).
+exclude = ["src/docling_baseline"]
 
 [[tool.mypy.overrides]]
 module = "tests.*"
 disallow_untyped_defs = false
 
+[[tool.mypy.overrides]]
+module = "docling_baseline.*"
+ignore_errors = true
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["src", "scripts"]
-addopts = "-v --tb=short"
+# NOTE: `-m "not build"` deselects the slow wheel-build leak guard from the
+# default fast loop (`uv run pytest` / `pytest -q`). The existing `slow` marker
+# is intentionally NOT deselected here: it is already used by integration tests
+# that are expected to run by default, so a dedicated `build` marker isolates
+# the wheel-build guard without changing `slow` behavior. Select the guard
+# explicitly with `uv run pytest -m build` (see the CI `ci` target / Makefile).
+addopts = '-v --tb=short -m "not build"'
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "build: marks the wheel-build leak guard; deselected by default, run with '-m build'",
+]
 
 [tool.coverage.run]
 source = ["src"]
 branch = true
+# NOTE: src/docling_baseline is a verbatim vendored third-party generator and is
+# intentionally exempt from doc-bench coverage targets (see spec FR1/AC1).
+omit = ["src/docling_baseline/*"]
 
 [tool.coverage.report]
 precision = 2

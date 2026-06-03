@@ -532,6 +532,21 @@ dev = [
     { name = "types-jsonschema" },
     { name = "types-pyyaml" },
 ]
+generator = [
+    { name = "apted" },
+    { name = "beartype" },
+    { name = "beautifulsoup4" },
+    { name = "click" },
+    { name = "docling" },
+    { name = "docling-core" },
+    { name = "jsonschema" },
+    { name = "lxml" },
+    { name = "nltk" },
+    { name = "polars" },
+    { name = "pydantic" },
+    { name = "rapidfuzz" },
+    { name = "sacrebleu" },
+]
 
 [package.metadata]
 requires-dist = [
@@ -565,6 +580,21 @@ dev = [
     { name = "ruff", specifier = ">=0.8" },
     { name = "types-jsonschema" },
     { name = "types-pyyaml" },
+]
+generator = [
+    { name = "apted", specifier = ">=1" },
+    { name = "beartype" },
+    { name = "beautifulsoup4", specifier = ">=4" },
+    { name = "click", specifier = ">=8.0.0" },
+    { name = "docling", specifier = ">=2" },
+    { name = "docling-core" },
+    { name = "jsonschema", specifier = ">=4" },
+    { name = "lxml", specifier = ">=5" },
+    { name = "nltk" },
+    { name = "polars", specifier = ">=1.41.0" },
+    { name = "pydantic", specifier = ">=2" },
+    { name = "rapidfuzz", specifier = ">=3" },
+    { name = "sacrebleu", specifier = ">=2.6.0" },
 ]
 
 [[package]]

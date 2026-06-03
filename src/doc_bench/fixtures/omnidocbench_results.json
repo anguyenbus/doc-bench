@@ -1,22 +1,23 @@
 {
-  "total": 10,
-  "successful": 10,
+  "total": 16,
+  "successful": 16,
   "errors": 0,
   "averages": {
-    "nid": 0.7686,
-    "nid_s": 0.7686,
+    "nid": 0.8154,
+    "nid_s": 0.8154,
     "teds": 0.0,
     "teds_s": 0.0,
-    "mhs": 0.0266,
-    "mhs_s": 0.05,
-    "ard": 0.3037,
-    "bleu": 0.309,
-    "meteor": 0.499
+    "mhs": 0.0166,
+    "mhs_s": 0.0312,
+    "ard": 0.1898,
+    "bleu": 0.3827,
+    "meteor": 0.4849
   },
   "results": [
     {
-      "query_id": "baseline_0",
+      "query_id": "page-48687e49-b9db-4251-96cf-124144aa4d08",
       "image": "page-48687e49-b9db-4251-96cf-124144aa4d08.png",
+      "doc_type": "PPT2PDF",
       "error": "",
       "nid": 0.7075,
       "nid_s": 0.7075,
@@ -29,8 +30,9 @@
       "meteor": 0.8887
     },
     {
-      "query_id": "baseline_1",
+      "query_id": "yanbaopptmerge_PattPatelCh12.pdf_27",
       "image": "yanbaopptmerge_PattPatelCh12.pdf_27.jpg",
+      "doc_type": "PPT2PDF",
       "error": "",
       "nid": 0.3145,
       "nid_s": 0.3145,
@@ -43,8 +45,9 @@
       "meteor": 0.1253
     },
     {
-      "query_id": "baseline_2",
+      "query_id": "page-bd6eb36e-0856-4d9d-b587-21b4a0209c8b",
       "image": "page-bd6eb36e-0856-4d9d-b587-21b4a0209c8b.png",
+      "doc_type": "academic_literature",
       "error": "",
       "nid": 0.7106,
       "nid_s": 0.7106,
@@ -57,8 +60,9 @@
       "meteor": 0.2892
     },
     {
-      "query_id": "baseline_3",
+      "query_id": "page-f9583127-1277-4424-be9d-35430e0aedd6",
       "image": "page-f9583127-1277-4424-be9d-35430e0aedd6.png",
+      "doc_type": "academic_literature",
       "error": "",
       "nid": 0.8163,
       "nid_s": 0.8163,
@@ -71,8 +75,9 @@
       "meteor": 0.5227
     },
     {
-      "query_id": "baseline_4",
+      "query_id": "page-d1561665-5359-42fe-920c-d6e3bff81953",
       "image": "page-d1561665-5359-42fe-920c-d6e3bff81953.png",
+      "doc_type": "book",
       "error": "",
       "nid": 0.7927,
       "nid_s": 0.7927,
@@ -85,8 +90,9 @@
       "meteor": 0.5029
     },
     {
-      "query_id": "baseline_5",
+      "query_id": "page-0a262e27-b24d-4429-9b21-90563d4fada7",
       "image": "page-0a262e27-b24d-4429-9b21-90563d4fada7.png",
+      "doc_type": "book",
       "error": "",
       "nid": 0.8519,
       "nid_s": 0.8519,
@@ -99,8 +105,9 @@
       "meteor": 0.5085
     },
     {
-      "query_id": "baseline_6",
+      "query_id": "jiaocai_P0-9.pdf_9",
       "image": "jiaocai_P0-9.pdf_9.jpg",
+      "doc_type": "colorful_textbook",
       "error": "",
       "nid": 0.9545,
       "nid_s": 0.9545,
@@ -113,8 +120,9 @@
       "meteor": 0.5751
     },
     {
-      "query_id": "baseline_7",
+      "query_id": "jiaocai_jiaocai_en_595",
       "image": "jiaocai_jiaocai_en_595.jpg",
+      "doc_type": "colorful_textbook",
       "error": "",
       "nid": 0.9304,
       "nid_s": 0.9304,
@@ -127,8 +135,9 @@
       "meteor": 0.624
     },
     {
-      "query_id": "baseline_8",
+      "query_id": "page-d271a2ab-4523-44c4-94b5-303bf54b69e9",
       "image": "page-d271a2ab-4523-44c4-94b5-303bf54b69e9.png",
+      "doc_type": "exam_paper",
       "error": "",
       "nid": 0.8871,
       "nid_s": 0.8871,
@@ -141,8 +150,9 @@
       "meteor": 0.6192
     },
     {
-      "query_id": "baseline_9",
+      "query_id": "page-21ad32ba-fd62-43e5-964a-f5e95c0e0441",
       "image": "page-21ad32ba-fd62-43e5-964a-f5e95c0e0441.png",
+      "doc_type": "exam_paper",
       "error": "",
       "nid": 0.7207,
       "nid_s": 0.7207,
@@ -153,6 +163,96 @@
       "ard": 0.0,
       "bleu": 0.2076,
       "meteor": 0.3346
+    },
+    {
+      "query_id": "docstructbench_llm-raw-scihub-o.O-s00128-007-9171-1.pdf_2",
+      "image": "docstructbench_llm-raw-scihub-o.O-s00128-007-9171-1.pdf_2.jpg",
+      "doc_type": "academic_literature",
+      "error": "",
+      "nid": 0.8935,
+      "nid_s": 0.8935,
+      "teds": 0.0,
+      "teds_s": 0.0,
+      "mhs": 0.0,
+      "mhs_s": 0.0,
+      "ard": 0.0,
+      "bleu": 0.1874,
+      "meteor": 0.2262
+    },
+    {
+      "query_id": "docstructbench_llm-raw-scihub-o.O-s00128-007-9171-1.pdf_3",
+      "image": "docstructbench_llm-raw-scihub-o.O-s00128-007-9171-1.pdf_3.jpg",
+      "doc_type": "academic_literature",
+      "error": "",
+      "nid": 0.896,
+      "nid_s": 0.896,
+      "teds": 0.0,
+      "teds_s": 0.0,
+      "mhs": 0.0,
+      "mhs_s": 0.0,
+      "ard": 0.0,
+      "bleu": 0.3588,
+      "meteor": 0.3378
+    },
+    {
+      "query_id": "docstructbench_llm-raw-scihub-o.O-j.1365-2818.2000.00739.x.pdf_4",
+      "image": "docstructbench_llm-raw-scihub-o.O-j.1365-2818.2000.00739.x.pdf_4.jpg",
+      "doc_type": "academic_literature",
+      "error": "",
+      "nid": 0.8986,
+      "nid_s": 0.8986,
+      "teds": 0.0,
+      "teds_s": 0.0,
+      "mhs": 0.0,
+      "mhs_s": 0.0,
+      "ard": 0.0,
+      "bleu": 0.4417,
+      "meteor": 0.4316
+    },
+    {
+      "query_id": "docstructbench_llm-raw-scihub-o.O-j.1365-2818.2000.00739.x.pdf_8",
+      "image": "docstructbench_llm-raw-scihub-o.O-j.1365-2818.2000.00739.x.pdf_8.jpg",
+      "doc_type": "academic_literature",
+      "error": "",
+      "nid": 0.9499,
+      "nid_s": 0.9499,
+      "teds": 0.0,
+      "teds_s": 0.0,
+      "mhs": 0.0,
+      "mhs_s": 0.0,
+      "ard": 0.0,
+      "bleu": 0.6101,
+      "meteor": 0.5182
+    },
+    {
+      "query_id": "docstructbench_llm-raw-scihub-o.O-ceat.200600410.pdf_5",
+      "image": "docstructbench_llm-raw-scihub-o.O-ceat.200600410.pdf_5.jpg",
+      "doc_type": "academic_literature",
+      "error": "",
+      "nid": 0.8216,
+      "nid_s": 0.8216,
+      "teds": 0.0,
+      "teds_s": 0.0,
+      "mhs": 0.0,
+      "mhs_s": 0.0,
+      "ard": 0.0,
+      "bleu": 0.6552,
+      "meteor": 0.5766
+    },
+    {
+      "query_id": "docstructbench_llm-raw-scihub-o.O-ceat.200600410.pdf_8",
+      "image": "docstructbench_llm-raw-scihub-o.O-ceat.200600410.pdf_8.jpg",
+      "doc_type": "academic_literature",
+      "error": "",
+      "nid": 0.9011,
+      "nid_s": 0.9011,
+      "teds": 0.0,
+      "teds_s": 0.0,
+      "mhs": 0.0,
+      "mhs_s": 0.0,
+      "ard": 0.0,
+      "bleu": 0.7796,
+      "meteor": 0.6778
     }
   ]
 }

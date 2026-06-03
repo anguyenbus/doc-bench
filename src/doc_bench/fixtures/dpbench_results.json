@@ -1,22 +1,23 @@
 {
-  "total": 12,
-  "successful": 12,
+  "total": 16,
+  "successful": 16,
   "errors": 0,
   "averages": {
-    "nid": 0.9587,
-    "nid_s": 0.9587,
+    "nid": 0.7818,
+    "nid_s": 0.7818,
     "teds": 0.0,
     "teds_s": 0.0,
-    "mhs": 0.1115,
-    "mhs_s": 0.2274,
-    "ard": 0.5868,
-    "bleu": 0.8744,
-    "meteor": 0.9413
+    "mhs": 0.098,
+    "mhs_s": 0.2122,
+    "ard": 0.646,
+    "bleu": 0.7079,
+    "meteor": 0.7632
   },
   "results": [
     {
-      "query_id": "dpbench_0",
+      "query_id": "01030000000001",
       "pdf": "01030000000001.pdf",
+      "category": "Paragraph",
       "error": "",
       "nid": 0.9893,
       "nid_s": 0.9893,
@@ -29,8 +30,9 @@
       "meteor": 0.9765
     },
     {
-      "query_id": "dpbench_1",
+      "query_id": "01030000000002",
       "pdf": "01030000000002.pdf",
+      "category": "Paragraph",
       "error": "",
       "nid": 0.9837,
       "nid_s": 0.9837,
@@ -43,8 +45,9 @@
       "meteor": 0.9688
     },
     {
-      "query_id": "dpbench_2",
+      "query_id": "01030000000017",
       "pdf": "01030000000017.pdf",
+      "category": "Paragraph",
       "error": "",
       "nid": 0.9811,
       "nid_s": 0.9811,
@@ -57,8 +60,9 @@
       "meteor": 0.9908
     },
     {
-      "query_id": "dpbench_3",
+      "query_id": "01030000000027",
       "pdf": "01030000000027.pdf",
+      "category": "Chart",
       "error": "",
       "nid": 0.7353,
       "nid_s": 0.7353,
@@ -71,8 +75,9 @@
       "meteor": 0.5608
     },
     {
-      "query_id": "dpbench_4",
+      "query_id": "01030000000040",
       "pdf": "01030000000040.pdf",
+      "category": "Paragraph",
       "error": "",
       "nid": 0.9964,
       "nid_s": 0.9964,
@@ -85,8 +90,9 @@
       "meteor": 0.9959
     },
     {
-      "query_id": "dpbench_5",
+      "query_id": "01030000000076",
       "pdf": "01030000000076.pdf",
+      "category": "Caption",
       "error": "",
       "nid": 0.9032,
       "nid_s": 0.9032,
@@ -99,8 +105,9 @@
       "meteor": 0.9834
     },
     {
-      "query_id": "dpbench_6",
+      "query_id": "01030000000083",
       "pdf": "01030000000083.pdf",
+      "category": "Caption",
       "error": "",
       "nid": 0.9832,
       "nid_s": 0.9832,
@@ -113,8 +120,9 @@
       "meteor": 0.9902
     },
     {
-      "query_id": "dpbench_7",
+      "query_id": "01030000000118",
       "pdf": "01030000000118.pdf",
+      "category": "Heading1",
       "error": "",
       "nid": 0.961,
       "nid_s": 0.961,
@@ -127,8 +135,9 @@
       "meteor": 0.9604
     },
     {
-      "query_id": "dpbench_8",
+      "query_id": "01030000000120",
       "pdf": "01030000000120.pdf",
+      "category": "Paragraph",
       "error": "",
       "nid": 0.9954,
       "nid_s": 0.9954,
@@ -141,8 +150,9 @@
       "meteor": 0.9765
     },
     {
-      "query_id": "dpbench_9",
+      "query_id": "01030000000127",
       "pdf": "01030000000127.pdf",
+      "category": "Paragraph",
       "error": "",
       "nid": 1.0,
       "nid_s": 1.0,
@@ -155,8 +165,9 @@
       "meteor": 1.0
     },
     {
-      "query_id": "dpbench_10",
+      "query_id": "01030000000192",
       "pdf": "01030000000192.pdf",
+      "category": "Paragraph",
       "error": "",
       "nid": 0.9889,
       "nid_s": 0.9889,
@@ -169,8 +180,9 @@
       "meteor": 0.9548
     },
     {
-      "query_id": "dpbench_11",
+      "query_id": "01030000000193",
       "pdf": "01030000000193.pdf",
+      "category": "Paragraph",
       "error": "",
       "nid": 0.9871,
       "nid_s": 0.9871,
@@ -181,6 +193,66 @@
       "ard": 0.7545,
       "bleu": 0.9346,
       "meteor": 0.9377
+    },
+    {
+      "query_id": "01030000000172",
+      "pdf": "01030000000172.pdf",
+      "category": "Index",
+      "error": "",
+      "nid": 0.0032,
+      "nid_s": 0.0032,
+      "teds": 0.0,
+      "teds_s": 0.0,
+      "mhs": 0.0,
+      "mhs_s": 0.0,
+      "ard": 1.0,
+      "bleu": 0.0,
+      "meteor": 0.0018
+    },
+    {
+      "query_id": "01030000000018",
+      "pdf": "01030000000018.pdf",
+      "category": "Heading1",
+      "error": "",
+      "nid": 0.0111,
+      "nid_s": 0.0111,
+      "teds": 0.0,
+      "teds_s": 0.0,
+      "mhs": 0.0,
+      "mhs_s": 0.0,
+      "ard": 1.0,
+      "bleu": 0.0,
+      "meteor": 0.0031
+    },
+    {
+      "query_id": "01030000000141",
+      "pdf": "01030000000141.pdf",
+      "category": "Paragraph",
+      "error": "",
+      "nid": 0.0068,
+      "nid_s": 0.0068,
+      "teds": 0.0,
+      "teds_s": 0.0,
+      "mhs": 0.0,
+      "mhs_s": 0.0,
+      "ard": 1.0,
+      "bleu": 0.0,
+      "meteor": 0.0013
+    },
+    {
+      "query_id": "01030000000121",
+      "pdf": "01030000000121.pdf",
+      "category": "Paragraph",
+      "error": "",
+      "nid": 0.9829,
+      "nid_s": 0.9829,
+      "teds": 0.0,
+      "teds_s": 0.0,
+      "mhs": 0.23,
+      "mhs_s": 0.6667,
+      "ard": 0.2948,
+      "bleu": 0.8339,
+      "meteor": 0.9094
     }
   ]
 }
