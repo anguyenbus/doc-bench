@@ -16,6 +16,7 @@
 - [What ships in the box](#what-ships-in-the-box)
 - [Where the baseline numbers come from](#where-the-baseline-numbers-come-from)
 - [Getting started in five minutes](#getting-started-in-five-minutes)
+- [Testing on more data (beyond the bundled fixtures)](#testing-on-more-data-beyond-the-bundled-fixtures)
 - [What doc-bench is not](#what-doc-bench-is-not)
 - [FAQ](#faq)
 - [Where to go next](#where-to-go-next)
@@ -131,6 +132,55 @@ doc-bench --dataset dp_bench --predictions ./predictions --output-dir ./results
 If METEOR reports 0 on first use, run `doc-bench-setup` once to fetch the small NLTK corpora it needs.
 
 Working from a source checkout instead of the wheel? Prefix commands with `uv run` (for example `uv run doc-bench-smoke-test`).
+
+## Testing on more data (beyond the bundled fixtures)
+
+The 33 bundled documents exist for instant validation — they are a **smoke test, not a statistical benchmark**. For real quality numbers you grade against more data. There are two ways, and both feed the same `doc-bench` grading command via the `--data-dir` flag.
+
+> **Reminder of the model:** doc-bench grades *predictions* against *ground truth*. "More data" means a larger ground-truth set; you still produce one `<doc_id>.json` prediction per document with your own parser and point doc-bench at them.
+
+### Option A — download a full public benchmark
+
+Use the built-in downloader. Every download is **version-pinned** (there is no "latest"), fetched from HuggingFace, and cached locally so it is downloaded only once.
+
+```bash
+# 1. See what datasets/versions exist and what is already cached
+doc-bench-list-datasets
+
+# 2. Download a pinned version (cached at ~/.cache/doc-bench/<dataset>-<version>/)
+doc-bench-download --dataset omnidocbench --version <version>
+
+# 3. Export the documents, run your parser to produce predictions/<doc_id>.json, then grade
+#    against the downloaded set by pointing --data-dir at the cache directory
+doc-bench --dataset omnidocbench \
+  --predictions ./predictions \
+  --data-dir ~/.cache/doc-bench/omnidocbench-<version> \
+  --output-dir ./results
+```
+
+The cache location can be overridden with `--cache-dir` or the `DOC_BENCH_CACHE` environment variable.
+
+### Option B — bring your own data
+
+Point `--data-dir` at a directory containing your ground truth in the benchmark's expected layout:
+
+- **DP-Bench style:** `reference.json` + a `pdfs/` folder.
+- **OmniDocBench style:** `OmniDocBench.json` + an `images/` folder.
+
+```bash
+doc-bench --dataset dp_bench \
+  --predictions ./predictions \
+  --data-dir /path/to/my_data \
+  --output-dir ./results
+```
+
+`--data-dir` overrides the default location from `eval_config.yaml`, so you can grade against any dataset that follows the expected structure. Use `--limit N` to dry-run on the first N documents while you iterate.
+
+### Watch the rejection rate
+
+When you scale up, keep an eye on the rejection count in the summary. A run where most documents are rejected (missing or schema-invalid predictions) is a suspect run, not a good score. doc-bench flags a high rejection rate; tune the threshold with `--max-rejection-rate` (or `DOC_BENCH_MAX_REJECTION_RATE`).
+
+> Full flag reference: `docs/doc-bench/cli-reference.md`. Custom-data formats and the prediction contract: `docs/doc-bench/parser-output.md`.
 
 ## What doc-bench is not
 
