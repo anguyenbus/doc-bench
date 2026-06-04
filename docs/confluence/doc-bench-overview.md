@@ -149,18 +149,20 @@ Use the built-in downloader. Every download is **version-pinned** (there is no "
 # 1. See what datasets/versions exist and what is already cached
 doc-bench-list-datasets
 
-# 2. Download a pinned version (cached at ~/.cache/doc-bench/<dataset>-<version>/)
+# 2. Download a pinned version (cached under ~/.cache/doc-bench/<dataset>-<version>/)
 doc-bench-download --dataset omnidocbench --version <version>
 
-# 3. Export the documents, run your parser to produce predictions/<doc_id>.json, then grade
-#    against the downloaded set by pointing --data-dir at the cache directory
+# 3. Run your parser over the documents to produce predictions/<doc_id>.json,
+#    then grade by pointing --data-dir at the ground-truth directory
 doc-bench --dataset omnidocbench \
   --predictions ./predictions \
-  --data-dir ~/.cache/doc-bench/omnidocbench-<version> \
+  --data-dir <path-to-ground-truth> \
   --output-dir ./results
 ```
 
 The cache location can be overridden with `--cache-dir` or the `DOC_BENCH_CACHE` environment variable.
+
+> **Point `--data-dir` at the right directory.** The grader expects the ground truth in the benchmark's layout — OmniDocBench: `OmniDocBench.json` + `images/`; DP-Bench: `reference.json` + `pdfs/`. A downloaded dataset is a HuggingFace snapshot, so those files may sit at the top of the cache directory **or in a subdirectory of it**. After downloading, look inside the cache folder and pass the directory that actually contains those files. If you see `OmniDocBench.json not found`, you have pointed `--data-dir` one level too high or too low.
 
 ### Option B — bring your own data
 
