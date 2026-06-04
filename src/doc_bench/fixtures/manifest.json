@@ -199,35 +199,11 @@
   ],
   "ato_bench": [
     {
-      "doc_id": "n4190_bas_form",
-      "doc_type": "BAS",
-      "pdf": "ato_bench/n4190_bas_form.pdf",
-      "pages": ["ato_bench/n4190_bas_form_p1.json", "ato_bench/n4190_bas_form_p2.json"]
-    },
-    {
-      "doc_id": "n8056_bas_form",
-      "doc_type": "BAS",
-      "pdf": "ato_bench/n8056_bas_form.pdf",
-      "pages": ["ato_bench/n8056_bas_form_p1.json", "ato_bench/n8056_bas_form_p2.json"]
-    },
-    {
-      "doc_id": "n70947_payg_summary",
-      "doc_type": "PAYG",
-      "pdf": "ato_bench/n70947_payg_summary.pdf",
-      "pages": ["ato_bench/n70947_payg_summary_p1.json", "ato_bench/n70947_payg_summary_p2.json", "ato_bench/n70947_payg_summary_p3.json", "ato_bench/n70947_payg_summary_p4.json", "ato_bench/n70947_payg_summary_p5.json", "ato_bench/n70947_payg_summary_p6.json"]
-    },
-    {
-      "doc_id": "n2476_super_guide",
-      "doc_type": "super_guide",
-      "pdf": "ato_bench/n2476_super_guide.pdf",
-      "pages": ["ato_bench/n2476_super_guide_p1.json", "ato_bench/n2476_super_guide_p2.json", "ato_bench/n2476_super_guide_p3.json"]
-    },
-    {
-      "doc_id": "ex_2541_instruction",
-      "doc_type": "instruction",
-      "pdf": "ato_bench/ex_2541_instruction.pdf",
-      "pages": ["ato_bench/ex_2541_instruction_p1.json", "ato_bench/ex_2541_instruction_p2.json", "ato_bench/ex_2541_instruction_p3.json", "ato_bench/ex_2541_instruction_p4.json", "ato_bench/ex_2541_instruction_p5.json", "ato_bench/ex_2541_instruction_p6.json", "ato_bench/ex_2541_instruction_p7.json", "ato_bench/ex_2541_instruction_p8.json", "ato_bench/ex_2541_instruction_p9.json", "ato_bench/ex_2541_instruction_p10.json"]
+      "doc_id": "1371-6.1997",
+      "doc_type": "individual_income_tax_return",
+      "pdf": "ato_bench/1371-6.1997.pdf",
+      "pages": ["ato_bench/1371-6.1997_p1.json", "ato_bench/1371-6.1997_p2.json"]
     }
   ],
-  "total": 37
+  "total": 33
 }

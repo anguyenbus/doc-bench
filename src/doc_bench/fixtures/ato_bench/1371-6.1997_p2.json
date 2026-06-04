@@ -1,0 +1,508 @@
+{
+  "layout_dets": [
+    {
+      "category_type": "title",
+      "poly": [
+        50,
+        50,
+        1550,
+        120
+      ],
+      "order": 1,
+      "anno_id": 201,
+      "text": "Page 2",
+      "line_with_spans": []
+    },
+    {
+      "category_type": "header",
+      "poly": [
+        50,
+        130,
+        1550,
+        250
+      ],
+      "order": 2,
+      "anno_id": 202,
+      "text": "Income",
+      "line_with_spans": []
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        50,
+        260,
+        1550,
+        340
+      ],
+      "order": 3,
+      "anno_id": 203,
+      "text": "1 Job Search, Newstart, Sickness Allowance or Special Benefit",
+      "line_with_spans": []
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        50,
+        350,
+        1550,
+        420
+      ],
+      "order": 4,
+      "anno_id": 204,
+      "text": "Tax installments deducted $ c",
+      "line_with_spans": []
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        50,
+        430,
+        1550,
+        500
+      ],
+      "order": 5,
+      "anno_id": 205,
+      "text": "2 Australian government pensions",
+      "line_with_spans": []
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        50,
+        510,
+        1550,
+        560
+      ],
+      "order": 6,
+      "anno_id": 206,
+      "text": "Notional taxable income of spouse",
+      "line_with_spans": []
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        50,
+        570,
+        1550,
+        640
+      ],
+      "order": 7,
+      "anno_id": 207,
+      "text": "3 Gross salary and wages",
+      "line_with_spans": []
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        50,
+        650,
+        1550,
+        700
+      ],
+      "order": 8,
+      "anno_id": 208,
+      "text": "Occupation code",
+      "line_with_spans": []
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        50,
+        710,
+        1550,
+        780
+      ],
+      "order": 9,
+      "anno_id": 209,
+      "text": "Name of employer",
+      "line_with_spans": []
+    },
+    {
+      "category_type": "table",
+      "poly": [
+        50,
+        790,
+        1550,
+        900
+      ],
+      "order": 10,
+      "anno_id": 210,
+      "text": "",
+      "cells": [
+        {
+          "row": 1,
+          "col": 3,
+          "text": "C"
+        },
+        {
+          "row": 2,
+          "col": 3,
+          "text": "D"
+        },
+        {
+          "row": 3,
+          "col": 3,
+          "text": "E"
+        },
+        {
+          "row": 4,
+          "col": 3,
+          "text": "F"
+        },
+        {
+          "row": 5,
+          "col": 3,
+          "text": "G"
+        }
+      ]
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        50,
+        910,
+        1550,
+        950
+      ],
+      "order": 11,
+      "anno_id": 211,
+      "text": "4 Lump sum payments",
+      "line_with_spans": []
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        50,
+        960,
+        1550,
+        1000
+      ],
+      "order": 12,
+      "anno_id": 212,
+      "text": "Amount A in lump sum payment box",
+      "line_with_spans": []
+    },
+    {
+      "category_type": "table",
+      "poly": [
+        50,
+        1010,
+        400,
+        1050
+      ],
+      "order": 13,
+      "anno_id": 213,
+      "text": "",
+      "cells": [
+        {
+          "row": 1,
+          "col": 2,
+          "text": "T"
+        }
+      ]
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        50,
+        1060,
+        1550,
+        1100
+      ],
+      "order": 14,
+      "anno_id": 214,
+      "text": "5% of amount B",
+      "line_with_spans": []
+    },
+    {
+      "category_type": "table",
+      "poly": [
+        50,
+        1110,
+        400,
+        1150
+      ],
+      "order": 15,
+      "anno_id": 215,
+      "text": "",
+      "cells": [
+        {
+          "row": 1,
+          "col": 2,
+          "text": "H"
+        }
+      ]
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        50,
+        1160,
+        1550,
+        1200
+      ],
+      "order": 16,
+      "anno_id": 216,
+      "text": "5 Eligible termination payments",
+      "line_with_spans": []
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        50,
+        1210,
+        1550,
+        1250
+      ],
+      "order": 17,
+      "anno_id": 217,
+      "text": "Taxable amount",
+      "line_with_spans": []
+    },
+    {
+      "category_type": "table",
+      "poly": [
+        50,
+        1260,
+        400,
+        1300
+      ],
+      "order": 18,
+      "anno_id": 218,
+      "text": "",
+      "cells": [
+        {
+          "row": 1,
+          "col": 2,
+          "text": "I"
+        }
+      ]
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        50,
+        1310,
+        1550,
+        1350
+      ],
+      "order": 19,
+      "anno_id": 219,
+      "text": "Excessive component",
+      "line_with_spans": []
+    },
+    {
+      "category_type": "table",
+      "poly": [
+        50,
+        1360,
+        400,
+        1400
+      ],
+      "order": 20,
+      "anno_id": 220,
+      "text": "",
+      "cells": [
+        {
+          "row": 1,
+          "col": 1,
+          "text": "U"
+        }
+      ]
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        50,
+        1410,
+        1550,
+        1450
+      ],
+      "order": 21,
+      "anno_id": 221,
+      "text": "6 Other pensions",
+      "line_with_spans": []
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        50,
+        1460,
+        1550,
+        1500
+      ],
+      "order": 22,
+      "anno_id": 222,
+      "text": "Type",
+      "line_with_spans": []
+    },
+    {
+      "category_type": "table",
+      "poly": [
+        50,
+        1510,
+        400,
+        1550
+      ],
+      "order": 23,
+      "anno_id": 223,
+      "text": "",
+      "cells": [
+        {
+          "row": 1,
+          "col": 3,
+          "text": "J"
+        }
+      ]
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        50,
+        1560,
+        1550,
+        1600
+      ],
+      "order": 24,
+      "anno_id": 224,
+      "text": "7 Allowances",
+      "line_with_spans": []
+    },
+    {
+      "category_type": "table",
+      "poly": [
+        50,
+        1610,
+        400,
+        1650
+      ],
+      "order": 25,
+      "anno_id": 225,
+      "text": "",
+      "cells": [
+        {
+          "row": 1,
+          "col": 2,
+          "text": "K"
+        }
+      ]
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        50,
+        1660,
+        1550,
+        1700
+      ],
+      "order": 26,
+      "anno_id": 226,
+      "text": "8 Total tax instalments",
+      "line_with_spans": []
+    },
+    {
+      "category_type": "table",
+      "poly": [
+        50,
+        1710,
+        400,
+        1750
+      ],
+      "order": 29,
+      "anno_id": 229,
+      "text": "",
+      "cells": [
+        {
+          "row": 1,
+          "col": 1,
+          "text": "$"
+        }
+      ]
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        50,
+        1760,
+        1550,
+        1800
+      ],
+      "order": 30,
+      "anno_id": 230,
+      "text": "9 Gross interest",
+      "line_with_spans": []
+    },
+    {
+      "category_type": "table",
+      "poly": [
+        50,
+        1810,
+        400,
+        1850
+      ],
+      "order": 31,
+      "anno_id": 231,
+      "text": "",
+      "cells": [
+        {
+          "row": 1,
+          "col": 1,
+          "text": "L"
+        }
+      ]
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        50,
+        1860,
+        1550,
+        1900
+      ],
+      "order": 32,
+      "anno_id": 232,
+      "text": "TFN deducted",
+      "line_with_spans": []
+    },
+    {
+      "category_type": "table",
+      "poly": [
+        50,
+        1910,
+        400,
+        1950
+      ],
+      "order": 33,
+      "anno_id": 233,
+      "text": "",
+      "cells": [
+        {
+          "row": 1,
+          "col": 1,
+          "text": "M"
+        }
+      ]
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        50,
+        1960,
+        1550,
+        2000
+      ],
+      "order": 34,
+      "anno_id": 234,
+      "text": "10 Partnerships and trusts",
+      "line_with_spans": []
+    }
+  ],
+  "extra": {
+    "relation": []
+  },
+  "page_info": {
+    "page_no": 2,
+    "height": 2339,
+    "width": 1654
+  }
+}
