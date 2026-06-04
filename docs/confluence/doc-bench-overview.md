@@ -103,7 +103,9 @@ The wheel bundles **33 documents** plus their ground truth and a reference score
 | OmniDocBench | 16 | Multi-type document pages (academic literature, books, textbooks, exam papers, slide conversions). |
 | ATO-Bench | 1 | An Australian Tax Office form (2-page individual income tax return) representing real-world government forms. |
 
-Each benchmark has known characteristics we document honestly (for example, DP-Bench gold is single-page; OmniDocBench annotations are sparse), so nobody misreads a score.
+All three are gradable out of the box with `doc-bench --dataset {dp_bench, omnidocbench, ato_bench}`; ATO-Bench reads its ground truth straight from the bundled fixtures, so it needs no download or `--data-dir`.
+
+Each benchmark has known characteristics we document honestly (for example, DP-Bench gold is single-page; OmniDocBench annotations are sparse; ATO-Bench gold is concatenated text, so its table-structure metrics read low), so nobody misreads a score.
 
 ## Where the baseline numbers come from
 

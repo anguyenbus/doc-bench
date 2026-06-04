@@ -46,10 +46,11 @@ doc-bench-setup = "doc_bench.cli.setup:main"
 [tool.hatch.build.targets.wheel]
 packages = ["src/doc_bench"]
 
-[tool.hatch.build.targets.wheel.shared-data]
-"src/doc_bench/fixtures" = "doc_bench/fixtures"
-"src/doc_bench/MANIFEST.yaml" = "doc_bench/MANIFEST.yaml"
-
+# NOTE: fixtures and MANIFEST.yaml ship as package data inside doc_bench/ via the
+# include globs below. We deliberately do NOT add a
+# [tool.hatch.build.targets.wheel.shared-data] mapping for them: that packages a
+# second copy under doc_bench-<ver>.data/data/. The code reads them from the package
+# (importlib.resources / files("doc_bench")), so the in-package copy is canonical.
 [tool.hatch.build]
 include = [
     "src/doc_bench/**/*.py",

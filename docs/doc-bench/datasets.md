@@ -14,10 +14,10 @@
 ## Overview
 
 `doc-bench` ships with three datasets as bundled fixtures inside the wheel,
-under `src/doc_bench/fixtures/`. Two of them — DP-Bench and OmniDocBench — are
-gradable through the main `doc-bench` evaluation CLI. The third, ATO-Bench, is
-bundled as a fixture and baseline only and is **not** supported by the main eval
-CLI (see [overview.md](overview.md) and the
+under `src/doc_bench/fixtures/`. All three — DP-Bench, OmniDocBench, and
+ATO-Bench — are gradable through the main `doc-bench` evaluation CLI
+(`--dataset dp_bench | omnidocbench | ato_bench`). For `ato_bench`, the ground
+truth defaults to the bundled fixtures, so no `--data-dir` is required (see the
 [ATO-Bench](#ato-bench) section below).
 
 The total bundled corpus is **33 documents**. The smoke test
@@ -85,10 +85,13 @@ per-page ground-truth JSON files.
 are typically `0.0`. This is a known limitation of the gold builder, documented
 under [../docling-baseline/adding-a-dataset.md](../docling-baseline/adding-a-dataset.md).
 
-**Not gradable via the main CLI.** ATO-Bench is **not** supported by the main
-`doc-bench` evaluation command, which accepts only `dp_bench` and
-`omnidocbench`. It is produced and exercised only by the generator's ATO-Bench
-runner and is shipped here as a fixture and baseline reference.
+**Gradable via the main CLI.** ATO-Bench is gradable with
+`doc-bench --dataset ato_bench --predictions <dir>`. Its ground truth is loaded
+from the bundled fixture layout (`manifest.json` + `ato_bench/`), and a
+document's per-page gold is combined into one document-level gold string before
+scoring — mirroring how the generator's ATO-Bench runner scores it. Because the
+gold is concatenated text, the table-oriented metrics behave as noted in the
+caveat above.
 
 ## Bundled Baseline Scores
 

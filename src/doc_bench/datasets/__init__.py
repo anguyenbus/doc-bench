@@ -8,10 +8,12 @@ This module provides loaders for:
 All loaders use iterator pattern for memory efficiency.
 """
 
+from doc_bench.datasets.ato_bench import load_ato_bench
 from doc_bench.datasets.dp_bench import load_dp_bench
 from doc_bench.datasets.omnidocbench import load_omnidocbench
 
 __all__ = [
     "load_omnidocbench",
     "load_dp_bench",
+    "load_ato_bench",
 ]

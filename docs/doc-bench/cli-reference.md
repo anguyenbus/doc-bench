@@ -36,11 +36,17 @@ Grades a directory of pre-computed prediction files against a benchmark's ground
 doc-bench --dataset dp_bench --predictions ./predictions --output-dir ./results
 ```
 
+ATO-Bench grades against the bundled fixtures by default, so no ground-truth path is needed:
+
+```bash
+doc-bench --dataset ato_bench --predictions ./predictions --output-dir ./results
+```
+
 ### Options
 
 | Flag | Required | Default | Description |
 |------|----------|---------|-------------|
-| `--dataset` | yes | — | Benchmark to grade against. Choices: `omnidocbench`, `dp_bench`. (ATO-Bench is **not** supported here — it ships as a fixture/baseline only.) |
+| `--dataset` | yes | — | Benchmark to grade against. Choices: `omnidocbench`, `dp_bench`, `ato_bench`. For `ato_bench` the ground truth defaults to the bundled fixtures (no `--data-dir` needed). |
 | `--predictions <dir>` | yes | — | Directory of prediction JSON files named `<doc_id>.json`, each conforming to [`parser_output.schema.json`](parser-output.md). |
 | `--output-dir <dir>` | no | `results` | Directory for the CSV/JSON result files (created if missing). |
 | `--data-dir <dir>` | no | from `eval_config.yaml` | Override the ground-truth dataset location. Expected structure — DP-Bench: `reference.json` + `pdfs/`; OmniDocBench: `OmniDocBench.json` + `images/`. |

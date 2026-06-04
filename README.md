@@ -92,6 +92,12 @@ The wheel ships **33 documents** under `doc_bench/fixtures/`, so the smoke test 
 | OmniDocBench | 16 | academic_literature (8), book (2), colorful_textbook (2), exam_paper (2), PPT2PDF (2). |
 | ATO-Bench | 1 | `1371-6.1997`, a 2-page individual income tax return. |
 
+All three are gradable via `doc-bench --dataset {dp_bench,omnidocbench,ato_bench}`. ATO-Bench loads its ground truth from the bundled fixtures, so it needs no `--data-dir`:
+
+```bash
+doc-bench --dataset ato_bench --predictions ./predictions --output-dir ./results
+```
+
 Reference baseline scores ship alongside them (`doc_bench/fixtures/{dpbench,omnidocbench,ato_bench}_results.json`) and can be loaded programmatically:
 
 ```python

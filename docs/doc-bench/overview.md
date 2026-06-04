@@ -98,10 +98,10 @@ The workflow is three steps: **dump, predict, grade.**
    doc-bench --dataset omnidocbench --predictions ./predictions
    ```
 
-   `--dataset` (one of `omnidocbench` or `dp_bench`) and `--predictions` are
-   required. The main eval CLI supports **only** `dp_bench` and `omnidocbench`;
-   `ato_bench` is bundled as a fixture and baseline only and is not gradable
-   through this command. Common optional flags include `--output-dir` (default
+   `--dataset` (one of `omnidocbench`, `dp_bench`, or `ato_bench`) and
+   `--predictions` are required. For `ato_bench` the ground truth defaults to the
+   bundled fixtures, so no `--data-dir` is needed. Common optional flags include
+   `--output-dir` (default
    `results/`), `--data-dir` (override the ground-truth location), `--limit`,
    and `--max-rejection-rate`. The complete flag reference for every entry point
    lives in [cli-reference.md](cli-reference.md).

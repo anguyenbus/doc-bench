@@ -129,9 +129,24 @@ def load_dataset(dataset_name: str, config: dict):
         root = Path(config["datasets"]["dp_bench"]["path"])
         return load_dp_bench(root)
 
+    elif dataset_name == "ato_bench":
+        from doc_bench.datasets import load_ato_bench
+
+        # ATO-Bench ground truth ships in the bundled fixture layout
+        # (manifest.json + ato_bench/). Use a configured path if present,
+        # otherwise fall back to the bundled fixtures inside the package.
+        ato_cfg = config.get("datasets", {}).get("ato_bench", {})
+        if ato_cfg.get("path"):
+            root = Path(ato_cfg["path"])
+        else:
+            import doc_bench
+
+            root = Path(doc_bench.__file__).parent / "fixtures"
+        return load_ato_bench(root)
+
     else:
         print(f"ERROR: Unknown dataset: {dataset_name}")
-        print("Supported datasets: omnidocbench, dp_bench")
+        print("Supported datasets: omnidocbench, dp_bench, ato_bench")
         sys.exit(1)
 
 
@@ -167,6 +182,104 @@ def _extract_gold_text_from_omnidocbench(page: dict) -> str:
     return " ".join(texts)
 
 
+def _grade_text_item(
+    doc_id: str,
+    query_id: str,
+    gold_markdown: str,
+    predictions_dir: Path,
+    schema_path: Path,
+    writer,
+    csv_file,
+    rejection_tracker,
+) -> str:
+    """
+    Grade one document whose gold is a concatenated text string.
+
+    Loads the ``<doc_id>.json`` prediction, records a rejection (missing,
+    invalid JSON, or schema-invalid) or computes all metrics, writes one CSV
+    row, and returns the outcome.
+
+    Args:
+        doc_id: Document identifier; the prediction must be ``<doc_id>.json``.
+        query_id: Value written to the ``query_id`` CSV column.
+        gold_markdown: Ground-truth text to score against.
+        predictions_dir: Directory holding prediction JSON files.
+        schema_path: Path to the parser-output schema for validation.
+        writer: CSV ``DictWriter`` for the per-document results.
+        csv_file: Open CSV file handle (flushed after each row).
+        rejection_tracker: Tracker that records non-scoreable documents.
+
+    Returns:
+        ``"processed"`` if scored, ``"error"`` if rejected.
+
+    """
+    zero_row = {
+        m: 0.0 for m in ("nid", "nid_s", "teds", "teds_s", "mhs", "mhs_s", "ard", "bleu", "meteor")
+    }
+
+    prediction_dict = load_prediction(predictions_dir, doc_id)
+    if prediction_dict is None:
+        prediction_path = predictions_dir / f"{doc_id}.json"
+        if not prediction_path.exists():
+            reason = RejectionReason.MISSING_PREDICTION
+            detail = ""
+        else:
+            reason = RejectionReason.INVALID_JSON
+            detail = format_rejection_detail(reason, "File exists but contains invalid JSON")
+        rejection_tracker.record_rejection(doc_id, reason, f"{doc_id}.json", detail)
+        writer.writerow(
+            {
+                "query_id": query_id,
+                "error": f"{reason.value}: {detail}" if detail else reason.value,
+                **zero_row,
+            }
+        )
+        csv_file.flush()
+        return "error"
+
+    try:
+        validate(prediction_dict, schema_path)
+    except SchemaValidationError as e:
+        reason = RejectionReason.INVALID_SCHEMA
+        detail = format_rejection_detail(
+            reason, f"{e.field_path}: {e.original_error}" if e.field_path else e.original_error
+        )
+        rejection_tracker.record_rejection(doc_id, reason, f"{doc_id}.json", detail)
+        writer.writerow({"query_id": query_id, "error": f"{reason.value}: {detail}", **zero_row})
+        csv_file.flush()
+        return "error"
+
+    pred_markdown = parser_output_to_markdown(prediction_dict)
+
+    nid, nid_s = evaluate_nid(gold_markdown, pred_markdown)
+    teds, teds_s = evaluate_table(gold_markdown, pred_markdown)
+    mhs, mhs_s = evaluate_heading_level(gold_markdown, pred_markdown)
+    ard = ard_score(gold_markdown.split(), pred_markdown.split())
+    bleu = bleu_score(gold_markdown, pred_markdown)
+    meteor = meteor_score(gold_markdown, pred_markdown)
+
+    def safe_float(x):
+        return round(x, 4) if x is not None else 0.0
+
+    writer.writerow(
+        {
+            "query_id": query_id,
+            "error": "",
+            "nid": safe_float(nid),
+            "nid_s": safe_float(nid_s),
+            "teds": safe_float(teds),
+            "teds_s": safe_float(teds_s),
+            "mhs": safe_float(mhs),
+            "mhs_s": safe_float(mhs_s),
+            "ard": safe_float(ard),
+            "bleu": safe_float(bleu),
+            "meteor": safe_float(meteor),
+        }
+    )
+    csv_file.flush()
+    return "processed"
+
+
 def main() -> None:
     """Run the parsing evaluation CLI."""
     import argparse
@@ -174,7 +287,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Evaluate document parsing on public benchmarks")
     parser.add_argument(
         "--dataset",
-        choices=["omnidocbench", "dp_bench"],
+        choices=["omnidocbench", "dp_bench", "ato_bench"],
         required=True,
         help="Dataset to evaluate on",
     )
@@ -246,7 +359,8 @@ def main() -> None:
     # Override data path if --data-dir provided
     if args.data_dir:
         data_path = args.data_dir.resolve()
-        config["datasets"][args.dataset]["path"] = str(data_path)
+        # setdefault: ato_bench may not be present in eval_config.yaml.
+        config.setdefault("datasets", {}).setdefault(args.dataset, {})["path"] = str(data_path)
         print(f"Using data directory: {data_path}")
 
     # Create output directory
@@ -539,6 +653,30 @@ def main() -> None:
                 )
                 csv_file.flush()
                 processed += 1
+
+            elif args.dataset == "ato_bench":
+                # ATO-Bench: gold is the document's combined per-page text.
+                doc_id, gold_text = item
+                print(f"Processing document {doc_id}...")
+
+                if not gold_text:
+                    # No gold text to score against; skip.
+                    continue
+
+                outcome = _grade_text_item(
+                    doc_id=doc_id,
+                    query_id=doc_id,
+                    gold_markdown=gold_text,
+                    predictions_dir=args.predictions,
+                    schema_path=schema_path,
+                    writer=writer,
+                    csv_file=csv_file,
+                    rejection_tracker=rejection_tracker,
+                )
+                if outcome == "processed":
+                    processed += 1
+                else:
+                    errors += 1
 
         except FileNotFoundError as e:
             # Schema file not found - record as rejection
