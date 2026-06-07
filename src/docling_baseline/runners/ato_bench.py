@@ -104,7 +104,7 @@ class ATOBenchRunner(BaseRunner):
             }
             all_doc_results.append(result)
 
-            print(f"  NID={metrics['nid']} BLEU={metrics['bleu']} METEOR={metrics['meteor']} MHS={metrics['mhs']} ARD={metrics['ard']}")
+            print(f"  NED={metrics['ned']} TEDS={metrics['teds']} TEDS-S={metrics['teds_s']}")
 
         # Calculate averages
         averages = self.compute_averages(all_doc_results)

@@ -19,26 +19,31 @@ Comparison strategy
 -------------------
 The files split into two classes:
 
-1. **Byte-identical today** -- ``mhs.py``, ``reading_order.py``,
-   ``text_similarity.py`` and ``parser_output.schema.json`` are byte-for-byte
-   equal to their ``doc-bench`` counterparts RIGHT NOW. These are asserted with
+1. **Byte-identical today** -- ``parser_output.schema.json`` is byte-for-byte
+   equal to its ``doc-bench`` counterpart RIGHT NOW. These are asserted with
    a raw ``bytes`` comparison and carry **no allow-listed delta**. A single
    changed byte fails the test.
 
-2. **Identical core logic + an appended legacy alias** -- ``nid.py`` and
-   ``table_teds.py`` are NOT byte-identical. ``doc-bench`` appends a deprecated
-   legacy-alias function to the end of each file for backward compatibility, and
-   (``table_teds.py`` only) reflows three multi-line statements in the shared
-   core onto single lines. The core *scoring logic* is equivalent today.
+   NOTE: ``mhs.py``, ``reading_order.py``, and ``text_similarity.py`` were
+   previously in this class but their ``doc-bench`` counterparts were deleted
+   as part of the NED/metrics simplification spec (2026-06-07). They remain
+   in the vendored ``docling_baseline`` tree (frozen third-party code) but no
+   longer have ``doc-bench`` counterparts.
 
-   For these two files the known deltas are captured by the explicit
-   :data:`ALLOW_LIST` below as load-bearing data. Each entry pins the **exact
-   bytes** of the appended alias suffix (so editing the alias, or any *new*
-   trailing addition, fails) and names the precise reason. After the pinned
-   alias suffix is stripped from the ``doc-bench`` file, the remaining *core* is
-   compared to the vendored file at the level of Python **tokens** -- the
-   ``tokenize`` stream with whitespace/indent/newline tokens removed. This makes
-   the guard bite exactly where it should:
+2. **Identical core logic + an appended legacy alias** -- ``table_teds.py``
+   is NOT byte-identical. ``doc-bench`` appends a deprecated legacy-alias
+   function to the end for backward compatibility and reflows three
+   multi-line statements in the shared core onto single lines. The core
+   *scoring logic* is equivalent today.
+
+   For this file the known delta is captured by the explicit :data:`ALLOW_LIST`
+   below as load-bearing data. Each entry pins the **exact bytes** of the
+   appended alias suffix (so editing the alias, or any *new* trailing addition,
+   fails) and names the precise reason. After the pinned alias suffix is
+   stripped from the ``doc-bench`` file, the remaining *core* is compared to
+   the vendored file at the level of Python **tokens** -- the ``tokenize``
+   stream with whitespace/indent/newline tokens removed. This makes the guard
+   bite exactly where it should:
 
    * a whitespace-only reflow on shared lines (today's ``table_teds.py`` delta)
      PASSES, because tokens are unchanged;
@@ -47,12 +52,9 @@ The files split into two classes:
    * ANY edit to the pinned alias bytes, or any unlisted trailing addition,
      FAILS, because the suffix no longer matches the pinned text.
 
-The allow-list lists EXACTLY the legacy-alias deltas on ``nid.py`` and
-``table_teds.py`` and nothing else. ``mhs.py``, ``reading_order.py``,
-``text_similarity.py`` and the schema deliberately have NO allow-list entry.
-
-This guard is deterministic, requires NO Docling install, and runs in the fast
-``pytest -q`` suite (and therefore in CI).
+The allow-list lists EXACTLY the legacy-alias delta on ``table_teds.py``
+and nothing else. ``parser_output.schema.json`` is absent here on purpose
+(it is byte-identical and lives in BYTE_IDENTICAL above).
 """
 
 from __future__ import annotations
@@ -81,10 +83,12 @@ DOCBENCH_SCHEMA: Final[Path] = (
 # ---------------------------------------------------------------------------
 # Each tuple is (vendored_path, docbench_path). These MUST be byte-for-byte
 # equal today; a single differing byte is a divergence that fails the guard.
+#
+# NOTE: Only parser_output.schema.json remains in this class after the
+# 2026-06-07 NED/metrics simplification spec deleted mhs.py, reading_order.py,
+# and text_similarity.py from the doc-bench side. The vendored copies in
+# src/docling_baseline/ are frozen third-party code and were not deleted.
 BYTE_IDENTICAL: Final[tuple[tuple[Path, Path], ...]] = (
-    (VENDORED_METRICS / "mhs.py", DOCBENCH_METRICS / "mhs.py"),
-    (VENDORED_METRICS / "reading_order.py", DOCBENCH_METRICS / "reading_order.py"),
-    (VENDORED_METRICS / "text_similarity.py", DOCBENCH_METRICS / "text_similarity.py"),
     (VENDORED_SCHEMA, DOCBENCH_SCHEMA),
 )
 
@@ -126,24 +130,6 @@ class AllowedDelta:
 # NOTE: The ``alias_suffix`` values below are the verbatim current bytes of the
 # appended blocks. They are intentionally pinned in full so the guard fails if
 # the alias logic is edited or a brand-new function is appended unreviewed.
-_NID_ALIAS_SUFFIX: Final[str] = (
-    "\n\n# Legacy aliases for compatibility\n"
-    "def normalized_indel_distance(predicted: list, gold: list) -> float:\n"
-    '    """\n'
-    "    Legacy: Calculate edit distance between sequences.\n\n"
-    "    DEPRECATED: Use nid_score() with markdown strings instead.\n"
-    "    This is kept for backward compatibility.\n"
-    '    """\n'
-    "    if not predicted and not gold:\n"
-    "        return 0.0\n"
-    "    if not predicted or not gold:\n"
-    "        return 1.0\n\n"
-    "    from rapidfuzz.distance import Levenshtein\n\n"
-    "    distance = Levenshtein.distance(predicted, gold)\n"
-    "    max_len = max(len(predicted), len(gold))\n"
-    "    return distance / max_len if max_len > 0 else 0.0\n"
-)
-
 _TABLE_TEDS_ALIAS_SUFFIX: Final[str] = (
     "# Legacy alias for backward compatibility\n"
     "def table_teds(predicted_table: dict, gold_table: dict) -> float:\n"
@@ -179,24 +165,12 @@ _TABLE_TEDS_ALIAS_SUFFIX: Final[str] = (
 )
 
 
-# The complete allow-list. EXACTLY two entries -- the legacy-alias deltas on
-# nid.py and table_teds.py -- and nothing else. mhs.py / reading_order.py /
-# text_similarity.py / the schema are absent here on purpose (they are
-# byte-identical and live in BYTE_IDENTICAL above).
+# The complete allow-list. EXACTLY one entry -- the legacy-alias delta on
+# table_teds.py -- and nothing else. parser_output.schema.json is absent here
+# on purpose (it is byte-identical and lives in BYTE_IDENTICAL above).
+# NOTE: nid.py was previously allow-listed but was deleted from doc-bench as
+# part of the 2026-06-07 NED/metrics simplification spec.
 ALLOW_LIST: Final[tuple[AllowedDelta, ...]] = (
-    AllowedDelta(
-        name="nid.py",
-        vendored=VENDORED_METRICS / "nid.py",
-        docbench=DOCBENCH_METRICS / "nid.py",
-        alias_marker="\n\n# Legacy aliases for compatibility\n",
-        alias_suffix=_NID_ALIAS_SUFFIX,
-        reason=(
-            "doc-bench appends the legacy alias function "
-            "`normalized_indel_distance` (deprecated, kept for backward "
-            "compatibility); the vendored core scoring logic is byte-identical."
-        ),
-        core_byte_identical=True,
-    ),
     AllowedDelta(
         name="table_teds.py",
         vendored=VENDORED_METRICS / "table_teds.py",
@@ -254,9 +228,9 @@ def _core_tokens(source: str) -> list[tuple[int, str]]:
     ids=[v.name for v, _ in BYTE_IDENTICAL],
 )
 def test_byte_identical_files_have_no_delta(vendored: Path, docbench: Path) -> None:
-    """mhs/reading_order/text_similarity/schema are byte-for-byte equal today.
+    """parser_output.schema.json is byte-for-byte equal today.
 
-    These carry NO allow-listed delta. A single differing byte is an
+    This carries NO allow-listed delta. A single differing byte is an
     unreviewed divergence and fails the guard.
     """
     assert vendored.exists(), f"missing vendored file: {vendored}"
@@ -312,10 +286,10 @@ def test_allowed_delta_alias_suffix_is_pinned_exactly(delta: AllowedDelta) -> No
 def test_allowed_delta_core_matches_vendored(delta: AllowedDelta) -> None:
     """The shared core (file minus the pinned alias) matches the vendored copy.
 
-    For ``nid.py`` the core is byte-identical. For ``table_teds.py`` the core
-    differs only by reviewed whitespace reflow, so it is compared at the token
-    level: any change to a meaningful token (operator/identifier/literal) in the
-    core scoring logic fails the guard, while a pure reflow passes.
+    For ``table_teds.py`` the core differs only by reviewed whitespace reflow,
+    so it is compared at the token level: any change to a meaningful token
+    (operator/identifier/literal) in the core scoring logic fails the guard,
+    while a pure reflow passes.
     """
     vendored_text = delta.vendored.read_text(encoding="utf-8")
     docbench_text = delta.docbench.read_text(encoding="utf-8")
@@ -343,15 +317,17 @@ def test_allowed_delta_core_matches_vendored(delta: AllowedDelta) -> None:
 
 
 def test_allow_list_contains_exactly_the_known_alias_deltas() -> None:
-    """The allow-list lists EXACTLY nid.py and table_teds.py and nothing else.
+    """The allow-list lists EXACTLY table_teds.py and nothing else.
 
     Guards against the allow-list silently growing to mask new divergences, and
     against the byte-identical files ever acquiring an (unjustified) entry.
+    NOTE: nid.py was previously in this list but was deleted from doc-bench
+    as part of the 2026-06-07 NED/metrics simplification spec.
     """
     allowed_names = {delta.name for delta in ALLOW_LIST}
-    assert allowed_names == {"nid.py", "table_teds.py"}, (
-        f"ALLOW_LIST must contain exactly the two documented legacy-alias "
-        f"deltas (nid.py, table_teds.py); found: {sorted(allowed_names)}"
+    assert allowed_names == {"table_teds.py"}, (
+        f"ALLOW_LIST must contain exactly the one documented legacy-alias "
+        f"delta (table_teds.py); found: {sorted(allowed_names)}"
     )
     byte_identical_names = {v.name for v, _ in BYTE_IDENTICAL}
     # The byte-identical files must never appear in the allow-list.

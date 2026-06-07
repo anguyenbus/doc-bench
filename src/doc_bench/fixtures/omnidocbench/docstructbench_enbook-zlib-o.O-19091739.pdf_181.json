@@ -1,0 +1,653 @@
+{
+  "layout_dets": [
+    {
+      "category_type": "text_block",
+      "poly": [
+        175.58864,
+        166.195778,
+        1171.217248,
+        166.195778,
+        1171.217248,
+        306.70139800000004,
+        175.58864,
+        306.70139800000004
+      ],
+      "ignore": false,
+      "order": 1,
+      "anno_id": 23,
+      "text": "Model We are asked to find the magnetic field due to a simple current distribution, so this example is a typical problem for which the Biot-Savart law is appropriate. We must find the field contribution from a small element of current and then integrate over the current distribution from $ \\theta_{1} $ to $ \\theta_{2} $ , as shown in Figure 29.3b.",
+      "attribute": {}
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        175.38850599999998,
+        319.541042,
+        1191.002396,
+        319.541042,
+        1191.002396,
+        557.561432,
+        175.38850599999998,
+        557.561432
+      ],
+      "ignore": false,
+      "order": 2,
+      "anno_id": 29,
+      "text": "Analyse Let's start by considering a length element $ d \\vec{s} $ locateda distance r from P. The direction of the magnetic field at point P due to the current in this element is out of the page because $ d \\vec{s} \\times\\hat{\\mathbf{r}} $ is out of thepage.Infact, becauseall thecurr entelements $ I d \\vec{\\mathbf{s}} $ lie in the plane of the page, they all produce a magnetic field directed out of the page at point P. Therefore, the direction of the magnetic field at point P is out of the page and we need only find the magnitude of the field.We place the origin at O and let point P be along thepositive y axis, with $ \\mathrm\\; \\hat{\\bf k} $ being a unit vector pointing out of the page.",
+      "attribute": {}
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        174.027264,
+        573.0011800000001,
+        1182.227926,
+        573.0011800000001,
+        1182.227926,
+        679.948936,
+        174.027264,
+        679.948936
+      ],
+      "ignore": false,
+      "order": 3,
+      "anno_id": 17,
+      "text": "From the geometry in Figure 29.3a, we can see that the angle between the vectors $ d \\vec{s} $ and $ \\mathrm\\; \\vec{\\bf r} $ is $ \\left( \\frac{\\pi} {2}-\\theta\\right) $ radians.",
+      "attribute": {}
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        177.45766,
+        684.612166,
+        730.383244,
+        684.612166,
+        730.383244,
+        716.86563,
+        177.45766,
+        716.86563
+      ],
+      "ignore": false,
+      "order": 4,
+      "anno_id": 12,
+      "text": "Evaluate the cross product in the Biot-Savart law:",
+      "attribute": {}
+    },
+    {
+      "category_type": "equation_isolated",
+      "poly": [
+        415.357442,
+        740.086124,
+        1035.020272,
+        740.086124,
+        1035.020272,
+        820.450208,
+        415.357442,
+        820.450208
+      ],
+      "ignore": false,
+      "order": 5,
+      "anno_id": 11,
+      "latex": "$$\nd \\vec{\\mathbf{s}} \\times\\hat{\\mathbf{r}}=\\left| d \\vec{\\mathbf{s}} \\times\\hat{\\mathbf{r}} \\right| \\hat{\\mathbf{k}}=\\left[ d x \\operatorname{s i n} \\left( \\frac{\\pi} {2}-\\theta\\right) \\right] \\hat{\\mathbf{k}}=( d x \\operatorname{c o s} \\theta) \\hat{\\mathbf{k}}\n$$",
+      "attribute": {}
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        176.610812,
+        842.2967339999999,
+        507.57952,
+        842.2967339999999,
+        507.57952,
+        876.94812,
+        176.610812,
+        876.94812
+      ],
+      "ignore": false,
+      "order": 6,
+      "anno_id": 18,
+      "text": "Substitute into Equation 29.1:",
+      "attribute": {}
+    },
+    {
+      "category_type": "equation_isolated",
+      "poly": [
+        564.536664,
+        896.19889,
+        892.4256240000001,
+        896.19889,
+        892.4256240000001,
+        967.0430279999999,
+        564.536664,
+        967.0430279999999
+      ],
+      "ignore": false,
+      "order": 7,
+      "anno_id": 5,
+      "latex": "$$\nd \\vec{\\mathbf{B}}=( d B ) \\hat{\\mathbf{k}}=\\frac{\\mu_{_0} I} {4 \\pi} \\frac{d x \\operatorname{c o s} \\theta} {r^{2}} \\hat{\\mathbf{k}}\n$$",
+      "attribute": {}
+    },
+    {
+      "category_type": "equation_caption",
+      "poly": [
+        1144.3430560000002,
+        916.5366600000001,
+        1177.222922,
+        916.5366600000001,
+        1177.222922,
+        947.78791,
+        1144.3430560000002,
+        947.78791
+      ],
+      "ignore": false,
+      "order": 8,
+      "anno_id": 24,
+      "text": "(1)",
+      "attribute": {}
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        174.187702,
+        984.9741799999999,
+        828.5861860000001,
+        984.9741799999999,
+        828.5861860000001,
+        1022.8496080000001,
+        174.187702,
+        1022.8496080000001
+      ],
+      "ignore": false,
+      "order": 9,
+      "anno_id": 14,
+      "text": "From the geometry in Figure 29.3a, express r in terms of $ \\theta: $",
+      "attribute": {}
+    },
+    {
+      "category_type": "equation_isolated",
+      "poly": [
+        673.098608,
+        1043.815664,
+        794.785042,
+        1043.815664,
+        794.785042,
+        1111.4488039999999,
+        673.098608,
+        1111.4488039999999
+      ],
+      "ignore": false,
+      "order": 10,
+      "anno_id": 8,
+      "latex": "$$\nr=\\frac{a} {\\operatorname{c o s} \\theta}\n$$",
+      "attribute": {}
+    },
+    {
+      "category_type": "equation_caption",
+      "poly": [
+        1142.123388,
+        1058.7966979999999,
+        1178.246748,
+        1058.7966979999999,
+        1178.246748,
+        1089.621844,
+        1142.123388,
+        1089.621844
+      ],
+      "ignore": false,
+      "order": 11,
+      "anno_id": 15,
+      "text": "(2)",
+      "attribute": {}
+    },
+    {
+      "category_type": "figure",
+      "poly": [
+        1202.792108,
+        183.28559199999998,
+        1527.789876,
+        183.28559199999998,
+        1527.789876,
+        849.399192,
+        1202.792108,
+        849.399192
+      ],
+      "ignore": false,
+      "order": 12,
+      "anno_id": 4,
+      "attribute": {}
+    },
+    {
+      "category_type": "figure_caption",
+      "poly": [
+        1211.880838,
+        857.8604,
+        1510.0060680000001,
+        857.8604,
+        1510.0060680000001,
+        1032.3673800000001,
+        1211.880838,
+        1032.3673800000001
+      ],
+      "ignore": false,
+      "order": 13,
+      "anno_id": 31,
+      "text": "Figure 29.3 (Example 29.1) (a) A thin, straight wire carrying a current I (b) The angles $ \\theta_{1} $ and $ \\theta_{2} $ are used for determining the net field.",
+      "attribute": {}
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        172.745414,
+        1130.006068,
+        1512.53338,
+        1130.006068,
+        1512.53338,
+        1199.7762500000001,
+        172.745414,
+        1199.7762500000001
+      ],
+      "ignore": false,
+      "order": 14,
+      "anno_id": 16,
+      "text": "Notice that tan $ \\theta=-x / a $ from the right triangle in Figure 29.3a (the negative sign is necessary because $ d \\mathbf{\\vec{s}} $ is located at a negative value of x ) and solve for x:",
+      "attribute": {}
+    },
+    {
+      "category_type": "equation_isolated",
+      "poly": [
+        770.05278,
+        1216.413872,
+        927.9585059999999,
+        1216.413872,
+        927.9585059999999,
+        1245.960706,
+        770.05278,
+        1245.960706
+      ],
+      "ignore": false,
+      "order": 15,
+      "anno_id": 28,
+      "latex": "$$\nx=-a \\operatorname{t a n} \\theta\n$$",
+      "attribute": {}
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        176.43218,
+        1265.80063,
+        446.799982,
+        1265.80063,
+        446.799982,
+        1301.0172559999999,
+        176.43218,
+        1301.0172559999999
+      ],
+      "ignore": false,
+      "order": 16,
+      "anno_id": 6,
+      "text": "Find the differential dx:",
+      "attribute": {}
+    },
+    {
+      "category_type": "equation_isolated",
+      "poly": [
+        694.288002,
+        1316.08525,
+        1016.64764,
+        1316.08525,
+        1016.64764,
+        1389.15339,
+        694.288002,
+        1389.15339
+      ],
+      "ignore": false,
+      "order": 17,
+      "anno_id": 25,
+      "latex": "$$\nd x=-a \\operatorname{s e c}^{2} \\theta\\, d \\theta=-\\frac{a \\, d \\theta} {\\operatorname{c o s}^{2} \\theta}\n$$",
+      "attribute": {}
+    },
+    {
+      "category_type": "equation_caption",
+      "poly": [
+        1479.448418,
+        1337.9056879999998,
+        1520.325374,
+        1337.9056879999998,
+        1520.325374,
+        1372.874478,
+        1479.448418,
+        1372.874478
+      ],
+      "ignore": false,
+      "order": 18,
+      "anno_id": 19,
+      "text": "(3)",
+      "attribute": {}
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        176.288282,
+        1415.928374,
+        1072.848906,
+        1415.928374,
+        1072.848906,
+        1457.921358,
+        176.288282,
+        1457.921358
+      ],
+      "ignore": false,
+      "order": 19,
+      "anno_id": 20,
+      "text": "Substitute Equations (2) and (3) into the magnitude of the field from Equation (1):",
+      "attribute": {}
+    },
+    {
+      "category_type": "equation_isolated",
+      "poly": [
+        564.1264719999999,
+        1470.519688,
+        1140.8464999999999,
+        1470.519688,
+        1140.8464999999999,
+        1557.0253220000002,
+        564.1264719999999,
+        1557.0253220000002
+      ],
+      "ignore": false,
+      "order": 20,
+      "anno_id": 22,
+      "latex": "$$\nd B=-\\frac{\\mu_{0} I} {4 \\pi} \\! \\left( \\frac{a \\, d \\theta} {\\operatorname{c o s}^{2} \\theta} \\right) \\! \\left( \\frac{\\operatorname{c o s}^{2} \\theta} {a^{2}} \\right) \\! \\operatorname{c o s} \\theta=-\\frac{\\mu_{0} I} {4 \\pi a} \\! \\operatorname{c o s} \\theta\\, d \\theta\n$$",
+      "attribute": {}
+    },
+    {
+      "category_type": "equation_caption",
+      "poly": [
+        1481.53742,
+        1494.82066,
+        1515.803338,
+        1494.82066,
+        1515.803338,
+        1530.591656,
+        1481.53742,
+        1530.591656
+      ],
+      "ignore": false,
+      "order": 21,
+      "anno_id": 1,
+      "text": "(4)",
+      "attribute": {}
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        176.676972,
+        1577.676148,
+        1501.387074,
+        1577.676148,
+        1501.387074,
+        1646.4854220000002,
+        176.676972,
+        1646.4854220000002
+      ],
+      "ignore": false,
+      "order": 22,
+      "anno_id": 2,
+      "text": "Integrate Equation (4) over all length elements on the wire, where the subtending angles range from $ \\theta_{1} $ to $ \\theta_{2} $ as defined in Figure29.3b:",
+      "attribute": {}
+    },
+    {
+      "category_type": "equation_isolated",
+      "poly": [
+        597.894536,
+        1657.4554260000002,
+        1099.20705,
+        1657.4554260000002,
+        1099.20705,
+        1739.1195619999999,
+        597.894536,
+        1739.1195619999999
+      ],
+      "ignore": false,
+      "order": 23,
+      "anno_id": 26,
+      "latex": "$$\nB=-\\frac{\\mu_{0} I} {4 \\pi a} \\int_{\\theta_{1}}^{\\theta_{2}} \\cos\\theta d \\theta=\\frac{\\mu_{0} I} {4 \\pi a} ( \\operatorname{s i n} \\theta_{1}-\\operatorname{s i n} \\theta_{2} )\n$$",
+      "attribute": {}
+    },
+    {
+      "category_type": "equation_caption",
+      "poly": [
+        1448.06046,
+        1686.919648,
+        1514.963106,
+        1686.919648,
+        1514.963106,
+        1719.703568,
+        1448.06046,
+        1719.703568
+      ],
+      "ignore": false,
+      "order": 24,
+      "anno_id": 13,
+      "text": "(29.4)",
+      "attribute": {}
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        174.68721,
+        1755.546306,
+        1022.357248,
+        1755.546306,
+        1022.357248,
+        1791.5673120000001,
+        174.68721,
+        1791.5673120000001
+      ],
+      "ignore": false,
+      "order": 25,
+      "anno_id": 27,
+      "text": "Check the dimensions, noting that the quantity in brackets is dimensionless:",
+      "attribute": {}
+    },
+    {
+      "category_type": "equation_isolated",
+      "poly": [
+        579.344926,
+        1804.096074,
+        1122.543336,
+        1804.096074,
+        1122.543336,
+        1851.863202,
+        579.344926,
+        1851.863202
+      ],
+      "ignore": false,
+      "order": 26,
+      "anno_id": 30,
+      "latex": "$$\n[ \\mathrm{M Q}^{-1} \\mathrm{T}^{-1} ]=[ \\mathrm{M L Q}^{-2} ] [ \\mathrm{Q T}^{-1} ] / [ \\mathrm{L} ]=[ \\mathrm{M Q}^{-1} \\mathrm{T}^{-1} ]\n$$",
+      "attribute": {}
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        175.47286,
+        1854.0763339999999,
+        1102.900432,
+        1854.0763339999999,
+        1102.900432,
+        1895.295374,
+        175.47286,
+        1895.295374
+      ],
+      "ignore": false,
+      "order": 27,
+      "anno_id": 9,
+      "text": "(B) Find an expression for the field at a point near a very long current-carrying wire.",
+      "attribute": {}
+    },
+    {
+      "category_type": "title",
+      "poly": [
+        177.103704,
+        1928.8858480000001,
+        305.97346,
+        1928.8858480000001,
+        305.97346,
+        1960.7501659999998,
+        177.103704,
+        1960.7501659999998
+      ],
+      "ignore": false,
+      "order": 28,
+      "anno_id": 3,
+      "text": "Solution",
+      "attribute": {}
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        176.658778,
+        1966.0938580000002,
+        1488.530532,
+        1966.0938580000002,
+        1488.530532,
+        2037.6162840000002,
+        176.658778,
+        2037.6162840000002
+      ],
+      "ignore": false,
+      "order": 29,
+      "anno_id": 10,
+      "text": "We can use Equation 29.4 to find the magnetic field of any straight current-carrying wire if we know the geometry and hence the angles $ \\theta_{1} $ and $ \\theta_{2} $ If the wire in Figure 29.3b becomes infinitely long, we see that $ \\theta_{1}=\\pi/ 2 $ and $ \\theta_{2}=-\\pi/ 2 $ for",
+      "attribute": {}
+    },
+    {
+      "category_type": "header",
+      "poly": [
+        1135.6744419999998,
+        69.13754800000004,
+        1479.0353789099179,
+        69.13754800000004,
+        1479.0353789099179,
+        98.22131999999976,
+        1135.6744419999998,
+        98.22131999999976
+      ],
+      "ignore": false,
+      "order": null,
+      "anno_id": 0,
+      "text": "CHAPTER 29 MAGNETIC FIELDS",
+      "attribute": {}
+    },
+    {
+      "category_type": "page_number",
+      "poly": [
+        1496.8917666400157,
+        77.79227656698458,
+        1536.3375195201584,
+        77.79227656698458,
+        1536.3375195201584,
+        95.25187210409695,
+        1496.8917666400157,
+        95.25187210409695
+      ],
+      "ignore": false,
+      "order": null,
+      "anno_id": 32,
+      "text": "819",
+      "attribute": {}
+    },
+    {
+      "category_type": "header",
+      "poly": [
+        125.45589999999982,
+        154.45617800000025,
+        153.8444934319446,
+        154.45617800000025,
+        153.8444934319446,
+        352.29235200000016,
+        125.45589999999982,
+        352.29235200000016
+      ],
+      "ignore": false,
+      "order": null,
+      "anno_id": 21,
+      "text": "Example 29.1 cont.",
+      "attribute": {}
+    },
+    {
+      "category_type": "footer",
+      "poly": [
+        298.16161800000003,
+        2096.2208020000003,
+        1364.81464,
+        2096.2208020000003,
+        1364.81464,
+        2127.778586,
+        298.16161800000003,
+        2127.778586
+      ],
+      "ignore": false,
+      "order": null,
+      "anno_id": 7,
+      "text": "Copyright 2017 Cengage Learning.All Rights Reserved.May not be copied, scanned, or duplicated,in whole or in part. WCN 02-300",
+      "attribute": {}
+    }
+  ],
+  "page_info": {
+    "page_no": 124,
+    "height": 2174,
+    "width": 1654,
+    "image_path": "docstructbench_enbook-zlib-o.O-19091739.pdf_181.jpg",
+    "page_attribute": {
+      "data_source": "colorful_textbook",
+      "language": "english",
+      "layout": "single_column",
+      "special_issue": [
+        "colorful_backgroud"
+      ],
+      "subset": "v1.5"
+    }
+  },
+  "extra": {
+    "relation": [
+      {
+        "source_anno_id": 4,
+        "target_anno_id": 31,
+        "relation_type": "parent_son"
+      },
+      {
+        "source_anno_id": 5,
+        "target_anno_id": 24,
+        "relation_type": "parent_son"
+      },
+      {
+        "source_anno_id": 8,
+        "target_anno_id": 15,
+        "relation_type": "parent_son"
+      },
+      {
+        "source_anno_id": 25,
+        "target_anno_id": 19,
+        "relation_type": "parent_son"
+      },
+      {
+        "source_anno_id": 22,
+        "target_anno_id": 1,
+        "relation_type": "parent_son"
+      },
+      {
+        "source_anno_id": 26,
+        "target_anno_id": 13,
+        "relation_type": "parent_son"
+      }
+    ]
+  },
+  "_eval_tags": {
+    "is_clean": true,
+    "has_watermark": false,
+    "has_fuzzy_scan": false,
+    "has_colorful_bg": false,
+    "layout": "single_column"
+  }
+}

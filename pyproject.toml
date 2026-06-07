@@ -16,13 +16,17 @@ dependencies = [
     "jinja2",
     "pypdf",
     "huggingface-hub",
+    "Levenshtein",
+    # NOTE: rapidfuzz is retained because table_teds.py uses rapidfuzz.distance.Levenshtein
+    # for cell content scoring inside CustomConfig.normalized_distance. Porting to the
+    # Levenshtein package would require updating the drift guard for table_teds.py
+    # (the vendored docling_baseline copy still uses rapidfuzz). Deferred to the next
+    # upstream sync when table_teds.py can be updated on both sides simultaneously.
     "rapidfuzz>=3",
     "apted>=1",
     "beautifulsoup4>=4",
     "lxml>=5",
-    "nltk",
     "beartype",
-    "sacrebleu>=2.6.0",
     "polars>=1.41.0",
     "click>=8.0.0",
 ]
@@ -81,9 +85,18 @@ generator = [
     "docling>=2",
     "docling-core",
     "apted>=1",
+    # NOTE: rapidfuzz is required by the vendored docling_baseline fixture generator
+    # (src/docling_baseline/metrics/table_teds.py, mhs.py, nid.py, text_similarity.py).
+    # The generator code is frozen third-party vendored code and cannot be updated here.
     "rapidfuzz>=3",
     "beautifulsoup4>=4",
     "lxml>=5",
+    # NOTE: nltk and sacrebleu are required by the vendored docling_baseline generator
+    # (src/docling_baseline/metrics/text_similarity.py) which is frozen third-party code.
+    # The generator's base.py runner calls bleu_score and meteor_score from text_similarity.
+    # These packages are NOT in [project.dependencies] (doc-bench itself no longer needs
+    # BLEU or METEOR — those metrics were removed in the 2026-06-07 NED simplification spec),
+    # but the frozen generator still requires them for make regen-fixtures.
     "nltk",
     "sacrebleu>=2.6.0",
     "jsonschema>=4",
@@ -100,7 +113,9 @@ line-length = 100
 # intentionally exempt from doc-bench lint standards (see spec FR1/AC1).
 # force-exclude keeps the vendored tree quiet even when ruff is handed an
 # explicit path (e.g. pre-commit), not just on a `ruff check .` directory scan.
-extend-exclude = ["src/docling_baseline"]
+# NOTE: references/omnidocbench is an audit trail copy of the OmniDocBench
+# source files (Apache-2.0) and is intentionally exempt from lint standards.
+extend-exclude = ["src/docling_baseline", "references/omnidocbench"]
 force-exclude = true
 
 [tool.ruff.lint]
@@ -122,7 +137,8 @@ target-version = ["py313"]
 # intentionally exempt from doc-bench formatting (see spec FR1/AC1). black's
 # extend-exclude is a regex applied to paths; without this, `black --check .`
 # (run by `make lint` / CI) would scan the vendored tree and fail.
-extend-exclude = "src/docling_baseline"
+# NOTE: references/omnidocbench is an audit trail copy (Apache-2.0) exempt from formatting.
+extend-exclude = "src/docling_baseline|references/omnidocbench"
 
 [tool.mypy]
 python_version = "3.13"
@@ -132,7 +148,8 @@ warn_unused_ignores = true
 disallow_untyped_defs = true
 # NOTE: src/docling_baseline is a verbatim vendored third-party generator and is
 # intentionally exempt from doc-bench type checking (see spec FR1/AC1).
-exclude = ["src/docling_baseline"]
+# NOTE: references/omnidocbench is an audit trail copy (Apache-2.0) exempt from type checking.
+exclude = ["src/docling_baseline", "references/omnidocbench"]
 
 [[tool.mypy.overrides]]
 module = "tests.*"
@@ -162,7 +179,8 @@ source = ["src"]
 branch = true
 # NOTE: src/docling_baseline is a verbatim vendored third-party generator and is
 # intentionally exempt from doc-bench coverage targets (see spec FR1/AC1).
-omit = ["src/docling_baseline/*"]
+# NOTE: references/omnidocbench is an audit trail copy (Apache-2.0) exempt from coverage.
+omit = ["src/docling_baseline/*", "references/omnidocbench/*"]
 
 [tool.coverage.report]
 precision = 2

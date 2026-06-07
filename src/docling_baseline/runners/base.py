@@ -13,15 +13,9 @@ from typing import Any
 from docling_baseline.adapters import parse as docling_parse
 from docling_baseline.converters import parser_output_to_markdown
 from docling_baseline.metrics import (
-    ard_score,
-    bleu_score,
-    meteor_score,
-    nid_score,
-    nid_s_score,
+    ned_score,
     teds_score,
     teds_s_score,
-    mhs_score,
-    mhs_s_score,
 )
 
 
@@ -79,35 +73,19 @@ class BaseRunner(ABC):
         """
         if not gold_text or not pred_markdown:
             return {
-                "nid": 0.0,
-                "nid_s": 0.0,
+                "ned": 0.0,
                 "teds": 0.0,
                 "teds_s": 0.0,
-                "mhs": 0.0,
-                "mhs_s": 0.0,
-                "ard": 0.0,
-                "bleu": 0.0,
-                "meteor": 0.0,
             }
 
-        nid = nid_score(gold_text, pred_markdown)
-        nid_s = nid_s_score(gold_text, pred_markdown)
-        teds, teds_s = teds_score(gold_text, pred_markdown), teds_s_score(gold_text, pred_markdown)
-        mhs, mhs_s = mhs_score(gold_text, pred_markdown), mhs_s_score(gold_text, pred_markdown)
-        ard = ard_score(gold_text.split(), pred_markdown.split())
-        bleu = bleu_score(gold_text, pred_markdown)
-        meteor = meteor_score(gold_text, pred_markdown)
+        ned = ned_score(gold_text, pred_markdown)
+        teds = teds_score(gold_text, pred_markdown)
+        teds_s = teds_s_score(gold_text, pred_markdown)
 
         return {
-            "nid": safe_float(nid),
-            "nid_s": safe_float(nid_s),
+            "ned": safe_float(ned),
             "teds": safe_float(teds),
             "teds_s": safe_float(teds_s),
-            "mhs": safe_float(mhs),
-            "mhs_s": safe_float(mhs_s),
-            "ard": safe_float(ard),
-            "bleu": safe_float(bleu),
-            "meteor": safe_float(meteor),
         }
 
     def compute_averages(self, metrics_list: list[dict[str, float]]) -> dict[str, float]:
@@ -124,7 +102,7 @@ class BaseRunner(ABC):
         if not metrics_list:
             return {}
 
-        metric_names = ["nid", "nid_s", "teds", "teds_s", "mhs", "mhs_s", "ard", "bleu", "meteor"]
+        metric_names = ["ned", "teds", "teds_s"]
         averages = {}
 
         for metric in metric_names:

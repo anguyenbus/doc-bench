@@ -101,100 +101,70 @@
   ],
   "omnidocbench": [
     {
-      "doc_id": "page-48687e49-b9db-4251-96cf-124144aa4d08",
-      "doc_type": "PPT2PDF",
-      "page": "omnidocbench/page-48687e49-b9db-4251-96cf-124144aa4d08.json",
-      "image": "omnidocbench/page-48687e49-b9db-4251-96cf-124144aa4d08.png"
-    },
-    {
-      "doc_id": "yanbaopptmerge_PattPatelCh12.pdf_27",
-      "doc_type": "PPT2PDF",
-      "page": "omnidocbench/yanbaopptmerge_PattPatelCh12.pdf_27.json",
-      "image": "omnidocbench/yanbaopptmerge_PattPatelCh12.pdf_27.jpg"
-    },
-    {
-      "doc_id": "page-bd6eb36e-0856-4d9d-b587-21b4a0209c8b",
+      "doc_id": "page-c1c135ad-427e-482b-b01c-05c0ccbc6e76",
       "doc_type": "academic_literature",
-      "page": "omnidocbench/page-bd6eb36e-0856-4d9d-b587-21b4a0209c8b.json",
-      "image": "omnidocbench/page-bd6eb36e-0856-4d9d-b587-21b4a0209c8b.png"
+      "page": "omnidocbench/page-c1c135ad-427e-482b-b01c-05c0ccbc6e76.json",
+      "image": "omnidocbench/page-c1c135ad-427e-482b-b01c-05c0ccbc6e76.png"
     },
     {
-      "doc_id": "page-f9583127-1277-4424-be9d-35430e0aedd6",
+      "doc_id": "page-404e0471-bd71-426a-8e5a-81b8327f88e5",
       "doc_type": "academic_literature",
-      "page": "omnidocbench/page-f9583127-1277-4424-be9d-35430e0aedd6.json",
-      "image": "omnidocbench/page-f9583127-1277-4424-be9d-35430e0aedd6.png"
+      "page": "omnidocbench/page-404e0471-bd71-426a-8e5a-81b8327f88e5.json",
+      "image": "omnidocbench/page-404e0471-bd71-426a-8e5a-81b8327f88e5.png"
     },
     {
-      "doc_id": "page-d1561665-5359-42fe-920c-d6e3bff81953",
-      "doc_type": "book",
-      "page": "omnidocbench/page-d1561665-5359-42fe-920c-d6e3bff81953.json",
-      "image": "omnidocbench/page-d1561665-5359-42fe-920c-d6e3bff81953.png"
+      "doc_id": "page-f108020f-edc5-4a27-85d9-d9d9c5d67309",
+      "doc_type": "academic_literature",
+      "page": "omnidocbench/page-f108020f-edc5-4a27-85d9-d9d9c5d67309.json",
+      "image": "omnidocbench/page-f108020f-edc5-4a27-85d9-d9d9c5d67309.png"
     },
     {
-      "doc_id": "page-0a262e27-b24d-4429-9b21-90563d4fada7",
-      "doc_type": "book",
-      "page": "omnidocbench/page-0a262e27-b24d-4429-9b21-90563d4fada7.json",
-      "image": "omnidocbench/page-0a262e27-b24d-4429-9b21-90563d4fada7.png"
+      "doc_id": "page-458ab820-615f-42fe-af33-3a8fb15ad691",
+      "doc_type": "research_report",
+      "page": "omnidocbench/page-458ab820-615f-42fe-af33-3a8fb15ad691.json",
+      "image": "omnidocbench/page-458ab820-615f-42fe-af33-3a8fb15ad691.png"
     },
     {
-      "doc_id": "jiaocai_P0-9.pdf_9",
-      "doc_type": "colorful_textbook",
-      "page": "omnidocbench/jiaocai_P0-9.pdf_9.json",
-      "image": "omnidocbench/jiaocai_P0-9.pdf_9.jpg"
-    },
-    {
-      "doc_id": "jiaocai_jiaocai_en_595",
-      "doc_type": "colorful_textbook",
-      "page": "omnidocbench/jiaocai_jiaocai_en_595.json",
-      "image": "omnidocbench/jiaocai_jiaocai_en_595.jpg"
-    },
-    {
-      "doc_id": "page-d271a2ab-4523-44c4-94b5-303bf54b69e9",
+      "doc_id": "jiaocaineedrop_Chapter9.pdf_46",
       "doc_type": "exam_paper",
-      "page": "omnidocbench/page-d271a2ab-4523-44c4-94b5-303bf54b69e9.json",
-      "image": "omnidocbench/page-d271a2ab-4523-44c4-94b5-303bf54b69e9.png"
+      "page": "omnidocbench/jiaocaineedrop_Chapter9.pdf_46.json",
+      "image": "omnidocbench/jiaocaineedrop_Chapter9.pdf_46.jpg"
     },
     {
-      "doc_id": "page-21ad32ba-fd62-43e5-964a-f5e95c0e0441",
-      "doc_type": "exam_paper",
-      "page": "omnidocbench/page-21ad32ba-fd62-43e5-964a-f5e95c0e0441.json",
-      "image": "omnidocbench/page-21ad32ba-fd62-43e5-964a-f5e95c0e0441.png"
+      "doc_id": "docstructbench_enbook-zlib-o.O-19091739.pdf_181",
+      "doc_type": "colorful_textbook",
+      "page": "omnidocbench/docstructbench_enbook-zlib-o.O-19091739.pdf_181.json",
+      "image": "omnidocbench/docstructbench_enbook-zlib-o.O-19091739.pdf_181.jpg"
     },
     {
-      "doc_id": "docstructbench_llm-raw-scihub-o.O-s00128-007-9171-1.pdf_2",
-      "doc_type": "academic_literature",
-      "page": "omnidocbench/docstructbench_llm-raw-scihub-o.O-s00128-007-9171-1.pdf_2.json",
-      "image": "omnidocbench/docstructbench_llm-raw-scihub-o.O-s00128-007-9171-1.pdf_2.jpg"
+      "doc_id": "jiaocaineedrop_c04_874768_mt.pdf_6",
+      "doc_type": "colorful_textbook",
+      "page": "omnidocbench/jiaocaineedrop_c04_874768_mt.pdf_6.json",
+      "image": "omnidocbench/jiaocaineedrop_c04_874768_mt.pdf_6.jpg"
     },
     {
-      "doc_id": "docstructbench_llm-raw-scihub-o.O-s00128-007-9171-1.pdf_3",
-      "doc_type": "academic_literature",
-      "page": "omnidocbench/docstructbench_llm-raw-scihub-o.O-s00128-007-9171-1.pdf_3.json",
-      "image": "omnidocbench/docstructbench_llm-raw-scihub-o.O-s00128-007-9171-1.pdf_3.jpg"
+      "doc_id": "page-573c437e-c309-4483-a038-ef2f440b104a",
+      "doc_type": "book",
+      "page": "omnidocbench/page-573c437e-c309-4483-a038-ef2f440b104a.json",
+      "image": "omnidocbench/page-573c437e-c309-4483-a038-ef2f440b104a.png"
     },
     {
-      "doc_id": "docstructbench_llm-raw-scihub-o.O-j.1365-2818.2000.00739.x.pdf_4",
-      "doc_type": "academic_literature",
-      "page": "omnidocbench/docstructbench_llm-raw-scihub-o.O-j.1365-2818.2000.00739.x.pdf_4.json",
-      "image": "omnidocbench/docstructbench_llm-raw-scihub-o.O-j.1365-2818.2000.00739.x.pdf_4.jpg"
+      "doc_id": "yanbaopptmerge_293df2702e017fa1e78f6fe9b42d64ce.pdf_928",
+      "doc_type": "book",
+      "page": "omnidocbench/yanbaopptmerge_293df2702e017fa1e78f6fe9b42d64ce.pdf_928.json",
+      "image": "omnidocbench/yanbaopptmerge_293df2702e017fa1e78f6fe9b42d64ce.pdf_928.jpg"
     },
     {
-      "doc_id": "docstructbench_llm-raw-scihub-o.O-j.1365-2818.2000.00739.x.pdf_8",
-      "doc_type": "academic_literature",
-      "page": "omnidocbench/docstructbench_llm-raw-scihub-o.O-j.1365-2818.2000.00739.x.pdf_8.json",
-      "image": "omnidocbench/docstructbench_llm-raw-scihub-o.O-j.1365-2818.2000.00739.x.pdf_8.jpg"
+      "doc_id": "yanbaopptmerge_SE05.pdf_7",
+      "doc_type": "PPT2PDF",
+      "page": "omnidocbench/yanbaopptmerge_SE05.pdf_7.json",
+      "image": "omnidocbench/yanbaopptmerge_SE05.pdf_7.jpg"
     },
     {
-      "doc_id": "docstructbench_llm-raw-scihub-o.O-ceat.200600410.pdf_5",
-      "doc_type": "academic_literature",
-      "page": "omnidocbench/docstructbench_llm-raw-scihub-o.O-ceat.200600410.pdf_5.json",
-      "image": "omnidocbench/docstructbench_llm-raw-scihub-o.O-ceat.200600410.pdf_5.jpg"
-    },
-    {
-      "doc_id": "docstructbench_llm-raw-scihub-o.O-ceat.200600410.pdf_8",
-      "doc_type": "academic_literature",
-      "page": "omnidocbench/docstructbench_llm-raw-scihub-o.O-ceat.200600410.pdf_8.json",
-      "image": "omnidocbench/docstructbench_llm-raw-scihub-o.O-ceat.200600410.pdf_8.jpg"
+      "doc_id": "PPT_english-studies-s6-on-the-road-resource-3_page_002",
+      "doc_type": "PPT2PDF",
+      "page": "omnidocbench/PPT_english-studies-s6-on-the-road-resource-3_page_002.json",
+      "image": "omnidocbench/PPT_english-studies-s6-on-the-road-resource-3_page_002.png"
     }
   ],
   "ato_bench": [
@@ -202,8 +172,14 @@
       "doc_id": "1371-6.1997",
       "doc_type": "individual_income_tax_return",
       "pdf": "ato_bench/1371-6.1997.pdf",
-      "pages": ["ato_bench/1371-6.1997_p1.json", "ato_bench/1371-6.1997_p2.json"]
+      "pages": [
+        "ato_bench/1371-6.1997_p1.json",
+        "ato_bench/1371-6.1997_p2.json"
+      ]
     }
   ],
-  "total": 33
+  "total": 28,
+  "reference_paths": {
+    "omnidocbench": "/home/an/atoprojects/evaluation/data/parsing/omnidocbench_english/OmniDocBench.json"
+  }
 }

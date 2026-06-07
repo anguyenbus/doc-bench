@@ -1,0 +1,908 @@
+{
+  "layout_dets": [
+    {
+      "category_type": "title",
+      "poly": [
+        164.14384365823108,
+        104.97856613604365,
+        397.08562980437034,
+        104.97856613604365,
+        397.08562980437034,
+        146.30694754906835,
+        164.14384365823108,
+        146.30694754906835
+      ],
+      "ignore": false,
+      "order": 1,
+      "anno_id": 11,
+      "text": "As You Read",
+      "attribute": {}
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        153.6238920258248,
+        156.0754740648742,
+        424.888359118587,
+        156.0754740648742,
+        424.888359118587,
+        321.388999716973,
+        153.6238920258248,
+        321.388999716973
+      ],
+      "ignore": false,
+      "order": 2,
+      "anno_id": 6,
+      "text": "Consider a conflict of interest you have encountered in your life.How did you resolve it?",
+      "attribute": {}
+    },
+    {
+      "category_type": "title",
+      "poly": [
+        511.9114685058594,
+        90.31581115722656,
+        934.74609375,
+        90.31581115722656,
+        934.74609375,
+        148.47813415527344,
+        511.9114685058594,
+        148.47813415527344
+      ],
+      "ignore": false,
+      "order": 3,
+      "anno_id": 8,
+      "text": "Ethical Questions",
+      "attribute": {}
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        516.891211154692,
+        162.1659698486328,
+        1425.2591552734375,
+        162.1659698486328,
+        1425.2591552734375,
+        240.03506153691183,
+        516.891211154692,
+        240.03506153691183
+      ],
+      "ignore": false,
+      "order": 4,
+      "anno_id": 13,
+      "text": "When you encounter an ethical decision and must choose a course of action, ask yourself these important questions:",
+      "attribute": {}
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        542.527974543738,
+        249.62760729553634,
+        1452.243731389113,
+        249.62760729553634,
+        1452.243731389113,
+        460.7561788500941,
+        542.527974543738,
+        460.7561788500941
+      ],
+      "ignore": false,
+      "order": 5,
+      "anno_id": 26,
+      "text": "- Is it against the law? Does it violate company or professional policies?\n- Even if everyone is doing it, how would I feel if someone did this to me?\n- Am I sacrificing long-term benefits for short-term gains?",
+      "merge_list": [
+        {
+          "category_type": "text_block",
+          "poly": [
+            545.9339269141916,
+            252.13538048444798,
+            1447.370131933897,
+            252.13538048444798,
+            1447.370131933897,
+            332.86101078471984,
+            545.9339269141916,
+            332.86101078471984
+          ],
+          "ignore": false,
+          "order": 6,
+          "anno_id": 22,
+          "text": "- Is it against the law? Does it violate company or professional policies?",
+          "line_with_spans": [
+            {
+              "category_type": "text_span",
+              "poly": [
+                552,
+                257.3333333333333,
+                1444,
+                257.3333333333333,
+                1444,
+                286.66666666666663,
+                552,
+                286.66666666666663
+              ],
+              "text": "- Is it against the law? Does it violate company or professional"
+            },
+            {
+              "category_type": "text_span",
+              "poly": [
+                577.333333333333,
+                297.26223477690064,
+                703.9999999999998,
+                297.26223477690064,
+                703.9999999999998,
+                330.80886377953186,
+                577.333333333333,
+                330.80886377953186
+              ],
+              "text": "policies?"
+            }
+          ],
+          "attribute": {
+            "text_language": "text_english",
+            "text_background": "white",
+            "text_rotate": "normal"
+          }
+        },
+        {
+          "category_type": "text_block",
+          "poly": [
+            544.898982935983,
+            337.00078669755453,
+            1448.4050759121058,
+            337.00078669755453,
+            1448.4050759121058,
+            408.41192119394896,
+            544.898982935983,
+            408.41192119394896
+          ],
+          "ignore": false,
+          "order": 7,
+          "anno_id": 20,
+          "text": "- Even if everyone is doing it, how would I feel if someone did this to me?",
+          "line_with_spans": [
+            {
+              "category_type": "text_span",
+              "poly": [
+                549.697831135161,
+                336,
+                1447.9999999999998,
+                336,
+                1447.9999999999998,
+                367.9999999999998,
+                549.697831135161,
+                367.9999999999998
+              ],
+              "text": "- Even if everyone is doing it, how would I feel if someone did"
+            },
+            {
+              "category_type": "text_span",
+              "poly": [
+                584,
+                378.66666666666663,
+                741.3333333333333,
+                378.66666666666663,
+                741.3333333333333,
+                405.3333333333333,
+                584,
+                405.3333333333333
+              ],
+              "text": "this to me?"
+            }
+          ],
+          "attribute": {
+            "text_language": "text_english",
+            "text_background": "white",
+            "text_rotate": "normal"
+          }
+        },
+        {
+          "category_type": "text_block",
+          "poly": [
+            547.7026944347812,
+            417.2885317653322,
+            1388.0772047401786,
+            417.2885317653322,
+            1388.0772047401786,
+            455.5814589590509,
+            547.7026944347812,
+            455.5814589590509
+          ],
+          "ignore": false,
+          "order": 8,
+          "anno_id": 23,
+          "text": "- Am I sacrificing long-term benefits for short-term gains?",
+          "line_with_spans": [
+            {
+              "category_type": "text_span",
+              "poly": [
+                552.761284856439,
+                417.4090278851513,
+                1394.5291451811909,
+                417.4090278851513,
+                1394.5291451811909,
+                446.7423612184841,
+                552.761284856439,
+                446.7423612184841
+              ],
+              "text": "- Am I sacrificing long-term benefits for short-term gains?"
+            }
+          ],
+          "attribute": {
+            "text_language": "text_english",
+            "text_background": "white",
+            "text_rotate": "normal"
+          }
+        }
+      ],
+      "attribute": {}
+    },
+    {
+      "category_type": "title",
+      "poly": [
+        516.397705078125,
+        500.015380859375,
+        1255.6893310546875,
+        500.015380859375,
+        1255.6893310546875,
+        548.561767578125,
+        516.397705078125,
+        548.561767578125
+      ],
+      "ignore": false,
+      "order": 9,
+      "anno_id": 19,
+      "text": "The Ethical Decision-Making Process",
+      "attribute": {}
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        516.3326416015625,
+        557.4053955078125,
+        1405.0157470703125,
+        557.4053955078125,
+        1405.0157470703125,
+        630.7673950195312,
+        516.3326416015625,
+        630.7673950195312
+      ],
+      "ignore": false,
+      "order": 10,
+      "anno_id": 12,
+      "text": "Here are some steps to take if you find yourself in an ethical dilemma:",
+      "attribute": {}
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        540.6246132362552,
+        642.0870611381894,
+        1200.918871333353,
+        642.0870611381894,
+        1200.918871333353,
+        848.0409128017043,
+        540.6246132362552,
+        848.0409128017043
+      ],
+      "ignore": false,
+      "order": 11,
+      "anno_id": 29,
+      "text": "1. Identify the ethical dilemma\n2. Discover alternative actions\n3. Decide who might be affected\n4. List the probable effects of the alternatives.\n5. Select the best alternative.",
+      "merge_list": [
+        {
+          "category_type": "text_block",
+          "poly": [
+            548.5064059335795,
+            646.8044981963527,
+            1003.8817563453711,
+            646.8044981963527,
+            1003.8817563453711,
+            680.957649477237,
+            548.5064059335795,
+            680.957649477237
+          ],
+          "ignore": false,
+          "order": 12,
+          "anno_id": 24,
+          "text": "1. Identify the ethical dilemma",
+          "line_with_spans": [
+            {
+              "category_type": "text_span",
+              "poly": [
+                552,
+                653.3333333333333,
+                993.3333333333333,
+                653.3333333333333,
+                993.3333333333333,
+                678.6666666666666,
+                552,
+                678.6666666666666
+              ],
+              "text": "1. Identify the ethical dilemma"
+            }
+          ],
+          "attribute": {
+            "text_language": "text_english",
+            "text_background": "white",
+            "text_rotate": "normal"
+          }
+        },
+        {
+          "category_type": "text_block",
+          "poly": [
+            545.7993331272983,
+            686.5896522011599,
+            1001.17468353909,
+            686.5896522011599,
+            1001.17468353909,
+            720.7428034820443,
+            545.7993331272983,
+            720.7428034820443
+          ],
+          "ignore": false,
+          "order": 13,
+          "anno_id": 30,
+          "text": "2. Discover alternative actions",
+          "line_with_spans": [
+            {
+              "category_type": "text_span",
+              "poly": [
+                550.6666666666666,
+                692,
+                990.6666666666666,
+                692,
+                990.6666666666666,
+                718.6666666666666,
+                550.6666666666666,
+                718.6666666666666
+              ],
+              "text": "2. Discover alternative actions"
+            }
+          ],
+          "attribute": {
+            "text_language": "text_english",
+            "text_background": "white",
+            "text_rotate": "normal"
+          }
+        },
+        {
+          "category_type": "text_block",
+          "poly": [
+            543.729445170881,
+            730.0572992859219,
+            1023.9434510596795,
+            730.0572992859219,
+            1023.9434510596795,
+            763.1755065885977,
+            543.729445170881,
+            763.1755065885977
+          ],
+          "ignore": false,
+          "order": 14,
+          "anno_id": 21,
+          "text": "3. Decide who might be affected",
+          "line_with_spans": [
+            {
+              "category_type": "text_span",
+              "poly": [
+                550.6666666666666,
+                733.3333333333333,
+                1014.6666666666666,
+                733.3333333333333,
+                1014.6666666666666,
+                758.6666666666666,
+                550.6666666666666,
+                758.6666666666666
+              ],
+              "text": "3. Decide who might be affected"
+            }
+          ],
+          "attribute": {
+            "text_language": "text_english",
+            "text_background": "white",
+            "text_rotate": "normal"
+          }
+        },
+        {
+          "category_type": "text_block",
+          "poly": [
+            546.8342771055069,
+            768.3502264796408,
+            1198.8489833769358,
+            768.3502264796408,
+            1198.8489833769358,
+            805.6082096951509,
+            546.8342771055069,
+            805.6082096951509
+          ],
+          "ignore": false,
+          "order": 15,
+          "anno_id": 31,
+          "text": "4. List the probable effects of the alternatives.",
+          "line_with_spans": [
+            {
+              "category_type": "text_span",
+              "poly": [
+                550.6666666666666,
+                774.6666666666666,
+                1193.3333333333333,
+                774.6666666666666,
+                1193.3333333333333,
+                800,
+                550.6666666666666,
+                800
+              ],
+              "text": "4. List the probable effects of the alternatives."
+            }
+          ],
+          "attribute": {
+            "text_language": "text_english",
+            "text_background": "white",
+            "text_rotate": "normal"
+          }
+        },
+        {
+          "category_type": "text_block",
+          "poly": [
+            545.7993331272983,
+            809.7479856079854,
+            962.8817563453711,
+            809.7479856079854,
+            962.8817563453711,
+            843.9011368888698,
+            545.7993331272983,
+            843.9011368888698
+          ],
+          "ignore": false,
+          "order": 16,
+          "anno_id": 25,
+          "text": "5. Select the best alternative.",
+          "line_with_spans": [
+            {
+              "category_type": "text_span",
+              "poly": [
+                552,
+                816,
+                952,
+                816,
+                952,
+                838.6666666666666,
+                552,
+                838.6666666666666
+              ],
+              "text": "5. Select the best alternative."
+            }
+          ],
+          "attribute": {
+            "text_language": "text_english",
+            "text_background": "white",
+            "text_rotate": "normal"
+          }
+        }
+      ],
+      "attribute": {}
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        514.1456909179688,
+        867.2755126953125,
+        1437.0380859375,
+        867.2755126953125,
+        1437.0380859375,
+        987.380615234375,
+        514.1456909179688,
+        987.380615234375
+      ],
+      "ignore": false,
+      "order": 17,
+      "anno_id": 17,
+      "text": "Using this process will enable you to make a more informed ethical choice.Making an ethical decision involves more people than just you.",
+      "attribute": {}
+    },
+    {
+      "category_type": "title",
+      "poly": [
+        153.42904852215082,
+        1120.9618014084401,
+        421.309636205802,
+        1120.9618014084401,
+        421.309636205802,
+        1167.1949992827758,
+        153.42904852215082,
+        1167.1949992827758
+      ],
+      "ignore": false,
+      "order": 18,
+      "anno_id": 18,
+      "text": "Section 4.1",
+      "attribute": {}
+    },
+    {
+      "category_type": "title",
+      "poly": [
+        154.10894849089107,
+        1183.5125985325415,
+        425.3890360182434,
+        1183.5125985325415,
+        425.3890360182434,
+        1224.9864966256955,
+        154.10894849089107,
+        1224.9864966256955
+      ],
+      "ignore": false,
+      "order": 19,
+      "anno_id": 2,
+      "text": "After You Read",
+      "attribute": {}
+    },
+    {
+      "category_type": "title",
+      "poly": [
+        154.73635864257812,
+        1250.6112060546875,
+        506.4561462402344,
+        1250.6112060546875,
+        506.4561462402344,
+        1287.094482421875,
+        154.73635864257812,
+        1287.094482421875
+      ],
+      "ignore": false,
+      "order": 20,
+      "anno_id": 5,
+      "text": "Review Key Concepts",
+      "attribute": {}
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        164.9610910624445,
+        1287.8042246820326,
+        1376.4757000041866,
+        1287.8042246820326,
+        1376.4757000041866,
+        1450.474414173039,
+        164.9610910624445,
+        1450.474414173039
+      ],
+      "ignore": false,
+      "order": 21,
+      "anno_id": 32,
+      "text": "1. What is the difference between personal and business ethics?\n2. Describe some of the ways that unethical business practices can affect a business.\n3. What is the relationship between illegal behaviors of business and unethical behaviors of business?",
+      "merge_list": [
+        {
+          "category_type": "text_block",
+          "poly": [
+            167.79836180938065,
+            1289.6957385133232,
+            1058.701376347336,
+            1289.6957385133232,
+            1058.701376347336,
+            1325.6345013078478,
+            167.79836180938065,
+            1325.6345013078478
+          ],
+          "ignore": false,
+          "order": 22,
+          "anno_id": 28,
+          "text": "1. What is the difference between personal and business ethics?",
+          "line_with_spans": [
+            {
+              "category_type": "text_span",
+              "poly": [
+                168,
+                1293.3333333333333,
+                1048,
+                1293.3333333333333,
+                1048,
+                1321.3333333333333,
+                168,
+                1321.3333333333333
+              ],
+              "text": "1. What is the difference between personal and business ethics?"
+            }
+          ],
+          "attribute": {
+            "text_language": "text_english",
+            "text_background": "single_colored",
+            "text_rotate": "normal"
+          }
+        },
+        {
+          "category_type": "text_block",
+          "poly": [
+            170.6356325563168,
+            1331.3090428017204,
+            1337.6996664627256,
+            1331.3090428017204,
+            1337.6996664627256,
+            1365.3562917649538,
+            170.6356325563168,
+            1365.3562917649538
+          ],
+          "ignore": false,
+          "order": 23,
+          "anno_id": 27,
+          "text": "2. Describe some of the ways that unethical business practices can affect a business.",
+          "line_with_spans": [
+            {
+              "category_type": "text_span",
+              "poly": [
+                166.66666666666666,
+                1333.3333333333333,
+                1333.3333333333333,
+                1333.3333333333333,
+                1333.3333333333333,
+                1364,
+                166.66666666666666,
+                1364
+              ],
+              "text": "2. Describe some of the ways that unethical business practices can affect a business."
+            }
+          ],
+          "attribute": {
+            "text_language": "text_english",
+            "text_background": "single_colored",
+            "text_rotate": "normal"
+          }
+        },
+        {
+          "category_type": "text_block",
+          "poly": [
+            172.52714638760762,
+            1374.8138609214081,
+            1371.7469154259597,
+            1374.8138609214081,
+            1371.7469154259597,
+            1445.745629594812,
+            172.52714638760762,
+            1445.745629594812
+          ],
+          "ignore": false,
+          "order": 24,
+          "anno_id": 33,
+          "text": "3. What is the relationship between illegal behaviors of business and unethical behaviors of business?",
+          "line_with_spans": [
+            {
+              "category_type": "text_span",
+              "poly": [
+                165.33333333333331,
+                1374.6666666666665,
+                1370.6666666666665,
+                1374.6666666666665,
+                1370.6666666666665,
+                1405.3333333333333,
+                165.33333333333331,
+                1405.3333333333333
+              ],
+              "text": "3. What is the relationship between illegal behaviors of business and unethical behaviors"
+            },
+            {
+              "category_type": "text_span",
+              "poly": [
+                214.66666666666666,
+                1413.3333333333333,
+                388,
+                1413.3333333333333,
+                388,
+                1438.6666666666665,
+                214.66666666666666,
+                1438.6666666666665
+              ],
+              "text": "of business?"
+            }
+          ],
+          "attribute": {
+            "text_language": "text_english",
+            "text_background": "single_colored",
+            "text_rotate": "normal"
+          }
+        }
+      ],
+      "attribute": {}
+    },
+    {
+      "category_type": "title",
+      "poly": [
+        156.36544799804688,
+        1462.1864013671875,
+        413.9350280761719,
+        1462.1864013671875,
+        413.9350280761719,
+        1497.8480224609375,
+        156.36544799804688,
+        1497.8480224609375
+      ],
+      "ignore": false,
+      "order": 25,
+      "anno_id": 15,
+      "text": "Academic Skills",
+      "attribute": {}
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        162.08534140373763,
+        1499.6736182274572,
+        750.8090061253338,
+        1499.6736182274572,
+        750.8090061253338,
+        1750.9754946434516,
+        162.08534140373763,
+        1750.9754946434516
+      ],
+      "ignore": false,
+      "order": 26,
+      "anno_id": 0,
+      "text": "4. Mathematics A large company decided itwouldgive $ \\frac{1}{8} $ of its profits to charity. If the amount given was spread equally among five different charities,what fraction of the company's profits was given to each? What percent of the company's profits is this?",
+      "attribute": {}
+    },
+    {
+      "category_type": "title",
+      "poly": [
+        841.3159597308427,
+        1500.9548408981138,
+        952.4803777583581,
+        1500.9548408981138,
+        952.4803777583581,
+        1526.7588844116729,
+        841.3159597308427,
+        1526.7588844116729
+      ],
+      "ignore": false,
+      "order": 27,
+      "anno_id": 16,
+      "text": "CONCEPT",
+      "attribute": {}
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        839.0708648658546,
+        1501.6442670422466,
+        1413.855399351034,
+        1501.6442670422466,
+        1413.855399351034,
+        1608.781923041287,
+        839.0708648658546,
+        1608.781923041287
+      ],
+      "ignore": false,
+      "order": 28,
+      "anno_id": 10,
+      "text": "CONCEPT Number and Operations: Dividing Fractions To divide a fraction, invert the divisor and multiply.",
+      "attribute": {}
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        957.2693817217123,
+        1662.2907652082663,
+        1293.372314453125,
+        1662.2907652082663,
+        1293.372314453125,
+        1744.6700439453125,
+        957.2693817217123,
+        1744.6700439453125
+      ],
+      "ignore": false,
+      "order": 29,
+      "anno_id": 9,
+      "text": "For math help, go to the Math Appendix.",
+      "attribute": {}
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        241.16796459012912,
+        1804.0547774038496,
+        1046.8669850709841,
+        1804.0547774038496,
+        1046.8669850709841,
+        1873.7787310993083,
+        241.16796459012912,
+        1873.7787310993083
+      ],
+      "ignore": false,
+      "order": 30,
+      "anno_id": 1,
+      "text": "Go to the Introduction to Business Online Learning Center through glencoe.com to check your answers.",
+      "attribute": {}
+    },
+    {
+      "category_type": "abandon",
+      "poly": [
+        821.0299962580463,
+        1649.0239194311011,
+        947.5322456153727,
+        1649.0239194311011,
+        947.5322456153727,
+        1744.774240767862,
+        821.0299962580463,
+        1744.774240767862
+      ],
+      "ignore": false,
+      "order": null,
+      "anno_id": 14,
+      "attribute": {}
+    },
+    {
+      "category_type": "footer",
+      "poly": [
+        217.98789356128043,
+        2052.4345703125,
+        876.98193359375,
+        2052.4345703125,
+        876.98193359375,
+        2087.4560546875,
+        217.98789356128043,
+        2087.4560546875
+      ],
+      "ignore": false,
+      "order": null,
+      "anno_id": 7,
+      "text": "Chapter 4 Business Ethics and Social Responsibility",
+      "attribute": {}
+    },
+    {
+      "category_type": "page_number",
+      "poly": [
+        124.43830028861191,
+        2055.1931273236683,
+        163.59482637629318,
+        2055.1931273236683,
+        163.59482637629318,
+        2082.0225989022647,
+        124.43830028861191,
+        2082.0225989022647
+      ],
+      "ignore": false,
+      "order": null,
+      "anno_id": 4,
+      "text": "58",
+      "attribute": {}
+    },
+    {
+      "category_type": "footer",
+      "poly": [
+        1289.71142578125,
+        2055.275390625,
+        1455.62451171875,
+        2055.275390625,
+        1455.62451171875,
+        2086.601806640625,
+        1289.71142578125,
+        2086.601806640625
+      ],
+      "ignore": false,
+      "order": null,
+      "anno_id": 3,
+      "text": "glencoe.com",
+      "attribute": {}
+    }
+  ],
+  "page_info": {
+    "page_no": 1615,
+    "height": 2175,
+    "width": 1675,
+    "image_path": "jiaocaineedrop_c04_874768_mt.pdf_6.jpg",
+    "page_attribute": {
+      "data_source": "colorful_textbook",
+      "language": "english",
+      "layout": "other_layout",
+      "special_issue": [
+        "colorful_backgroud"
+      ],
+      "subset": "v1.5"
+    }
+  },
+  "extra": {
+    "relation": []
+  },
+  "_eval_tags": {
+    "is_clean": true,
+    "has_watermark": false,
+    "has_fuzzy_scan": false,
+    "has_colorful_bg": false,
+    "layout": "other_layout"
+  }
+}

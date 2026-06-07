@@ -58,11 +58,22 @@ class TestPackageStructure:
         assert callable(_get_doc_bench_version)
         assert callable(_get_dataset_version)
 
-    def test_package_has_nltk_setup(self):
-        """Test package has NLTK setup functionality."""
-        from doc_bench.cli.setup import _get_nltk_data_dir
+    def test_package_setup_command_is_no_op_stub(self):
+        """Test setup CLI is a no-op stub (METEOR metric was removed).
 
-        assert callable(_get_nltk_data_dir)
+        NOTE: The setup command previously downloaded NLTK data for METEOR.
+        METEOR was removed in the 2026-06-07 NED/metrics simplification spec.
+        The command is now a no-op stub that prints an informational message.
+        """
+        from click.testing import CliRunner
+
+        from doc_bench.cli.setup import main
+
+        runner = CliRunner()
+        result = runner.invoke(main, [])
+        assert result.exit_code == 0
+        # Stub should mention METEOR removal or that no setup is required
+        assert "METEOR" in result.output or "no setup" in result.output.lower()
 
 
 class TestEndToEndWorkflows:
@@ -155,7 +166,7 @@ class TestMetadataCompleteness:
             "parser": "stub",
             "timestamp": "20260101_120000",
             "csv_file": "results.csv",
-            "metrics_avg": {"bleu": 0.85},
+            "metrics_avg": {"ned": 0.85},
             "document_count": 10,
         }
 

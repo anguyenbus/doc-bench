@@ -3,15 +3,9 @@
   "successful": 1,
   "errors": 0,
   "averages": {
-    "nid": 0.2168,
-    "nid_s": 0.2168,
+    "ned": 0.1193,
     "teds": 0.0,
-    "teds_s": 0.0,
-    "mhs": 0.0,
-    "mhs_s": 0.0,
-    "ard": 0.0,
-    "bleu": 0.0603,
-    "meteor": 0.4207
+    "teds_s": 0.0
   },
   "results": [
     {
@@ -19,15 +13,9 @@
       "doc_id": "1371-6.1997",
       "doc_type": "individual_income_tax_return",
       "error": "",
-      "nid": 0.2168,
-      "nid_s": 0.2168,
+      "ned": 0.1193,
       "teds": 0.0,
-      "teds_s": 0.0,
-      "mhs": 0.0,
-      "mhs_s": 0.0,
-      "ard": 0.0,
-      "bleu": 0.0603,
-      "meteor": 0.4207
+      "teds_s": 0.0
     }
   ]
 }

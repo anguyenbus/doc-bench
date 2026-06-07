@@ -128,7 +128,7 @@ class OmniDocBenchRunner(BaseRunner):
             results.append(result)
 
             # Print key metrics
-            print(f"  NID: {metrics['nid']} | BLEU: {metrics['bleu']} | METEOR: {metrics['meteor']}")
+            print(f"  NED: {metrics['ned']} | TEDS: {metrics['teds']} | TEDS-S: {metrics['teds_s']}")
 
         # Calculate averages
         averages = self.compute_averages(results)

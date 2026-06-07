@@ -23,11 +23,8 @@ from doc_bench.config import load_config
 from doc_bench.datasets.dp_bench import build_gold_markdown
 from doc_bench.identity import doc_id_for
 from doc_bench.metrics.parsing.markdown_converter import parser_output_to_markdown
-from doc_bench.metrics.parsing.mhs import evaluate_heading_level
-from doc_bench.metrics.parsing.nid import evaluate_reading_order as evaluate_nid
-from doc_bench.metrics.parsing.reading_order import ard_score
+from doc_bench.metrics.parsing.ned import ned_score
 from doc_bench.metrics.parsing.table_teds import evaluate_table
-from doc_bench.metrics.parsing.text_similarity import bleu_score, meteor_score
 from doc_bench.predictions import load_prediction
 from doc_bench.rejections import (
     RejectionReason,
@@ -213,9 +210,7 @@ def _grade_text_item(
         ``"processed"`` if scored, ``"error"`` if rejected.
 
     """
-    zero_row = {
-        m: 0.0 for m in ("nid", "nid_s", "teds", "teds_s", "mhs", "mhs_s", "ard", "bleu", "meteor")
-    }
+    zero_row = {"ned": 0.0, "teds": 0.0, "teds_s": 0.0}
 
     prediction_dict = load_prediction(predictions_dir, doc_id)
     if prediction_dict is None:
@@ -251,12 +246,11 @@ def _grade_text_item(
 
     pred_markdown = parser_output_to_markdown(prediction_dict)
 
-    nid, nid_s = evaluate_nid(gold_markdown, pred_markdown)
+    # NOTE: We use flat markdown for NED here (degraded mode for ATO-Bench).
+    # ATO-Bench gold is plain text, not structured elements, so the structured
+    # ASM path is unavailable.  ned_score on flat markdown is the best we can do.
+    ned = ned_score(gold_markdown, pred_markdown)
     teds, teds_s = evaluate_table(gold_markdown, pred_markdown)
-    mhs, mhs_s = evaluate_heading_level(gold_markdown, pred_markdown)
-    ard = ard_score(gold_markdown.split(), pred_markdown.split())
-    bleu = bleu_score(gold_markdown, pred_markdown)
-    meteor = meteor_score(gold_markdown, pred_markdown)
 
     def safe_float(x):
         return round(x, 4) if x is not None else 0.0
@@ -265,15 +259,9 @@ def _grade_text_item(
         {
             "query_id": query_id,
             "error": "",
-            "nid": safe_float(nid),
-            "nid_s": safe_float(nid_s),
+            "ned": safe_float(ned),
             "teds": safe_float(teds),
             "teds_s": safe_float(teds_s),
-            "mhs": safe_float(mhs),
-            "mhs_s": safe_float(mhs_s),
-            "ard": safe_float(ard),
-            "bleu": safe_float(bleu),
-            "meteor": safe_float(meteor),
         }
     )
     csv_file.flush()
@@ -393,15 +381,9 @@ def main() -> None:
     fieldnames = [
         "query_id",
         "error",
-        "nid",
-        "nid_s",
+        "ned",
         "teds",
         "teds_s",
-        "mhs",
-        "mhs_s",
-        "ard",
-        "bleu",
-        "meteor",
     ]
 
     # Open CSV for incremental appending
@@ -458,15 +440,9 @@ def main() -> None:
                         {
                             "query_id": query_id,
                             "error": f"{reason.value}: {detail}" if detail else reason.value,
-                            "nid": 0.0,
-                            "nid_s": 0.0,
+                            "ned": 0.0,
                             "teds": 0.0,
                             "teds_s": 0.0,
-                            "mhs": 0.0,
-                            "mhs_s": 0.0,
-                            "ard": 0.0,
-                            "bleu": 0.0,
-                            "meteor": 0.0,
                         }
                     )
                     csv_file.flush()
@@ -492,15 +468,9 @@ def main() -> None:
                         {
                             "query_id": query_id,
                             "error": f"{reason.value}: {detail}",
-                            "nid": 0.0,
-                            "nid_s": 0.0,
+                            "ned": 0.0,
                             "teds": 0.0,
                             "teds_s": 0.0,
-                            "mhs": 0.0,
-                            "mhs_s": 0.0,
-                            "ard": 0.0,
-                            "bleu": 0.0,
-                            "meteor": 0.0,
                         }
                     )
                     csv_file.flush()
@@ -513,14 +483,11 @@ def main() -> None:
                 # For OmniDocBench, gold_text is just concatenated text
                 gt_markdown = gold_text
 
-                # Calculate all metrics
-                nid, nid_s = evaluate_nid(gt_markdown, pred_markdown)
+                # Calculate metrics: NED (text) and TEDS (tables)
+                # NOTE: We use flat markdown NED here because the runner operates on
+                # gold_text (concatenated text from layout_dets), not structured elements.
+                ned = ned_score(gt_markdown, pred_markdown)
                 teds, teds_s = evaluate_table(gt_markdown, pred_markdown)
-                mhs, mhs_s = evaluate_heading_level(gt_markdown, pred_markdown)
-                # ARD uses token lists
-                ard = ard_score(gt_markdown.split(), pred_markdown.split())
-                bleu = bleu_score(gt_markdown, pred_markdown)
-                meteor = meteor_score(gt_markdown, pred_markdown)
 
                 # Convert None to 0.0
                 def safe_float(x):
@@ -530,15 +497,9 @@ def main() -> None:
                     {
                         "query_id": query_id,
                         "error": "",
-                        "nid": safe_float(nid),
-                        "nid_s": safe_float(nid_s),
+                        "ned": safe_float(ned),
                         "teds": safe_float(teds),
                         "teds_s": safe_float(teds_s),
-                        "mhs": safe_float(mhs),
-                        "mhs_s": safe_float(mhs_s),
-                        "ard": safe_float(ard),
-                        "bleu": safe_float(bleu),
-                        "meteor": safe_float(meteor),
                     }
                 )
                 csv_file.flush()
@@ -569,15 +530,9 @@ def main() -> None:
                         {
                             "query_id": doc_id,
                             "error": f"{reason.value}: {detail}" if detail else reason.value,
-                            "nid": 0.0,
-                            "nid_s": 0.0,
+                            "ned": 0.0,
                             "teds": 0.0,
                             "teds_s": 0.0,
-                            "mhs": 0.0,
-                            "mhs_s": 0.0,
-                            "ard": 0.0,
-                            "bleu": 0.0,
-                            "meteor": 0.0,
                         }
                     )
                     csv_file.flush()
@@ -603,15 +558,9 @@ def main() -> None:
                         {
                             "query_id": doc_id,
                             "error": f"{reason.value}: {detail}",
-                            "nid": 0.0,
-                            "nid_s": 0.0,
+                            "ned": 0.0,
                             "teds": 0.0,
                             "teds_s": 0.0,
-                            "mhs": 0.0,
-                            "mhs_s": 0.0,
-                            "ard": 0.0,
-                            "bleu": 0.0,
-                            "meteor": 0.0,
                         }
                     )
                     csv_file.flush()
@@ -624,13 +573,11 @@ def main() -> None:
                 # Build ground truth markdown from DP-Bench elements (shared function)
                 gt_markdown = build_gold_markdown(gold_elements)
 
-                # Calculate all metrics
-                nid, nid_s = evaluate_nid(gt_markdown, pred_markdown)
+                # Calculate metrics
+                # NOTE: We use flat markdown NED for DP-Bench because gold elements are
+                # converted to markdown for consistent comparison.
+                ned = ned_score(gt_markdown, pred_markdown)
                 teds, teds_s = evaluate_table(gt_markdown, pred_markdown)
-                mhs, mhs_s = evaluate_heading_level(gt_markdown, pred_markdown)
-                ard = ard_score(gt_markdown.split(), pred_markdown.split())
-                bleu = bleu_score(gt_markdown, pred_markdown)
-                meteor = meteor_score(gt_markdown, pred_markdown)
 
                 # Convert None to 0.0
                 def safe_float(x):
@@ -640,15 +587,9 @@ def main() -> None:
                     {
                         "query_id": doc_id,
                         "error": "",
-                        "nid": safe_float(nid),
-                        "nid_s": safe_float(nid_s),
+                        "ned": safe_float(ned),
                         "teds": safe_float(teds),
                         "teds_s": safe_float(teds_s),
-                        "mhs": safe_float(mhs),
-                        "mhs_s": safe_float(mhs_s),
-                        "ard": safe_float(ard),
-                        "bleu": safe_float(bleu),
-                        "meteor": safe_float(meteor),
                     }
                 )
                 csv_file.flush()
@@ -688,15 +629,9 @@ def main() -> None:
                 {
                     "query_id": query_id,
                     "error": f"{reason.value}: {detail}",
-                    "nid": 0.0,
-                    "nid_s": 0.0,
+                    "ned": 0.0,
                     "teds": 0.0,
                     "teds_s": 0.0,
-                    "mhs": 0.0,
-                    "mhs_s": 0.0,
-                    "ard": 0.0,
-                    "bleu": 0.0,
-                    "meteor": 0.0,
                 }
             )
             csv_file.flush()
@@ -711,15 +646,9 @@ def main() -> None:
                 {
                     "query_id": query_id,
                     "error": f"{reason.value}: {detail}",
-                    "nid": 0.0,
-                    "nid_s": 0.0,
+                    "ned": 0.0,
                     "teds": 0.0,
                     "teds_s": 0.0,
-                    "mhs": 0.0,
-                    "mhs_s": 0.0,
-                    "ard": 0.0,
-                    "bleu": 0.0,
-                    "meteor": 0.0,
                 }
             )
             csv_file.flush()
@@ -745,7 +674,7 @@ def main() -> None:
 
         # Get path to rejected.csv
         rejected_csv_path = rejection_tracker.output_path
-        print(f"→ see {rejected_csv_path} for the full list")
+        print(f"-> see {rejected_csv_path} for the full list")
     else:
         print(f"Total items processed: {processed}")
         print(f"Errors: {errors}")
@@ -764,17 +693,7 @@ def main() -> None:
 
     # Calculate metric averages (excluding error rows) - reload CSV
     df = pd.read_csv(output_file)
-    metrics = [
-        "nid",
-        "nid_s",
-        "teds",
-        "teds_s",
-        "mhs",
-        "mhs_s",
-        "ard",
-        "bleu",
-        "meteor",
-    ]
+    metrics = ["ned", "teds", "teds_s"]
 
     averages = {}
     if not df.empty:

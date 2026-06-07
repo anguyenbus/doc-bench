@@ -1,0 +1,404 @@
+{
+  "layout_dets": [
+    {
+      "category_type": "title",
+      "poly": [
+        76.5902382428661,
+        240.68154019093993,
+        631.8766521510723,
+        240.68154019093993,
+        631.8766521510723,
+        293.39002540571187,
+        76.5902382428661,
+        293.39002540571187
+      ],
+      "ignore": false,
+      "order": 1,
+      "anno_id": 2,
+      "text": "- Human Factors",
+      "attribute": {}
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        184.0670822593427,
+        367.60112524550277,
+        1716.1529515391312,
+        367.60112524550277,
+        1716.1529515391312,
+        517.7341948771981,
+        184.0670822593427,
+        517.7341948771981
+      ],
+      "ignore": false,
+      "order": 2,
+      "anno_id": 4,
+      "text": "- the process molds to the needs of the people and team, not the other way around",
+      "attribute": {}
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        184.5482932203392,
+        538.3394165039065,
+        1740.6568966936075,
+        538.3394165039065,
+        1740.6568966936075,
+        681.799776733344,
+        184.5482932203392,
+        681.799776733344
+      ],
+      "ignore": false,
+      "order": 3,
+      "anno_id": 1,
+      "text": "- key traits must exist among the people on an agile team and the team itself:",
+      "attribute": {}
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        263.49614395886897,
+        704.4757793723891,
+        1082.9048843187663,
+        704.4757793723891,
+        1082.9048843187663,
+        1302.2768310965635,
+        263.49614395886897,
+        1302.2768310965635
+      ],
+      "ignore": false,
+      "order": 4,
+      "anno_id": 5,
+      "text": "\\t - Competence.\n\\t - Common focus.\n\\t - Collaboration.\n\\t - Decision-making ability.\n\\t - Fuzzy problem-solving ability.\n\\t - Mutual trust and respect.\n\\t - Self-organization.",
+      "merge_list": [
+        {
+          "category_type": "text_block",
+          "poly": [
+            278.6643834343698,
+            710.7102158562507,
+            670.2323178072729,
+            710.7102158562507,
+            670.2323178072729,
+            765.124288480278,
+            278.6643834343698,
+            765.124288480278
+          ],
+          "ignore": false,
+          "order": 5,
+          "anno_id": 6,
+          "text": "\\t - Competence.",
+          "line_with_spans": [
+            {
+              "category_type": "text_span",
+              "poly": [
+                277.3393654613069,
+                708.9219591391718,
+                675.4193526312812,
+                708.9219591391718,
+                675.4193526312812,
+                760.0000000000001,
+                277.3393654613069,
+                760.0000000000001
+              ],
+              "text": "\\t - Competence."
+            }
+          ],
+          "attribute": {
+            "text_language": "text_english",
+            "text_background": "white",
+            "text_rotate": "normal"
+          }
+        },
+        {
+          "category_type": "text_block",
+          "poly": [
+            280.79826863531207,
+            797.1325664944118,
+            731.0480460341271,
+            797.1325664944118,
+            731.0480460341271,
+            846.2119261160834,
+            280.79826863531207,
+            846.2119261160834
+          ],
+          "ignore": false,
+          "order": 6,
+          "anno_id": 9,
+          "text": "\\t - Common focus.",
+          "line_with_spans": [
+            {
+              "category_type": "text_span",
+              "poly": [
+                277.5638971171345,
+                798.6666666666669,
+                735.1801050435248,
+                798.6666666666669,
+                735.1801050435248,
+                844.0000000000001,
+                277.5638971171345,
+                844.0000000000001
+              ],
+              "text": "\\t - Common focus."
+            }
+          ],
+          "attribute": {
+            "text_language": "text_english",
+            "text_background": "white",
+            "text_rotate": "normal"
+          }
+        },
+        {
+          "category_type": "text_block",
+          "poly": [
+            279.73132603484106,
+            886.7557449339863,
+            684.1025716133976,
+            886.7557449339863,
+            684.1025716133976,
+            930.5003915533024,
+            279.73132603484106,
+            930.5003915533024
+          ],
+          "ignore": false,
+          "order": 7,
+          "anno_id": 7,
+          "text": "\\t - Collaboration.",
+          "line_with_spans": [
+            {
+              "category_type": "text_span",
+              "poly": [
+                273.7248543643829,
+                886.6666666666669,
+                685.8207397775334,
+                886.6666666666669,
+                685.8207397775334,
+                930.6666666666667,
+                273.7248543643829,
+                930.6666666666667
+              ],
+              "text": "\\t - Collaboration."
+            }
+          ],
+          "attribute": {
+            "text_language": "text_english",
+            "text_background": "white",
+            "text_rotate": "normal"
+          }
+        },
+        {
+          "category_type": "text_block",
+          "poly": [
+            279.5933018268318,
+            974.4755575109014,
+            921.8927473104494,
+            974.4755575109014,
+            921.8927473104494,
+            1028.8896301349284,
+            279.5933018268318,
+            1028.8896301349284
+          ],
+          "ignore": false,
+          "order": 8,
+          "anno_id": 10,
+          "text": "\\t - Decision-making ability.",
+          "line_with_spans": [
+            {
+              "category_type": "text_span",
+              "poly": [
+                271.8836233285154,
+                972.0000000000002,
+                924.3763429823075,
+                972.0000000000002,
+                924.3763429823075,
+                1025.333333333333,
+                271.8836233285154,
+                1025.333333333333
+              ],
+              "text": "\\t - Decision-making ability."
+            }
+          ],
+          "attribute": {
+            "text_language": "text_english",
+            "text_background": "white",
+            "text_rotate": "normal"
+          }
+        },
+        {
+          "category_type": "text_block",
+          "poly": [
+            281.0030551215321,
+            1061.747466919853,
+            1066.6607881957243,
+            1061.747466919853,
+            1066.6607881957243,
+            1116.4172530596954,
+            281.0030551215321,
+            1116.4172530596954
+          ],
+          "ignore": false,
+          "order": 9,
+          "anno_id": 8,
+          "text": "\\t - Fuzzy problem-solving ability.",
+          "line_with_spans": [
+            {
+              "category_type": "text_span",
+              "poly": [
+                278.1224247670323,
+                1057.3333333333335,
+                1072.1370953945507,
+                1057.3333333333335,
+                1072.1370953945507,
+                1116,
+                278.1224247670323,
+                1116
+              ],
+              "text": "\\t - Fuzzy problem-solving ability."
+            }
+          ],
+          "attribute": {
+            "text_language": "text_english",
+            "text_background": "white",
+            "text_rotate": "normal"
+          }
+        },
+        {
+          "category_type": "text_block",
+          "poly": [
+            281.00305512153216,
+            1149.9245413389542,
+            952.9123621950838,
+            1149.9245413389542,
+            952.9123621950838,
+            1204.5943274787967,
+            281.00305512153216,
+            1204.5943274787967
+          ],
+          "ignore": false,
+          "order": 10,
+          "anno_id": 11,
+          "text": "\\t - Mutual trust and respect.",
+          "line_with_spans": [
+            {
+              "category_type": "text_span",
+              "poly": [
+                274.20637066423456,
+                1149.3333333333337,
+                956.137095394551,
+                1149.3333333333337,
+                956.137095394551,
+                1198.6666666666665,
+                274.20637066423456,
+                1198.6666666666665
+              ],
+              "text": "\\t - Mutual trust and respect."
+            }
+          ],
+          "attribute": {
+            "text_language": "text_english",
+            "text_background": "white",
+            "text_rotate": "normal"
+          }
+        },
+        {
+          "category_type": "text_block",
+          "poly": [
+            281.00305512153216,
+            1235.4563035254826,
+            773.0311303801174,
+            1235.4563035254826,
+            773.0311303801174,
+            1292.7714018978982,
+            281.00305512153216,
+            1292.7714018978982
+          ],
+          "ignore": false,
+          "order": 11,
+          "anno_id": 12,
+          "text": "\\t - Self-organization.",
+          "line_with_spans": [
+            {
+              "category_type": "text_span",
+              "poly": [
+                275.3004564098111,
+                1238.633088307786,
+                779.4193526312813,
+                1238.633088307786,
+                779.4193526312813,
+                1290.6330883077858,
+                275.3004564098111,
+                1290.6330883077858
+              ],
+              "text": "\\t - Self-organization."
+            }
+          ],
+          "attribute": {
+            "text_language": "text_english",
+            "text_background": "white",
+            "text_rotate": "normal"
+          }
+        }
+      ],
+      "attribute": {}
+    },
+    {
+      "category_type": "abandon",
+      "poly": [
+        14.511714226251163,
+        16.275613988642704,
+        163.07815527295506,
+        16.275613988642704,
+        163.07815527295506,
+        166.06822947144076,
+        14.511714226251163,
+        166.06822947144076
+      ],
+      "ignore": false,
+      "order": null,
+      "anno_id": 0,
+      "attribute": {}
+    },
+    {
+      "category_type": "page_number",
+      "poly": [
+        1858.7229730942013,
+        1384.772388718075,
+        1879.6044045975202,
+        1384.772388718075,
+        1879.6044045975202,
+        1416.9350428155717,
+        1858.7229730942013,
+        1416.9350428155717
+      ],
+      "ignore": false,
+      "order": null,
+      "anno_id": 3,
+      "text": "8",
+      "attribute": {}
+    }
+  ],
+  "page_info": {
+    "page_no": 7,
+    "height": 1500,
+    "width": 2000,
+    "image_path": "yanbaopptmerge_SE05.pdf_7.jpg",
+    "page_attribute": {
+      "data_source": "PPT2PDF",
+      "language": "english",
+      "layout": "single_column",
+      "special_issue": [
+        "colorful_backgroud"
+      ],
+      "subset": "v1.5"
+    }
+  },
+  "extra": {
+    "relation": []
+  },
+  "_eval_tags": {
+    "is_clean": true,
+    "has_watermark": false,
+    "has_fuzzy_scan": false,
+    "has_colorful_bg": false,
+    "layout": "single_column"
+  }
+}

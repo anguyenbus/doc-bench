@@ -4,6 +4,13 @@ OmniDocBench loader with English-only filter.
 This module loads OmniDocBench dataset and filters to English-only documents
 with RFI-relevant document types. Each yielded page includes _eval_tags
 metadata for stratified analysis.
+
+Bundled fixture set (src/doc_bench/fixtures/omnidocbench/):
+  - 11 pages, English only, all clean (no fuzzy_scan / watermark)
+  - Distribution: academic_literature×3, book×2, PPT2PDF×2,
+    exam_paper×1, colorful_textbook×2, research_report×1
+  - Selected 2026-06-06 from opendatalab/OmniDocBench English-filtered snapshot
+  - See fixtures/omnidocbench/README.md for full selection criteria
 """
 
 import json

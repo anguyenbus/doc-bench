@@ -234,3 +234,5 @@ agent-os/
 specs/
 dist/
 .venv-test/
+predictions/
+benchmark/

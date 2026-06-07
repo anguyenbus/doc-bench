@@ -1,0 +1,765 @@
+{
+  "layout_dets": [
+    {
+      "category_type": "equation_isolated",
+      "poly": [
+        265.92685859089033,
+        225.93999999999997,
+        1373.0891272426807,
+        225.93999999999997,
+        1373.0891272426807,
+        333.48501707485127,
+        265.92685859089033,
+        333.48501707485127
+      ],
+      "ignore": false,
+      "order": 0,
+      "anno_id": "box_id_0",
+      "attribute": {},
+      "latex": "$$Z{Z}^{\\top }\\stackrel{\\left( 1\\right) }{ = }T\\left\\lbrack  \\begin{array}{cc} {D}_{\\text{des }}^{\\frac{1}{2}\\top }\\left( {\\left( {\\mathop{\\sum }\\limits_{{i = 1}}^{T}\\bar{x}{\\left( {\\omega }_{i}\\right) }^{\\mathrm{H}}\\bar{x}\\left( {\\omega }_{i}\\right) }\\right)  \\otimes  {I}_{{n}_{\\phi }}}\\right) {D}_{\\text{des }}^{\\frac{1}{2}\\top }{D}_{\\text{des }}^{\\frac{1}{2}\\top }\\left( {\\mathop{\\sum }\\limits_{{i = 1}}^{T}\\bar{x}{\\left( {\\omega }_{i}\\right) }^{\\top }\\left( {\\bar{\\phi }{\\left( {\\omega }_{i}\\right) }^{\\mathrm{H}} \\otimes  {I}_{{n}_{x}}}\\right) }\\right)  \\otimes  {I}_{{n}_{\\phi }} \\\\  {\\left( \\mathop{\\sum }\\limits_{{i = 1}}^{T}\\bar{x}{\\left( {\\omega }_{i}\\right) }^{\\top }\\left( \\bar{\\phi }{\\left( {\\omega }_{i}\\right) }^{\\mathrm{H}} \\otimes  {I}_{{n}_{x}}\\right) \\right) }^{\\mathrm{H}} \\otimes  {I}_{{n}_{\\phi }}{D}_{\\text{des }}^{\\frac{1}{2}}\\left( {\\left( {\\mathop{\\sum }\\limits_{{i = 1}}^{T}\\bar{\\phi }\\left( {\\omega }_{i}\\right) \\bar{\\phi }{\\left( {\\omega }_{i}\\right) }^{\\mathrm{H}}}\\right)  \\otimes  {I}_{{n}_{x}}}\\right)  \\otimes  {I}_{{n}_{\\phi }} \\end{array}\\right\\rbrack$$"
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        117.98,
+        498.96,
+        711.96,
+        498.96,
+        711.96,
+        537.9,
+        117.98,
+        537.9
+      ],
+      "ignore": false,
+      "order": 2,
+      "anno_id": "box_id_1",
+      "attribute": {},
+      "text": "By Young\u2019s inequality [7], for any $ \\epsilon > 0 $ , we have"
+    },
+    {
+      "category_type": "equation_isolated",
+      "poly": [
+        197.02999999999997,
+        567.0116346489237,
+        787.1684343153361,
+        567.0116346489237,
+        787.1684343153361,
+        634.0400000000001,
+        197.02999999999997,
+        634.0400000000001
+      ],
+      "ignore": false,
+      "order": 3,
+      "anno_id": "box_id_2",
+      "attribute": {},
+      "latex": "$${\\bar{\\Phi }}_{\\mathrm{u}}{\\bar{\\Phi }}_{\\mathrm{w}}^{\\mathrm{H}} + {\\bar{\\Phi }}_{\\mathrm{w}}{\\bar{\\Phi }}_{\\mathrm{u}}^{\\mathrm{H}} \\succeq   - \\epsilon {\\bar{\\Phi }}_{\\mathrm{u}}{\\bar{\\Phi }}_{\\mathrm{u}}^{\\mathrm{H}} - \\frac{1}{\\epsilon }{\\bar{\\Phi }}_{\\mathrm{w}}{\\bar{\\Phi }}_{\\mathrm{w}}^{\\mathrm{H}} \\tag{A.3}$$"
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        119.00000000000001,
+        667.92,
+        250.07,
+        667.92,
+        250.07,
+        698.9399999999999,
+        119.00000000000001,
+        698.9399999999999
+      ],
+      "ignore": false,
+      "order": 4,
+      "anno_id": "box_id_3",
+      "attribute": {},
+      "text": "and hence,"
+    },
+    {
+      "category_type": "equation_isolated",
+      "poly": [
+        119,
+        735.9000000000001,
+        785.0771889814941,
+        735.9000000000001,
+        785.0771889814941,
+        834.7785535928953,
+        119,
+        834.7785535928953
+      ],
+      "ignore": false,
+      "order": 5,
+      "anno_id": "box_id_4",
+      "attribute": {},
+      "latex": "$$\\left( {{\\bar{\\Phi }}_{\\mathrm{u}} + {\\bar{\\Phi }}_{\\mathrm{w}}}\\right) {\\left( {\\bar{\\Phi }}_{\\mathrm{u}} + {\\bar{\\Phi }}_{\\mathrm{w}}\\right) }^{\\mathrm{H}} \\succeq  \\left( {1 - \\epsilon }\\right) {\\bar{\\Phi }}_{\\mathrm{u}}{\\bar{\\Phi }}_{\\mathrm{u}}^{\\mathrm{H}} - \\left( \\frac{1 - \\epsilon }{\\epsilon }\\right) {\\bar{\\Phi }}_{\\mathrm{w}}{\\bar{\\Phi }}_{\\mathrm{w}}^{\\mathrm{H}}.\\tag{A.4}$$"
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        116.96,
+        836,
+        786.93,
+        836,
+        786.93,
+        896.94,
+        116.96,
+        896.94
+      ],
+      "ignore": false,
+      "order": 6,
+      "anno_id": "box_id_5",
+      "attribute": {},
+      "text": "By inserting Inequality (A.4) in Inequality (A.2), we get (34)."
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        116.96,
+        898.04,
+        787.95,
+        898.04,
+        787.95,
+        960.08,
+        116.96,
+        960.08
+      ],
+      "ignore": false,
+      "order": 7,
+      "anno_id": "box_id_6",
+      "attribute": {},
+      "text": "Part II. From the Parseval-Plancheral identity, we have (A.1), which can be written as"
+    },
+    {
+      "category_type": "equation_isolated",
+      "poly": [
+        156.06,
+        995.9399999999998,
+        791.0147656744409,
+        995.9399999999998,
+        791.0147656744409,
+        1045.1104905025675,
+        156.06,
+        1045.1104905025675
+      ],
+      "ignore": false,
+      "order": 8,
+      "anno_id": "box_id_7",
+      "attribute": {},
+      "latex": "$$Z{Z}^{\\top } \\succeq  T\\bar{Z}{\\bar{Z}}^{\\mathrm{H}} = T\\left( {{\\bar{Z}}_{\\mathrm{u}} + {\\bar{Z}}_{\\mathrm{w}}}\\right) {\\left( {\\bar{Z}}_{\\mathrm{u}} + {\\bar{Z}}_{\\mathrm{w}}\\right) }^{\\mathrm{H}}. \\tag{A.5}$$"
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        117.98,
+        1076.02,
+        710.94,
+        1076.02,
+        710.94,
+        1112.98,
+        117.98,
+        1112.98
+      ],
+      "ignore": false,
+      "order": 9,
+      "anno_id": "box_id_8",
+      "attribute": {},
+      "text": "By Young\u2019s inequality [7], for any $ \\epsilon > 0 $, we have"
+    },
+    {
+      "category_type": "equation_isolated",
+      "poly": [
+        198.05,
+        1147.08,
+        784.9907085750935,
+        1147.08,
+        784.9907085750935,
+        1212.602093715789,
+        198.05,
+        1212.602093715789
+      ],
+      "ignore": false,
+      "order": 10,
+      "anno_id": "box_id_9",
+      "attribute": {},
+      "latex": "$${\\bar{Z}}_{\\mathrm{u}}{\\bar{Z}}_{\\mathrm{w}}^{\\mathrm{H}} + {\\bar{Z}}_{\\mathrm{w}}{\\bar{Z}}_{\\mathrm{u}}^{\\mathrm{H}} \\succeq   - \\epsilon {\\bar{Z}}_{\\mathrm{u}}{\\bar{Z}}_{\\mathrm{u}}^{\\mathrm{H}} - \\frac{1}{\\epsilon }{\\bar{Z}}_{\\mathrm{w}}{\\bar{Z}}_{\\mathrm{w}}^{\\mathrm{H}} \\tag{A.6}$$"
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        119.00000000000001,
+        1244.98,
+        250.07,
+        1244.98,
+        250.07,
+        1276.0,
+        119.00000000000001,
+        1276.0
+      ],
+      "ignore": false,
+      "order": 11,
+      "anno_id": "box_id_10",
+      "attribute": {},
+      "text": "and hence,"
+    },
+    {
+      "category_type": "equation_isolated",
+      "poly": [
+        116.95999999999998,
+        1310.1,
+        786.327171230673,
+        1310.1,
+        786.327171230673,
+        1409.9465144291855,
+        116.95999999999998,
+        1409.9465144291855
+      ],
+      "ignore": false,
+      "order": 12,
+      "anno_id": "box_id_11",
+      "attribute": {},
+      "latex": "$$\\left( {{\\bar{Z}}_{\\mathrm{u}} + {\\bar{Z}}_{\\mathrm{w}}}\\right) {\\left( {\\bar{Z}}_{\\mathrm{u}} + {\\bar{Z}}_{\\mathrm{w}}\\right) }^{\\mathrm{H}} \\succeq \\left( {1 - \\epsilon }\\right) {\\bar{Z}}_{\\mathrm{u}}{\\bar{Z}}_{\\mathrm{u}}^{\\mathrm{H}} - \\left( \\frac{1 - \\epsilon }{\\epsilon }\\right) {\\bar{Z}}_{\\mathrm{w}}{\\bar{Z}}_{\\mathrm{w}}^{\\mathrm{H}}.\\tag{A.7}$$"
+    },
+    {
+      "category_type": "title",
+      "poly": [
+        120.02,
+        1558.0400000000002,
+        439.96,
+        1558.0400000000002,
+        439.96,
+        1591.04,
+        120.02,
+        1591.04
+      ],
+      "ignore": false,
+      "order": 14,
+      "anno_id": "box_id_12",
+      "attribute": {},
+      "text": "### B Proof of Lemma 10"
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        116.96,
+        1681.8999999999999,
+        787.95,
+        1681.8999999999999,
+        787.95,
+        1776.06,
+        116.96,
+        1776.06
+      ],
+      "ignore": false,
+      "order": 15,
+      "anno_id": "box_id_13",
+      "attribute": {},
+      "text": "PROOF. The proof is provided in two parts. In the first part, we prove (40), and in the second part, we prove (41)."
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        115.94,
+        1811.0400000000002,
+        788.97,
+        1811.0400000000002,
+        788.97,
+        1906.96,
+        115.94,
+        1906.96
+      ],
+      "ignore": false,
+      "order": 16,
+      "anno_id": "box_id_14",
+      "attribute": {},
+      "text": "Part I. In order to determine a bound on $ {\\bar{\\Phi }}_{\\mathrm{w}}\\left( {31}\\right) $ of the form in (40), we first determine a bound on $ W\\left( {28}\\right) $ . In particular, we have"
+    },
+    {
+      "category_type": "equation_isolated",
+      "poly": [
+        311.95000000000005,
+        1941.1531156919905,
+        785.7186168167391,
+        1941.1531156919905,
+        785.7186168167391,
+        1992.9800000000002,
+        311.95000000000005,
+        1992.9800000000002
+      ],
+      "ignore": false,
+      "order": 17,
+      "anno_id": "box_id_15",
+      "attribute": {},
+      "latex": "$$\\parallel W\\parallel  = \\mathop{\\max }\\limits_{{i = 1,\\ldots ,L}}\\|{\\bar{w}\\left( {\\omega }_{i}\\right) }\\| \\tag{B.1}$$"
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        848.98,
+        502.92,
+        899.98,
+        502.92,
+        899.98,
+        533.06,
+        848.98,
+        533.06
+      ],
+      "ignore": false,
+      "order": 18,
+      "anno_id": "box_id_16",
+      "attribute": {},
+      "text": "and"
+    },
+    {
+      "category_type": "equation_isolated",
+      "poly": [
+        873.63486692531,
+        559.1033256393385,
+        1516.3219464058557,
+        559.1033256393385,
+        1516.3219464058557,
+        685.094366255354,
+        873.63486692531,
+        685.094366255354
+      ],
+      "ignore": false,
+      "order": 19,
+      "anno_id": "box_id_17",
+      "attribute": {},
+      "latex": "$$\\mathop{\\max }\\limits_{{i = 1,\\ldots ,L}}{\\|\\bar{w}\\left( {\\omega }_{i}\\right) \\|}^{2} \\leq  \\mathop{\\sum }\\limits_{{i = 1}}^{L}{\\|\\bar{w}\\left( {\\omega }_{i}\\right) \\|}^{2} \\leq  \\mathop{\\sum }\\limits_{{{\\omega }_{i} \\in  {\\Omega }_{T}}}{\\|\\bar{w}\\left( {\\omega }_{i}\\right) \\|}^{2}.\\tag{B.2}$$"
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        846.9399999999999,
+        713.9,
+        1517.08,
+        713.9,
+        1517.08,
+        779.9,
+        846.9399999999999,
+        779.9
+      ],
+      "ignore": false,
+      "order": 20,
+      "anno_id": "box_id_18",
+      "attribute": {},
+      "text": "From the Parseval-Plancherel identity and the energy-bound on the disturbance (3), we have"
+    },
+    {
+      "category_type": "equation_isolated",
+      "poly": [
+        919.02,
+        810.04,
+        1521.003576494818,
+        810.04,
+        1521.003576494818,
+        905.0799999999998,
+        919.02,
+        905.0799999999998
+      ],
+      "ignore": false,
+      "order": 21,
+      "anno_id": "box_id_19",
+      "attribute": {},
+      "latex": "$$\\mathop{\\sum }\\limits_{{{\\omega }_{i} \\in  {\\Omega }_{T}}}{\\|\\bar{w}\\left( {\\omega }_{i}\\right) \\|}^{2} = \\frac{1}{T}\\mathop{\\sum }\\limits_{{i = 0}}^{{T - 1}}{\\|{w}_{k}\\|}^{2}\\overset{\\left( 3\\right) }{ \\leq  }\\frac{{\\gamma }_{\\mathrm{w}}}{T}, \\tag{B.3}$$"
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        848.98,
+        933.02,
+        1354.05,
+        933.02,
+        1354.05,
+        968.0,
+        848.98,
+        968.0
+      ],
+      "ignore": false,
+      "order": 22,
+      "anno_id": "box_id_20",
+      "attribute": {},
+      "text": "and hence, from (B.1) and (B.3), we have"
+    },
+    {
+      "category_type": "equation_isolated",
+      "poly": [
+        931.94,
+        994.0317381564068,
+        1521.003576494818,
+        994.0317381564068,
+        1521.003576494818,
+        1072.94,
+        931.94,
+        1072.94
+      ],
+      "ignore": false,
+      "order": 23,
+      "anno_id": "box_id_21",
+      "attribute": {},
+      "latex": "$$\\| W \\|  \\leq  \\sqrt{\\frac{{\\gamma }_{\\mathrm{w}}}{T}}\\text{ and }W{W}^{\\mathrm{H}} \\preceq  \\frac{{\\gamma }_{\\mathrm{w}}}{T}{I}_{{n}_{\\mathrm{x}}L}. \\tag{B.4}$$"
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        848.98,
+        1101.98,
+        1168.0700000000002,
+        1101.98,
+        1168.0700000000002,
+        1136.08,
+        848.98,
+        1136.08
+      ],
+      "ignore": false,
+      "order": 24,
+      "anno_id": "box_id_22",
+      "attribute": {},
+      "text": "Starting from (31), we get"
+    },
+    {
+      "category_type": "equation_isolated",
+      "poly": [
+        989.0600000000001,
+        1160.06,
+        1293.4715456002664,
+        1160.06,
+        1293.4715456002664,
+        1210.357066151695,
+        989.0600000000001,
+        1210.357066151695
+      ],
+      "ignore": false,
+      "order": 25,
+      "anno_id": "box_id_23",
+      "attribute": {},
+      "latex": "$$\\bar { \\boldsymbol { \\Phi } } _ { \\mathrm { w } } \\bar { \\boldsymbol { \\Phi } } _ { \\mathrm { w } } ^ { \\sf H } = Y _ { \\phi , \\mathrm { t r } } W W ^ { \\sf H } Y _ { \\phi , \\mathrm { t r } } ^ { \\sf H }$$"
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        847.96,
+        1376.1,
+        1201.05,
+        1376.1,
+        1201.05,
+        1409.98,
+        847.96,
+        1409.98
+      ],
+      "ignore": false,
+      "order": 28,
+      "anno_id": "box_id_24",
+      "attribute": {},
+      "text": "Part II. From (40), we have"
+    },
+    {
+      "category_type": "equation_isolated",
+      "poly": [
+        1055.02,
+        1439.8999999999999,
+        1519.3909232955411,
+        1439.8999999999999,
+        1519.3909232955411,
+        1517.799108928605,
+        1055.02,
+        1517.799108928605
+      ],
+      "ignore": false,
+      "order": 29,
+      "anno_id": "box_id_25",
+      "attribute": {},
+      "latex": "$$\\|{\\bar{\\Phi }}_{\\mathrm{w}}\\| \\leq  \\sqrt{\\frac{{\\gamma }_{\\mathrm{w}}}{T}}{\\|{\\Gamma }_{\\phi }\\|}^{\\frac{1}{2}}. \\tag{B.5}$$"
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        847.96,
+        1543.0800000000002,
+        1204.96,
+        1543.0800000000002,
+        1204.96,
+        1578.0600000000002,
+        847.96,
+        1578.0600000000002
+      ],
+      "ignore": false,
+      "order": 30,
+      "anno_id": "box_id_26",
+      "attribute": {},
+      "text": "Similarly, from (27), we have"
+    },
+    {
+      "category_type": "equation_isolated",
+      "poly": [
+        884,
+        1600.94,
+        1518.3401952043332,
+        1600.94,
+        1518.3401952043332,
+        1648.4154692912398,
+        884,
+        1648.4154692912398
+      ],
+      "ignore": false,
+      "order": 31,
+      "anno_id": "box_id_27",
+      "attribute": {},
+      "latex": "$$\\| \\bar { X } _ { \\mathrm { w } } \\| \\leq \\| Y _ { \\mathrm { x , t r } } \\| \\| W \\mathbf { 1 } _ { L } \\|  \\tag{B.6}$$"
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        846.9399999999999,
+        1754.06,
+        1519.97,
+        1754.06,
+        1519.97,
+        1879.02,
+        846.9399999999999,
+        1879.02
+      ],
+      "ignore": false,
+      "order": 33,
+      "anno_id": "box_id_28",
+      "attribute": {},
+      "text": "Recall that $ {\\bar{Z}}_{\\mathrm{w}} = \\left\\lbrack \\begin{array}{cc} {D}_{\\mathrm{{des}}}^{\\frac{1}{2}\\top }\\left( {{\\bar{X}}_{\\mathrm{w}}^{\\mathrm{H}} \\otimes {I}_{{n}_{\\phi }}}\\right) \\\\ {\\bar{\\Phi }}_{\\mathrm{w}} \\otimes {I}_{{n}_{\\mathrm{x}}{n}_{\\phi }} \\end{array}\\right\\rbrack $ from (33). Note that"
+    },
+    {
+      "category_type": "equation_isolated",
+      "poly": [
+        924.9700000000001,
+        1901.9,
+        1439.5689468138526,
+        1901.9,
+        1439.5689468138526,
+        1955.6025997930894,
+        924.9700000000001,
+        1955.6025997930894
+      ],
+      "ignore": false,
+      "order": 34,
+      "anno_id": "box_id_29",
+      "attribute": {},
+      "latex": "$${\\bar{Z}}_{\\mathrm{w}}^{\\mathrm{H}}{\\bar{Z}}_{\\mathrm{w}} = \\left( {{\\bar{X}}_{\\mathrm{w}} \\otimes  {I}_{{n}_{\\phi }}}\\right) {D}_{\\mathrm{{des}}}^{\\frac{1}{2}}{D}_{\\mathrm{{des}}}^{\\frac{1}{2}\\top }\\left( {{\\bar{X}}_{\\mathrm{w}}^{\\mathrm{H}} \\otimes  {I}_{{n}_{\\phi }}}\\right)$$"
+    },
+    {
+      "category_type": "page_number",
+      "poly": [
+        800.02,
+        2082.08,
+        829.94,
+        2082.08,
+        829.94,
+        2106.94,
+        800.02,
+        2106.94
+      ],
+      "ignore": false,
+      "order": 36,
+      "anno_id": "box_id_30",
+      "attribute": {},
+      "text": "12"
+    },
+    {
+      "category_type": "equation_isolated",
+      "poly": [
+        321.66525405353514,
+        335.934106221679,
+        1526.3402442897159,
+        335.934106221679,
+        1526.3402442897159,
+        441.01310416490134,
+        321.66525405353514,
+        441.01310416490134
+      ],
+      "ignore": false,
+      "order": 1,
+      "anno_id": "box-z30gmfv7",
+      "attribute": {},
+      "latex": "$$\\succeq T\\left\\lbrack  \\begin{array}{cc} {D}_{\\text{des }}^{\\frac{1}{2}\\top }\\left( {\\left( {\\mathop{\\sum }\\limits_{{i = 1}}^{L}\\bar{x}{\\left( {\\omega }_{i}\\right) }^{\\mathrm{H}}\\bar{x}\\left( {\\omega }_{i}\\right) }\\right)  \\otimes  {I}_{{n}_{\\phi }}}\\right) {D}_{\\text{des }}^{\\frac{1}{2} }{D}_{\\text{des }}^{\\frac{1}{2}\\top }\\left( {\\mathop{\\sum }\\limits_{{i = 1}}^{L}\\bar{x}{\\left( {\\omega }_{i}\\right) }^{\\top }\\left( {\\bar{\\phi }{\\left( {\\omega }_{i}\\right) }^{\\mathrm{H}} \\otimes  {I}_{{n}_{x}}}\\right) }\\right)  \\otimes  {I}_{{n}_{\\phi }} \\\\  {\\left( \\mathop{\\sum }\\limits_{{i = 1}}^{L}\\bar{x}{\\left( {\\omega }_{i}\\right) }^{\\top }\\left( \\bar{\\phi }{\\left( {\\omega }_{i}\\right) }^{\\mathrm{H}} \\otimes  {I}_{{n}_{x}}\\right) \\right) }^{\\mathrm{H}} \\otimes  {I}_{{n}_{\\phi }}{D}_{\\text{des }}^{\\frac{1}{2}}\\left( {\\left( {\\mathop{\\sum }\\limits_{{i = 1}}^{L}\\bar{\\phi }\\left( {\\omega }_{i}\\right) \\bar{\\phi }{\\left( {\\omega }_{i}\\right) }^{\\mathrm{H}}}\\right)  \\otimes  {I}_{{n}_{x}}}\\right)  \\otimes  {I}_{{n}_{\\phi }} \\end{array}\\right\\rbrack  \\tag{A.1}$$"
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        116.1358567434018,
+        1414.1666529675263,
+        790.5473097690133,
+        1414.1666529675263,
+        790.5473097690133,
+        1484.2095713615633,
+        116.1358567434018,
+        1484.2095713615633
+      ],
+      "ignore": false,
+      "order": 13,
+      "anno_id": "box-213dfjp5",
+      "attribute": {},
+      "text": "By inserting Inequality (A.7) in Inequality (A.5), we get (35). $\\square$"
+    },
+    {
+      "category_type": "equation_isolated",
+      "poly": [
+        1073.3756129346832,
+        1208.9503456628122,
+        1379.614834370391,
+        1208.9503456628122,
+        1379.614834370391,
+        1279.0491255590905,
+        1073.3756129346832,
+        1279.0491255590905
+      ],
+      "ignore": false,
+      "order": 26,
+      "anno_id": "box-hjcg4qyx",
+      "attribute": {},
+      "latex": "$$\\stackrel { \\mathrm { ( B . 4 ) } } { \\preceq } Y _ { \\phi , \\mathrm { t r } } \\left( \\frac { \\gamma _ { \\mathrm { w } } } { T } I _ { n _ { \\mathrm { x } } L } \\right) Y _ { \\phi , \\mathrm { t r } } ^ {  H }$$"
+    },
+    {
+      "category_type": "equation_isolated",
+      "poly": [
+        1069.1554285397265,
+        1282.6127612035586,
+        1518.866077453699,
+        1282.6127612035586,
+        1518.866077453699,
+        1343.8143127862625,
+        1069.1554285397265,
+        1343.8143127862625
+      ],
+      "ignore": false,
+      "order": 27,
+      "anno_id": "box-im80u9q1",
+      "attribute": {},
+      "latex": "$$\\stackrel { \\mathrm { ( 3 9 ) } } { \\preceq } \\frac { \\gamma _ { \\mathrm { w } } } { T } \\Gamma _ { \\phi } = \\bar { W } _ { \\phi } .\\tag{cf.(40)}$$"
+    },
+    {
+      "category_type": "equation_isolated",
+      "poly": [
+        954.8136595226207,
+        1649.9944077102,
+        1490.0770095808275,
+        1649.9944077102,
+        1490.0770095808275,
+        1733.6786450460731,
+        954.8136595226207,
+        1733.6786450460731
+      ],
+      "ignore": false,
+      "order": 32,
+      "anno_id": "box-vvggx1uw",
+      "attribute": {},
+      "latex": "$$\\leq \\| Y _ { \\mathrm { x , t r } } \\| \\operatorname* { m a x } _ { i = 1 , \\ldots , L } \\| \\bar { w } ( \\omega _ { i } ) \\| ^ { 2 } \\stackrel { { \\stackrel { (39) ,}{(B.2)} } } { = } \\sqrt { \\frac { \\gamma _ { \\mathrm { w } } } { T } } \\| \\Gamma _ { \\mathrm { x } } \\| ^ { \\frac { 1 } { 2 } } .$$"
+    },
+    {
+      "category_type": "equation_isolated",
+      "poly": [
+        1026.2457884168116,
+        1955.8206089159125,
+        1520.808841297421,
+        1955.8206089159125,
+        1520.808841297421,
+        1998.8828764150219,
+        1026.2457884168116,
+        1998.8828764150219
+      ],
+      "ignore": false,
+      "order": 35,
+      "anno_id": "box-19v589z5",
+      "attribute": {},
+      "latex": "$$+ \\left( \\bar { \\Phi } _ { \\mathrm { w } } ^ {  H } \\bar { \\Phi } _ { \\mathrm { w } } \\otimes I _ { n _ { \\mathrm { x } } n _ { \\phi } } \\right) . \\tag{B.7}$$"
+    },
+    {
+      "category_type": "equation_semantic",
+      "poly": [
+        922.0316181683493,
+        1900.3711916938332,
+        1524.1064970701964,
+        1900.3711916938332,
+        1524.1064970701964,
+        2002.0278849423623,
+        922.0316181683493,
+        2002.0278849423623
+      ],
+      "ignore": false,
+      "order": null,
+      "anno_id": "box-4hya0rd6",
+      "attribute": {},
+      "text": ""
+    },
+    {
+      "category_type": "equation_semantic",
+      "poly": [
+        874.9686615559406,
+        1599.512945889032,
+        1523.9719927203605,
+        1599.512945889032,
+        1523.9719927203605,
+        1734.8112563960187,
+        874.9686615559406,
+        1734.8112563960187
+      ],
+      "ignore": false,
+      "order": null,
+      "anno_id": "box-4p949td7",
+      "attribute": {},
+      "text": ""
+    },
+    {
+      "category_type": "equation_semantic",
+      "poly": [
+        988.5474555932738,
+        1155.077912209868,
+        1525.0453253371074,
+        1155.077912209868,
+        1525.0453253371074,
+        1347.4224585445243,
+        988.5474555932738,
+        1347.4224585445243
+      ],
+      "ignore": false,
+      "order": null,
+      "anno_id": "box-593cztw9",
+      "attribute": {},
+      "text": ""
+    },
+    {
+      "category_type": "equation_semantic",
+      "poly": [
+        264.5201424010654,
+        226.2430840440019,
+        1530.5654827750084,
+        226.2430840440019,
+        1530.5654827750084,
+        446.49893467074423,
+        264.5201424010654,
+        446.49893467074423
+      ],
+      "ignore": false,
+      "order": null,
+      "anno_id": "box-52k7ohwk",
+      "attribute": {},
+      "text": ""
+    }
+  ],
+  "page_info": {
+    "page_no": 0,
+    "height": 2200,
+    "width": 1700,
+    "image_path": "page-404e0471-bd71-426a-8e5a-81b8327f88e5.png",
+    "page_attribute": {
+      "data_source": "academic_literature",
+      "language": "english",
+      "layout": "1andmore_column",
+      "special_issue": [],
+      "subset": "equation_hard"
+    }
+  },
+  "extra": {
+    "relation": []
+  },
+  "_eval_tags": {
+    "is_clean": true,
+    "has_watermark": false,
+    "has_fuzzy_scan": false,
+    "has_colorful_bg": false,
+    "layout": "1andmore_column"
+  }
+}

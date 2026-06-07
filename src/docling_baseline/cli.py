@@ -87,7 +87,7 @@ def ato_bench(fixtures_dir: Path, output: Path | None = None):
     """
     Evaluate ATO-Bench dataset.
 
-    Evaluates 5 multi-page PDF forms (23 pages total) with NID, BLEU, METEOR, TEDS, MHS, and ARD metrics.
+    Evaluates 5 multi-page PDF forms (23 pages total) with NED and TEDS metrics.
     """
     manifest = load_manifest(fixtures_dir)
     runner = ATOBenchRunner(fixtures_dir, manifest)

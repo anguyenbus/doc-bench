@@ -46,13 +46,14 @@ REPO_ROOT: Final[Path] = Path(__file__).resolve().parent.parent
 DEFAULT_FIXTURES_DIR: Final[Path] = REPO_ROOT / "src" / "doc_bench" / "fixtures"
 
 # In-scope datasets, in deterministic run order. ATO-Bench is excluded by design.
-IN_SCOPE_DATASETS: Final[tuple[str, ...]] = ("dp_bench", "omnidocbench")
+IN_SCOPE_DATASETS: Final[tuple[str, ...]] = ("dp_bench", "omnidocbench", "ato_bench")
 
 # Generator output filename -> doc-bench fixture filename. Only DP-Bench is
 # renamed; OmniDocBench passes through unchanged.
 RESULTS_RENAME: Final[dict[str, str]] = {
     "dp_bench_results.json": "dpbench_results.json",
     "omnidocbench_results.json": "omnidocbench_results.json",
+    "ato_bench_results.json": "ato_bench_results.json",
 }
 
 
@@ -99,13 +100,15 @@ def run_generator(dataset: str, target_dir: Path) -> None:
         subprocess.CalledProcessError: If the generator process exits non-zero.
 
     """
+    # NOTE: Click converts underscores to hyphens in command names (dp_bench -> dp-bench).
+    cli_command = dataset.replace("_", "-")
     # NOTE: sys.executable keeps us on the active (uv-provisioned 3.13) interpreter.
     _ = subprocess.run(  # noqa: S603 - args are constant + repo-controlled
         [
             sys.executable,
             "-m",
             "docling_baseline.cli",
-            dataset,
+            cli_command,
             str(target_dir),
         ],
         check=True,

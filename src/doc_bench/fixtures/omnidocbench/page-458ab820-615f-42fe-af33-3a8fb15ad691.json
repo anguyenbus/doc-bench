@@ -1,0 +1,207 @@
+{
+  "layout_dets": [
+    {
+      "category_type": "table_caption",
+      "poly": [
+        79.0134,
+        262.07280000000003,
+        912.9519,
+        262.07280000000003,
+        912.9519,
+        300.8984,
+        79.0134,
+        300.8984
+      ],
+      "ignore": false,
+      "order": 4,
+      "anno_id": "box_id_0",
+      "attribute": {},
+      "text": "Electrical Characteristics( @$25\\degree \\mathrm{C} $Unless Otherwise Specified)"
+    },
+    {
+      "category_type": "table",
+      "poly": [
+        68.93010000000004,
+        316.0252948906016,
+        1584.0699,
+        316.0252948906016,
+        1584.0699,
+        2027.9758,
+        68.93010000000004,
+        2027.9758
+      ],
+      "ignore": false,
+      "order": 5,
+      "anno_id": "box_id_1",
+      "attribute": {},
+      "html": "<table><tr><td colspan=\"2\">Part Number</td><td colspan=\"2\">Mximum<br/>Allowable<br/>Voltage</td><td>Varistor<br/>Voltage<br/>@1mA</td><td colspan=\"2\">Mximum<br/>Clamping<br/>Voltage</td><td colspan=\"2\">Withstanding<br/>Surge Current<br/>(8/20\u03bcs)</td><td colspan=\"2\">Maximum<br/>Energy<br/>(10/1000\u03bcs)</td><td>Rated<br/>Power</td><td>Typical<br/>Capacitance<br/>(Reference)</td></tr><tr><td>Standard</td><td>High Surge</td><td>$V_{AC}$(V)</td><td>$V_{DC}$(V)</td><td>(V)</td><td>$V_c$(V)</td><td>$I_P$(A)</td><td>I(A)<br/>Standard</td><td>I(A)<br/>High Surge</td><td>(J)<br/>Standard</td><td>(J)<br/>High Surge</td><td>(W)</td><td>@1KHz<br/>(pF)</td></tr><tr><td>10D180L</td><td>10D180LJ</td><td>10</td><td>14</td><td>18(15-21)</td><td>38</td><td>5</td><td>500</td><td>1000</td><td>2.8</td><td>3.0</td><td>0.05</td><td>5600</td></tr><tr><td>10D220K</td><td>10D220KJ</td><td>14</td><td>18</td><td>22(20-24)</td><td>43</td><td>5</td><td>500</td><td>1000</td><td>4.5</td><td>5.0</td><td>0.05</td><td>4500</td></tr><tr><td>10D270K</td><td>10D270KJ</td><td>17</td><td>22</td><td>27(24-30)</td><td>53</td><td>5</td><td>500</td><td>1000</td><td>6.0</td><td>6.5</td><td>0.05</td><td>3700</td></tr><tr><td>10D330K</td><td>10D330KJ</td><td>20</td><td>26</td><td>33(30-36)</td><td>65</td><td>5</td><td>500</td><td>1000</td><td>7.4</td><td>8.0</td><td>0.05</td><td>3000</td></tr><tr><td>10D390K</td><td>10D390KJ</td><td>25</td><td>31</td><td>39(35-43)</td><td>77</td><td>5</td><td>500</td><td>1000</td><td>9.1</td><td>9.5</td><td>0.05</td><td>2600</td></tr><tr><td>10D470K</td><td>10D470KJ</td><td>30</td><td>38</td><td>47(42-52)</td><td>93</td><td>5</td><td>500</td><td>1000</td><td>10.8</td><td>11.0</td><td>0.05</td><td>2100</td></tr><tr><td>10D560K</td><td>10D560KJ</td><td>35</td><td>45</td><td>56(50-62)</td><td>110</td><td>5</td><td>500</td><td>1000</td><td>12.9</td><td>13.0</td><td>0.05</td><td>1800</td></tr><tr><td>10D680K</td><td>10D680KJ</td><td>40</td><td>56</td><td>68(61-75)</td><td>135</td><td>5</td><td>500</td><td>1000</td><td>15.4</td><td>16.0</td><td>0.05</td><td>1500</td></tr><tr><td>10D820K</td><td>10D820KJ</td><td>50</td><td>65</td><td>82(74-90)</td><td>135</td><td>25</td><td>2500</td><td>3500</td><td>16.8</td><td>17.0</td><td>0.4</td><td>1200</td></tr><tr><td>10D101K</td><td>10D101KJ</td><td>60</td><td>85</td><td>100(90-110)</td><td>165</td><td>25</td><td>2500</td><td>3500</td><td>18.2</td><td>18.5</td><td>0.4</td><td>1000</td></tr><tr><td>10D121K</td><td>10D121KJ</td><td>75</td><td>100</td><td>120(108-132)</td><td>200</td><td>25</td><td>2500</td><td>3500</td><td>21.0</td><td>21.5</td><td>0.4</td><td>830</td></tr><tr><td>10D151K</td><td>10D151KJ</td><td>95</td><td>125</td><td>150(135-165)</td><td>250</td><td>25</td><td>2500</td><td>3500</td><td>25.2</td><td>26.0</td><td>0.4</td><td>670</td></tr><tr><td>10D181K</td><td>10D181KJ</td><td>115</td><td>150</td><td>180(162-198)</td><td>300</td><td>25</td><td>2500</td><td>3500</td><td>30.8</td><td>38.0</td><td>0.4</td><td>560</td></tr><tr><td>10D201K</td><td>10D201KJ</td><td>130</td><td>170</td><td>200(185-225)</td><td>330</td><td>25</td><td>2500</td><td>3500</td><td>42.0</td><td>42.5</td><td>0.4</td><td>500</td></tr><tr><td>10D221K</td><td>10D221KJ</td><td>140</td><td>180</td><td>220(198-242)</td><td>360</td><td>25</td><td>2500</td><td>3500</td><td>46.2</td><td>46.5</td><td>0.4</td><td>450</td></tr><tr><td>10D241K</td><td>10D241KJ</td><td>150</td><td>200</td><td>240(216-264)</td><td>395</td><td>25</td><td>2500</td><td>3500</td><td>50.4</td><td>51.0</td><td>0.4</td><td>420</td></tr><tr><td>10D271K</td><td>10D271KJ</td><td>175</td><td>225</td><td>270(243-297)</td><td>455</td><td>25</td><td>2500</td><td>3500</td><td>57.4</td><td>58.0</td><td>0.4</td><td>370</td></tr><tr><td>10D301K</td><td>10D301KJ</td><td>190</td><td>250</td><td>300(270-330)</td><td>505</td><td>25</td><td>2500</td><td>3500</td><td>63.0</td><td>63.5</td><td>0.4</td><td>330</td></tr><tr><td>10D331K</td><td>10D331KJ</td><td>210</td><td>275</td><td>330(297-363)</td><td>550</td><td>25</td><td>2500</td><td>3500</td><td>68.6</td><td>69.0</td><td>0.4</td><td>300</td></tr><tr><td>10D361K</td><td>10D361KJ</td><td>230</td><td>300</td><td>360(324-396)</td><td>595</td><td>25</td><td>2500</td><td>3500</td><td>74.2</td><td>75.0</td><td>0.4</td><td>280</td></tr><tr><td>10D391K</td><td>10D391KJ</td><td>250</td><td>320</td><td>390(351-429)</td><td>650</td><td>25</td><td>2500</td><td>3500</td><td>81.2</td><td>82.0</td><td>0.4</td><td>260</td></tr><tr><td>10D431K</td><td>10D431KJ</td><td>275</td><td>350</td><td>430(387-473)</td><td>710</td><td>25</td><td>2500</td><td>3500</td><td>88.2</td><td>89.0</td><td>0.4</td><td>230</td></tr><tr><td>10D471K</td><td>10D471KJ</td><td>300</td><td>385</td><td>470(423-517)</td><td>775</td><td>25</td><td>2500</td><td>3500</td><td>96</td><td>100</td><td>0.4</td><td>210</td></tr><tr><td>10D511K</td><td>10D511KJ</td><td>320</td><td>415</td><td>510(459-561)</td><td>845</td><td>25</td><td>2500</td><td>3500</td><td>98</td><td>102</td><td>0.4</td><td>200</td></tr><tr><td>10D561K</td><td>10D561KJ</td><td>350</td><td>460</td><td>560(504-616)</td><td>920</td><td>25</td><td>2500</td><td>3500</td><td>100</td><td>104</td><td>0.4</td><td>180</td></tr><tr><td>10D621K</td><td>10D621KJ</td><td>385</td><td>505</td><td>620(558-682)</td><td>1025</td><td>25</td><td>2500</td><td>3500</td><td>102</td><td>106</td><td>0.4</td><td>160</td></tr><tr><td>10D681K</td><td>10D681KJ</td><td>420</td><td>560</td><td>680(612-748)</td><td>1120</td><td>25</td><td>2500</td><td>3500</td><td>104</td><td>108</td><td>0.4</td><td>150</td></tr><tr><td>10D751K</td><td>10D751KJ</td><td>460</td><td>615</td><td>750(675-825)</td><td>1240</td><td>25</td><td>2500</td><td>3500</td><td>110</td><td>118</td><td>0.4</td><td>140</td></tr><tr><td>10D781K</td><td>10D781KJ</td><td>485</td><td>640</td><td>780(702-858)</td><td>1290</td><td>25</td><td>2500</td><td>3500</td><td>118</td><td>120</td><td>0.4</td><td>130</td></tr><tr><td>10D821K</td><td>10D821KJ</td><td>510</td><td>670</td><td>820(738-902)</td><td>1355</td><td>25</td><td>2500</td><td>3500</td><td>122</td><td>125</td><td>0.4</td><td>120</td></tr><tr><td>10D911K</td><td>10D911KJ</td><td>550</td><td>745</td><td>910(819-1001)</td><td>1500</td><td>25</td><td>2500</td><td>3500</td><td>128</td><td>134</td><td>0.4</td><td>110</td></tr><tr><td>10D102K</td><td>10D102KJ</td><td>625</td><td>825</td><td>1000(900-1100)</td><td>1650</td><td>25</td><td>2500</td><td>3500</td><td>131</td><td>140</td><td>0.4</td><td>100</td></tr><tr><td>10D112K</td><td>10D112KJ</td><td>680</td><td>895</td><td>1100(990-1210)</td><td>1815</td><td>25</td><td>2500</td><td>3500</td><td>133</td><td>155</td><td>0.4</td><td>90</td></tr></table>"
+    },
+    {
+      "category_type": "footer",
+      "poly": [
+        76.4160141528726,
+        2052.9496465347747,
+        389.9541646830702,
+        2052.9496465347747,
+        389.9541646830702,
+        2075.0298018402186,
+        76.4160141528726,
+        2075.0298018402186
+      ],
+      "ignore": false,
+      "order": 6,
+      "anno_id": "box_id_2",
+      "attribute": {},
+      "text": "Product Datasheet/Rev. 20171011A1"
+    },
+    {
+      "category_type": "abandon",
+      "poly": [
+        74.41772685640777,
+        135.29551048839153,
+        148.60496857633888,
+        135.29551048839153,
+        148.60496857633888,
+        206.11060684638414,
+        74.41772685640777,
+        206.11060684638414
+      ],
+      "ignore": false,
+      "order": 0,
+      "anno_id": "box-dzna0hd4",
+      "attribute": {},
+      "text": ""
+    },
+    {
+      "category_type": "header",
+      "poly": [
+        156.1923065800215,
+        148.78410165998642,
+        409.103369168784,
+        148.78410165998642,
+        409.103369168784,
+        192.62202053670967,
+        156.1923065800215,
+        192.62202053670967
+      ],
+      "ignore": false,
+      "order": 1,
+      "anno_id": "box-jyumxbyf",
+      "attribute": {},
+      "text": "SEMIWARE"
+    },
+    {
+      "category_type": "header",
+      "poly": [
+        1425.8991985417692,
+        149.77385773096853,
+        1578.45296990349,
+        149.77385773096853,
+        1578.45296990349,
+        178.67878638394453,
+        1425.8991985417692,
+        178.67878638394453
+      ],
+      "ignore": false,
+      "order": 2,
+      "anno_id": "box-1e02x4jj",
+      "attribute": {},
+      "text": "10DxxxK(J)"
+    },
+    {
+      "category_type": "figure",
+      "poly": [
+        1490.5457448555362,
+        2056.6988956336972,
+        1579.5643892768428,
+        2056.6988956336972,
+        1579.5643892768428,
+        2144.89706421881,
+        1490.5457448555362,
+        2144.89706421881
+      ],
+      "ignore": false,
+      "order": 9,
+      "anno_id": "box-2d596mtu",
+      "attribute": {},
+      "text": ""
+    },
+    {
+      "category_type": "footer",
+      "poly": [
+        77.29922276946297,
+        2076.173409904545,
+        338.7282338287707,
+        2076.173409904545,
+        338.7282338287707,
+        2092.6939136027663,
+        77.29922276946297,
+        2092.6939136027663
+      ],
+      "ignore": false,
+      "order": 7,
+      "anno_id": "box-ifzdijfp",
+      "attribute": {},
+      "text": "Http://www.semiware.com.cn"
+    },
+    {
+      "category_type": "page_number",
+      "poly": [
+        77.6681925639914,
+        2094.4603288559547,
+        135.59082446637035,
+        2094.4603288559547,
+        135.59082446637035,
+        2113.00765365502,
+        77.6681925639914,
+        2113.00765365502
+      ],
+      "ignore": false,
+      "order": 8,
+      "anno_id": "box-8cbiuhye",
+      "attribute": {},
+      "text": "Page 2"
+    },
+    {
+      "category_type": "header",
+      "poly": [
+        1329.5494524376466,
+        182.69336650482913,
+        1578.45296990349,
+        182.69336650482913,
+        1578.45296990349,
+        207.58369896445635,
+        1329.5494524376466,
+        207.58369896445635
+      ],
+      "ignore": false,
+      "order": 3,
+      "anno_id": "box-4si1eb5v",
+      "attribute": {},
+      "text": "Metal Oxide Varistors"
+    }
+  ],
+  "page_info": {
+    "page_no": 0,
+    "height": 2206,
+    "width": 1653,
+    "image_path": "page-458ab820-615f-42fe-af33-3a8fb15ad691.png",
+    "page_attribute": {
+      "data_source": "research_report",
+      "language": "english",
+      "layout": "single_column",
+      "special_issue": [],
+      "subset": "table_hard"
+    }
+  },
+  "extra": {
+    "relation": []
+  },
+  "_eval_tags": {
+    "is_clean": true,
+    "has_watermark": false,
+    "has_fuzzy_scan": false,
+    "has_colorful_bg": false,
+    "layout": "single_column"
+  }
+}

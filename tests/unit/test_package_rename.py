@@ -30,16 +30,16 @@ def test_doc_bench_datasets_importable() -> None:
 
 
 def test_doc_bench_metrics_importable() -> None:
-    """Test that metrics are importable under new name."""
-    from doc_bench.metrics.parsing import (
-        nid,
-        table_teds,
-        text_similarity,
-    )
+    """Test that current metrics are importable under new name.
 
-    assert nid is not None
+    NOTE: After the 2026-06-07 NED/metrics simplification spec, only ned_score
+    (NED) and table_teds (TEDS) remain.  nid, text_similarity, and other old
+    metrics were deleted.
+    """
+    from doc_bench.metrics.parsing import ned_score, table_teds
+
+    assert ned_score is not None
     assert table_teds is not None
-    assert text_similarity is not None
 
 
 def test_doc_bench_adapters_importable() -> None:

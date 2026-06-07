@@ -1,8 +1,9 @@
 """
 Tests for test file deletion validation.
 
-Verifies that deleted RAG/replay/observability test files are gone
-and that kept parsing tests still work.
+Verifies that deleted RAG/replay/observability test files are gone,
+that deleted parsing metric test files are gone, and that kept parsing
+tests still exist.
 """
 
 from pathlib import Path
@@ -73,22 +74,45 @@ def test_deleted_rag_test_files_not_exist() -> None:
         assert not file_path.exists(), f"RAG test file should be deleted: {file_path}"
 
 
+def test_deleted_parsing_metric_test_files_not_exist() -> None:
+    """Test that deleted parsing metric test files are gone.
+
+    NOTE: test_docling_eval_integration.py was also deleted because it tested
+    only the removed metrics (ard_score, layout_map_score, bleu_score, meteor_score).
+    """
+    tests_dir = Path(__file__).parent.parent
+
+    deleted_test_files = [
+        tests_dir / "unit" / "test_nid.py",
+        tests_dir / "unit" / "test_text_similarity.py",
+        tests_dir / "unit" / "test_text_fidelity.py",
+        tests_dir / "unit" / "test_ard.py",
+        tests_dir / "unit" / "test_reading_order.py",
+        tests_dir / "unit" / "test_structure_recall.py",
+        tests_dir / "unit" / "test_layout_map.py",
+        # Integration test that tested only deleted metrics:
+        tests_dir / "integration" / "test_docling_eval_integration.py",
+    ]
+
+    for file_path in deleted_test_files:
+        assert not file_path.exists(), f"Deleted metric test file should be gone: {file_path}"
+
+
 def test_kept_parsing_tests_exist() -> None:
-    """Test that parsing-specific test files still exist."""
+    """Test that parsing-specific test files still exist.
+
+    NOTE: test_ned.py is the canonical NED metric test (replaces the deleted
+    metric tests). test_docling_eval_integration.py was removed because it
+    tested only deleted metrics.
+    """
     tests_dir = Path(__file__).parent.parent
 
     parsing_files = [
         tests_dir / "integration" / "test_parsing_pipeline.py",
-        tests_dir / "integration" / "test_docling_eval_integration.py",
-        tests_dir / "unit" / "test_nid.py",
+        tests_dir / "unit" / "test_ned.py",
         tests_dir / "unit" / "test_table_teds.py",
-        tests_dir / "unit" / "test_text_similarity.py",
-        tests_dir / "unit" / "test_reading_order.py",
-        tests_dir / "unit" / "test_structure_recall.py",
         tests_dir / "unit" / "test_dp_bench_loader.py",
         tests_dir / "unit" / "test_config.py",
-        tests_dir / "unit" / "test_layout_map.py",
-        tests_dir / "unit" / "test_parser_adapter.py",
         tests_dir / "unit" / "test_schema_validation.py",
     ]
 

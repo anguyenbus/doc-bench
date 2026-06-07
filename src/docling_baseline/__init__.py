@@ -10,20 +10,14 @@ This package provides baseline evaluation scores for Docling across three datase
 __version__ = "0.1.0"
 
 from docling_baseline.metrics import (
-    nid_score,
-    bleu_score,
-    meteor_score,
+    ned_score,
     teds_score,
-    mhs_score,
-    ard_score,
+    teds_s_score,
 )
 
 __all__ = [
     "__version__",
-    "nid_score",
-    "bleu_score",
-    "meteor_score",
+    "ned_score",
     "teds_score",
-    "mhs_score",
-    "ard_score",
+    "teds_s_score",
 ]
