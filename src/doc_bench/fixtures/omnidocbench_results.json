@@ -1,9 +1,9 @@
 {
-  "total": 11,
-  "successful": 11,
+  "total": 5,
+  "successful": 5,
   "errors": 0,
   "averages": {
-    "ned": 0.6853,
+    "ned": 0.7688,
     "teds": 0.0,
     "teds_s": 0.0
   },
@@ -13,34 +13,7 @@
       "image": "page-c1c135ad-427e-482b-b01c-05c0ccbc6e76.png",
       "doc_type": "academic_literature",
       "error": "",
-      "ned": 0.6045,
-      "teds": 0.0,
-      "teds_s": 0.0
-    },
-    {
-      "query_id": "page-404e0471-bd71-426a-8e5a-81b8327f88e5",
-      "image": "page-404e0471-bd71-426a-8e5a-81b8327f88e5.png",
-      "doc_type": "academic_literature",
-      "error": "",
-      "ned": 0.3537,
-      "teds": 0.0,
-      "teds_s": 0.0
-    },
-    {
-      "query_id": "page-f108020f-edc5-4a27-85d9-d9d9c5d67309",
-      "image": "page-f108020f-edc5-4a27-85d9-d9d9c5d67309.png",
-      "doc_type": "academic_literature",
-      "error": "",
-      "ned": 0.6944,
-      "teds": 0.0,
-      "teds_s": 0.0
-    },
-    {
-      "query_id": "page-458ab820-615f-42fe-af33-3a8fb15ad691",
-      "image": "page-458ab820-615f-42fe-af33-3a8fb15ad691.png",
-      "doc_type": "research_report",
-      "error": "",
-      "ned": 0.6825,
+      "ned": 0.6023,
       "teds": 0.0,
       "teds_s": 0.0
     },
@@ -49,16 +22,7 @@
       "image": "jiaocaineedrop_Chapter9.pdf_46.jpg",
       "doc_type": "exam_paper",
       "error": "",
-      "ned": 0.6515,
-      "teds": 0.0,
-      "teds_s": 0.0
-    },
-    {
-      "query_id": "docstructbench_enbook-zlib-o.O-19091739.pdf_181",
-      "image": "docstructbench_enbook-zlib-o.O-19091739.pdf_181.jpg",
-      "doc_type": "colorful_textbook",
-      "error": "",
-      "ned": 0.7152,
+      "ned": 0.647,
       "teds": 0.0,
       "teds_s": 0.0
     },
@@ -77,24 +41,6 @@
       "doc_type": "book",
       "error": "",
       "ned": 0.6913,
-      "teds": 0.0,
-      "teds_s": 0.0
-    },
-    {
-      "query_id": "yanbaopptmerge_293df2702e017fa1e78f6fe9b42d64ce.pdf_928",
-      "image": "yanbaopptmerge_293df2702e017fa1e78f6fe9b42d64ce.pdf_928.jpg",
-      "doc_type": "book",
-      "error": "",
-      "ned": 0.3119,
-      "teds": 0.0,
-      "teds_s": 0.0
-    },
-    {
-      "query_id": "yanbaopptmerge_SE05.pdf_7",
-      "image": "yanbaopptmerge_SE05.pdf_7.jpg",
-      "doc_type": "PPT2PDF",
-      "error": "",
-      "ned": 0.9296,
       "teds": 0.0,
       "teds_s": 0.0
     },

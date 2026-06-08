@@ -9,7 +9,7 @@ import json
 from pathlib import Path
 from typing import Any
 
-from docling_baseline.runners.base import BaseRunner, safe_float
+from docling_baseline.runners.base import BaseRunner
 
 
 # Function to build gold markdown from DP-Bench elements
@@ -80,17 +80,6 @@ class DPBenchRunner(BaseRunner):
 
         """
         items = self.manifest.get("dp_bench", [])
-        dp_bench_dir = self.fixtures_dir / "dp_bench"
-
-        # Load reference from full dataset
-        reference_path = Path(self.manifest.get("reference_paths", {}).get("dp_bench"))
-
-        if not reference_path.exists():
-            print(f"WARNING: Reference not found at {reference_path}")
-            return {"total": 0, "successful": 0, "errors": len(items), "averages": {}, "results": []}
-
-        with open(reference_path) as f:
-            reference_data = json.load(f)
 
         print(f"=== DP-BENCH ({len(items)} docs) ===")
 
@@ -99,18 +88,19 @@ class DPBenchRunner(BaseRunner):
         for item in items:
             doc_id = item["doc_id"]
             pdf_name = item["pdf"].split("/")[-1]
-            pdf_path = dp_bench_dir / pdf_name
+            gold_rel = item.get("gold", "")
+            pdf_path = self.fixtures_dir / item["pdf"]
+            gold_path = self.fixtures_dir / gold_rel
 
             print(f"\n[{doc_id}]")
 
-            # Load gold
-            if pdf_name not in reference_data:
-                print(f"  WARNING: {pdf_name} not in reference.json")
+            if not gold_path.exists():
+                print(f"  WARNING: Gold not found: {gold_path}")
                 continue
 
-            gold_data = reference_data[pdf_name]
+            with open(gold_path) as f:
+                gold_data = json.load(f)
 
-            # Generate prediction
             if not pdf_path.exists():
                 print(f"  WARNING: PDF not found: {pdf_path}")
                 continue
@@ -119,7 +109,6 @@ class DPBenchRunner(BaseRunner):
             if prediction is None:
                 continue
 
-            # Build gold markdown and prediction markdown
             gt_markdown = build_gold_markdown(gold_data)
             pred_markdown = self.prediction_to_markdown(prediction)
 
@@ -129,7 +118,6 @@ class DPBenchRunner(BaseRunner):
                 print(f"  WARNING: Empty gold or prediction")
                 continue
 
-            # Calculate metrics
             metrics = self.calculate_metrics(gt_markdown, pred_markdown)
 
             result = {
@@ -141,10 +129,8 @@ class DPBenchRunner(BaseRunner):
             }
             results.append(result)
 
-            # Print key metrics
-            print(f"  NID: {metrics['nid']} | BLEU: {metrics['bleu']} | METEOR: {metrics['meteor']}")
+            print(f"  NED: {metrics['ned']} | TEDS: {metrics['teds']} | TEDS-S: {metrics['teds_s']}")
 
-        # Calculate averages
         averages = self.compute_averages(results)
 
         print(f"\n--- DP-BENCH AVERAGES ({len(results)} docs) ---")

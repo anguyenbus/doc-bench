@@ -1,9 +1,9 @@
 {
-  "total": 16,
-  "successful": 16,
+  "total": 5,
+  "successful": 5,
   "errors": 0,
   "averages": {
-    "ned": 0.6554,
+    "ned": 0.8993,
     "teds": 0.0,
     "teds_s": 0.0
   },
@@ -50,105 +50,6 @@
       "category": "Paragraph",
       "error": "",
       "ned": 0.9937,
-      "teds": 0.0,
-      "teds_s": 0.0
-    },
-    {
-      "query_id": "01030000000076",
-      "pdf": "01030000000076.pdf",
-      "category": "Caption",
-      "error": "",
-      "ned": 0.8873,
-      "teds": 0.0,
-      "teds_s": 0.0
-    },
-    {
-      "query_id": "01030000000083",
-      "pdf": "01030000000083.pdf",
-      "category": "Caption",
-      "error": "",
-      "ned": 0.2442,
-      "teds": 0.0,
-      "teds_s": 0.0
-    },
-    {
-      "query_id": "01030000000118",
-      "pdf": "01030000000118.pdf",
-      "category": "Heading1",
-      "error": "",
-      "ned": 0.9342,
-      "teds": 0.0,
-      "teds_s": 0.0
-    },
-    {
-      "query_id": "01030000000120",
-      "pdf": "01030000000120.pdf",
-      "category": "Paragraph",
-      "error": "",
-      "ned": 0.5655,
-      "teds": 0.0,
-      "teds_s": 0.0
-    },
-    {
-      "query_id": "01030000000127",
-      "pdf": "01030000000127.pdf",
-      "category": "Paragraph",
-      "error": "",
-      "ned": 0.614,
-      "teds": 0.0,
-      "teds_s": 0.0
-    },
-    {
-      "query_id": "01030000000192",
-      "pdf": "01030000000192.pdf",
-      "category": "Paragraph",
-      "error": "",
-      "ned": 0.9781,
-      "teds": 0.0,
-      "teds_s": 0.0
-    },
-    {
-      "query_id": "01030000000193",
-      "pdf": "01030000000193.pdf",
-      "category": "Paragraph",
-      "error": "",
-      "ned": 0.9748,
-      "teds": 0.0,
-      "teds_s": 0.0
-    },
-    {
-      "query_id": "01030000000172",
-      "pdf": "01030000000172.pdf",
-      "category": "Index",
-      "error": "",
-      "ned": 0.0016,
-      "teds": 0.0,
-      "teds_s": 0.0
-    },
-    {
-      "query_id": "01030000000018",
-      "pdf": "01030000000018.pdf",
-      "category": "Heading1",
-      "error": "",
-      "ned": 0.0056,
-      "teds": 0.0,
-      "teds_s": 0.0
-    },
-    {
-      "query_id": "01030000000141",
-      "pdf": "01030000000141.pdf",
-      "category": "Paragraph",
-      "error": "",
-      "ned": 0.0034,
-      "teds": 0.0,
-      "teds_s": 0.0
-    },
-    {
-      "query_id": "01030000000121",
-      "pdf": "01030000000121.pdf",
-      "category": "Paragraph",
-      "error": "",
-      "ned": 0.7804,
       "teds": 0.0,
       "teds_s": 0.0
     }

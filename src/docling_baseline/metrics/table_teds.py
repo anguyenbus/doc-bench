@@ -11,6 +11,8 @@ TEDS-S: Structure-only similarity.
 import re
 from html import unescape
 
+_SEP_RE = re.compile(r"^\|[\s\-:|]+\|[\s\-:|]*$")
+
 from apted import APTED, Config
 from apted.helpers import Tree
 from lxml import etree
@@ -192,8 +194,8 @@ def _markdown_table_to_html(table_markdown: str) -> str:
     html_lines = ["<table>"]
 
     for i, line in enumerate(lines):
-        if line.startswith("|---"):
-            continue  # Skip separator
+        if _SEP_RE.match(line):
+            continue  # Skip GFM separator row
 
         cells = [cell.strip() for cell in line.split("|")[1:-1]]
         tag = "th" if i == 0 else "td"
@@ -216,9 +218,9 @@ def _extract_tables_from_markdown(markdown: str) -> list[str]:
     while i < len(lines):
         line = lines[i].strip()
         if line.startswith("|") and i + 1 < len(lines):
-            # Check if next line is separator
+            # Check if next line is a GFM separator row
             next_line = lines[i + 1].strip()
-            if next_line.startswith("|---"):
+            if next_line.startswith("|") and _SEP_RE.match(next_line):
                 # Found a table
                 table_lines = []
                 while i < len(lines) and lines[i].strip().startswith("|"):

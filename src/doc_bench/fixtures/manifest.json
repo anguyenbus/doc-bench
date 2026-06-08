@@ -31,72 +31,6 @@
       "category": "Paragraph",
       "pdf": "dp_bench/01030000000040.pdf",
       "gold": "dp_bench/01030000000040.json"
-    },
-    {
-      "doc_id": "01030000000076",
-      "category": "Caption",
-      "pdf": "dp_bench/01030000000076.pdf",
-      "gold": "dp_bench/01030000000076.json"
-    },
-    {
-      "doc_id": "01030000000083",
-      "category": "Caption",
-      "pdf": "dp_bench/01030000000083.pdf",
-      "gold": "dp_bench/01030000000083.json"
-    },
-    {
-      "doc_id": "01030000000118",
-      "category": "Heading1",
-      "pdf": "dp_bench/01030000000118.pdf",
-      "gold": "dp_bench/01030000000118.json"
-    },
-    {
-      "doc_id": "01030000000120",
-      "category": "Paragraph",
-      "pdf": "dp_bench/01030000000120.pdf",
-      "gold": "dp_bench/01030000000120.json"
-    },
-    {
-      "doc_id": "01030000000127",
-      "category": "Paragraph",
-      "pdf": "dp_bench/01030000000127.pdf",
-      "gold": "dp_bench/01030000000127.json"
-    },
-    {
-      "doc_id": "01030000000192",
-      "category": "Paragraph",
-      "pdf": "dp_bench/01030000000192.pdf",
-      "gold": "dp_bench/01030000000192.json"
-    },
-    {
-      "doc_id": "01030000000193",
-      "category": "Paragraph",
-      "pdf": "dp_bench/01030000000193.pdf",
-      "gold": "dp_bench/01030000000193.json"
-    },
-    {
-      "doc_id": "01030000000172",
-      "category": "Index",
-      "pdf": "dp_bench/01030000000172.pdf",
-      "gold": "dp_bench/01030000000172.json"
-    },
-    {
-      "doc_id": "01030000000018",
-      "category": "Heading1",
-      "pdf": "dp_bench/01030000000018.pdf",
-      "gold": "dp_bench/01030000000018.json"
-    },
-    {
-      "doc_id": "01030000000141",
-      "category": "Paragraph",
-      "pdf": "dp_bench/01030000000141.pdf",
-      "gold": "dp_bench/01030000000141.json"
-    },
-    {
-      "doc_id": "01030000000121",
-      "category": "Paragraph",
-      "pdf": "dp_bench/01030000000121.pdf",
-      "gold": "dp_bench/01030000000121.json"
     }
   ],
   "omnidocbench": [
@@ -107,34 +41,10 @@
       "image": "omnidocbench/page-c1c135ad-427e-482b-b01c-05c0ccbc6e76.png"
     },
     {
-      "doc_id": "page-404e0471-bd71-426a-8e5a-81b8327f88e5",
-      "doc_type": "academic_literature",
-      "page": "omnidocbench/page-404e0471-bd71-426a-8e5a-81b8327f88e5.json",
-      "image": "omnidocbench/page-404e0471-bd71-426a-8e5a-81b8327f88e5.png"
-    },
-    {
-      "doc_id": "page-f108020f-edc5-4a27-85d9-d9d9c5d67309",
-      "doc_type": "academic_literature",
-      "page": "omnidocbench/page-f108020f-edc5-4a27-85d9-d9d9c5d67309.json",
-      "image": "omnidocbench/page-f108020f-edc5-4a27-85d9-d9d9c5d67309.png"
-    },
-    {
-      "doc_id": "page-458ab820-615f-42fe-af33-3a8fb15ad691",
-      "doc_type": "research_report",
-      "page": "omnidocbench/page-458ab820-615f-42fe-af33-3a8fb15ad691.json",
-      "image": "omnidocbench/page-458ab820-615f-42fe-af33-3a8fb15ad691.png"
-    },
-    {
       "doc_id": "jiaocaineedrop_Chapter9.pdf_46",
       "doc_type": "exam_paper",
       "page": "omnidocbench/jiaocaineedrop_Chapter9.pdf_46.json",
       "image": "omnidocbench/jiaocaineedrop_Chapter9.pdf_46.jpg"
-    },
-    {
-      "doc_id": "docstructbench_enbook-zlib-o.O-19091739.pdf_181",
-      "doc_type": "colorful_textbook",
-      "page": "omnidocbench/docstructbench_enbook-zlib-o.O-19091739.pdf_181.json",
-      "image": "omnidocbench/docstructbench_enbook-zlib-o.O-19091739.pdf_181.jpg"
     },
     {
       "doc_id": "jiaocaineedrop_c04_874768_mt.pdf_6",
@@ -147,18 +57,6 @@
       "doc_type": "book",
       "page": "omnidocbench/page-573c437e-c309-4483-a038-ef2f440b104a.json",
       "image": "omnidocbench/page-573c437e-c309-4483-a038-ef2f440b104a.png"
-    },
-    {
-      "doc_id": "yanbaopptmerge_293df2702e017fa1e78f6fe9b42d64ce.pdf_928",
-      "doc_type": "book",
-      "page": "omnidocbench/yanbaopptmerge_293df2702e017fa1e78f6fe9b42d64ce.pdf_928.json",
-      "image": "omnidocbench/yanbaopptmerge_293df2702e017fa1e78f6fe9b42d64ce.pdf_928.jpg"
-    },
-    {
-      "doc_id": "yanbaopptmerge_SE05.pdf_7",
-      "doc_type": "PPT2PDF",
-      "page": "omnidocbench/yanbaopptmerge_SE05.pdf_7.json",
-      "image": "omnidocbench/yanbaopptmerge_SE05.pdf_7.jpg"
     },
     {
       "doc_id": "PPT_english-studies-s6-on-the-road-resource-3_page_002",
@@ -178,7 +76,7 @@
       ]
     }
   ],
-  "total": 28,
+  "total": 11,
   "reference_paths": {
     "omnidocbench": "/home/an/atoprojects/evaluation/data/parsing/omnidocbench_english/OmniDocBench.json"
   }

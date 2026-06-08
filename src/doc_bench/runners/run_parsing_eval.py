@@ -24,7 +24,12 @@ from doc_bench.datasets.dp_bench import build_gold_markdown
 from doc_bench.identity import doc_id_for
 from doc_bench.metrics.parsing.markdown_converter import parser_output_to_markdown
 from doc_bench.metrics.parsing.ned import ned_score
-from doc_bench.metrics.parsing.table_teds import evaluate_table
+from doc_bench.metrics.parsing.table_teds import (
+    TEDSEvaluator,
+    _extract_tables_from_markdown,
+    _markdown_table_to_html,
+    evaluate_table,
+)
 from doc_bench.predictions import load_prediction
 from doc_bench.rejections import (
     RejectionReason,
@@ -169,14 +174,95 @@ def _extract_gold_text_from_omnidocbench(page: dict) -> str:
 
     sorted_dets = sorted(layout_dets, key=sort_key)
 
-    # Extract text, maintaining order
+    # NOTE: equation blocks have no text field — excluding them keeps the gold string
+    # length comparable to parsers that don't emit LaTeX, making NED fair.
+    _EXCLUDED_CATEGORIES = {"equation_isolated", "equation_semantic"}
+
     texts = []
     for det in sorted_dets:
+        if det.get("category_type") in _EXCLUDED_CATEGORIES:
+            continue
         text = det.get("text", "")
         if text:
             texts.append(text)
 
     return " ".join(texts)
+
+
+def _strip_equations(text: str) -> str:
+    """Strip LaTeX equation markup from a prediction string.
+
+    OmniDocBench gold excludes equation content (text field is always empty for
+    equation_isolated/equation_semantic blocks). Parsers that perform math
+    extraction (MinerU, Nougat, etc.) emit LaTeX, making the prediction 2-6x
+    longer than gold and collapsing NED even when text extraction is correct.
+    Stripping equations from the prediction before NED makes the comparison fair.
+
+    Patterns removed (non-greedy, DOTALL):
+      $$...$$   display math (most common in MinerU output)
+      $...$     inline math
+      \\[...\\] display math (LaTeX block)
+      \\(...\\) inline math (LaTeX block)
+
+    Args:
+        text: Prediction markdown string.
+
+    Returns:
+        String with all LaTeX equation content removed.
+
+    """
+    import re
+
+    # NOTE: Order matters — match $$ before $ to avoid consuming half a display block.
+    text = re.sub(r"\$\$[\s\S]*?\$\$", "", text)
+    text = re.sub(r"\$[^$\n]+?\$", "", text)
+    text = re.sub(r"\\\[[\s\S]*?\\\]", "", text)
+    text = re.sub(r"\\\([\s\S]*?\\\)", "", text)
+    # Collapse whitespace left by removed blocks
+    text = re.sub(r"\s{2,}", " ", text).strip()
+    return text
+
+
+def _evaluate_teds_for_omnidocbench(
+    page: dict,
+    pred_markdown: str,
+) -> tuple[float, float]:
+    """Compute TEDS and TEDS-S for one OmniDocBench page.
+
+    OmniDocBench table blocks store table content in the ``html`` field of
+    ``layout_dets``, not in the ``text`` field (which is always empty for
+    tables). This helper reads HTML directly from ``layout_dets`` so the gold
+    side contains an actual table tree rather than an empty string.
+
+    Args:
+        page: OmniDocBench page dict with ``layout_dets``.
+        pred_markdown: Parser prediction as a markdown string.
+
+    Returns:
+        Tuple of (teds, teds_s) in [0.0, 1.0]. Returns (0.0, 0.0) when no
+        gold table is present or no predicted table can be extracted.
+
+    """
+    gold_html_tables = [
+        det["html"]
+        for det in page.get("layout_dets", [])
+        if det.get("category_type") == "table" and det.get("html")
+    ]
+    if not gold_html_tables:
+        return 0.0, 0.0
+
+    pred_tables_md = _extract_tables_from_markdown(pred_markdown)
+    if not pred_tables_md:
+        return 0.0, 0.0
+
+    # NOTE: Evaluate first gold table vs first predicted table.
+    # Multi-table pages are not yet averaged — extend here if needed.
+    gold_html = f"<html><body>{gold_html_tables[0]}</body></html>"
+    pred_html = f"<html><body>{_markdown_table_to_html(pred_tables_md[0])}</body></html>"
+
+    teds = TEDSEvaluator(structure_only=False).evaluate(pred_html, gold_html)
+    teds_s = TEDSEvaluator(structure_only=True).evaluate(pred_html, gold_html)
+    return teds, teds_s
 
 
 def _grade_text_item(
@@ -480,14 +566,11 @@ def main() -> None:
                 # Convert parser output to markdown for comparison
                 pred_markdown = parser_output_to_markdown(prediction_dict)
 
-                # For OmniDocBench, gold_text is just concatenated text
-                gt_markdown = gold_text
-
-                # Calculate metrics: NED (text) and TEDS (tables)
-                # NOTE: We use flat markdown NED here because the runner operates on
-                # gold_text (concatenated text from layout_dets), not structured elements.
-                ned = ned_score(gt_markdown, pred_markdown)
-                teds, teds_s = evaluate_table(gt_markdown, pred_markdown)
+                # NED: strip equations from prediction before comparing — gold has no
+                # equation text (empty field), so including LaTeX in pred tanks NED unfairly.
+                ned = ned_score(gold_text, _strip_equations(pred_markdown))
+                # TEDS: compare against HTML table from layout_dets (gold "text" is empty for tables)
+                teds, teds_s = _evaluate_teds_for_omnidocbench(item, pred_markdown)
 
                 # Convert None to 0.0
                 def safe_float(x):
