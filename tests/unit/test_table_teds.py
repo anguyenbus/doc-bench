@@ -12,7 +12,9 @@ from doc_bench.metrics.parsing.table_teds import (
 )
 
 # Path to bundled OmniDocBench fixtures used in acceptance tests
-_FIXTURES_DIR = Path(__file__).resolve().parents[2] / "src" / "doc_bench" / "fixtures" / "omnidocbench"
+_FIXTURES_DIR = (
+    Path(__file__).resolve().parents[2] / "src" / "doc_bench" / "fixtures" / "omnidocbench"
+)
 _VARISTOR_FIXTURE = _FIXTURES_DIR / "page-458ab820-615f-42fe-af33-3a8fb15ad691.json"
 
 
@@ -38,7 +40,7 @@ class TestSeparatorDetection:
 
     def test_extract_tables_spaced_mineru_separator(self):
         """Reproduces the exact MinerU separator format that triggered Bug 1."""
-        mineru_sep = "| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |"
+        mineru_sep = "| --- |" + " --- |" * 12  # 13-column separator matching MinerU format
         header = "| " + " | ".join([f"Col{i}" for i in range(13)]) + " |"
         row = "| " + " | ".join([f"val{i}" for i in range(13)]) + " |"
         markdown = f"{header}\n{mineru_sep}\n{row}"

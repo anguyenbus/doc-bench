@@ -180,14 +180,14 @@ def _html_table_to_markdown(html: str) -> str:
     # Parse rows by splitting on <tr> tags
     i = 0
     while i < len(html):
-        if html[i:i+4].lower() == "<tr>":
+        if html[i : i + 4].lower() == "<tr>":
             i += 4
-        elif html[i:i+5].lower() == "</tr>":
+        elif html[i : i + 5].lower() == "</tr>":
             if current_row:
                 rows.append(current_row)
                 current_row = []
             i += 5
-        elif html[i:i+4].lower() == "<td>":
+        elif html[i : i + 4].lower() == "<td>":
             i += 4
             # Find cell content until </td>
             end_idx = html.find("</td>", i)

@@ -85,7 +85,8 @@ def _extract_gold_text_from_omnidocbench(page: dict) -> str:
 
 
 def _strip_equations(text: str) -> str:
-    """Strip LaTeX equation markup from a prediction string.
+    r"""
+    Strip LaTeX equation markup from a prediction string.
 
     OmniDocBench gold excludes equation content (text field is always empty for
     equation_isolated/equation_semantic blocks). Parsers that perform math
@@ -140,7 +141,8 @@ def _dp_bench_to_gold_item(item: tuple) -> GoldItem:
         html_tables=[
             elem["content"]["html"]
             for elem in gold_elements.get("elements", [])
-            if elem.get("category") == "Table" and isinstance(elem.get("content"), dict)
+            if elem.get("category") == "Table"
+            and isinstance(elem.get("content"), dict)
             and elem["content"].get("html")
         ],
     )
@@ -347,10 +349,24 @@ def main() -> None:
         pred_dict = load_prediction(args.predictions, gold.doc_id)
         if pred_dict is None:
             pred_path = args.predictions / f"{gold.doc_id}.json"
-            reason = RejectionReason.MISSING_PREDICTION if not pred_path.exists() else RejectionReason.INVALID_JSON
-            detail = "" if reason == RejectionReason.MISSING_PREDICTION else format_rejection_detail(reason, "File exists but contains invalid JSON")
+            reason = (
+                RejectionReason.MISSING_PREDICTION
+                if not pred_path.exists()
+                else RejectionReason.INVALID_JSON
+            )
+            detail = (
+                ""
+                if reason == RejectionReason.MISSING_PREDICTION
+                else format_rejection_detail(reason, "File exists but contains invalid JSON")
+            )
             rejection_tracker.record_rejection(gold.doc_id, reason, f"{gold.doc_id}.json", detail)
-            writer.writerow({"query_id": gold.doc_id, "error": f"{reason.value}: {detail}" if detail else reason.value, **zero_row})
+            writer.writerow(
+                {
+                    "query_id": gold.doc_id,
+                    "error": f"{reason.value}: {detail}" if detail else reason.value,
+                    **zero_row,
+                }
+            )
             csv_file.flush()
             errors += 1
             continue
@@ -359,9 +375,13 @@ def main() -> None:
             validate(pred_dict, schema_path)
         except SchemaValidationError as e:
             reason = RejectionReason.INVALID_SCHEMA
-            detail = format_rejection_detail(reason, f"{e.field_path}: {e.original_error}" if e.field_path else e.original_error)
+            detail = format_rejection_detail(
+                reason, f"{e.field_path}: {e.original_error}" if e.field_path else e.original_error
+            )
             rejection_tracker.record_rejection(gold.doc_id, reason, f"{gold.doc_id}.json", detail)
-            writer.writerow({"query_id": gold.doc_id, "error": f"{reason.value}: {detail}", **zero_row})
+            writer.writerow(
+                {"query_id": gold.doc_id, "error": f"{reason.value}: {detail}", **zero_row}
+            )
             csv_file.flush()
             errors += 1
             continue
@@ -369,20 +389,24 @@ def main() -> None:
         try:
             pred_markdown = parser_output_to_markdown(pred_dict)
             ned_sim, teds, teds_s = _grade(gold, pred_markdown)
-            writer.writerow({
-                "query_id": gold.doc_id,
-                "error": "",
-                "ned_similarity": _safe_float(ned_sim),
-                "teds": _safe_float(teds),
-                "teds_s": _safe_float(teds_s),
-            })
+            writer.writerow(
+                {
+                    "query_id": gold.doc_id,
+                    "error": "",
+                    "ned_similarity": _safe_float(ned_sim),
+                    "teds": _safe_float(teds),
+                    "teds_s": _safe_float(teds_s),
+                }
+            )
             csv_file.flush()
             processed += 1
         except Exception as e:
             reason = RejectionReason.EVALUATION_ERROR
             detail = format_rejection_detail(reason, str(e))
             rejection_tracker.record_rejection(gold.doc_id, reason, gold.doc_id, detail)
-            writer.writerow({"query_id": gold.doc_id, "error": f"{reason.value}: {detail}", **zero_row})
+            writer.writerow(
+                {"query_id": gold.doc_id, "error": f"{reason.value}: {detail}", **zero_row}
+            )
             csv_file.flush()
             errors += 1
 

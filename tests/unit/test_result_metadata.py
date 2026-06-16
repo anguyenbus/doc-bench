@@ -15,7 +15,7 @@ class TestResultsJsonStructure:
     def _run_main(self, tmp_path, monkeypatch):
         import sys
 
-        from doc_bench.runners.run_parsing_eval import GoldItem, load_dataset, main
+        from doc_bench.runners.run_parsing_eval import load_dataset, main
 
         preds_dir = tmp_path / "predictions"
         preds_dir.mkdir()
@@ -47,12 +47,20 @@ class TestResultsJsonStructure:
 
         monkeypatch.chdir(tmp_path)
         monkeypatch.setattr(
-            sys, "argv",
-            ["doc-bench", "--dataset", "ato_bench",
-             "--predictions", str(preds_dir),
-             "--output-dir", str(results_dir)],
+            sys,
+            "argv",
+            [
+                "doc-bench",
+                "--dataset",
+                "ato_bench",
+                "--predictions",
+                str(preds_dir),
+                "--output-dir",
+                str(results_dir),
+            ],
         )
         import pytest
+
         with pytest.raises(SystemExit):
             main()
         return results_dir

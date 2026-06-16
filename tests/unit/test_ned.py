@@ -14,7 +14,6 @@ import unicodedata
 from pathlib import Path
 
 import Levenshtein
-import pytest
 
 FIXTURE_DIR: Path = Path(__file__).resolve().parent.parent.parent / "src" / "doc_bench" / "fixtures"
 

@@ -6,7 +6,7 @@ from pathlib import Path
 
 import pytest
 
-from doc_bench.runners.run_parsing_eval import GoldItem, _grade, _safe_float, load_dataset
+from doc_bench.runners.run_parsing_eval import GoldItem, _grade, load_dataset
 
 
 class TestGoldItem:
@@ -19,8 +19,10 @@ class TestGoldItem:
         assert g.html_tables == []
 
     def test_immutable(self):
+        from dataclasses import FrozenInstanceError
+
         g = GoldItem(doc_id="x", text="y", html_tables=[])
-        with pytest.raises(Exception):
+        with pytest.raises(FrozenInstanceError):
             g.doc_id = "z"  # frozen=True
 
 
@@ -135,10 +137,17 @@ class TestMainCLI:
 
         monkeypatch.chdir(tmp_path)  # no eval_config.yaml here
         monkeypatch.setattr(
-            sys, "argv",
-            ["doc-bench", "--dataset", "ato_bench",
-             "--predictions", str(preds_dir),
-             "--output-dir", str(results_dir)],
+            sys,
+            "argv",
+            [
+                "doc-bench",
+                "--dataset",
+                "ato_bench",
+                "--predictions",
+                str(preds_dir),
+                "--output-dir",
+                str(results_dir),
+            ],
         )
 
         with pytest.raises(SystemExit) as exc:
@@ -160,10 +169,17 @@ class TestMainCLI:
 
         monkeypatch.chdir(tmp_path)
         monkeypatch.setattr(
-            sys, "argv",
-            ["doc-bench", "--dataset", "ato_bench",
-             "--predictions", str(preds_dir),
-             "--output-dir", str(results_dir)],
+            sys,
+            "argv",
+            [
+                "doc-bench",
+                "--dataset",
+                "ato_bench",
+                "--predictions",
+                str(preds_dir),
+                "--output-dir",
+                str(results_dir),
+            ],
         )
 
         with pytest.raises(SystemExit):
@@ -194,10 +210,17 @@ class TestMainCLI:
 
         monkeypatch.chdir(tmp_path)
         monkeypatch.setattr(
-            sys, "argv",
-            ["doc-bench", "--dataset", "ato_bench",
-             "--predictions", str(preds_dir),
-             "--output-dir", str(results_dir)],
+            sys,
+            "argv",
+            [
+                "doc-bench",
+                "--dataset",
+                "ato_bench",
+                "--predictions",
+                str(preds_dir),
+                "--output-dir",
+                str(results_dir),
+            ],
         )
 
         with pytest.raises(SystemExit):

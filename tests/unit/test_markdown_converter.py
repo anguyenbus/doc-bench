@@ -7,7 +7,6 @@ especially the handling of tables with empty text but populated cells.
 
 from doc_bench.metrics.parsing.markdown_converter import (
     elements_to_markdown,
-    _table_to_markdown,
     parser_output_to_markdown,
 )
 

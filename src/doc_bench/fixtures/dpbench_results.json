@@ -3,53 +3,43 @@
   "successful": 5,
   "errors": 0,
   "averages": {
-    "ned": 0.8993,
+    "ned_similarity": 0.9,
     "teds": 0.0,
     "teds_s": 0.0
   },
   "results": [
     {
       "query_id": "01030000000001",
-      "pdf": "01030000000001.pdf",
-      "category": "Paragraph",
       "error": "",
-      "ned": 0.9852,
+      "ned_similarity": 0.987,
       "teds": 0.0,
       "teds_s": 0.0
     },
     {
       "query_id": "01030000000002",
-      "pdf": "01030000000002.pdf",
-      "category": "Paragraph",
       "error": "",
-      "ned": 0.9777,
+      "ned_similarity": 0.9794,
       "teds": 0.0,
       "teds_s": 0.0
     },
     {
       "query_id": "01030000000017",
-      "pdf": "01030000000017.pdf",
-      "category": "Paragraph",
       "error": "",
-      "ned": 0.9799,
+      "ned_similarity": 0.9799,
       "teds": 0.0,
       "teds_s": 0.0
     },
     {
       "query_id": "01030000000027",
-      "pdf": "01030000000027.pdf",
-      "category": "Chart",
       "error": "",
-      "ned": 0.5601,
+      "ned_similarity": 0.5601,
       "teds": 0.0,
       "teds_s": 0.0
     },
     {
       "query_id": "01030000000040",
-      "pdf": "01030000000040.pdf",
-      "category": "Paragraph",
       "error": "",
-      "ned": 0.9937,
+      "ned_similarity": 0.9937,
       "teds": 0.0,
       "teds_s": 0.0
     }

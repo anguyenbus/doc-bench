@@ -55,10 +55,17 @@ class TestParsingPipeline:
 
         monkeypatch.chdir(tmp_path)
         monkeypatch.setattr(
-            sys, "argv",
-            ["doc-bench", "--dataset", "omnidocbench",
-             "--predictions", str(preds_dir),
-             "--output-dir", str(results_dir)],
+            sys,
+            "argv",
+            [
+                "doc-bench",
+                "--dataset",
+                "omnidocbench",
+                "--predictions",
+                str(preds_dir),
+                "--output-dir",
+                str(results_dir),
+            ],
         )
 
         start_time = time.time()
@@ -81,10 +88,17 @@ class TestParsingPipeline:
 
         monkeypatch.chdir(tmp_path)
         monkeypatch.setattr(
-            sys, "argv",
-            ["doc-bench", "--dataset", "dp_bench",
-             "--predictions", str(preds_dir),
-             "--output-dir", str(results_dir)],
+            sys,
+            "argv",
+            [
+                "doc-bench",
+                "--dataset",
+                "dp_bench",
+                "--predictions",
+                str(preds_dir),
+                "--output-dir",
+                str(results_dir),
+            ],
         )
 
         with pytest.raises(SystemExit):
@@ -103,9 +117,9 @@ class TestParsingPipeline:
 
     def test_html_report_generation(self, tmp_path):
         """HTML report is generated correctly."""
-        from doc_bench.reporting.html_summary import generate_summary
-
         import pandas as pd
+
+        from doc_bench.reporting.html_summary import generate_summary
 
         csv_path = tmp_path / "results.csv"
         df = pd.DataFrame(
@@ -149,12 +163,16 @@ class TestParsingPipeline:
         current_path.write_text(json.dumps(current_data))
         check_regression(current_path, baseline_path)
 
-        current_path.write_text(json.dumps({
-            "metrics": {
-                "text_fidelity": {"score": 0.95, "severity": "major"},
-                "structure_recall": {"score": 0.80, "severity": "blocker"},
-            }
-        }))
+        current_path.write_text(
+            json.dumps(
+                {
+                    "metrics": {
+                        "text_fidelity": {"score": 0.95, "severity": "major"},
+                        "structure_recall": {"score": 0.80, "severity": "blocker"},
+                    }
+                }
+            )
+        )
         with pytest.raises(RuntimeError, match="Regression detected"):
             check_regression(current_path, baseline_path)
 
@@ -171,10 +189,17 @@ class TestParsingPipeline:
 
         monkeypatch.chdir(tmp_path)
         monkeypatch.setattr(
-            sys, "argv",
-            ["doc-bench", "--dataset", "omnidocbench",
-             "--predictions", str(preds_dir),
-             "--output-dir", str(results_dir)],
+            sys,
+            "argv",
+            [
+                "doc-bench",
+                "--dataset",
+                "omnidocbench",
+                "--predictions",
+                str(preds_dir),
+                "--output-dir",
+                str(results_dir),
+            ],
         )
 
         start_time = time.time()

@@ -75,12 +75,7 @@ def test_schemas_exist() -> None:
     as part of the fixture bundling spec. The contracts/ directory may not exist
     in all environments; the canonical location is inside the package fixtures.
     """
-    fixtures_dir = (
-        Path(__file__).resolve().parent.parent.parent
-        / "src"
-        / "doc_bench"
-        / "fixtures"
-    )
+    fixtures_dir = Path(__file__).resolve().parent.parent.parent / "src" / "doc_bench" / "fixtures"
     parser_output = fixtures_dir / "parser_output.schema.json"
     assert parser_output.exists(), "parser_output.schema.json should exist in fixtures"
 
