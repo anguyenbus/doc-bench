@@ -43,9 +43,11 @@ def test_load_ato_bench_missing_manifest(tmp_path):
 
 
 def test_load_dataset_routes_ato_bench_to_bundled_fixtures():
-    """load_dataset('ato_bench', ...) falls back to the bundled fixtures."""
-    from doc_bench.runners.run_parsing_eval import load_dataset
+    """load_dataset('ato_bench', root=None) yields bundled fixture GoldItems."""
+    from doc_bench.runners.run_parsing_eval import GoldItem, load_dataset
 
-    # Empty config -> no configured ato_bench path -> bundled fixtures fallback.
-    items = list(load_dataset("ato_bench", {}))
-    assert [doc_id for doc_id, _ in items] == ["1371-6.1997"]
+    items = list(load_dataset("ato_bench", root=None))
+    assert len(items) >= 1
+    for item in items:
+        assert isinstance(item, GoldItem)
+    assert any(item.doc_id == "1371-6.1997" for item in items)

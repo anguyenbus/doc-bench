@@ -55,19 +55,15 @@ models:
 
 
 def test_removed_config_keys_rejected() -> None:
-    """Test that removed RAG/Phoenix config keys cause validation errors."""
+    """Test that only datasets is required; metrics/models and RAG sections are not."""
     from doc_bench.config import REQUIRED_SECTIONS
 
-    # Verify that required sections are only parsing-related
-    expected_sections = {"datasets", "metrics", "models"}
+    # Only datasets is required — metrics and models are not consumed by the grader.
+    assert "datasets" in REQUIRED_SECTIONS
 
-    assert REQUIRED_SECTIONS == expected_sections, (
-        f"Required sections should be {expected_sections}, got {REQUIRED_SECTIONS}"
-    )
-
-    # Verify phoenix, chromadb, replay are not required
-    removed_sections = {"phoenix", "chromadb", "replay", "generator", "ragas"}
-    for section in removed_sections:
+    # None of these should be required
+    not_required = {"metrics", "models", "phoenix", "chromadb", "replay", "generator", "ragas"}
+    for section in not_required:
         assert section not in REQUIRED_SECTIONS, (
-            f"Removed section {section} should not be in REQUIRED_SECTIONS"
+            f"Section {section} should not be required, got {REQUIRED_SECTIONS}"
         )

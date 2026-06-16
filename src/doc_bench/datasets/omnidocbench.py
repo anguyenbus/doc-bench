@@ -47,8 +47,54 @@ def _is_clean_scan(page: dict) -> bool:
     return not (attrs.get("fuzzy_scan", False) or attrs.get("watermark", False))
 
 
+def _load_omnidocbench_bundled(fixtures_root: Path) -> Iterator[dict]:
+    """
+    Load the bundled OmniDocBench fixture subset from the package fixtures directory.
+
+    Iterates the manifest.json["omnidocbench"] list (the authoritative curated
+    selection), loads each per-page JSON, and yields the page dict with _eval_tags
+    added — no OmniDocBench.json required.
+
+    Args:
+        fixtures_root: Path to the doc_bench fixtures directory.
+
+    Yields:
+        dict: Annotated page dict matching the full loader's output shape.
+
+    Raises:
+        FileNotFoundError: If manifest.json is missing under fixtures_root.
+
+    """
+    import json as _json
+
+    manifest_path = fixtures_root / "manifest.json"
+    if not manifest_path.exists():
+        raise FileNotFoundError(f"manifest.json not found at {manifest_path}")
+
+    with open(manifest_path) as f:
+        manifest = _json.load(f)
+
+    for entry in manifest.get("omnidocbench", []):
+        page_path = fixtures_root / entry["page"]
+        if not page_path.exists():
+            continue
+
+        with open(page_path) as f:
+            page = _json.load(f)
+
+        attrs = page.get("page_info", {}).get("page_attribute", {})
+        page["_eval_tags"] = {
+            "is_clean": not (attrs.get("fuzzy_scan", False) or attrs.get("watermark", False)),
+            "has_watermark": attrs.get("watermark", False),
+            "has_fuzzy_scan": attrs.get("fuzzy_scan", False),
+            "has_colorful_bg": attrs.get("colorful_backgroud", False),
+            "layout": attrs.get("layout"),
+        }
+        yield page
+
+
 def load_omnidocbench(
-    root: Path,
+    root: Path | None = None,
     include_hard_subset: bool = True,
 ) -> Iterator[dict]:
     """
@@ -60,7 +106,8 @@ def load_omnidocbench(
       - Noisy pages (fuzzy_scan, watermark) tagged but not excluded
 
     Args:
-        root: Path to OmniDocBench directory containing OmniDocBench.json.
+        root: Path to OmniDocBench directory containing OmniDocBench.json. Pass
+            None to use the bundled 11-page fixture subset (no external data required).
         include_hard_subset: If True, includes hard subset (difficult formulas,
             tables, layouts). Hard pages are tagged in _eval_tags.
 
@@ -71,6 +118,13 @@ def load_omnidocbench(
               has_colorful_bg, and layout keys.
 
     """
+    if root is None:
+        import doc_bench
+
+        fixtures_root = Path(doc_bench.__file__).parent / "fixtures"
+        yield from _load_omnidocbench_bundled(fixtures_root)
+        return
+
     json_path = root / "OmniDocBench.json"
 
     if not json_path.exists():

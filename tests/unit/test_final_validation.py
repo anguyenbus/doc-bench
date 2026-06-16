@@ -86,13 +86,13 @@ def test_schemas_exist() -> None:
 
 
 def test_config_required_sections_correct() -> None:
-    """Test that config REQUIRED_SECTIONS is parsing-only."""
+    """Test that config REQUIRED_SECTIONS requires only datasets."""
     from doc_bench.config import REQUIRED_SECTIONS
 
-    expected = {"datasets", "metrics", "models"}
-    assert REQUIRED_SECTIONS == expected, (
-        f"REQUIRED_SECTIONS should be {expected}, got {REQUIRED_SECTIONS}"
-    )
+    assert "datasets" in REQUIRED_SECTIONS
+    # metrics and models are not consumed by the grader — should not be required
+    assert "metrics" not in REQUIRED_SECTIONS
+    assert "models" not in REQUIRED_SECTIONS
 
 
 def test_no_phoenix_dependencies() -> None:

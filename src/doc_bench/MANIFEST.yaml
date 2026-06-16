@@ -27,7 +27,7 @@ omnidocbench_medium:
 
 dp_bench:
   version: "0.1.0"
-  sha256: fed654cba321  # Placeholder, will be updated on download
+  sha256: manual
   repo_id: upstage/dp-bench
 
 legalbench_rag:

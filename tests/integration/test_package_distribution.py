@@ -46,17 +46,13 @@ class TestPackageStructure:
         assert hasattr(version, "get_version")
         assert hasattr(version, "check_dataset_version_alignment")
 
-    def test_package_has_metadata_functions(self):
-        """Test package has metadata functions."""
-        from doc_bench.runners.run_parsing_eval import (
-            _compute_sha256,
-            _get_dataset_version,
-            _get_doc_bench_version,
-        )
+    def test_package_has_grading_interface(self):
+        """Test package exposes the GoldItem adapter interface."""
+        from doc_bench.runners.run_parsing_eval import GoldItem, _grade, load_dataset
 
-        assert callable(_compute_sha256)
-        assert callable(_get_doc_bench_version)
-        assert callable(_get_dataset_version)
+        assert callable(load_dataset)
+        assert callable(_grade)
+        assert GoldItem is not None
 
     def test_package_setup_command_is_no_op_stub(self):
         """Test setup CLI is a no-op stub (METEOR metric was removed).
@@ -153,45 +149,25 @@ class TestMetadataCompleteness:
 
     def test_results_metadata_structure(self):
         """Test results metadata has all required fields."""
-        from doc_bench.runners.run_parsing_eval import (
-            _get_dataset_version,
-            _get_doc_bench_version,
-        )
-
-        # Create sample results structure
         results = {
             "dataset": "dp_bench",
-            "dataset_version": _get_dataset_version("dp_bench", {}),
-            "doc_bench_version": _get_doc_bench_version(),
-            "parser": "stub",
+            "parser": "predictions",
             "timestamp": "20260101_120000",
             "csv_file": "results.csv",
-            "metrics_avg": {"ned": 0.85},
-            "document_count": 10,
+            "metrics_avg": {"ned_similarity": 0.85},
+            "evaluated_samples": 10,
+            "rejected_samples": {},
         }
 
-        # Verify all required fields
-        required = [
-            "dataset",
-            "dataset_version",
-            "doc_bench_version",
-            "parser",
-            "timestamp",
-            "document_count",
-        ]
-
-        for field in required:
+        for field in ["dataset", "parser", "timestamp", "csv_file", "metrics_avg"]:
             assert field in results, f"Missing required field: {field}"
 
     def test_version_consistency(self):
         """Test version consistency across components."""
         from doc_bench import __version__
-        from doc_bench.runners.run_parsing_eval import _get_doc_bench_version
         from doc_bench.version import get_version
 
-        # All should return the same version
         v1 = get_version()
-        v2 = _get_doc_bench_version()
-        v3 = __version__
+        v2 = __version__
 
-        assert v1 == v2 == v3, "Versions inconsistent across components"
+        assert v1 == v2, "Versions inconsistent across components"

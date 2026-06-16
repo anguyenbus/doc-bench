@@ -12,8 +12,8 @@ from typing import Any
 
 import yaml
 
-# Required top-level sections in eval_config.yaml (parsing-only)
-REQUIRED_SECTIONS = {"datasets", "metrics", "models"}
+# Only datasets is required — metrics and models are not consumed by the grader.
+REQUIRED_SECTIONS = {"datasets"}
 
 
 def expand_env_vars(value: str, default: str | None = None) -> str:

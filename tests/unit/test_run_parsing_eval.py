@@ -1,196 +1,212 @@
-"""Tests for eval-parsing CLI."""
+"""Tests for the refactored run_parsing_eval grading pipeline."""
+
+import csv
+import json
+from pathlib import Path
 
 import pytest
 
-from doc_bench.runners.run_parsing_eval import main
+from doc_bench.runners.run_parsing_eval import GoldItem, _grade, _safe_float, load_dataset
 
 
-class TestEvalParsingCLI:
-    """Test suite for eval-parsing CLI."""
+class TestGoldItem:
+    """GoldItem dataclass contract."""
 
-    def test_dataset_argument_accepted(self, tmp_path, monkeypatch, capsys):
-        """Test that --dataset argument accepts dp_bench and omnidocbench."""
-        # Create tiny dataset fixture
-        data_dir = tmp_path / "data" / "parsing" / "omnidocbench_english"
-        data_dir.mkdir(parents=True)
+    def test_construction(self):
+        g = GoldItem(doc_id="foo", text="hello", html_tables=[])
+        assert g.doc_id == "foo"
+        assert g.text == "hello"
+        assert g.html_tables == []
 
-        import json
+    def test_immutable(self):
+        g = GoldItem(doc_id="x", text="y", html_tables=[])
+        with pytest.raises(Exception):
+            g.doc_id = "z"  # frozen=True
 
-        json_data = [
-            {
-                "page_info": {
-                    "page_no": 1,
-                    "height": 792,
-                    "width": 612,
-                    "image_path": "page1.jpg",
-                    "page_attribute": {
-                        "language": "english",
-                        "data_source": "research_report",
-                        "fuzzy_scan": False,
-                        "watermark": False,
-                        "colorful_backgroud": False,
-                        "layout": "single_column",
-                    },
-                },
-                "layout_dets": [],
-                "extra": {},
+
+class TestGrade:
+    """_grade() returns (ned_similarity, teds, teds_s) tuples in [0, 1]."""
+
+    def test_perfect_match_ned(self):
+        gold = GoldItem(doc_id="d", text="hello world", html_tables=[])
+        ned_sim, teds, teds_s = _grade(gold, "hello world")
+        assert ned_sim == pytest.approx(1.0)
+
+    def test_empty_pred_returns_zeros(self):
+        gold = GoldItem(doc_id="d", text="hello world", html_tables=[])
+        ned_sim, teds, teds_s = _grade(gold, "")
+        assert ned_sim == pytest.approx(0.0)
+
+    def test_all_values_in_unit_interval(self):
+        gold = GoldItem(doc_id="d", text="some text here", html_tables=[])
+        for val in _grade(gold, "some partial text"):
+            assert 0.0 <= val <= 1.0
+
+    def test_equations_stripped_from_prediction_before_ned(self):
+        gold = GoldItem(doc_id="d", text="hello world", html_tables=[])
+        # Prediction has extra LaTeX that should be stripped before comparison
+        ned_eq, _, _ = _grade(gold, "hello world $x^2 + y^2 = z^2$")
+        ned_clean, _, _ = _grade(gold, "hello world")
+        # Stripping equations should make scores closer
+        assert ned_eq >= ned_clean - 0.1  # not dramatically worse
+
+    def test_html_tables_used_for_teds_when_present(self):
+        html_table = "<table><tr><td>A</td><td>B</td></tr></table>"
+        gold = GoldItem(doc_id="d", text="", html_tables=[html_table])
+        pred_md = "| A | B |\n| --- | --- |\n"
+        ned_sim, teds, teds_s = _grade(gold, pred_md)
+        assert teds > 0.0
+
+
+class TestLoadDatasetBundled:
+    """load_dataset() works from bundled fixtures when root=None."""
+
+    def test_ato_bench_bundled_yields_gold_items(self):
+        items = list(load_dataset("ato_bench", root=None))
+        assert len(items) >= 1
+        for item in items:
+            assert isinstance(item, GoldItem)
+            assert item.doc_id
+            assert item.text
+
+    def test_dp_bench_bundled_yields_gold_items(self):
+        items = list(load_dataset("dp_bench", root=None))
+        assert len(items) >= 1
+        for item in items:
+            assert isinstance(item, GoldItem)
+            assert item.doc_id
+
+    def test_omnidocbench_bundled_yields_gold_items(self):
+        items = list(load_dataset("omnidocbench", root=None))
+        assert len(items) >= 1
+        for item in items:
+            assert isinstance(item, GoldItem)
+            assert item.doc_id
+
+    def test_query_id_is_doc_id_not_positional(self):
+        # All datasets should use real doc stems, never "dataset_0" etc.
+        for dataset in ("ato_bench", "dp_bench", "omnidocbench"):
+            for item in load_dataset(dataset, root=None):
+                assert not item.doc_id.startswith(f"{dataset}_"), (
+                    f"Positional query_id leaked into {dataset}: {item.doc_id}"
+                )
+
+
+class TestMainCLI:
+    """main() integration smoke tests via bundled fixtures."""
+
+    def _make_prediction(self, tmp_path: Path, doc_id: str) -> None:
+        pred = {
+            "schema_version": "1.0.0",
+            "parser_version": "0.0.1",
+            "source": {
+                "doc_id": doc_id,
+                "filename": f"{doc_id}.pdf",
+                "mime_type": "application/pdf",
+                "sha256": "a" * 64,
             },
-        ]
-
-        (data_dir / "OmniDocBench.json").write_text(json.dumps(json_data))
-
-        # Create eval config
-        config_dir = tmp_path
-        import yaml
-
-        config_data = {
-            "datasets": {
-                "omnidocbench": {"path": str(data_dir)},
-                "dp_bench": {"path": str(tmp_path / "dp_bench")},
-                "legalbench_rag": {"path": str(tmp_path / "legalbench")},
-            },
-            "metrics": {"text_fidelity": {"threshold": 0.95}},
-            "models": {"judge_model": "claude-opus-4-7", "temperature": 0},
+            "pages": [{"page_index": 0, "width": 612.0, "height": 792.0}],
+            "elements": [
+                {
+                    "element_id": "e1",
+                    "type": "paragraph",
+                    "page_index": 0,
+                    "char_span": [0, 11],
+                    "text": "sample text",
+                    "content": {"kind": "text"},
+                }
+            ],
         }
+        (tmp_path / f"{doc_id}.json").write_text(json.dumps(pred))
 
-        (config_dir / "eval_config.yaml").write_text(yaml.dump(config_data))
+    def test_grading_without_config_file(self, tmp_path, monkeypatch):
+        """main() must succeed without eval_config.yaml when using bundled fixtures."""
+        import sys
 
-        # Create results directory
+        from doc_bench.runners.run_parsing_eval import main
+
+        preds_dir = tmp_path / "predictions"
+        preds_dir.mkdir()
         results_dir = tmp_path / "results"
-        results_dir.mkdir()
 
-        # Run CLI
+        # Provide predictions for all bundled ato_bench docs
+        for item in load_dataset("ato_bench", root=None):
+            self._make_prediction(preds_dir, item.doc_id)
+
+        monkeypatch.chdir(tmp_path)  # no eval_config.yaml here
         monkeypatch.setattr(
-            "sys.argv",
-            [
-                "eval-parsing",
-                "--dataset",
-                "omnidocbench",
-                "--parser",
-                "stub",
-                "--config",
-                str(config_dir / "eval_config.yaml"),
-                "--output-dir",
-                str(results_dir),
-            ],
+            sys, "argv",
+            ["doc-bench", "--dataset", "ato_bench",
+             "--predictions", str(preds_dir),
+             "--output-dir", str(results_dir)],
         )
 
-        with pytest.raises(SystemExit) as exc_info:
+        with pytest.raises(SystemExit) as exc:
             main()
+        assert exc.value.code == 0
 
-        # Should exit successfully
-        assert exc_info.value.code == 0
+    def test_csv_uses_ned_similarity_column(self, tmp_path, monkeypatch):
+        """CSV output must have ned_similarity column, not ned."""
+        import sys
 
-    def test_csv_output_written(self, tmp_path, monkeypatch):
-        """Test that CSV output is written to results/ directory."""
-        # Create DP-Bench fixture (matching actual structure)
-        dataset_dir = tmp_path / "dp_bench" / "dataset"
-        pdfs_dir = dataset_dir / "pdfs"
-        pdfs_dir.mkdir(parents=True)
+        from doc_bench.runners.run_parsing_eval import main
 
-        import json
+        preds_dir = tmp_path / "predictions"
+        preds_dir.mkdir()
+        results_dir = tmp_path / "results"
 
-        ref_data = {"doc001.pdf": {"elements": []}}
-        (dataset_dir / "reference.json").write_text(json.dumps(ref_data))
-        (pdfs_dir / "doc001.pdf").write_bytes(b"%PDF-1.4")
+        for item in load_dataset("ato_bench", root=None):
+            self._make_prediction(preds_dir, item.doc_id)
 
-        import yaml
-
-        config_data = {
-            "datasets": {
-                "omnidocbench": {"path": str(tmp_path / "omnidocbench")},
-                "dp_bench": {"path": str(tmp_path / "dp_bench")},
-                "legalbench_rag": {"path": str(tmp_path / "legalbench")},
-            },
-            "metrics": {},
-            "models": {"judge_model": "claude-opus-4-7", "temperature": 0},
-        }
-
-        (tmp_path / "eval_config.yaml").write_text(yaml.dump(config_data))
-        (tmp_path / "results").mkdir()
-
+        monkeypatch.chdir(tmp_path)
         monkeypatch.setattr(
-            "sys.argv",
-            [
-                "eval-parsing",
-                "--dataset",
-                "dp_bench",
-                "--parser",
-                "stub",
-                "--config",
-                str(tmp_path / "eval_config.yaml"),
-                "--output-dir",
-                str(tmp_path / "results"),
-            ],
+            sys, "argv",
+            ["doc-bench", "--dataset", "ato_bench",
+             "--predictions", str(preds_dir),
+             "--output-dir", str(results_dir)],
         )
 
-        with pytest.raises(SystemExit) as exc_info:
+        with pytest.raises(SystemExit):
             main()
 
-        assert exc_info.value.code == 0
+        csv_files = list(results_dir.glob("*_results_*.csv"))
+        assert csv_files, "No results CSV output produced"
+        with open(csv_files[0]) as f:
+            reader = csv.DictReader(f)
+            fieldnames = reader.fieldnames or []
 
-    def test_parser_argument_validated(self, tmp_path, monkeypatch):
-        """Test that --parser argument validates against allowed values."""
-        import json
+        assert "ned_similarity" in fieldnames
+        assert "ned" not in fieldnames
 
-        import yaml
+    def test_csv_query_id_matches_doc_id(self, tmp_path, monkeypatch):
+        """CSV query_id must be the doc stem, not a positional index."""
+        import sys
 
-        # Create OmniDocBench fixture
-        omnidocbench_dir = tmp_path / "omnidocbench"
-        omnidocbench_dir.mkdir()
+        from doc_bench.runners.run_parsing_eval import main
 
-        json_data = [
-            {
-                "page_info": {
-                    "page_no": 1,
-                    "height": 792,
-                    "width": 612,
-                    "image_path": "page1.jpg",
-                    "page_attribute": {
-                        "language": "english",
-                        "data_source": "research_report",
-                        "fuzzy_scan": False,
-                        "watermark": False,
-                        "colorful_backgroud": False,
-                        "layout": "single_column",
-                    },
-                },
-                "layout_dets": [],
-                "extra": {},
-            },
-        ]
+        preds_dir = tmp_path / "predictions"
+        preds_dir.mkdir()
+        results_dir = tmp_path / "results"
 
-        (omnidocbench_dir / "OmniDocBench.json").write_text(json.dumps(json_data))
+        bundled = list(load_dataset("ato_bench", root=None))
+        for item in bundled:
+            self._make_prediction(preds_dir, item.doc_id)
 
-        config_data = {
-            "datasets": {
-                "omnidocbench": {"path": str(omnidocbench_dir)},
-                "dp_bench": {"path": str(tmp_path / "dp_bench")},
-                "legalbench_rag": {"path": str(tmp_path / "legalbench")},
-            },
-            "metrics": {},
-            "models": {"judge_model": "claude-opus-4-7", "temperature": 0},
-        }
-
-        (tmp_path / "eval_config.yaml").write_text(yaml.dump(config_data))
-        (tmp_path / "results").mkdir()
-
-        # Test stub parser (should work)
+        monkeypatch.chdir(tmp_path)
         monkeypatch.setattr(
-            "sys.argv",
-            [
-                "eval-parsing",
-                "--dataset",
-                "omnidocbench",
-                "--parser",
-                "stub",
-                "--config",
-                str(tmp_path / "eval_config.yaml"),
-            ],
+            sys, "argv",
+            ["doc-bench", "--dataset", "ato_bench",
+             "--predictions", str(preds_dir),
+             "--output-dir", str(results_dir)],
         )
 
-        with pytest.raises(SystemExit) as exc_info:
+        with pytest.raises(SystemExit):
             main()
 
-        # Should succeed
-        assert exc_info.value.code == 0
+        csv_files = list(results_dir.glob("*_results_*.csv"))
+        with open(csv_files[0]) as f:
+            rows = list(csv.DictReader(f))
+
+        actual_ids = {r["query_id"] for r in rows if r.get("error") == ""}
+        expected_ids = {item.doc_id for item in bundled}
+        assert actual_ids == expected_ids
