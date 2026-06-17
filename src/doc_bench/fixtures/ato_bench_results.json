@@ -3,7 +3,7 @@
   "successful": 1,
   "errors": 0,
   "averages": {
-    "ned_similarity": 0.1193,
+    "ned_similarity": 0.4831,
     "teds": 0.0,
     "teds_s": 0.0
   },
@@ -11,7 +11,7 @@
     {
       "query_id": "1371-6.1997",
       "error": "",
-      "ned_similarity": 0.1193,
+      "ned_similarity": 0.4831,
       "teds": 0.0,
       "teds_s": 0.0
     }

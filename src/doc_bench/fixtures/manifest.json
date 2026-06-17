@@ -70,10 +70,7 @@
       "doc_id": "1371-6.1997",
       "doc_type": "individual_income_tax_return",
       "pdf": "ato_bench/1371-6.1997.pdf",
-      "pages": [
-        "ato_bench/1371-6.1997_p1.json",
-        "ato_bench/1371-6.1997_p2.json"
-      ]
+      "gold": "ato_bench/1371-6.1997.json"
     }
   ],
   "total": 11,

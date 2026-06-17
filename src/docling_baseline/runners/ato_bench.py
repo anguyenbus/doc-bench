@@ -1,27 +1,17 @@
 """
 ATO-Bench evaluation runner.
 
-ATO-Bench contains 5 multi-page PDF forms with page-level ground truth
-annotations in OmniDocBench format.
+ATO-Bench contains multi-page Australian Tax Office form PDFs. Each document
+has a single ParserOutput-format gold JSON (``{"pages", "elements"}``) referenced
+via the ``gold`` key in the manifest.
 """
 
 import json
-import re
 from pathlib import Path
 from typing import Any
 
+from doc_bench.datasets.ato_bench import _extract_gold_text
 from docling_baseline.runners.base import BaseRunner
-from docling_baseline.runners.omnidocbench import extract_gold_text_from_omnidocbench
-
-
-def _sort_page_files(page_files: list[str]) -> list[str]:
-    """Sort page files by page number (p1, p2, p3, ...)."""
-    def page_number(file_path: str) -> int:
-        match = re.search(r"_p(\d+)", file_path)
-        if match:
-            return int(match.group(1))
-        return 0
-    return sorted(page_files, key=page_number)
 
 
 class ATOBenchRunner(BaseRunner):
@@ -35,8 +25,9 @@ class ATOBenchRunner(BaseRunner):
         """
         Run ATO-Bench evaluation.
 
-        ATO-Bench is multi-page. We combine all page gold annotations into
-        one document-level gold, then compare against full PDF prediction.
+        ATO-Bench is multi-page. Gold text is extracted from the document-level
+        ParserOutput JSON (``elements`` array), then compared against the full
+        PDF prediction.
 
         Returns:
             Dict with evaluation results.
@@ -53,15 +44,14 @@ class ATOBenchRunner(BaseRunner):
             doc_id = item["doc_id"]
             pdf_path = ato_dir / item["pdf"].split("/")[-1]
             doc_type = item.get("doc_type", "")
+            gold_rel = item.get("gold", "")
 
-            # Find all page JSON files for this document
-            page_pattern = f"{doc_id}_p*.json"
-            page_files = sorted(ato_dir.glob(page_pattern))
+            gold_path = (self.fixtures_dir / gold_rel) if gold_rel else None
 
-            print(f"\n[{doc_id}] {doc_type} - {len(page_files)} pages")
+            print(f"\n[{doc_id}] {doc_type}")
 
-            if not page_files:
-                print(f"  SKIP: no page JSONs found")
+            if not gold_path or not gold_path.exists():
+                print(f"  SKIP: gold JSON not found ({gold_rel!r})")
                 continue
 
             # Generate prediction for entire PDF
@@ -75,18 +65,10 @@ class ATOBenchRunner(BaseRunner):
 
             pred_markdown = self.prediction_to_markdown(prediction)
 
-            # Combine all page gold annotations into one document
-            combined_gold_parts = []
+            with open(gold_path) as f:
+                gold_data = json.load(f)
 
-            for gold_path in page_files:
-                with open(gold_path) as f:
-                    gold_data = json.load(f)
-
-                page_text = extract_gold_text_from_omnidocbench(gold_data)
-                if page_text:
-                    combined_gold_parts.append(page_text)
-
-            combined_gold = " ".join(combined_gold_parts)
+            combined_gold = _extract_gold_text(gold_data)
 
             if not combined_gold or not pred_markdown:
                 print(f"  SKIP: empty gold or prediction")
