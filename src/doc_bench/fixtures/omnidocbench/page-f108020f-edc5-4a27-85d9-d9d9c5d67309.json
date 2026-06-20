@@ -1,0 +1,729 @@
+{
+  "layout_dets": [
+    {
+      "category_type": "text_block",
+      "poly": [
+        117.98,
+        198,
+        786.93,
+        198,
+        786.93,
+        267.08,
+        117.98,
+        267.08
+      ],
+      "ignore": false,
+      "order": 0,
+      "anno_id": "box_id_0",
+      "attribute": {},
+      "text": "PROOF. We have $ M{M}^{\\mathrm{H}} - M{N}^{\\mathrm{H}} - N{M}^{\\mathrm{H}} + N{N}^{\\mathrm{H}} =  \\left( {M - N}\\right) {\\left( M - N\\right) }^{\\mathrm{H}} \\succeq  0 $ and hence, (44) holds. $\\square$"
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        119.00000000000001,
+        331.98,
+        787.95,
+        331.98,
+        787.95,
+        396.0,
+        119.00000000000001,
+        396.0
+      ],
+      "ignore": false,
+      "order": 1,
+      "anno_id": "box_id_1",
+      "attribute": {},
+      "text": "The following proposition provides a sufficient condition linear in $ {\\bar{Z}}_{\\mathrm{u}} $ which, ensures the exploration goal (4)."
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        117.98,
+        427.02,
+        788.97,
+        427.02,
+        788.97,
+        498.08,
+        117.98,
+        498.08
+      ],
+      "ignore": false,
+      "order": 2,
+      "anno_id": "box_id_2",
+      "attribute": {},
+      "text": "**Proposition 13** Let Assumptions 1 and 2 hold. Suppose the matrices $ {\\bar{\\Phi }}_{\\mathrm{u}},{\\bar{Z}}_{\\mathrm{u}} $ and $ \\hat{Z} \\in {\\mathbb{C}}^{\\left( {{n}_{\\phi } + {n}_{\\mathrm{x}}{n}_{\\phi }^{2}}\\right) \\times L{n}_{\\mathrm{x}}{n}_{\\phi }} $ satisfy"
+    },
+    {
+      "category_type": "equation_isolated",
+      "poly": [
+        209.1459197998047,
+        531.0799999999999,
+        715.1658654443022,
+        531.0799999999999,
+        715.1658654443022,
+        625.4736718280822,
+        209.1459197998047,
+        625.4736718280822
+      ],
+      "ignore": false,
+      "order": 3,
+      "anno_id": "box_id_3",
+      "attribute": {},
+      "latex": "$$\\left\\lbrack  \\begin{matrix} \\left( {\\left( {1 - \\epsilon }\\right) {\\bar{\\Phi }}_{\\mathrm{u}}{\\bar{\\Phi }}_{\\mathrm{u}}^{\\mathrm{H}} - \\left( \\frac{1 - \\epsilon }{\\epsilon }\\right) {\\bar{W}}_{\\phi }}\\right)  - \\frac{{\\gamma }_{\\mathrm{w}}}{T}{D}_{\\mathrm{des }} & 0 \\\\  0 & 0 \\end{matrix}\\right\\rbrack$$"
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        120.02,
+        751.0799999999999,
+        788.97,
+        751.0799999999999,
+        788.97,
+        819.0600000000001,
+        120.02,
+        819.0600000000001
+      ],
+      "ignore": false,
+      "order": 5,
+      "anno_id": "box_id_4",
+      "attribute": {},
+      "text": "then an estimate $ {\\widehat{\\theta }}_{T} $ computed as in (11) satisfies the exploration goal (4)."
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        120.02,
+        883.9599999999999,
+        567.97,
+        883.9599999999999,
+        567.97,
+        918.0600000000001,
+        120.02,
+        918.0600000000001
+      ],
+      "ignore": false,
+      "order": 6,
+      "anno_id": "box_id_5",
+      "attribute": {},
+      "text": "PROOF. From Lemma 12, we have"
+    },
+    {
+      "category_type": "equation_isolated",
+      "poly": [
+        268.94000000000005,
+        947.98,
+        792.8909301757812,
+        947.98,
+        792.8909301757812,
+        992.2321331288167,
+        268.94000000000005,
+        992.2321331288167
+      ],
+      "ignore": false,
+      "order": 7,
+      "anno_id": "box_id_6",
+      "attribute": {},
+      "latex": "$${\\bar{Z}}_{\\mathrm{u}}{\\bar{Z}}_{\\mathrm{u}}^{\\mathsf{H}} \\succeq  {\\bar{Z}}_{\\mathrm{u}}{\\hat{Z}}^{\\mathsf{H}} + \\hat{Z}{\\bar{Z}}_{\\mathrm{u}}^{\\mathsf{H}} - \\hat{Z}{\\hat{Z}}^{\\mathsf{H}}. \\tag{46}$$"
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        117.98,
+        1017.06,
+        786.93,
+        1017.06,
+        786.93,
+        1177.0,
+        117.98,
+        1177.0
+      ],
+      "ignore": false,
+      "order": 8,
+      "anno_id": "box_id_7",
+      "attribute": {},
+      "text": "Inserting Inequality (46) in Inequality (45), and multiplying the resulting inequality by $ T $ yields Inequality (42). Hence, if there exists matrices $ {\\bar{\\Phi }}_{\\mathrm{u}},{\\bar{Z}}_{\\mathrm{u}} $ and $ \\hat{Z} $ that satisfy (45), then the condition in Proposition 11 is satisfied and the exploration goal (4) is achieved.   $\\square$"
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        117.98,
+        1244.98,
+        787.95,
+        1244.98,
+        787.95,
+        1472.8999999999999,
+        117.98,
+        1472.8999999999999
+      ],
+      "ignore": false,
+      "order": 9,
+      "anno_id": "box_id_8",
+      "attribute": {},
+      "text": "The bound derived in Lemma 12 is tight if $ \\hat{Z} = {\\bar{Z}}_{\\mathrm{u}} $ . Since $ {\\bar{Z}}_{\\mathrm{u}} $ comprises uncertain elements $ {V}_{\\mathrm{x},\\mathrm{{tr}}},{V}_{\\phi ,\\mathrm{{tr}}} $ and the unknown decision variable $ {U}_{\\mathrm{e}} $ , we consider a candidate $ \\hat{Z} $. Later, this relaxation is embedded an iterative process to reduce conservatism. In what follows, we utilize Inequality (45) to derive a condition linear in the decision variable $ {U}_{\\mathrm{e}} $that ensures the exploration goal (4)."
+    },
+    {
+      "category_type": "title",
+      "poly": [
+        122.06,
+        1510.08,
+        393.03999999999996,
+        1510.08,
+        393.03999999999996,
+        1543.0800000000002,
+        122.06,
+        1543.0800000000002
+      ],
+      "ignore": false,
+      "order": 10,
+      "anno_id": "box_id_9",
+      "attribute": {},
+      "text": "### 4.6 Exploration SDP"
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        116.96,
+        1582.02,
+        787.95,
+        1582.02,
+        787.95,
+        1679.04,
+        116.96,
+        1679.04
+      ],
+      "ignore": false,
+      "order": 11,
+      "anno_id": "box_id_10",
+      "attribute": {},
+      "text": "In this section, we provide a sufficient condition that ensure the exploration goal (4) using Proposition 13. In (33), $ {\\bar{Z}}_{\\mathrm{u}} $ can be be written as $ {\\bar{Z}}_{\\mathrm{u}} = {\\bar{Z}}_{\\mathrm{u},1} + {\\bar{Z}}_{\\mathrm{u},2} $ , where"
+    },
+    {
+      "category_type": "equation_isolated",
+      "poly": [
+        187,
+        1710.9399999999996,
+        716.8352265368251,
+        1710.9399999999996,
+        716.8352265368251,
+        1809.0836181640623,
+        187,
+        1809.0836181640623
+      ],
+      "ignore": false,
+      "order": 12,
+      "anno_id": "box_id_11",
+      "attribute": {},
+      "latex": "$${\\bar{Z}}_{\\mathrm{u},1} = \\left\\lbrack  \\begin{array}{cc} {D}_{\\mathrm{{des}}}^{\\frac{1}{2}\\top }\\left( {{\\mathbf{1}}_{L}^{\\top }{U}_{\\mathrm{e}}^{\\top } \\otimes  {I}_{{n}_{\\phi }}}\\right) \\\\  0 \\end{array}\\right\\rbrack  \\left( {{V}_{\\mathrm{x},\\mathrm{{tr}}}^{\\mathsf{H}} \\otimes  {I}_{{n}_{\\phi }}}\\right) ,$$"
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        116.96,
+        1937.98,
+        787.95,
+        1937.98,
+        787.95,
+        2002.0,
+        116.96,
+        2002.0
+      ],
+      "ignore": false,
+      "order": 14,
+      "anno_id": "box_id_12",
+      "attribute": {},
+      "text": "In order to robustly account for uncertainties in Inequality (45), we split Inequality (45) into three inequalities"
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        848.98,
+        201.96,
+        1518.95,
+        201.96,
+        1518.95,
+        267.08,
+        848.98,
+        267.08
+      ],
+      "ignore": false,
+      "order": 15,
+      "anno_id": "box_id_13",
+      "attribute": {},
+      "text": "that are handled separately. The following inequalities are equivalent to Inequality (45) if $ {\\bar{D}}_{1} + {\\bar{D}}_{2} + {\\bar{D}}_{3} \\succeq 0 $:"
+    },
+    {
+      "category_type": "equation_isolated",
+      "poly": [
+        1085.639892578125,
+        348.91999999999996,
+        1515.9951613274382,
+        348.91999999999996,
+        1515.9951613274382,
+        447.20685786753006,
+        1085.639892578125,
+        447.20685786753006
+      ],
+      "ignore": false,
+      "order": 16,
+      "anno_id": "box_id_14",
+      "attribute": {},
+      "latex": "$$(1 - \\epsilon) \\left( \\bar{Z}_{u,1} \\hat{Z}^H + \\hat{Z} \\bar{Z}_{u,1}^H \\right) - \\bar{D}_1 \\succeq 0, \\tag{48a}$$"
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        848.98,
+        718.9599999999999,
+        1517.93,
+        718.9599999999999,
+        1517.93,
+        782.0999999999999,
+        848.98,
+        782.0999999999999
+      ],
+      "ignore": false,
+      "order": 19,
+      "anno_id": "box_id_15",
+      "attribute": {},
+      "text": "The following theorem provides a sufficient condition linear in $ {U}_{\\mathrm{e}} $ which ensures the exploration goal (4)."
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        847.96,
+        810.92,
+        1518.95,
+        810.92,
+        1518.95,
+        907.06,
+        847.96,
+        907.06
+      ],
+      "ignore": false,
+      "order": 20,
+      "anno_id": "box_id_16",
+      "attribute": {},
+      "text": "Theorem 14 Let Assumptions 1, 2, 4 and 8 hold. Suppose there exist matrices $ {U}_{\\mathrm{e}},{\\bar{D}}_{1},{\\bar{D}}_{2} $ and $ {\\bar{D}}_{3} $, and scalars $ {\\tau }_{1} \\geq 0,{\\tau }_{2} \\geq 0 $ , and $ {\\tau }_{3} \\geq 0 $ such that"
+    },
+    {
+      "category_type": "equation_isolated",
+      "poly": [
+        966.4367675781251,
+        931.9200000000001,
+        1451.3100010779408,
+        931.9200000000001,
+        1451.3100010779408,
+        974.661376953125,
+        966.4367675781251,
+        974.661376953125
+      ],
+      "ignore": false,
+      "order": 21,
+      "anno_id": "box_id_17",
+      "attribute": {},
+      "latex": "$$S_{\\mathrm{exp}-1}(\\epsilon, \\tau_1, U_e, \\hat{Z}, \\hat{V}_x, \\tilde{\\Gamma}_x, D_{\\mathrm{des}}, \\bar{D}_1) \\succeq 0,$$"
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        850,
+        1129.04,
+        1517.93,
+        1129.04,
+        1517.93,
+        1263.0200000000002,
+        850,
+        1263.0200000000002
+      ],
+      "ignore": false,
+      "order": 25,
+      "anno_id": "box_id_18",
+      "attribute": {},
+      "text": "where $ {S}_{\\text{exp- }1},{S}_{\\text{exp- }2} $, and $ {S}_{\\text{exp- }3} $ are defined in (49a), (49b) and (49c), respectively. Then, an estimate $ {\\hat{\\theta }}_{T} $computed as in (11) upon the application of the input (6) satisfies the exploration goal (4)."
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        850,
+        1288.1000000000001,
+        1518.95,
+        1288.1000000000001,
+        1518.95,
+        1521.08,
+        850,
+        1521.08
+      ],
+      "ignore": false,
+      "order": 26,
+      "anno_id": "box_id_19",
+      "attribute": {},
+      "text": "The proof of Theorem 14 is provided in Appendix C. The key idea of the proof is the application of robust control tools, in particular, the matrix S-lemma [5, 27], to account for parametric uncertainty. Consequently, we can pose the exploration problem of designing exploration inputs that excite the system with minimal energy to obtain an estimate $ {\\hat{\\theta }}_{T} $ that satisfies (4) using the following SDP:"
+    },
+    {
+      "category_type": "equation_isolated",
+      "poly": [
+        862.0699999999999,
+        1611.94,
+        1017.7253164126092,
+        1611.94,
+        1017.7253164126092,
+        1686.37451171875,
+        862.0699999999999,
+        1686.37451171875
+      ],
+      "ignore": false,
+      "order": 27,
+      "anno_id": "box_id_20",
+      "attribute": {},
+      "latex": "$$\\inf_{\\substack{U_e, \\gamma_e, \\\\ \\tau_1 \\geq 0, \\tau_2 \\geq 0, \\\\ \\tau_3 \\geq 0}}\\quad\\gamma_e$$"
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        846.9399999999999,
+        1937.98,
+        1518.95,
+        1937.98,
+        1518.95,
+        2000.8999999999999,
+        846.9399999999999,
+        2000.8999999999999
+      ],
+      "ignore": false,
+      "order": 33,
+      "anno_id": "box_id_21",
+      "attribute": {},
+      "text": "A solution of (51) gives us the parameters required for the implementation of the exploration input, i.e.,"
+    },
+    {
+      "category_type": "page_number",
+      "poly": [
+        805.97,
+        2082.08,
+        822.9699999999999,
+        2082.08,
+        822.9699999999999,
+        2106.06,
+        805.97,
+        2106.06
+      ],
+      "ignore": false,
+      "order": 34,
+      "anno_id": "box_id_22",
+      "attribute": {},
+      "text": "7"
+    },
+    {
+      "category_type": "equation_isolated",
+      "poly": [
+        132.0511051892596,
+        624.237741686135,
+        794.4698685947416,
+        624.237741686135,
+        794.4698685947416,
+        717.1461279166037,
+        132.0511051892596,
+        717.1461279166037
+      ],
+      "ignore": false,
+      "order": 4,
+      "anno_id": "box-8p2ynkba",
+      "attribute": {},
+      "latex": "$$+ \\left( (1 - \\epsilon) \\left( \\bar{Z}_\\mathrm u \\hat{Z}^\\mathsf{H} + \\hat{Z} \\bar{Z}_\\mathrm u^\\mathsf{H}  - \\hat{Z} \\hat{Z}^\\mathsf{H}  \\right) - \\left( \\frac{1 - \\epsilon}{\\epsilon} \\right) \\bar{W}_Z \\right) \\succeq 0,\\tag{45}$$"
+    },
+    {
+      "category_type": "equation_isolated",
+      "poly": [
+        182.85108947753906,
+        1817.8486328125,
+        787.6319580078125,
+        1817.8486328125,
+        787.6319580078125,
+        1909.0040283203125,
+        182.85108947753906,
+        1909.0040283203125
+      ],
+      "ignore": false,
+      "order": 13,
+      "anno_id": "box-rud8wl64",
+      "attribute": {},
+      "latex": "$$\\bar{Z}_{u,2} = \\left[\\begin{array}{cc}\n0 \\\\\n(V_{\\phi,\\mathrm{tr}} \\otimes I_{n_\\times n_\\phi})\n\\end{array} \\right](U_e \\otimes I_{n_\\times n_\\phi}). \\tag{47}$$"
+    },
+    {
+      "category_type": "equation_isolated",
+      "poly": [
+        868.2694091796875,
+        454.0238952636719,
+        1516.34886613771,
+        454.0238952636719,
+        1516.34886613771,
+        534.7159585764175,
+        868.2694091796875,
+        534.7159585764175
+      ],
+      "ignore": false,
+      "order": 17,
+      "anno_id": "box-r260vaqd",
+      "attribute": {},
+      "latex": "$$(1 - \\epsilon) \\left( \\bar{Z}_{u,2} \\hat{Z}^\\mathsf{H}  + \\hat{Z} \\bar{Z}_{u,2}^\\mathsf{H}  - \\hat{Z} \\hat{Z}^\\mathsf{H}  \\right) - \\left( \\frac{1 - \\epsilon}{\\epsilon} \\right) \\bar{W}_Z - \\bar{D}_2 \\succeq 0, \\tag{48b}$$"
+    },
+    {
+      "category_type": "equation_isolated",
+      "poly": [
+        912.7705631436856,
+        538.0721465858585,
+        1517.1051415569373,
+        538.0721465858585,
+        1517.1051415569373,
+        666.1354370117188,
+        912.7705631436856,
+        666.1354370117188
+      ],
+      "ignore": false,
+      "order": 18,
+      "anno_id": "box-in0hf4tb",
+      "attribute": {},
+      "latex": "$$\\left[\\begin{array}{cc}\n((1 - \\epsilon) \\bar{\\Phi}_\\mathrm{u} \\bar{\\Phi}_\\mathrm{u}^\\mathsf{H}  - \\left( \\frac{1 - \\epsilon}{\\epsilon} \\right) \\bar{W}_\\phi) - \\frac{\\gamma_w}{T} D_{\\mathrm{des}} & 0 \\\\\n0 & 0\n\\end{array}\\right] - \\bar{D}_3 \\succeq 0. \\tag{48c}$$"
+    },
+    {
+      "category_type": "equation_isolated",
+      "poly": [
+        910.3411254882812,
+        978.1673583984375,
+        1450.261474609375,
+        978.1673583984375,
+        1450.261474609375,
+        1020.239013671875,
+        910.3411254882812,
+        1020.239013671875
+      ],
+      "ignore": false,
+      "order": 22,
+      "anno_id": "box-ghgu7jjb",
+      "attribute": {},
+      "latex": "$$S_{\\mathrm{exp}-2}(\\epsilon, \\tau_2, U_e, \\hat{Z}, \\bar{W}_Z, \\hat{V}_\\phi, \\tilde{\\Gamma}_\\phi, D_{\\mathrm{des}}, \\bar{D}_2) \\succeq 0,$$"
+    },
+    {
+      "category_type": "equation_isolated",
+      "poly": [
+        871.775390625,
+        1023.7449951171875,
+        1448.5084228515625,
+        1023.7449951171875,
+        1448.5084228515625,
+        1065.8167724609375,
+        871.775390625,
+        1065.8167724609375
+      ],
+      "ignore": false,
+      "order": 23,
+      "anno_id": "box-fs2wcgr4",
+      "attribute": {},
+      "latex": "$$S_{\\mathrm{exp}-3}(\\epsilon, \\tau_3, U_e, \\hat{U}, \\bar{W}_\\phi, \\hat{V}_\\phi, \\tilde{\\Gamma}_\\phi, \\gamma_w, D_{\\mathrm{des}}, \\bar{D}_3) \\succeq 0,$$"
+    },
+    {
+      "category_type": "equation_isolated",
+      "poly": [
+        1201.337158203125,
+        1065.8167724609375,
+        1515.1220703125,
+        1065.8167724609375,
+        1515.1220703125,
+        1106.135498046875,
+        1201.337158203125,
+        1106.135498046875
+      ],
+      "ignore": false,
+      "order": 24,
+      "anno_id": "box-17e42qti",
+      "attribute": {},
+      "latex": "$$\\bar{D}_1 + \\bar{D}_2 + \\bar{D}_3 \\succeq 0. \\tag{50}$$"
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        925.1871138750829,
+        1689.8804931640625,
+        1260.938720703125,
+        1689.8804931640625,
+        1260.938720703125,
+        1725.4992290806247,
+        925.1871138750829,
+        1725.4992290806247
+      ],
+      "ignore": false,
+      "order": 28,
+      "anno_id": "box-tkic1we2",
+      "attribute": {},
+      "text": "s.t. $\\quad S_{\\mathrm{energy-bound}}(\\gamma_e, U_e) \\succeq 0$"
+    },
+    {
+      "category_type": "equation_isolated",
+      "poly": [
+        976.9546508789062,
+        1728.4461669921875,
+        1420.460693359375,
+        1728.4461669921875,
+        1420.460693359375,
+        1760.0,
+        976.9546508789062,
+        1760.0
+      ],
+      "ignore": false,
+      "order": 29,
+      "anno_id": "box-p6q912ao",
+      "attribute": {},
+      "latex": "$$S_{\\mathrm{exp}-1}(\\epsilon, \\tau_1, U_e, \\hat{Z}, \\hat{V}_x, \\tilde{\\Gamma}_x, D_{\\mathrm{des}}, \\bar{D}_1) \\succeq 0$$"
+    },
+    {
+      "category_type": "equation_isolated",
+      "poly": [
+        978.7076416015625,
+        1763.5059814453125,
+        1474.8033447265625,
+        1763.5059814453125,
+        1474.8033447265625,
+        1803.82470703125,
+        978.7076416015625,
+        1803.82470703125
+      ],
+      "ignore": false,
+      "order": 30,
+      "anno_id": "box-guvrsnxi",
+      "attribute": {},
+      "latex": "$$S_{\\mathrm{exp}-2}(\\epsilon, \\tau_2, U_e, \\hat{Z}, \\bar{W}_Z, \\hat{V}_\\phi, \\tilde{\\Gamma}_\\phi, D_{\\mathrm{des}}, \\bar{D}_2) \\succeq 0$$"
+    },
+    {
+      "category_type": "equation_isolated",
+      "poly": [
+        980.4606323242188,
+        1805.57763671875,
+        1513.3690185546875,
+        1805.57763671875,
+        1513.3690185546875,
+        1844.1434326171875,
+        980.4606323242188,
+        1844.1434326171875
+      ],
+      "ignore": false,
+      "order": 31,
+      "anno_id": "box-8uywx846",
+      "attribute": {},
+      "latex": "$$S_{\\mathrm{exp}-3}(\\epsilon, \\tau_3, U_e, \\hat{U}, \\bar{W}_\\phi, \\hat{V}_\\phi, \\tilde{\\Gamma}_\\phi, \\gamma_w, D_{\\mathrm{des}}, \\bar{D}_3) \\succeq 0$$"
+    },
+    {
+      "category_type": "equation_isolated",
+      "poly": [
+        976.9546508789062,
+        1845.8963623046875,
+        1516.875,
+        1845.8963623046875,
+        1516.875,
+        1880.9561767578125,
+        976.9546508789062,
+        1880.9561767578125
+      ],
+      "ignore": false,
+      "order": 32,
+      "anno_id": "box-zux5uf6l",
+      "attribute": {},
+      "latex": "$$\\bar{D}_1 + \\bar{D}_2 + \\bar{D}_3 \\succeq 0. \\tag{51}$$"
+    },
+    {
+      "category_type": "equation_semantic",
+      "poly": [
+        857.75146484375,
+        1603.9840087890625,
+        1529.1458740234375,
+        1603.9840087890625,
+        1529.1458740234375,
+        1889.7210693359375,
+        857.75146484375,
+        1889.7210693359375
+      ],
+      "ignore": false,
+      "order": null,
+      "anno_id": "box-vtzae8cm",
+      "attribute": {},
+      "text": ""
+    },
+    {
+      "category_type": "equation_semantic",
+      "poly": [
+        870.2203779374458,
+        927.7941635402606,
+        1519.2670262719466,
+        927.7941635402606,
+        1519.2670262719466,
+        1113.3213895646677,
+        870.2203779374458,
+        1113.3213895646677
+      ],
+      "ignore": false,
+      "order": null,
+      "anno_id": "box-uxs7k5fl",
+      "attribute": {},
+      "text": ""
+    },
+    {
+      "category_type": "equation_semantic",
+      "poly": [
+        168.8271942138672,
+        1705.6573486328125,
+        798.14990234375,
+        1705.6573486328125,
+        798.14990234375,
+        1919.52197265625,
+        168.8271942138672,
+        1919.52197265625
+      ],
+      "ignore": false,
+      "order": null,
+      "anno_id": "box-4e3y9pqx",
+      "attribute": {},
+      "text": ""
+    },
+    {
+      "category_type": "equation_semantic",
+      "poly": [
+        128.6468920057522,
+        524.1434326171875,
+        797.8860844346411,
+        524.1434326171875,
+        797.8860844346411,
+        721.9710976207067,
+        128.6468920057522,
+        721.9710976207067
+      ],
+      "ignore": false,
+      "order": null,
+      "anno_id": "box-73qali0g",
+      "attribute": {},
+      "text": ""
+    }
+  ],
+  "page_info": {
+    "page_no": 0,
+    "height": 2200,
+    "width": 1700,
+    "image_path": "page-f108020f-edc5-4a27-85d9-d9d9c5d67309.png",
+    "page_attribute": {
+      "data_source": "academic_literature",
+      "language": "english",
+      "layout": "double_column",
+      "special_issue": [],
+      "subset": "equation_hard"
+    }
+  },
+  "extra": {
+    "relation": []
+  },
+  "_eval_tags": {
+    "is_clean": true,
+    "has_watermark": false,
+    "has_fuzzy_scan": false,
+    "has_colorful_bg": false,
+    "layout": "double_column"
+  }
+}

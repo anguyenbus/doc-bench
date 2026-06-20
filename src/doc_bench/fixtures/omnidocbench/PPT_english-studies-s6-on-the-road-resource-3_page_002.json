@@ -1,0 +1,119 @@
+{
+  "layout_dets": [
+    {
+      "category_type": "title",
+      "anno_id": 1,
+      "order": 1,
+      "ignore": false,
+      "poly": [
+        120,
+        69.33333333333333,
+        832,
+        69.33333333333333,
+        832,
+        309.3333333333333,
+        120,
+        309.3333333333333
+      ],
+      "attribute": {},
+      "text": "Unpacking the Rubric"
+    },
+    {
+      "category_type": "title",
+      "anno_id": 2,
+      "order": 2,
+      "ignore": false,
+      "poly": [
+        1124,
+        74.66666666666667,
+        1866.6666666666667,
+        74.66666666666667,
+        1866.6666666666667,
+        130.66666666666666,
+        1124,
+        130.66666666666666
+      ],
+      "attribute": {},
+      "text": "What you are expected to learn"
+    },
+    {
+      "category_type": "text_block",
+      "anno_id": 3,
+      "order": 3,
+      "ignore": false,
+      "poly": [
+        1121.3333333333333,
+        193.33333333333334,
+        1865.3333333333333,
+        193.33333333333334,
+        1865.3333333333333,
+        310.6666666666667,
+        1121.3333333333333,
+        310.6666666666667
+      ],
+      "attribute": {},
+      "text": "Text types or various topics/ideas you will examine"
+    },
+    {
+      "category_type": "text_block",
+      "anno_id": 4,
+      "order": 4,
+      "ignore": false,
+      "poly": [
+        114.66666666666667,
+        349.3333333333333,
+        1888,
+        349.3333333333333,
+        1888,
+        596,
+        114.66666666666667,
+        596
+      ],
+      "attribute": {},
+      "text": "Through a study of this module, students develop\nunderstanding and proficiency in the use of language\nrelated to travel. For example, the language used by journalists, filmmakers and those in the travel industry."
+    },
+    {
+      "category_type": "text_block",
+      "anno_id": 5,
+      "order": 5,
+      "ignore": false,
+      "poly": [
+        110.66666666666667,
+        642.6666666666666,
+        1836,
+        642.6666666666666,
+        1836,
+        1064,
+        110.66666666666667,
+        1064
+      ],
+      "attribute": {},
+      "text": "Students develop knowledge, skills and understanding in comprehending and using appropriate terminology, styles and language forms for analysing, discussing, responding to, and evaluating, issues and topics related to travel. They have opportunities to make judgments about travel advertisements, and locate and comprehend government advice about travel in various overseas countries."
+    }
+  ],
+  "page_info": {
+    "page_no": 2,
+    "height": 1500,
+    "width": 2000,
+    "image_path": "PPT_english-studies-s6-on-the-road-resource-3_page_002.png",
+    "page_attribute": {
+      "data_source": "PPT2PDF",
+      "language": "english",
+      "layout": "other_layout",
+      "special_issue": [
+        "None"
+      ],
+      "subset": "v1.5"
+    }
+  },
+  "extra": {
+    "relation": []
+  },
+  "_eval_tags": {
+    "is_clean": true,
+    "has_watermark": false,
+    "has_fuzzy_scan": false,
+    "has_colorful_bg": false,
+    "layout": "other_layout"
+  }
+}

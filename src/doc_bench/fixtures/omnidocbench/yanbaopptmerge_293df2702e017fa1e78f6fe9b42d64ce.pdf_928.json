@@ -1,0 +1,511 @@
+{
+  "layout_dets": [
+    {
+      "category_type": "text_block",
+      "poly": [
+        191.838702919242,
+        157.95393490862784,
+        546.3810694196249,
+        157.95393490862784,
+        546.3810694196249,
+        519.1871900529896,
+        191.838702919242,
+        519.1871900529896
+      ],
+      "ignore": false,
+      "order": 1,
+      "anno_id": 5,
+      "text": "55. Students were asked to bring their favorite fruit to class. 95% of the fruits consisted of banana,apple, and oranges.If oranges were twice as popular as bananas,and apples were 5% less popular than bananas,what are the percentages of each individual fruit?",
+      "attribute": {}
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        580.1066794182086,
+        161.04627990722656,
+        926.1791381835938,
+        161.04627990722656,
+        926.1791381835938,
+        513.7177124023438,
+        580.1066794182086,
+        513.7177124023438
+      ],
+      "ignore": false,
+      "order": 2,
+      "anno_id": 7,
+      "text": "56. The nursing club held a bake sale to raise money and sold brownies and chocolate chip cookies. They priced the brownies at $1 and the chocolate chip cookies at $0.75. They raised $700 and sold 850 items.How many brownies and how many cookies were sold?",
+      "attribute": {}
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        965.501037597656,
+        157.81117248535156,
+        1311.464319219473,
+        157.81117248535156,
+        1311.464319219473,
+        710.8042240046294,
+        965.501037597656,
+        710.8042240046294
+      ],
+      "ignore": false,
+      "order": 3,
+      "anno_id": 6,
+      "text": "57. A clothing store needs to order new inventory.It has three different types of hats for sale:straw hats beanies,and cowboy hats The straw hat is priced at $13.99,the beanie at $7.99 and the cowboy hat at $14.49.If 100 hats were sold this past quarter, $1,119 was taken in by sales,and the amount of beanies.sold was 10 more than cowboy hats,how many of each should the clothing store order to replace those already sold?",
+      "attribute": {}
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        196.40557861328116,
+        753.9162597656252,
+        549.6229051281729,
+        753.9162597656252,
+        549.6229051281729,
+        982.2265231469707,
+        196.40557861328116,
+        982.2265231469707
+      ],
+      "ignore": false,
+      "order": 4,
+      "anno_id": 12,
+      "text": "58. Anna,Percy,and Morgan weigh a combined 370 lb.If Morgan weighs 20 lb more than Percy,and Anna weighs 1.5 times as much as Percy,how much does each person weigh?",
+      "attribute": {}
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        576.6752680834871,
+        752.897705078125,
+        929.5924092321749,
+        752.897705078125,
+        929.5924092321749,
+        1074.908773120727,
+        576.6752680834871,
+        1074.908773120727
+      ],
+      "ignore": false,
+      "order": 5,
+      "anno_id": 10,
+      "text": "59.  Three roommates shared a package of 12 ice cream bars,but no one remembers who ate how many.If Micah ate twice as many ice cream bars as Joe,and Albert ate three less than Micah,how many ice cream bars did each roommate eat?",
+      "attribute": {}
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        964.4987182617186,
+        755.6255493164062,
+        1313.0107985940424,
+        755.6255493164062,
+        1313.0107985940424,
+        1238.5716552734375,
+        964.4987182617186,
+        1238.5716552734375
+      ],
+      "ignore": false,
+      "order": 6,
+      "anno_id": 4,
+      "text": "60.  A farmer constructed a chicken coop out of chicken wire,wood,and plywood.The chicken wire cost $2 per square foot,the wood $10 per square foot and the plywood $5 per square foot. The farmer spent a total of $51,and the total amount of materials used was $ 14~\\mathrm{ft^{2}} $ He used $ 3 ~ \\mathrm{f t}^{2} $ more chicken wire than plywood.How much of each material in did the farmer use?",
+      "attribute": {}
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        196.83981323242193,
+        1286.5498046875002,
+        548.8769080273222,
+        1286.5498046875002,
+        548.8769080273222,
+        1641.628662109375,
+        196.83981323242193,
+        1641.628662109375
+      ],
+      "ignore": false,
+      "order": 7,
+      "anno_id": 3,
+      "text": "61. Jay has lemon,orange,and pomegranate trees in his backyard.An orange weighs 8 oz,a lemon 5 oz and a pomegranate 11 oz Jay picked 142 pieces of fruit weighing a total of 70 lb,10 oz.He picked 15.5 times more oranges than pomegranates.How many of each fruit did Jay pick?",
+      "attribute": {}
+    },
+    {
+      "category_type": "title",
+      "poly": [
+        197.54380798339844,
+        1714.6068115234375,
+        947.8741455078125,
+        1714.6068115234375,
+        947.8741455078125,
+        1765.6822509765625,
+        197.54380798339844,
+        1765.6822509765625
+      ],
+      "ignore": false,
+      "order": 8,
+      "anno_id": 0,
+      "text": "7.8 Solving Systems with Cramer's Rule",
+      "attribute": {}
+    },
+    {
+      "category_type": "title",
+      "poly": [
+        194.4166370687505,
+        1773.501094390262,
+        462.58693610575006,
+        1773.501094390262,
+        462.58693610575006,
+        1803.9690148207562,
+        194.4166370687505,
+        1803.9690148207562
+      ],
+      "ignore": false,
+      "order": 9,
+      "anno_id": 2,
+      "text": "Learning Objectives",
+      "attribute": {}
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        198.0684755849024,
+        1808.855279917011,
+        471.8140407141472,
+        1808.855279917011,
+        471.8140407141472,
+        1834.5662813607905,
+        198.0684755849024,
+        1834.5662813607905
+      ],
+      "ignore": false,
+      "order": 10,
+      "anno_id": 8,
+      "text": "In this section,you will:",
+      "attribute": {}
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        238.7556815059799,
+        1833.5820612564498,
+        1091.4341806150874,
+        1833.5820612564498,
+        1091.4341806150874,
+        2006.7068080393067,
+        238.7556815059799,
+        2006.7068080393067
+      ],
+      "ignore": false,
+      "order": 11,
+      "anno_id": 14,
+      "text": "Evaluate $ 2\\times2 $ determinants.\nUse Cramer's Rule to solve a system of equations in two variables.\nEvaluate $ 3\\times3 $ determinants.\nUse Cramer's Rule to solve a system of three equations in three variables\nKnow the properties of determinants.",
+      "merge_list": [
+        {
+          "category_type": "text_block",
+          "poly": [
+            244.6516561960778,
+            1836.8128851612014,
+            600.6166195582562,
+            1836.8128851612014,
+            600.6166195582562,
+            1866.3134776340114,
+            244.6516561960778,
+            1866.3134776340114
+          ],
+          "ignore": false,
+          "order": 12,
+          "anno_id": 11,
+          "text": "Evaluate $ 2\\times2 $ determinants.",
+          "line_with_spans": [
+            {
+              "category_type": "text_span",
+              "poly": [
+                283.8957876315781,
+                1842.5939885307168,
+                376.2229484871429,
+                1842.5939885307168,
+                376.2229484871429,
+                1862.1682654240692,
+                283.8957876315781,
+                1862.1682654240692
+              ],
+              "text": "Evaluate"
+            },
+            {
+              "category_type": "equation_inline",
+              "poly": [
+                385.1309899397302,
+                1837.3333333333335,
+                436.9074280583146,
+                1837.3333333333335,
+                436.9074280583146,
+                1862.6067276838019,
+                385.1309899397302,
+                1862.6067276838019
+              ],
+              "latex": "$ 2\\times2 $"
+            },
+            {
+              "category_type": "text_span",
+              "poly": [
+                444.86935804127455,
+                1840.113523393531,
+                597.5897800048467,
+                1840.113523393531,
+                597.5897800048467,
+                1862.4004749241003,
+                444.86935804127455,
+                1862.4004749241003
+              ],
+              "text": "determinants."
+            }
+          ],
+          "attribute": {
+            "text_language": "text_english",
+            "text_background": "white",
+            "text_rotate": "normal"
+          }
+        },
+        {
+          "category_type": "text_block",
+          "poly": [
+            245.28187024991425,
+            1873.205275911419,
+            996.1275450656054,
+            1873.205275911419,
+            996.1275450656054,
+            1896.4944680819524,
+            245.28187024991425,
+            1896.4944680819524
+          ],
+          "ignore": false,
+          "order": 13,
+          "anno_id": 16,
+          "text": "Use Cramer's Rule to solve a system of equations in two variables.",
+          "line_with_spans": [
+            {
+              "category_type": "text_span",
+              "poly": [
+                284.07726231215923,
+                1873.8035318818308,
+                993.5073415588413,
+                1873.8035318818308,
+                993.5073415588413,
+                1897.8807941939897,
+                284.07726231215923,
+                1897.8807941939897
+              ],
+              "text": "Use Cramer's Rule to solve a system of equations in two variables."
+            }
+          ],
+          "attribute": {
+            "text_language": "text_english",
+            "text_background": "white",
+            "text_rotate": "normal"
+          }
+        },
+        {
+          "category_type": "text_block",
+          "poly": [
+            245.35465250288675,
+            1903.870482465025,
+            599.4033428903583,
+            1903.870482465025,
+            599.4033428903583,
+            1930.2133909759973,
+            245.35465250288675,
+            1930.2133909759973
+          ],
+          "ignore": false,
+          "order": 14,
+          "anno_id": 13,
+          "text": "Evaluate $ 3\\times3 $ determinants.",
+          "line_with_spans": [
+            {
+              "category_type": "text_span",
+              "poly": [
+                283.208212925454,
+                1905.563511076247,
+                375.2659896671775,
+                1905.563511076247,
+                375.2659896671775,
+                1925.4256920951195,
+                283.208212925454,
+                1925.4256920951195
+              ],
+              "text": "Evaluate"
+            },
+            {
+              "category_type": "equation_inline",
+              "poly": [
+                383.91581404615647,
+                1903.3773774025947,
+                435.69225216474086,
+                1903.3773774025947,
+                435.69225216474086,
+                1925.864227120667,
+                383.91581404615647,
+                1925.864227120667
+              ],
+              "latex": "$ 3\\times3 $"
+            },
+            {
+              "category_type": "text_span",
+              "poly": [
+                444.6751964284663,
+                1904.153669452048,
+                598.0015105678797,
+                1904.153669452048,
+                598.0015105678797,
+                1927.2050059741466,
+                444.6751964284663,
+                1927.2050059741466
+              ],
+              "text": "determinants."
+            }
+          ],
+          "attribute": {
+            "text_language": "text_english",
+            "text_background": "white",
+            "text_rotate": "normal"
+          }
+        },
+        {
+          "category_type": "text_block",
+          "poly": [
+            246.93522701354513,
+            1937.4297048455478,
+            1076.326180298204,
+            1937.4297048455478,
+            1076.326180298204,
+            1962.559196502559,
+            246.93522701354513,
+            1962.559196502559
+          ],
+          "ignore": false,
+          "order": 15,
+          "anno_id": 15,
+          "text": "Use Cramer's Rule to solve a system of three equations in three variables",
+          "line_with_spans": [
+            {
+              "category_type": "text_span",
+              "poly": [
+                284.01715985212763,
+                1937.7892176791963,
+                1072.0000000000002,
+                1937.7892176791963,
+                1072.0000000000002,
+                1961.3333333333333,
+                284.01715985212763,
+                1961.3333333333333
+              ],
+              "text": "Use Cramer's Rule to solve a system of three equations in three variables"
+            }
+          ],
+          "attribute": {
+            "text_language": "text_english",
+            "text_background": "white",
+            "text_rotate": "normal"
+          }
+        },
+        {
+          "category_type": "text_block",
+          "poly": [
+            247.43270980110137,
+            1968.7716740527142,
+            691.0342802821707,
+            1968.7716740527142,
+            691.0342802821707,
+            1996.8562263002093,
+            247.43270980110137,
+            1996.8562263002093
+          ],
+          "ignore": false,
+          "order": 16,
+          "anno_id": 17,
+          "text": "Know the properties of determinants.",
+          "line_with_spans": [
+            {
+              "category_type": "text_span",
+              "poly": [
+                284.0000000000002,
+                1972.0000000000002,
+                686.3681990995593,
+                1972.0000000000002,
+                686.3681990995593,
+                1994.922485392104,
+                284.0000000000002,
+                1994.922485392104
+              ],
+              "text": "Know the properties of determinants."
+            }
+          ],
+          "attribute": {
+            "text_language": "text_english",
+            "text_background": "white",
+            "text_rotate": "normal"
+          }
+        }
+      ],
+      "attribute": {}
+    },
+    {
+      "category_type": "header",
+      "poly": [
+        1127.4034423828125,
+        68.9946524271408,
+        1502.537430031018,
+        68.9946524271408,
+        1502.537430031018,
+        94.16907501220703,
+        1127.4034423828125,
+        94.16907501220703
+      ],
+      "ignore": false,
+      "order": null,
+      "anno_id": 1,
+      "text": "7.8\u00b7Solving Systems with Cramer's Rule   919",
+      "attribute": {}
+    },
+    {
+      "category_type": "page_number",
+      "poly": [
+        1522.2544215827008,
+        71.1201951715932,
+        1553.9454342946958,
+        71.1201951715932,
+        1553.9454342946958,
+        88.86618528709312,
+        1522.2544215827008,
+        88.86618528709312
+      ],
+      "ignore": false,
+      "order": null,
+      "anno_id": 9,
+      "text": "919",
+      "attribute": {}
+    }
+  ],
+  "page_info": {
+    "page_no": 928,
+    "height": 2200,
+    "width": 1700,
+    "image_path": "yanbaopptmerge_293df2702e017fa1e78f6fe9b42d64ce.pdf_928.jpg",
+    "page_attribute": {
+      "data_source": "book",
+      "language": "english",
+      "layout": "1andmore_column",
+      "special_issue": [
+        "None"
+      ],
+      "subset": "v1.5"
+    }
+  },
+  "extra": {
+    "relation": []
+  },
+  "_eval_tags": {
+    "is_clean": true,
+    "has_watermark": false,
+    "has_fuzzy_scan": false,
+    "has_colorful_bg": false,
+    "layout": "1andmore_column"
+  }
+}

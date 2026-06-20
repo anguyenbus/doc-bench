@@ -1,0 +1,2612 @@
+{
+    "schema_version": "1.0.0",
+    "parser_version": "0.1.0",
+    "source": {
+      "doc_id": "1371-6.1997",
+      "filename": "1371-6.1997.pdf",
+      "mime_type": "application/pdf",
+      "sha256": "ae0b9c5c5f4222de24216b9a629517ac3c677df37d6c34f4f87fa54b3160978f",
+      "page_count": 2,
+      "language": "en"
+    },
+    "pages": [
+      {
+        "page_index": 0,
+        "width": 595.0,
+        "height": 849.0,
+        "rotation": 0
+      },
+      {
+        "page_index": 1,
+        "width": 595.0,
+        "height": 849.0,
+        "rotation": 0
+      }
+    ],
+    "elements": [
+      {
+        "element_id": "eccbbe4b-125f-5939-8b26-0bba6614cc61",
+        "type": "header",
+        "page_index": 0,
+        "char_span": [
+          0,
+          1
+        ],
+        "text": "A",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 56.0,
+          "y0": 25.0,
+          "x1": 179.0,
+          "y1": 73.0
+        }
+      },
+      {
+        "element_id": "82c2d4b8-e297-5a28-b01e-f9e7469f89e9",
+        "type": "header",
+        "page_index": 0,
+        "char_span": [
+          2,
+          14
+        ],
+        "text": "I\nindividual",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 194.0,
+          "y0": 24.0,
+          "x1": 346.0,
+          "y1": 76.0
+        }
+      },
+      {
+        "element_id": "daf2d225-d1ab-5836-a169-5211c92bdf53",
+        "type": "heading",
+        "page_index": 0,
+        "char_span": [
+          15,
+          37
+        ],
+        "text": "1997 Income Tax Return",
+        "content": {
+          "kind": "text"
+        },
+        "level": 1,
+        "bbox": {
+          "x0": 87.0,
+          "y0": 81.0,
+          "x1": 320.0,
+          "y1": 96.0
+        }
+      },
+      {
+        "element_id": "9497b37f-68c1-5377-8056-f8d67ab5e1a1",
+        "type": "heading",
+        "page_index": 0,
+        "char_span": [
+          38,
+          48
+        ],
+        "text": "Tax Agents",
+        "content": {
+          "kind": "text"
+        },
+        "level": 1,
+        "bbox": {
+          "x0": 113.0,
+          "y0": 99.0,
+          "x1": 293.0,
+          "y1": 124.0
+        }
+      },
+      {
+        "element_id": "3a00eeb7-4fde-5a44-bc93-92367d2e3cde",
+        "type": "heading",
+        "page_index": 0,
+        "char_span": [
+          49,
+          76
+        ],
+        "text": "1 July 1996 to 30 June 1997",
+        "content": {
+          "kind": "text"
+        },
+        "level": 1,
+        "bbox": {
+          "x0": 49.0,
+          "y0": 126.0,
+          "x1": 357.0,
+          "y1": 144.0
+        }
+      },
+      {
+        "element_id": "ccb357e6-96a4-5618-a976-a341558d9ef4",
+        "type": "header",
+        "page_index": 0,
+        "char_span": [
+          77,
+          126
+        ],
+        "text": "Are you a resident of Australia for tax purposes?",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 520.0,
+          "y0": 24.0,
+          "x1": 845.0,
+          "y1": 38.0
+        }
+      },
+      {
+        "element_id": "2d91ab22-ee05-5043-9441-57157347dc70",
+        "type": "header",
+        "page_index": 0,
+        "char_span": [
+          127,
+          240
+        ],
+        "text": "Have you included any attachments\u2014other than group certificates, tax stamp sheets and income tax credit vouchers?",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 426.0,
+          "y0": 42.0,
+          "x1": 845.0,
+          "y1": 65.0
+        }
+      },
+      {
+        "element_id": "9f87a0b6-c75e-505d-a044-3cafea96454c",
+        "type": "heading",
+        "page_index": 0,
+        "char_span": [
+          241,
+          262
+        ],
+        "text": "Tax File Number (TFN)",
+        "content": {
+          "kind": "text"
+        },
+        "level": 1,
+        "bbox": {
+          "x0": 575.0,
+          "y0": 74.0,
+          "x1": 739.0,
+          "y1": 88.0
+        }
+      },
+      {
+        "element_id": "95100f27-5494-55c8-b88d-004f232ab2a2",
+        "type": "figure",
+        "page_index": 0,
+        "char_span": [
+          263,
+          263
+        ],
+        "text": "",
+        "content": {
+          "kind": "figure",
+          "alt_text": ""
+        },
+        "bbox": {
+          "x0": 744.0,
+          "y0": 69.0,
+          "x1": 960.0,
+          "y1": 93.0
+        }
+      },
+      {
+        "element_id": "f1a945df-c1be-5d62-a036-367cb9c5ed24",
+        "type": "paragraph",
+        "page_index": 0,
+        "char_span": [
+          264,
+          822
+        ],
+        "text": "It is not an offence not to quote your TFN. However, your TFN helps the Australian Taxation Office (ATO) to correctly identify your tax records. The ATO is authorised by the Income Tax Assessment Act 1936 to ask for information in this tax return. We need this information to help administer the tax laws. We may give some of this information to other government agencies authorised by law to receive it, including the Department of Social Security, the Department of Veterans' Affairs and the Department of Employment, Education, Training and Youth Affairs.",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 374.0,
+          "y0": 91.0,
+          "x1": 962.0,
+          "y1": 153.0
+        }
+      },
+      {
+        "element_id": "22b09480-24d6-5b05-ba42-4a2b72112099",
+        "type": "paragraph",
+        "page_index": 0,
+        "char_span": [
+          823,
+          828
+        ],
+        "text": "Title",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 52.0,
+          "y0": 157.0,
+          "x1": 86.0,
+          "y1": 169.0
+        }
+      },
+      {
+        "element_id": "533f44b1-400d-5be4-91ed-b92e145fa9d7",
+        "type": "paragraph",
+        "page_index": 0,
+        "char_span": [
+          829,
+          859
+        ],
+        "text": "For example, Mr, Mrs, Ms, Miss",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 174.0,
+          "y0": 158.0,
+          "x1": 388.0,
+          "y1": 171.0
+        }
+      },
+      {
+        "element_id": "035cdb7e-e0b6-56a8-8769-43418ce52bae",
+        "type": "paragraph",
+        "page_index": 0,
+        "char_span": [
+          860,
+          864
+        ],
+        "text": "Name",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 52.0,
+          "y0": 186.0,
+          "x1": 97.0,
+          "y1": 198.0
+        }
+      },
+      {
+        "element_id": "e9439ae3-395a-58ad-abee-bce70a46f41b",
+        "type": "paragraph",
+        "page_index": 0,
+        "char_span": [
+          865,
+          887
+        ],
+        "text": "Surname or family name",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 220.0,
+          "y0": 187.0,
+          "x1": 388.0,
+          "y1": 200.0
+        }
+      },
+      {
+        "element_id": "530113e6-a8f5-5629-a48b-7b8b3307c249",
+        "type": "paragraph",
+        "page_index": 0,
+        "char_span": [
+          888,
+          899
+        ],
+        "text": "Given names",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 296.0,
+          "y0": 209.0,
+          "x1": 388.0,
+          "y1": 221.0
+        }
+      },
+      {
+        "element_id": "1aae8492-b848-5c0f-998a-4d0381efa76c",
+        "type": "paragraph",
+        "page_index": 0,
+        "char_span": [
+          900,
+          1029
+        ],
+        "text": "Have you changed your name or title since filling in your last tax return? If yes, print the full name and title you used before.",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 51.0,
+          "y0": 233.0,
+          "x1": 390.0,
+          "y1": 268.0
+        }
+      },
+      {
+        "element_id": "634985bf-2283-57e0-a6be-b3f17db06b47",
+        "type": "heading",
+        "page_index": 0,
+        "char_span": [
+          1030,
+          1052
+        ],
+        "text": "Current postal address",
+        "content": {
+          "kind": "text"
+        },
+        "level": 1,
+        "bbox": {
+          "x0": 51.0,
+          "y0": 282.0,
+          "x1": 220.0,
+          "y1": 294.0
+        }
+      },
+      {
+        "element_id": "10c5d4bf-bac1-5005-86ea-2c13eb697f2c",
+        "type": "paragraph",
+        "page_index": 0,
+        "char_span": [
+          1053,
+          1187
+        ],
+        "text": "If your address has not changed, please print it exactly as shown on your last notice of assessment or the last tax return you lodged.",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 50.0,
+          "y0": 294.0,
+          "x1": 369.0,
+          "y1": 330.0
+        }
+      },
+      {
+        "element_id": "daafdd0e-23da-5941-a18f-227a457211ea",
+        "type": "heading",
+        "page_index": 0,
+        "char_span": [
+          1188,
+          1225
+        ],
+        "text": "Postal address on previous tax return",
+        "content": {
+          "kind": "text"
+        },
+        "level": 1,
+        "bbox": {
+          "x0": 50.0,
+          "y0": 376.0,
+          "x1": 325.0,
+          "y1": 388.0
+        }
+      },
+      {
+        "element_id": "e1d6716c-e39f-5f9c-9b30-5b5908ca3a62",
+        "type": "paragraph",
+        "page_index": 0,
+        "char_span": [
+          1226,
+          1356
+        ],
+        "text": "If your address has changed, please print it exactly as shown on your last notice of assessment or the last tax return you lodged.",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 50.0,
+          "y0": 388.0,
+          "x1": 353.0,
+          "y1": 424.0
+        }
+      },
+      {
+        "element_id": "0a8e930c-86d6-5262-b6d4-c4a719378ca2",
+        "type": "heading",
+        "page_index": 0,
+        "char_span": [
+          1357,
+          1369
+        ],
+        "text": "Home address",
+        "content": {
+          "kind": "text"
+        },
+        "level": 1,
+        "bbox": {
+          "x0": 49.0,
+          "y0": 469.0,
+          "x1": 156.0,
+          "y1": 480.0
+        }
+      },
+      {
+        "element_id": "717bf30c-2f1e-58f6-98e1-b6ba83c7f71a",
+        "type": "paragraph",
+        "page_index": 0,
+        "char_span": [
+          1370,
+          1426
+        ],
+        "text": "If the same as current postal address, print 'as above'.",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 49.0,
+          "y0": 481.0,
+          "x1": 304.0,
+          "y1": 504.0
+        }
+      },
+      {
+        "element_id": "7da781b3-8009-5280-a2ea-b1610035351f",
+        "type": "paragraph",
+        "page_index": 0,
+        "char_span": [
+          1427,
+          1515
+        ],
+        "text": "Did you have a spouse\u2014married or de facto\u2014during 1996\u201397? If yes, print their full name.",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 47.0,
+          "y0": 562.0,
+          "x1": 383.0,
+          "y1": 587.0
+        }
+      },
+      {
+        "element_id": "41562f1a-622f-59f4-a3a4-3df6087221c7",
+        "type": "heading",
+        "page_index": 0,
+        "char_span": [
+          1516,
+          1534
+        ],
+        "text": "Your date of birth",
+        "content": {
+          "kind": "text"
+        },
+        "level": 1,
+        "bbox": {
+          "x0": 47.0,
+          "y0": 603.0,
+          "x1": 176.0,
+          "y1": 615.0
+        }
+      },
+      {
+        "element_id": "f0483f9b-db0a-56dd-a2c0-3a9206da68ae",
+        "type": "paragraph",
+        "page_index": 0,
+        "char_span": [
+          1535,
+          1629
+        ],
+        "text": "Electronic Funds Transfer (EFT)\u2014Do you want to use EFT this year? Write Y for yes or N for no.",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 46.0,
+          "y0": 627.0,
+          "x1": 380.0,
+          "y1": 651.0
+        }
+      },
+      {
+        "element_id": "305b4cf2-6b19-5a0e-808b-b824226d4157",
+        "type": "paragraph",
+        "page_index": 0,
+        "char_span": [
+          1630,
+          1798
+        ],
+        "text": "If yes, write at Election: R for refund, D for debit or B for both and complete the account details. If your details are the same as last year, do not print them again.",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 46.0,
+          "y0": 652.0,
+          "x1": 324.0,
+          "y1": 697.0
+        }
+      },
+      {
+        "element_id": "4d8ce24a-6eb5-5ab0-866e-75e0948d2ee2",
+        "type": "figure",
+        "page_index": 0,
+        "char_span": [
+          1799,
+          1799
+        ],
+        "text": "",
+        "content": {
+          "kind": "figure",
+          "alt_text": ""
+        },
+        "bbox": {
+          "x0": 404.0,
+          "y0": 154.0,
+          "x1": 960.0,
+          "y1": 559.0
+        }
+      },
+      {
+        "element_id": "86af75d7-7b42-5ad6-838e-8030370d8d43",
+        "type": "paragraph",
+        "page_index": 0,
+        "char_span": [
+          1800,
+          1822
+        ],
+        "text": "Surname or family name",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 402.0,
+          "y0": 561.0,
+          "x1": 568.0,
+          "y1": 573.0
+        }
+      },
+      {
+        "element_id": "886f81f7-ad59-50c2-9f37-3ae905420bc9",
+        "type": "paragraph",
+        "page_index": 0,
+        "char_span": [
+          1823,
+          1834
+        ],
+        "text": "Given names",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 625.0,
+          "y0": 562.0,
+          "x1": 715.0,
+          "y1": 573.0
+        }
+      },
+      {
+        "element_id": "b62c2821-9d4d-5c0b-87e9-43f6d36c7f75",
+        "type": "figure",
+        "page_index": 0,
+        "char_span": [
+          1835,
+          1835
+        ],
+        "text": "",
+        "content": {
+          "kind": "figure",
+          "alt_text": ""
+        },
+        "bbox": {
+          "x0": 401.0,
+          "y0": 574.0,
+          "x1": 955.0,
+          "y1": 598.0
+        }
+      },
+      {
+        "element_id": "f186fdd1-6ec6-5ede-8bf4-ae7a2a58ba3d",
+        "type": "figure",
+        "page_index": 0,
+        "char_span": [
+          1836,
+          1836
+        ],
+        "text": "",
+        "content": {
+          "kind": "figure",
+          "alt_text": ""
+        },
+        "bbox": {
+          "x0": 401.0,
+          "y0": 601.0,
+          "x1": 548.0,
+          "y1": 626.0
+        }
+      },
+      {
+        "element_id": "341bf424-1496-56f0-b542-c25cc8e4a599",
+        "type": "paragraph",
+        "page_index": 0,
+        "char_span": [
+          1837,
+          1911
+        ],
+        "text": "Final tax return If you know this is your final tax return, print 'FINAL'.",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 563.0,
+          "y0": 604.0,
+          "x1": 839.0,
+          "y1": 625.0
+        }
+      },
+      {
+        "element_id": "4f81ba56-f04f-5a8f-9503-12d9ec60bbe4",
+        "type": "figure",
+        "page_index": 0,
+        "char_span": [
+          1912,
+          1912
+        ],
+        "text": "",
+        "content": {
+          "kind": "figure",
+          "alt_text": ""
+        },
+        "bbox": {
+          "x0": 411.0,
+          "y0": 629.0,
+          "x1": 457.0,
+          "y1": 653.0
+        }
+      },
+      {
+        "element_id": "9fe1ea48-42c5-5cab-9e46-cfd3f0dea547",
+        "type": "paragraph",
+        "page_index": 0,
+        "char_span": [
+          1913,
+          1923
+        ],
+        "text": "BSB number",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 466.0,
+          "y0": 665.0,
+          "x1": 554.0,
+          "y1": 676.0
+        }
+      },
+      {
+        "element_id": "06a88f8c-7427-56a1-b7ff-c5b76af205a1",
+        "type": "paragraph",
+        "page_index": 0,
+        "char_span": [
+          1924,
+          1938
+        ],
+        "text": "Account number",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 675.0,
+          "y0": 666.0,
+          "x1": 789.0,
+          "y1": 676.0
+        }
+      },
+      {
+        "element_id": "58c8422c-2f56-5f93-ad73-11f4a5c236fb",
+        "type": "paragraph",
+        "page_index": 0,
+        "char_span": [
+          1939,
+          1951
+        ],
+        "text": "Account name",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 383.0,
+          "y0": 689.0,
+          "x1": 482.0,
+          "y1": 700.0
+        }
+      },
+      {
+        "element_id": "e5353401-6d53-5f0c-9d1c-3bd58c063455",
+        "type": "heading",
+        "page_index": 0,
+        "char_span": [
+          1952,
+          2015
+        ],
+        "text": "Read and sign the declaration after filling in your tax return.",
+        "content": {
+          "kind": "text"
+        },
+        "level": 1,
+        "bbox": {
+          "x0": 46.0,
+          "y0": 705.0,
+          "x1": 478.0,
+          "y1": 718.0
+        }
+      },
+      {
+        "element_id": "e0c3b813-0b6f-51e8-a718-174b86a2b00f",
+        "type": "paragraph",
+        "page_index": 0,
+        "char_span": [
+          2016,
+          2089
+        ],
+        "text": "I declare that all the information I have given is true and correct, and:",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 46.0,
+          "y0": 719.0,
+          "x1": 485.0,
+          "y1": 731.0
+        }
+      },
+      {
+        "element_id": "f932088c-0c7a-5d68-9f00-483e2a763eb3",
+        "type": "paragraph",
+        "page_index": 0,
+        "char_span": [
+          2090,
+          2223
+        ],
+        "text": "\u2022 I have shown all my income for tax purposes\u2014including net capital gains\u2014from sources in and out of Australia for the year of income",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 46.0,
+          "y0": 732.0,
+          "x1": 715.0,
+          "y1": 754.0
+        }
+      },
+      {
+        "element_id": "a55027df-b25e-559f-935c-383110fb05c1",
+        "type": "paragraph",
+        "page_index": 0,
+        "char_span": [
+          2224,
+          2460
+        ],
+        "text": "- I have the necessary receipts and/or other records\u2014or expect to obtain the necessary written evidence within a reasonable time of lodging this tax return\u2014to support my claims for deductions, rebates and Family Tax Assistance (FTA) and",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 46.0,
+          "y0": 755.0,
+          "x1": 680.0,
+          "y1": 789.0
+        }
+      },
+      {
+        "element_id": "40fa13d6-83a4-566a-b163-f227c36c1cf5",
+        "type": "paragraph",
+        "page_index": 0,
+        "char_span": [
+          2461,
+          2570
+        ],
+        "text": "\u2022 I have obtained the consent of my spouse to quote their TFN where this is given to support a claim for FTA.",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 46.0,
+          "y0": 790.0,
+          "x1": 704.0,
+          "y1": 803.0
+        }
+      },
+      {
+        "element_id": "21893aab-38f1-52f4-ba25-6ac03f245a1e",
+        "type": "list_item",
+        "page_index": 0,
+        "char_span": [
+          2571,
+          2571
+        ],
+        "text": "",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 46.0,
+          "y0": 732.0,
+          "x1": 715.0,
+          "y1": 803.0
+        }
+      },
+      {
+        "element_id": "f104e3d1-aa9f-59cb-9a65-468e19bc2dd6",
+        "type": "paragraph",
+        "page_index": 0,
+        "char_span": [
+          2572,
+          2581
+        ],
+        "text": "Signature",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 45.0,
+          "y0": 811.0,
+          "x1": 117.0,
+          "y1": 824.0
+        }
+      },
+      {
+        "element_id": "0b3d31c1-f125-5162-b9d0-5af0f71dfda9",
+        "type": "figure",
+        "page_index": 0,
+        "char_span": [
+          2582,
+          2582
+        ],
+        "text": "",
+        "content": {
+          "kind": "figure",
+          "alt_text": ""
+        },
+        "bbox": {
+          "x0": 124.0,
+          "y0": 805.0,
+          "x1": 482.0,
+          "y1": 833.0
+        }
+      },
+      {
+        "element_id": "da415035-7e53-590a-9d9e-872164f69bfb",
+        "type": "paragraph",
+        "page_index": 0,
+        "char_span": [
+          2583,
+          2587
+        ],
+        "text": "Date",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 508.0,
+          "y0": 815.0,
+          "x1": 542.0,
+          "y1": 825.0
+        }
+      },
+      {
+        "element_id": "3e93a4ce-5c8d-5176-ba46-0dfb11090952",
+        "type": "figure",
+        "page_index": 0,
+        "char_span": [
+          2588,
+          2588
+        ],
+        "text": "",
+        "content": {
+          "kind": "figure",
+          "alt_text": ""
+        },
+        "bbox": {
+          "x0": 550.0,
+          "y0": 807.0,
+          "x1": 684.0,
+          "y1": 834.0
+        }
+      },
+      {
+        "element_id": "7174b121-0c24-5b15-8af9-2f19a43adb43",
+        "type": "heading",
+        "page_index": 0,
+        "char_span": [
+          2589,
+          2660
+        ],
+        "text": "Tax agent's certificate\u2014refer to The 1997 Tax Agent Form I Instructions",
+        "content": {
+          "kind": "text"
+        },
+        "level": 1,
+        "bbox": {
+          "x0": 45.0,
+          "y0": 834.0,
+          "x1": 597.0,
+          "y1": 849.0
+        }
+      },
+      {
+        "element_id": "7b66aeb7-16b1-55a6-8fb7-7d30d92c9e4b",
+        "type": "paragraph",
+        "page_index": 0,
+        "char_span": [
+          2661,
+          2663
+        ],
+        "text": "1,",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 49.0,
+          "y0": 851.0,
+          "x1": 64.0,
+          "y1": 867.0
+        }
+      },
+      {
+        "element_id": "85cbc886-47c3-54ee-ba1b-3bd8f3a473ac",
+        "type": "paragraph",
+        "page_index": 0,
+        "char_span": [
+          2664,
+          2888
+        ],
+        "text": "having charged a fee directly or indirectly for preparing or assisting in the preparation of this tax return, hereby certify that this tax return has been prepared in accordance with the information supplied by the taxpayer.",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 44.0,
+          "y0": 877.0,
+          "x1": 710.0,
+          "y1": 902.0
+        }
+      },
+      {
+        "element_id": "ddee567f-3fca-5e89-83e1-9f22551323da",
+        "type": "paragraph",
+        "page_index": 0,
+        "char_span": [
+          2889,
+          2906
+        ],
+        "text": "Agent's signature",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 45.0,
+          "y0": 903.0,
+          "x1": 163.0,
+          "y1": 914.0
+        }
+      },
+      {
+        "element_id": "f26e37eb-b00a-537a-a390-2155c8a59e42",
+        "type": "figure",
+        "page_index": 0,
+        "char_span": [
+          2907,
+          2907
+        ],
+        "text": "",
+        "content": {
+          "kind": "figure",
+          "alt_text": ""
+        },
+        "bbox": {
+          "x0": 45.0,
+          "y0": 914.0,
+          "x1": 345.0,
+          "y1": 939.0
+        }
+      },
+      {
+        "element_id": "a8ca1c6b-8606-5440-88e6-2fed7283f8c6",
+        "type": "paragraph",
+        "page_index": 0,
+        "char_span": [
+          2908,
+          2920
+        ],
+        "text": "Contact name",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 45.0,
+          "y0": 939.0,
+          "x1": 140.0,
+          "y1": 948.0
+        }
+      },
+      {
+        "element_id": "e979f166-9017-5d3b-88ed-6826bee44754",
+        "type": "figure",
+        "page_index": 0,
+        "char_span": [
+          2921,
+          2921
+        ],
+        "text": "",
+        "content": {
+          "kind": "figure",
+          "alt_text": ""
+        },
+        "bbox": {
+          "x0": 45.0,
+          "y0": 949.0,
+          "x1": 345.0,
+          "y1": 974.0
+        }
+      },
+      {
+        "element_id": "a3fb4740-16f1-5ca2-9eeb-1baf33906727",
+        "type": "paragraph",
+        "page_index": 0,
+        "char_span": [
+          2922,
+          2926
+        ],
+        "text": "Date",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 396.0,
+          "y0": 904.0,
+          "x1": 429.0,
+          "y1": 914.0
+        }
+      },
+      {
+        "element_id": "586ecf2b-2419-5438-bcd3-4faebdf76b14",
+        "type": "figure",
+        "page_index": 0,
+        "char_span": [
+          2927,
+          2927
+        ],
+        "text": "",
+        "content": {
+          "kind": "figure",
+          "alt_text": ""
+        },
+        "bbox": {
+          "x0": 395.0,
+          "y0": 916.0,
+          "x1": 529.0,
+          "y1": 939.0
+        }
+      },
+      {
+        "element_id": "56295165-413d-5992-b70f-4bc9f51778e9",
+        "type": "paragraph",
+        "page_index": 0,
+        "char_span": [
+          2928,
+          2948
+        ],
+        "text": "Agent's phone number",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 353.0,
+          "y0": 940.0,
+          "x1": 506.0,
+          "y1": 951.0
+        }
+      },
+      {
+        "element_id": "4471c93b-8083-5b10-800b-b85a871163f5",
+        "type": "paragraph",
+        "page_index": 0,
+        "char_span": [
+          2949,
+          2967
+        ],
+        "text": "Client's reference",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 535.0,
+          "y0": 905.0,
+          "x1": 654.0,
+          "y1": 916.0
+        }
+      },
+      {
+        "element_id": "7cb72430-e473-54f1-9bba-7c028730de17",
+        "type": "paragraph",
+        "page_index": 0,
+        "char_span": [
+          2968,
+          2992
+        ],
+        "text": "Agent's reference number",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 535.0,
+          "y0": 941.0,
+          "x1": 711.0,
+          "y1": 952.0
+        }
+      },
+      {
+        "element_id": "bc49206e-dbd1-5b83-8c4f-2b5dbaabd511",
+        "type": "heading",
+        "page_index": 0,
+        "char_span": [
+          2993,
+          3003
+        ],
+        "text": "Important:",
+        "content": {
+          "kind": "text"
+        },
+        "level": 1,
+        "bbox": {
+          "x0": 729.0,
+          "y0": 709.0,
+          "x1": 798.0,
+          "y1": 719.0
+        }
+      },
+      {
+        "element_id": "c9fd3dcd-2bab-575f-a64f-aa9df4a5b1ca",
+        "type": "paragraph",
+        "page_index": 0,
+        "char_span": [
+          3004,
+          3085
+        ],
+        "text": "- The tax law imposes heavy penalties for giving false or misleading information.",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 729.0,
+          "y0": 721.0,
+          "x1": 956.0,
+          "y1": 742.0
+        }
+      },
+      {
+        "element_id": "e120b2ba-d926-5663-b22c-fde851d0e50e",
+        "type": "paragraph",
+        "page_index": 0,
+        "char_span": [
+          3086,
+          3210
+        ],
+        "text": "- If the taxpayer is not a resident of Australia for tax purposes, the words and out of may be deleted from the declaration.",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 729.0,
+          "y0": 743.0,
+          "x1": 937.0,
+          "y1": 783.0
+        }
+      },
+      {
+        "element_id": "b4d797e6-63b0-5e33-b16c-d1048995f52d",
+        "type": "list_item",
+        "page_index": 0,
+        "char_span": [
+          3211,
+          3211
+        ],
+        "text": "",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 729.0,
+          "y0": 721.0,
+          "x1": 956.0,
+          "y1": 783.0
+        }
+      },
+      {
+        "element_id": "5c7dc26c-7fa0-59dd-b53a-02b6606b48d0",
+        "type": "caption",
+        "page_index": 0,
+        "char_span": [
+          3212,
+          3224
+        ],
+        "text": "ATO use only",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 798.0,
+          "y0": 788.0,
+          "x1": 897.0,
+          "y1": 800.0
+        }
+      },
+      {
+        "element_id": "759d8c2d-0654-5046-b881-e5957c6bd1d3",
+        "type": "table",
+        "page_index": 0,
+        "char_span": [
+          3225,
+          3676
+        ],
+        "text": "<table><tr><td>ETP 5%</td><td>B</td></tr><tr><td>ETP1-Code</td><td>C</td></tr><tr><td>ETP1-Lrt</td><td>D</td></tr><tr><td>ETP1-Hrt</td><td>E</td></tr><tr><td>ETP2-Code</td><td>J</td></tr><tr><td>ETP2-Lrt</td><td>Q</td></tr><tr><td>ETP2-Hrt</td><td>R</td></tr><tr><td>Average Code</td><td>H</td></tr><tr><td>Indices</td><td>X</td></tr><tr><td>LLP-Start</td><td>S</td></tr><tr><td>LLP-End</td><td>T</td></tr><tr><td>M/I Indic</td><td>P</td></tr></table>",
+        "content": {
+          "kind": "table",
+          "rows": 1,
+          "cols": 1,
+          "header_rows": 1,
+          "cells": [
+            {
+              "row": 0,
+              "col": 0,
+              "text": "<table><tr><td>ETP 5%</td><td>B</td></tr><tr><td>ETP1-Code</td><td>C</td></tr><tr><td>ETP1-Lrt</td><td>D</td></tr><tr><td>ETP1-Hrt</td><td>E</td></tr><tr><td>ETP2-Code</td><td>J</td></tr><tr><td>ETP2-Lrt</td><td>Q</td></tr><tr><td>ETP2-Hrt</td><td>R</td></tr><tr><td>Average Code</td><td>H</td></tr><tr><td>Indices</td><td>X</td></tr><tr><td>LLP-Start</td><td>S</td></tr><tr><td>LLP-End</td><td>T</td></tr><tr><td>M/I Indic</td><td>P</td></tr></table>",
+              "is_header": true
+            }
+          ]
+        },
+        "bbox": {
+          "x0": 744.0,
+          "y0": 801.0,
+          "x1": 950.0,
+          "y1": 971.0
+        }
+      },
+      {
+        "element_id": "cb16cdae-0722-5bd2-9952-b1d7352bea19",
+        "type": "footer",
+        "page_index": 0,
+        "char_span": [
+          3677,
+          3685
+        ],
+        "text": "NAT 1371",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 43.0,
+          "y0": 974.0,
+          "x1": 96.0,
+          "y1": 984.0
+        }
+      },
+      {
+        "element_id": "59ba014c-206b-5738-97cb-9382a1c67372",
+        "type": "footer",
+        "page_index": 0,
+        "char_span": [
+          3686,
+          3714
+        ],
+        "text": "IN-CONFIDENCE\u2014when completed",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 397.0,
+          "y0": 976.0,
+          "x1": 597.0,
+          "y1": 987.0
+        }
+      },
+      {
+        "element_id": "f1444614-7c66-5894-907b-0eacd748e41d",
+        "type": "page_number",
+        "page_index": 0,
+        "char_span": [
+          3715,
+          3716
+        ],
+        "text": "F",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 952.0,
+          "y0": 960.0,
+          "x1": 965.0,
+          "y1": 972.0
+        }
+      },
+      {
+        "element_id": "b5ea7a9f-7511-5c0b-bd29-88440eb30701",
+        "type": "page_number",
+        "page_index": 1,
+        "char_span": [
+          3717,
+          3723
+        ],
+        "text": "Page 2",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 58.0,
+          "y0": 15.0,
+          "x1": 114.0,
+          "y1": 28.0
+        }
+      },
+      {
+        "element_id": "8824a391-3f88-5247-9f55-2421e5566912",
+        "type": "heading",
+        "page_index": 1,
+        "char_span": [
+          3724,
+          3730
+        ],
+        "text": "Income",
+        "content": {
+          "kind": "text"
+        },
+        "level": 1,
+        "bbox": {
+          "x0": 58.0,
+          "y0": 32.0,
+          "x1": 128.0,
+          "y1": 45.0
+        }
+      },
+      {
+        "element_id": "eb78ca03-708a-5384-9817-acf7a7a17488",
+        "type": "paragraph",
+        "page_index": 1,
+        "char_span": [
+          3731,
+          3833
+        ],
+        "text": "1 Job Search, Newstart, Sickness Allowance or Special Benefit, AUSTUDY or other educational allowances",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 67.0,
+          "y0": 64.0,
+          "x1": 482.0,
+          "y1": 89.0
+        }
+      },
+      {
+        "element_id": "e2ea22fb-3901-52cc-9e48-d959c24ef76c",
+        "type": "paragraph",
+        "page_index": 1,
+        "char_span": [
+          3834,
+          3887
+        ],
+        "text": "2 Australian government pensions and other allowances",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 67.0,
+          "y0": 104.0,
+          "x1": 493.0,
+          "y1": 119.0
+        }
+      },
+      {
+        "element_id": "d9d3e041-3aed-50a6-8767-139eb1012793",
+        "type": "list_item",
+        "page_index": 1,
+        "char_span": [
+          3888,
+          3888
+        ],
+        "text": "",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 67.0,
+          "y0": 64.0,
+          "x1": 493.0,
+          "y1": 119.0
+        }
+      },
+      {
+        "element_id": "f8a0b9d4-e67c-5944-92a7-b8a5c39d8384",
+        "type": "paragraph",
+        "page_index": 1,
+        "char_span": [
+          3889,
+          3922
+        ],
+        "text": "Notional taxable income of spouse",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 114.0,
+          "y0": 128.0,
+          "x1": 349.0,
+          "y1": 143.0
+        }
+      },
+      {
+        "element_id": "e5b6ddaf-ba67-5445-9e6b-19942c2cadbe",
+        "type": "figure",
+        "page_index": 1,
+        "char_span": [
+          3923,
+          3923
+        ],
+        "text": "",
+        "content": {
+          "kind": "figure",
+          "alt_text": ""
+        },
+        "bbox": {
+          "x0": 354.0,
+          "y0": 127.0,
+          "x1": 530.0,
+          "y1": 146.0
+        }
+      },
+      {
+        "element_id": "e0742858-613d-593e-bac4-097515b8a1b3",
+        "type": "caption",
+        "page_index": 1,
+        "char_span": [
+          3924,
+          3948
+        ],
+        "text": "Tax instalments deducted",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 565.0,
+          "y0": 49.0,
+          "x1": 712.0,
+          "y1": 60.0
+        }
+      },
+      {
+        "element_id": "5b80690a-108e-598b-aba0-d75e30ccf7ee",
+        "type": "figure",
+        "page_index": 1,
+        "char_span": [
+          3949,
+          3949
+        ],
+        "text": "",
+        "content": {
+          "kind": "figure",
+          "alt_text": ""
+        },
+        "bbox": {
+          "x0": 564.0,
+          "y0": 61.0,
+          "x1": 712.0,
+          "y1": 90.0
+        }
+      },
+      {
+        "element_id": "bd35b774-fb06-5c29-9bae-aaceab89166d",
+        "type": "figure",
+        "page_index": 1,
+        "char_span": [
+          3950,
+          3950
+        ],
+        "text": "",
+        "content": {
+          "kind": "figure",
+          "alt_text": ""
+        },
+        "bbox": {
+          "x0": 564.0,
+          "y0": 101.0,
+          "x1": 712.0,
+          "y1": 123.0
+        }
+      },
+      {
+        "element_id": "8704d99c-8a6a-534a-ae9d-dc6dc36bbb2e",
+        "type": "figure",
+        "page_index": 1,
+        "char_span": [
+          3951,
+          3951
+        ],
+        "text": "",
+        "content": {
+          "kind": "figure",
+          "alt_text": ""
+        },
+        "bbox": {
+          "x0": 749.0,
+          "y0": 68.0,
+          "x1": 927.0,
+          "y1": 89.0
+        }
+      },
+      {
+        "element_id": "7794fce4-553f-5cfb-aa1b-b3ff718ba46d",
+        "type": "figure",
+        "page_index": 1,
+        "char_span": [
+          3952,
+          3952
+        ],
+        "text": "",
+        "content": {
+          "kind": "figure",
+          "alt_text": ""
+        },
+        "bbox": {
+          "x0": 749.0,
+          "y0": 101.0,
+          "x1": 967.0,
+          "y1": 132.0
+        }
+      },
+      {
+        "element_id": "47dab47e-f99b-5cb3-9bf1-0176ee8ffd5b",
+        "type": "paragraph",
+        "page_index": 1,
+        "char_span": [
+          3953,
+          4025
+        ],
+        "text": "3 Gross salary and wages shown on group certificates or tax stamp sheets",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 67.0,
+          "y0": 149.0,
+          "x1": 625.0,
+          "y1": 164.0
+        }
+      },
+      {
+        "element_id": "f4c0c425-a9a6-5d0f-a611-612eda3e6b5d",
+        "type": "paragraph",
+        "page_index": 1,
+        "char_span": [
+          4026,
+          4057
+        ],
+        "text": "Main salary and wage occupation",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 97.0,
+          "y0": 166.0,
+          "x1": 326.0,
+          "y1": 179.0
+        }
+      },
+      {
+        "element_id": "bf7dd61e-3b75-556b-a3e1-95cacb7043dd",
+        "type": "figure",
+        "page_index": 1,
+        "char_span": [
+          4058,
+          4058
+        ],
+        "text": "",
+        "content": {
+          "kind": "figure",
+          "alt_text": ""
+        },
+        "bbox": {
+          "x0": 96.0,
+          "y0": 179.0,
+          "x1": 554.0,
+          "y1": 223.0
+        }
+      },
+      {
+        "element_id": "b28492d7-aad4-5fd1-8304-bc9c546d37f6",
+        "type": "paragraph",
+        "page_index": 1,
+        "char_span": [
+          4059,
+          4124
+        ],
+        "text": "Name of employer from each group certificate and tax stamp sheets",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 96.0,
+          "y0": 230.0,
+          "x1": 533.0,
+          "y1": 244.0
+        }
+      },
+      {
+        "element_id": "4a133146-3df0-53e5-85aa-80bee23bd66e",
+        "type": "figure",
+        "page_index": 1,
+        "char_span": [
+          4125,
+          4125
+        ],
+        "text": "",
+        "content": {
+          "kind": "figure",
+          "alt_text": ""
+        },
+        "bbox": {
+          "x0": 96.0,
+          "y0": 244.0,
+          "x1": 530.0,
+          "y1": 348.0
+        }
+      },
+      {
+        "element_id": "501098ff-786c-5bf8-a4ac-fca03d9fae92",
+        "type": "paragraph",
+        "page_index": 1,
+        "char_span": [
+          4126,
+          4145
+        ],
+        "text": "4 Lump sum payments",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 68.0,
+          "y0": 356.0,
+          "x1": 250.0,
+          "y1": 371.0
+        }
+      },
+      {
+        "element_id": "d7a418e4-cf73-52a8-90af-b544facaf7e9",
+        "type": "paragraph",
+        "page_index": 1,
+        "char_span": [
+          4146,
+          4179
+        ],
+        "text": "Amount A in lump sum payments box",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 311.0,
+          "y0": 356.0,
+          "x1": 558.0,
+          "y1": 370.0
+        }
+      },
+      {
+        "element_id": "2b0c93a3-e76e-556c-82dd-bdf800ef70e3",
+        "type": "paragraph",
+        "page_index": 1,
+        "char_span": [
+          4180,
+          4219
+        ],
+        "text": "5% of amount B in lump sum payments box",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 269.0,
+          "y0": 377.0,
+          "x1": 558.0,
+          "y1": 391.0
+        }
+      },
+      {
+        "element_id": "a50b1461-41ac-5404-b5fb-df7c6174e23d",
+        "type": "paragraph",
+        "page_index": 1,
+        "char_span": [
+          4220,
+          4251
+        ],
+        "text": "5 Eligible termination payments",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 68.0,
+          "y0": 403.0,
+          "x1": 314.0,
+          "y1": 419.0
+        }
+      },
+      {
+        "element_id": "39af9405-ea43-57da-9092-82686626f625",
+        "type": "paragraph",
+        "page_index": 1,
+        "char_span": [
+          4252,
+          4297
+        ],
+        "text": "Taxable amount other than excessive component",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 381.0,
+          "y0": 400.0,
+          "x1": 558.0,
+          "y1": 424.0
+        }
+      },
+      {
+        "element_id": "f909bfff-3d80-5ac0-b2c3-c35183406d87",
+        "type": "figure",
+        "page_index": 1,
+        "char_span": [
+          4298,
+          4298
+        ],
+        "text": "",
+        "content": {
+          "kind": "figure",
+          "alt_text": ""
+        },
+        "bbox": {
+          "x0": 563.0,
+          "y0": 244.0,
+          "x1": 712.0,
+          "y1": 349.0
+        }
+      },
+      {
+        "element_id": "9e9e499f-1117-5075-b068-e2a4bdbc9f1b",
+        "type": "figure",
+        "page_index": 1,
+        "char_span": [
+          4299,
+          4299
+        ],
+        "text": "",
+        "content": {
+          "kind": "figure",
+          "alt_text": ""
+        },
+        "bbox": {
+          "x0": 564.0,
+          "y0": 354.0,
+          "x1": 712.0,
+          "y1": 396.0
+        }
+      },
+      {
+        "element_id": "218d62da-8bd1-53e3-8d20-d48aea9112d8",
+        "type": "figure",
+        "page_index": 1,
+        "char_span": [
+          4300,
+          4300
+        ],
+        "text": "",
+        "content": {
+          "kind": "figure",
+          "alt_text": ""
+        },
+        "bbox": {
+          "x0": 564.0,
+          "y0": 401.0,
+          "x1": 712.0,
+          "y1": 423.0
+        }
+      },
+      {
+        "element_id": "286f517a-df7f-5841-a6d6-2e37f6c0bf37",
+        "type": "paragraph",
+        "page_index": 1,
+        "char_span": [
+          4301,
+          4320
+        ],
+        "text": "Excessive component",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 596.0,
+          "y0": 426.0,
+          "x1": 743.0,
+          "y1": 440.0
+        }
+      },
+      {
+        "element_id": "a9afbff2-38aa-5f5b-aca4-98fe0396e774",
+        "type": "figure",
+        "page_index": 1,
+        "char_span": [
+          4321,
+          4321
+        ],
+        "text": "",
+        "content": {
+          "kind": "figure",
+          "alt_text": ""
+        },
+        "bbox": {
+          "x0": 749.0,
+          "y0": 244.0,
+          "x1": 927.0,
+          "y1": 349.0
+        }
+      },
+      {
+        "element_id": "3239d589-2601-5d5a-bab2-24d40be79bd2",
+        "type": "figure",
+        "page_index": 1,
+        "char_span": [
+          4322,
+          4322
+        ],
+        "text": "",
+        "content": {
+          "kind": "figure",
+          "alt_text": ""
+        },
+        "bbox": {
+          "x0": 749.0,
+          "y0": 354.0,
+          "x1": 926.0,
+          "y1": 396.0
+        }
+      },
+      {
+        "element_id": "6cff1b8f-915f-5cf8-be62-7e1737c8c21c",
+        "type": "figure",
+        "page_index": 1,
+        "char_span": [
+          4323,
+          4323
+        ],
+        "text": "",
+        "content": {
+          "kind": "figure",
+          "alt_text": ""
+        },
+        "bbox": {
+          "x0": 749.0,
+          "y0": 401.0,
+          "x1": 926.0,
+          "y1": 444.0
+        }
+      },
+      {
+        "element_id": "eeb93f49-42f0-5fc2-bf17-7ef1c44daf18",
+        "type": "paragraph",
+        "page_index": 1,
+        "char_span": [
+          4324,
+          4364
+        ],
+        "text": "6 Other Australian pensions or annuities",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 67.0,
+          "y0": 445.0,
+          "x1": 377.0,
+          "y1": 459.0
+        }
+      },
+      {
+        "element_id": "99174d20-abaa-5026-b2b7-e800cec1a69d",
+        "type": "paragraph",
+        "page_index": 1,
+        "char_span": [
+          4365,
+          4369
+        ],
+        "text": "Type",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 119.0,
+          "y0": 464.0,
+          "x1": 532.0,
+          "y1": 483.0
+        }
+      },
+      {
+        "element_id": "d6b37f4e-8363-500b-b9cc-d3d15d47c856",
+        "type": "paragraph",
+        "page_index": 1,
+        "char_span": [
+          4370,
+          4431
+        ],
+        "text": "7 Allowances, benefits, earnings, tips, director's fees, etc.",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 67.0,
+          "y0": 489.0,
+          "x1": 503.0,
+          "y1": 504.0
+        }
+      },
+      {
+        "element_id": "8dc1fdaa-cde9-5145-b635-36f2a42edb06",
+        "type": "paragraph",
+        "page_index": 1,
+        "char_span": [
+          4432,
+          4467
+        ],
+        "text": "8 Total of tax instalments deducted",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 67.0,
+          "y0": 522.0,
+          "x1": 338.0,
+          "y1": 537.0
+        }
+      },
+      {
+        "element_id": "40494f32-32f2-5c18-9ce9-278ec20c16d5",
+        "type": "paragraph",
+        "page_index": 1,
+        "char_span": [
+          4468,
+          4484
+        ],
+        "text": "Add up the boxes",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 373.0,
+          "y0": 523.0,
+          "x1": 528.0,
+          "y1": 539.0
+        }
+      },
+      {
+        "element_id": "aac1b8fe-1ccb-5f52-843b-54bd29fcb5b5",
+        "type": "figure",
+        "page_index": 1,
+        "char_span": [
+          4485,
+          4485
+        ],
+        "text": "",
+        "content": {
+          "kind": "figure",
+          "alt_text": ""
+        },
+        "bbox": {
+          "x0": 563.0,
+          "y0": 462.0,
+          "x1": 712.0,
+          "y1": 510.0
+        }
+      },
+      {
+        "element_id": "973c5e6c-95cc-517d-8196-b8c35affb459",
+        "type": "figure",
+        "page_index": 1,
+        "char_span": [
+          4486,
+          4486
+        ],
+        "text": "",
+        "content": {
+          "kind": "figure",
+          "alt_text": ""
+        },
+        "bbox": {
+          "x0": 564.0,
+          "y0": 519.0,
+          "x1": 712.0,
+          "y1": 541.0
+        }
+      },
+      {
+        "element_id": "f36385df-09f2-59d3-86b5-9da56294ea89",
+        "type": "figure",
+        "page_index": 1,
+        "char_span": [
+          4487,
+          4487
+        ],
+        "text": "",
+        "content": {
+          "kind": "figure",
+          "alt_text": ""
+        },
+        "bbox": {
+          "x0": 749.0,
+          "y0": 462.0,
+          "x1": 926.0,
+          "y1": 510.0
+        }
+      },
+      {
+        "element_id": "5260caa8-9637-5905-adf1-0160a454b2f0",
+        "type": "figure",
+        "page_index": 1,
+        "char_span": [
+          4488,
+          4488
+        ],
+        "text": "",
+        "content": {
+          "kind": "figure",
+          "alt_text": ""
+        },
+        "bbox": {
+          "x0": 749.0,
+          "y0": 549.0,
+          "x1": 926.0,
+          "y1": 571.0
+        }
+      },
+      {
+        "element_id": "f57c4fe8-2531-528a-9277-8b02b67f95d3",
+        "type": "paragraph",
+        "page_index": 1,
+        "char_span": [
+          4489,
+          4505
+        ],
+        "text": "9 Gross interest",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 67.0,
+          "y0": 551.0,
+          "x1": 202.0,
+          "y1": 565.0
+        }
+      },
+      {
+        "element_id": "f54dd163-fbbe-5183-8e22-cef38330120c",
+        "type": "paragraph",
+        "page_index": 1,
+        "char_span": [
+          4506,
+          4564
+        ],
+        "text": "Tax File Number (TFN) amounts deducted from gross interest",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 311.0,
+          "y0": 571.0,
+          "x1": 526.0,
+          "y1": 596.0
+        }
+      },
+      {
+        "element_id": "ec4e8242-1179-5a5a-8ae5-5531bd05c325",
+        "type": "figure",
+        "page_index": 1,
+        "char_span": [
+          4565,
+          4565
+        ],
+        "text": "",
+        "content": {
+          "kind": "figure",
+          "alt_text": ""
+        },
+        "bbox": {
+          "x0": 531.0,
+          "y0": 574.0,
+          "x1": 709.0,
+          "y1": 595.0
+        }
+      },
+      {
+        "element_id": "135fd159-fea7-5064-8b60-6fb7ba580d18",
+        "type": "paragraph",
+        "page_index": 1,
+        "char_span": [
+          4566,
+          4592
+        ],
+        "text": "10 Partnerships and trusts",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 59.0,
+          "y0": 598.0,
+          "x1": 269.0,
+          "y1": 612.0
+        }
+      },
+      {
+        "element_id": "2fc1336e-87ac-5314-b469-7958ab0419b0",
+        "type": "paragraph",
+        "page_index": 1,
+        "char_span": [
+          4593,
+          4611
+        ],
+        "text": "Primary production",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 95.0,
+          "y0": 615.0,
+          "x1": 227.0,
+          "y1": 629.0
+        }
+      },
+      {
+        "element_id": "aeb8c9ff-6d3f-5c39-8262-f81c30e2d5f4",
+        "type": "paragraph",
+        "page_index": 1,
+        "char_span": [
+          4612,
+          4642
+        ],
+        "text": "Distribution from partnerships",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 332.0,
+          "y0": 628.0,
+          "x1": 528.0,
+          "y1": 643.0
+        }
+      },
+      {
+        "element_id": "e1137905-bc7f-5b84-bdbd-461d30da0c66",
+        "type": "paragraph",
+        "page_index": 1,
+        "char_span": [
+          4643,
+          4667
+        ],
+        "text": "Distribution from trusts",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 378.0,
+          "y0": 648.0,
+          "x1": 528.0,
+          "y1": 662.0
+        }
+      },
+      {
+        "element_id": "3ff4846a-55de-5fe2-8972-bf5454902179",
+        "type": "paragraph",
+        "page_index": 1,
+        "char_span": [
+          4668,
+          4702
+        ],
+        "text": "Deduction relating to distribution",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 317.0,
+          "y0": 670.0,
+          "x1": 528.0,
+          "y1": 685.0
+        }
+      },
+      {
+        "element_id": "7ba4bdaf-8db5-51ef-a365-022f553b7756",
+        "type": "figure",
+        "page_index": 1,
+        "char_span": [
+          4703,
+          4703
+        ],
+        "text": "",
+        "content": {
+          "kind": "figure",
+          "alt_text": ""
+        },
+        "bbox": {
+          "x0": 532.0,
+          "y0": 624.0,
+          "x1": 751.0,
+          "y1": 687.0
+        }
+      },
+      {
+        "element_id": "64785b64-b7df-5f3a-9e46-ec3286707bef",
+        "type": "paragraph",
+        "page_index": 1,
+        "char_span": [
+          4704,
+          4739
+        ],
+        "text": "Net primary production distribution",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 548.0,
+          "y0": 693.0,
+          "x1": 776.0,
+          "y1": 707.0
+        }
+      },
+      {
+        "element_id": "6e1a209e-e6cc-51cd-b0bc-5834844b85f3",
+        "type": "figure",
+        "page_index": 1,
+        "char_span": [
+          4740,
+          4740
+        ],
+        "text": "",
+        "content": {
+          "kind": "figure",
+          "alt_text": ""
+        },
+        "bbox": {
+          "x0": 779.0,
+          "y0": 689.0,
+          "x1": 967.0,
+          "y1": 711.0
+        }
+      },
+      {
+        "element_id": "962d37a7-6df9-52bb-8779-ff33de553a90",
+        "type": "paragraph",
+        "page_index": 1,
+        "char_span": [
+          4741,
+          4763
+        ],
+        "text": "Non-primary production",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 96.0,
+          "y0": 712.0,
+          "x1": 260.0,
+          "y1": 726.0
+        }
+      },
+      {
+        "element_id": "a6abbb04-d8c7-53f7-b434-f9759d815ff5",
+        "type": "paragraph",
+        "page_index": 1,
+        "char_span": [
+          4764,
+          4794
+        ],
+        "text": "Distribution from partnerships",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 332.0,
+          "y0": 726.0,
+          "x1": 527.0,
+          "y1": 741.0
+        }
+      },
+      {
+        "element_id": "03d280b5-e579-5e8a-9d88-c31f6b8ca63a",
+        "type": "paragraph",
+        "page_index": 1,
+        "char_span": [
+          4795,
+          4819
+        ],
+        "text": "Distribution from trusts",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 378.0,
+          "y0": 747.0,
+          "x1": 528.0,
+          "y1": 761.0
+        }
+      },
+      {
+        "element_id": "996df181-ed4c-56bd-9c88-8beb635f0216",
+        "type": "paragraph",
+        "page_index": 1,
+        "char_span": [
+          4820,
+          4854
+        ],
+        "text": "Deduction relating to distribution",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 316.0,
+          "y0": 767.0,
+          "x1": 528.0,
+          "y1": 781.0
+        }
+      },
+      {
+        "element_id": "b9dcdc7e-809d-59e9-8160-947c49661fb8",
+        "type": "figure",
+        "page_index": 1,
+        "char_span": [
+          4855,
+          4855
+        ],
+        "text": "",
+        "content": {
+          "kind": "figure",
+          "alt_text": ""
+        },
+        "bbox": {
+          "x0": 532.0,
+          "y0": 722.0,
+          "x1": 751.0,
+          "y1": 785.0
+        }
+      },
+      {
+        "element_id": "96aadf8a-ce3a-53cc-ad11-b5be65369bc2",
+        "type": "paragraph",
+        "page_index": 1,
+        "char_span": [
+          4856,
+          4895
+        ],
+        "text": "Net non-primary production distribution",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 519.0,
+          "y0": 789.0,
+          "x1": 776.0,
+          "y1": 805.0
+        }
+      },
+      {
+        "element_id": "9a43c236-e966-5e9d-9e59-782c11d6c872",
+        "type": "figure",
+        "page_index": 1,
+        "char_span": [
+          4896,
+          4896
+        ],
+        "text": "",
+        "content": {
+          "kind": "figure",
+          "alt_text": ""
+        },
+        "bbox": {
+          "x0": 779.0,
+          "y0": 787.0,
+          "x1": 967.0,
+          "y1": 809.0
+        }
+      },
+      {
+        "element_id": "9173b73e-10b1-5083-97e5-88d153493ed9",
+        "type": "paragraph",
+        "page_index": 1,
+        "char_span": [
+          4897,
+          4925
+        ],
+        "text": "Share of credits from income",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 95.0,
+          "y0": 809.0,
+          "x1": 294.0,
+          "y1": 822.0
+        }
+      },
+      {
+        "element_id": "2f221500-b2c1-5c14-a1ca-32c9c6432bab",
+        "type": "paragraph",
+        "page_index": 1,
+        "char_span": [
+          4926,
+          4968
+        ],
+        "text": "Share of prescribed payments system credit",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 236.0,
+          "y0": 825.0,
+          "x1": 527.0,
+          "y1": 840.0
+        }
+      },
+      {
+        "element_id": "00cea45f-c997-5612-9f61-1b30af58a420",
+        "type": "paragraph",
+        "page_index": 1,
+        "char_span": [
+          4969,
+          5011
+        ],
+        "text": "Share of reportable payments system credit",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 239.0,
+          "y0": 846.0,
+          "x1": 527.0,
+          "y1": 860.0
+        }
+      },
+      {
+        "element_id": "bc7a9bb4-ed9a-5120-98cd-9f513bd1eafa",
+        "type": "paragraph",
+        "page_index": 1,
+        "char_span": [
+          5012,
+          5061
+        ],
+        "text": "Share of imputation credit from franked dividends",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 357.0,
+          "y0": 864.0,
+          "x1": 527.0,
+          "y1": 886.0
+        }
+      },
+      {
+        "element_id": "067b2401-6233-5f32-a2cd-91ebe51d425b",
+        "type": "paragraph",
+        "page_index": 1,
+        "char_span": [
+          5062,
+          5130
+        ],
+        "text": "Share of credit for TFN amounts deducted from interest and dividends",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 283.0,
+          "y0": 887.0,
+          "x1": 527.0,
+          "y1": 910.0
+        }
+      },
+      {
+        "element_id": "539f3e52-2088-5cf8-a93d-4c930c7399b1",
+        "type": "paragraph",
+        "page_index": 1,
+        "char_span": [
+          5131,
+          5170
+        ],
+        "text": "Share of credit for tax paid by trustee",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 284.0,
+          "y0": 915.0,
+          "x1": 527.0,
+          "y1": 929.0
+        }
+      },
+      {
+        "element_id": "8d80d87c-d101-57ef-a651-8ba0899c3e56",
+        "type": "paragraph",
+        "page_index": 1,
+        "char_span": [
+          5171,
+          5222
+        ],
+        "text": "Share of credit for provisional tax paid by trustee",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 334.0,
+          "y0": 933.0,
+          "x1": 527.0,
+          "y1": 956.0
+        }
+      },
+      {
+        "element_id": "db806aff-b2c0-5e07-81a9-b239c20afa42",
+        "type": "paragraph",
+        "page_index": 1,
+        "char_span": [
+          5223,
+          5251
+        ],
+        "text": "Voluntary instalments of tax",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 343.0,
+          "y0": 962.0,
+          "x1": 527.0,
+          "y1": 976.0
+        }
+      },
+      {
+        "element_id": "7938a3ea-9f5b-572a-b2fe-e0c1277ec971",
+        "type": "figure",
+        "page_index": 1,
+        "char_span": [
+          5252,
+          5252
+        ],
+        "text": "",
+        "content": {
+          "kind": "figure",
+          "alt_text": ""
+        },
+        "bbox": {
+          "x0": 532.0,
+          "y0": 822.0,
+          "x1": 710.0,
+          "y1": 979.0
+        }
+      },
+      {
+        "element_id": "c1fe9aa5-3ce5-596a-b971-6dc1b0970274",
+        "type": "page_number",
+        "page_index": 1,
+        "char_span": [
+          5253,
+          5254
+        ],
+        "text": "F",
+        "content": {
+          "kind": "text"
+        },
+        "bbox": {
+          "x0": 962.0,
+          "y0": 579.0,
+          "x1": 977.0,
+          "y1": 592.0
+        }
+      }
+    ],
+    "warnings": []
+  }

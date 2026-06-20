@@ -4,30 +4,30 @@
 
 omnidocbench:
   version: "0.1.0"
-  sha256: abc123def456  # Placeholder, will be updated on download
+  sha256: manual
   repo_id: opendatalab/OmniDocBench
 
 omnidocbench_nano:
   version: "0.1.0"
-  sha256: placeholder_nano_hash
+  sha256: manual
   repo_id: opendatalab/OmniDocBench
   slice: nano
 
 omnidocbench_mini:
   version: "0.1.0"
-  sha256: placeholder_mini_hash
+  sha256: manual
   repo_id: opendatalab/OmniDocBench
   slice: mini
 
 omnidocbench_medium:
   version: "0.1.0"
-  sha256: placeholder_medium_hash
+  sha256: manual
   repo_id: opendatalab/OmniDocBench
   slice: medium
 
 dp_bench:
   version: "0.1.0"
-  sha256: fed654cba321  # Placeholder, will be updated on download
+  sha256: manual
   repo_id: upstage/dp-bench
 
 legalbench_rag:

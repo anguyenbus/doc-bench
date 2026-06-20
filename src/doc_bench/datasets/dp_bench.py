@@ -12,11 +12,53 @@ from pathlib import Path
 from doc_bench.identity import doc_id_for
 
 
-def load_dp_bench(root: Path) -> Iterator[tuple[str, Path, dict]]:
+def _load_dp_bench_bundled(fixtures_root: Path) -> Iterator[tuple[str, Path, dict]]:
+    """
+    Load the bundled DP-Bench fixture subset from the package fixtures directory.
+
+    Reads manifest.json["dp_bench"] entries and yields each document's gold data
+    directly from the per-doc JSON files, no reference.json required.
+
+    Args:
+        fixtures_root: Path to the doc_bench fixtures directory.
+
+    Yields:
+        tuple: (doc_id, pdf_path, gold_elements)
+
+    Raises:
+        FileNotFoundError: If manifest.json is missing under fixtures_root.
+
+    """
+    import json as _json
+
+    manifest_path = fixtures_root / "manifest.json"
+    if not manifest_path.exists():
+        raise FileNotFoundError(f"manifest.json not found at {manifest_path}")
+
+    with open(manifest_path) as f:
+        manifest = _json.load(f)
+
+    for entry in manifest.get("dp_bench", []):
+        doc_id = entry["doc_id"]
+        gold_path = fixtures_root / entry["gold"]
+        pdf_path = fixtures_root / entry["pdf"]
+
+        if not gold_path.exists():
+            continue
+
+        with open(gold_path) as f:
+            gold_elements = _json.load(f)
+
+        yield doc_id, pdf_path, gold_elements
+
+
+def load_dp_bench(root: Path | None = None) -> Iterator[tuple[str, Path, dict]]:
     """
     Load DP-Bench dataset and yield (doc_id, pdf_path, gold_elements) tuples.
 
-    Supports two layouts:
+    When root is None, loads the bundled 5-doc fixture subset from the package.
+
+    Supports two external layouts:
     1. Flat layout (baseline/):
        root/
          reference.json
@@ -33,7 +75,8 @@ def load_dp_bench(root: Path) -> Iterator[tuple[str, Path, dict]]:
              ...
 
     Args:
-        root: Path to DP-Bench root or dataset directory.
+        root: Path to DP-Bench root or dataset directory. Pass None to use
+            the bundled fixture subset (no external data required).
 
     Yields:
         tuple: (doc_id, pdf_path, gold_elements) where:
@@ -45,6 +88,13 @@ def load_dp_bench(root: Path) -> Iterator[tuple[str, Path, dict]]:
         FileNotFoundError: If required files/directories don't exist.
 
     """
+    if root is None:
+        import doc_bench
+
+        fixtures_root = Path(doc_bench.__file__).parent / "fixtures"
+        yield from _load_dp_bench_bundled(fixtures_root)
+        return
+
     # Try flat layout first (baseline/)
     reference_path = root / "reference.json"
     pdfs_dir = root / "pdfs"
@@ -130,14 +180,14 @@ def _html_table_to_markdown(html: str) -> str:
     # Parse rows by splitting on <tr> tags
     i = 0
     while i < len(html):
-        if html[i:i+4].lower() == "<tr>":
+        if html[i : i + 4].lower() == "<tr>":
             i += 4
-        elif html[i:i+5].lower() == "</tr>":
+        elif html[i : i + 5].lower() == "</tr>":
             if current_row:
                 rows.append(current_row)
                 current_row = []
             i += 5
-        elif html[i:i+4].lower() == "<td>":
+        elif html[i : i + 4].lower() == "<td>":
             i += 4
             # Find cell content until </td>
             end_idx = html.find("</td>", i)

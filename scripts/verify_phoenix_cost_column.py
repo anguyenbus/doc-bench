@@ -56,16 +56,14 @@ def _create_tiny_dataset(client: Any) -> Any:
 
 def _create_simple_task() -> callable:
     """Create a simple task that returns static output."""
+
     def simple_task(example: Any) -> dict[str, Any]:
-        question = (
-            example.get("input", "")
-            if isinstance(example, dict)
-            else str(example)
-        )
+        question = example.get("input", "") if isinstance(example, dict) else str(example)
         return {
             "answer": f"Answer to: {question}",
             "retrieval_context": ["Context 1", "Context 2"],
         }
+
     return simple_task
 
 
@@ -76,7 +74,7 @@ def _create_simple_evaluators() -> list:
 
         @create_evaluator(name="dummy_evaluator")
         def dummy_evaluator(input: Any, output: Any, expected: Any = None) -> dict:
-            """Dummy evaluator that returns a static score."""
+            """Return a static dummy evaluation score."""
             return {
                 "score": 0.85,
                 "label": "pass",
@@ -142,6 +140,7 @@ def verify_cost_column() -> None:
             # Try to get from dict representation
             if isinstance(experiment, dict):
                 import pandas as pd
+
                 task_runs = experiment.get("task_runs", [])
                 if task_runs:
                     rows = []
@@ -200,12 +199,14 @@ def verify_cost_column() -> None:
     except Exception as err:
         print(f"[ERROR] Failed to get dataframe: {err}")
         import traceback
+
         traceback.print_exc()
         return
 
     # Get Phoenix version
     try:
         import arize_phoenix
+
         phoenix_version = arize_phoenix.__version__
         print(f"\n[INFO] Phoenix version: {phoenix_version}")
         print("\n" + "=" * 60)
@@ -215,7 +216,7 @@ def verify_cost_column() -> None:
         print(f"# Verified against arize-phoenix=={phoenix_version} on [CURRENT_DATE]")
         print("# Re-run scripts/verify_phoenix_cost_column.py if upgrading Phoenix.")
         if found_cost_col:
-            print(f"APP_COST_COLUMN: Final[str] = \"{found_cost_col}\"")
+            print(f'APP_COST_COLUMN: Final[str] = "{found_cost_col}"')
         else:
             print("[WARN] Could not determine cost column name automatically")
             print("Review the columns list above and set APP_COST_COLUMN manually")

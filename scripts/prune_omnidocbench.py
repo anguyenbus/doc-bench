@@ -8,6 +8,7 @@ import sys
 
 
 def main():
+    """Prune OmniDocBench to a representative per-type page sample."""
     # Sample 2 pages from each document type for representative baseline
     samples_per_type = 2
     # Must match RELEVANT_DOC_TYPES in download_datasets.py
@@ -87,6 +88,7 @@ def main():
 
     print(f"\nKept {copied_count} OmniDocBench images across {len(target_types)} document types")
     print(f"Filtered OmniDocBench.json: {len(selected_pages)} pages")
+
 
 if __name__ == "__main__":
     main()

@@ -115,9 +115,7 @@ def get_manifest(manifest_path: Path) -> dict | None:
         return yaml.safe_load(f)
 
 
-def update_manifest(
-    manifest_path: Path, dataset_name: str, version: str, sha256: str
-) -> None:
+def update_manifest(manifest_path: Path, dataset_name: str, version: str, sha256: str) -> None:
     """
     Update manifest with dataset info.
 
@@ -172,9 +170,7 @@ def _filter_omnidocbench_pages(pages: list, images_dir: Path) -> Iterator[dict]:
             },
             "extra": page.get("extra", {}),
             "_eval_tags": {
-                "is_clean": not (
-                    attrs.get("fuzzy_scan", False) or attrs.get("watermark", False)
-                ),
+                "is_clean": not (attrs.get("fuzzy_scan", False) or attrs.get("watermark", False)),
                 "has_watermark": attrs.get("watermark", False),
                 "has_fuzzy_scan": attrs.get("fuzzy_scan", False),
                 "has_colorful_bg": attrs.get("colorful_backgroud", False),
@@ -184,7 +180,9 @@ def _filter_omnidocbench_pages(pages: list, images_dir: Path) -> Iterator[dict]:
         yield page_clean
 
 
-def download_omnidocbench(output_dir: Path, manifest_path: Path, slice_name: str | None = None) -> None:
+def download_omnidocbench(
+    output_dir: Path, manifest_path: Path, slice_name: str | None = None
+) -> None:
     """
     Download OmniDocBench dataset from HuggingFace and filter to English-only.
 
@@ -256,9 +254,7 @@ def download_omnidocbench(output_dir: Path, manifest_path: Path, slice_name: str
     # Update manifest
     sha256 = compute_sha256(output_json)
     manifest_key = f"omnidocbench_{slice_name}" if slice_name else "omnidocbench"
-    update_manifest(
-        manifest_path, manifest_key, DATASETS["omnidocbench"]["version"], sha256
-    )
+    update_manifest(manifest_path, manifest_key, DATASETS["omnidocbench"]["version"], sha256)
 
     # Cleanup
     shutil.rmtree(temp_dir)
@@ -348,13 +344,12 @@ def download_dp_bench(output_dir: Path, manifest_path: Path) -> None:
         shutil.rmtree(final_dir)
     shutil.move(str(temp_dir), str(final_dir))
 
-    update_manifest(
-        manifest_path, "dp_bench", DATASETS["dp_bench"]["version"], "verified"
-    )
+    update_manifest(manifest_path, "dp_bench", DATASETS["dp_bench"]["version"], "verified")
     print(f"DP-Bench downloaded to: {final_dir}")
 
 
 def main():
+    """Parse CLI arguments and download the selected benchmark datasets."""
     parser = argparse.ArgumentParser(description="Download public benchmark datasets")
     parser.add_argument(
         "--datasets",

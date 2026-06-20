@@ -1,8 +1,8 @@
 """
 Tests for module deletion validation.
 
-Verifies that deleted RAG/observability modules are no longer importable
-and that kept parsing modules still work correctly.
+Verifies that deleted RAG/observability modules and deleted parsing metrics
+are no longer importable, and that kept parsing modules still work correctly.
 """
 
 import pytest
@@ -39,9 +39,76 @@ def test_deleted_experiments_module_not_importable() -> None:
 
 
 def test_deleted_cli_module_not_importable() -> None:
-    """Test that deleted CLI module cannot be imported."""
-    with pytest.raises(ImportError, match="No module named.*cli"):
+    """Test that deleted CLI 'check' submodule cannot be imported."""
+    with pytest.raises(ImportError):
         from doc_bench.cli import check  # noqa: F401
+
+
+# ---------------------------------------------------------------------------
+# Deleted parsing metric modules — must now raise ModuleNotFoundError.
+# ---------------------------------------------------------------------------
+
+
+def test_deleted_nid_module_not_importable() -> None:
+    """nid.py was deleted; importing it must raise ModuleNotFoundError."""
+    with pytest.raises(ModuleNotFoundError):
+        import doc_bench.metrics.parsing.nid  # noqa: F401
+
+
+def test_deleted_mhs_module_not_importable() -> None:
+    """mhs.py was deleted; importing it must raise ModuleNotFoundError."""
+    with pytest.raises(ModuleNotFoundError):
+        import doc_bench.metrics.parsing.mhs  # noqa: F401
+
+
+def test_deleted_text_similarity_module_not_importable() -> None:
+    """text_similarity.py was deleted; importing it must raise ModuleNotFoundError."""
+    with pytest.raises(ModuleNotFoundError):
+        import doc_bench.metrics.parsing.text_similarity  # noqa: F401
+
+
+def test_deleted_text_fidelity_module_not_importable() -> None:
+    """text_fidelity.py was deleted; importing it must raise ModuleNotFoundError."""
+    with pytest.raises(ModuleNotFoundError):
+        import doc_bench.metrics.parsing.text_fidelity  # noqa: F401
+
+
+def test_deleted_reading_order_module_not_importable() -> None:
+    """reading_order.py was deleted; importing it must raise ModuleNotFoundError."""
+    with pytest.raises(ModuleNotFoundError):
+        import doc_bench.metrics.parsing.reading_order  # noqa: F401
+
+
+def test_deleted_structure_recall_module_not_importable() -> None:
+    """structure_recall.py was deleted; importing it must raise ModuleNotFoundError."""
+    with pytest.raises(ModuleNotFoundError):
+        import doc_bench.metrics.parsing.structure_recall  # noqa: F401
+
+
+def test_deleted_layout_map_module_not_importable() -> None:
+    """layout_map.py was deleted; importing it must raise ModuleNotFoundError."""
+    with pytest.raises(ModuleNotFoundError):
+        import doc_bench.metrics.parsing.layout_map  # noqa: F401
+
+
+# ---------------------------------------------------------------------------
+# Kept modules — must still be importable.
+# ---------------------------------------------------------------------------
+
+
+def test_kept_ned_importable() -> None:
+    """ned.py (new module) must be importable."""
+    from doc_bench.metrics.parsing import ned_score
+
+    assert ned_score is not None
+    assert callable(ned_score)
+
+
+def test_kept_table_teds_importable() -> None:
+    """table_teds.py must still be importable."""
+    from doc_bench.metrics.parsing import table_teds
+
+    assert table_teds is not None
 
 
 def test_kept_parser_adapter_importable() -> None:
@@ -58,23 +125,6 @@ def test_kept_schema_validator_importable() -> None:
 
     assert schema_validator is not None
     assert hasattr(schema_validator, "validate")
-
-
-def test_kept_parsing_metrics_importable() -> None:
-    """Test that parsing metrics are still importable."""
-    from doc_bench.metrics.parsing import (
-        mhs,
-        nid,
-        reading_order,
-        table_teds,
-        text_similarity,
-    )
-
-    assert nid is not None
-    assert table_teds is not None
-    assert text_similarity is not None
-    assert reading_order is not None
-    assert mhs is not None
 
 
 def test_kept_datasets_importable() -> None:

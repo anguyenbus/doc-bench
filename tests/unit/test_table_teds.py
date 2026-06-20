@@ -1,6 +1,118 @@
 """Tests for Table TEDS metric."""
 
-from doc_bench.metrics.parsing.table_teds import table_teds
+import json
+from pathlib import Path
+
+import pytest
+
+from doc_bench.metrics.parsing.table_teds import (
+    _extract_tables_from_markdown,
+    _markdown_table_to_html,
+    table_teds,
+)
+
+# Path to bundled OmniDocBench fixtures used in acceptance tests
+_FIXTURES_DIR = (
+    Path(__file__).resolve().parents[2] / "src" / "doc_bench" / "fixtures" / "omnidocbench"
+)
+_VARISTOR_FIXTURE = _FIXTURES_DIR / "page-458ab820-615f-42fe-af33-3a8fb15ad691.json"
+
+
+class TestSeparatorDetection:
+    """Acceptance criterion 1 — separator variant recognition (Bug 1 fix)."""
+
+    SIMPLE_TABLE_COMPACT = "| A | B |\n|---|---|\n| 1 | 2 |"
+    SIMPLE_TABLE_SPACED = "| A | B |\n| --- | --- |\n| 1 | 2 |"
+    SIMPLE_TABLE_ALIGNED = "| A | B |\n|:---|:---:|\n| 1 | 2 |"
+
+    @pytest.mark.parametrize(
+        "separator_style,markdown",
+        [
+            ("compact |---|---|", SIMPLE_TABLE_COMPACT),
+            ("standard | --- | --- |", SIMPLE_TABLE_SPACED),
+            ("aligned |:---|:---:|", SIMPLE_TABLE_ALIGNED),
+        ],
+    )
+    def test_extract_tables_recognises_separator(self, separator_style, markdown):
+        """_extract_tables_from_markdown must return non-empty list for all GFM separator styles."""
+        tables = _extract_tables_from_markdown(markdown)
+        assert len(tables) > 0, f"Expected a table extracted for separator style: {separator_style}"
+
+    def test_extract_tables_spaced_mineru_separator(self):
+        """Reproduces the exact MinerU separator format that triggered Bug 1."""
+        mineru_sep = "| --- |" + " --- |" * 12  # 13-column separator matching MinerU format
+        header = "| " + " | ".join([f"Col{i}" for i in range(13)]) + " |"
+        row = "| " + " | ".join([f"val{i}" for i in range(13)]) + " |"
+        markdown = f"{header}\n{mineru_sep}\n{row}"
+        tables = _extract_tables_from_markdown(markdown)
+        assert len(tables) == 1
+
+    def test_separator_line_excluded_from_html(self):
+        """Separator row must not appear as a data row in the HTML output."""
+        markdown = "| A | B |\n| --- | --- |\n| 1 | 2 |"
+        html = _markdown_table_to_html(markdown)
+        # Separator row should never produce a table row whose cells contain only dashes/spaces
+        assert "---" not in html
+
+
+class TestEvaluateTEDSOmniDocBench:
+    """Acceptance criterion 2 — TEDS non-zero on the varistor fixture (Bug 2 fix).
+
+    The old _evaluate_teds_for_omnidocbench helper is now inlined in _grade().
+    These tests use _grade() via GoldItem to exercise the same code path.
+    """
+
+    @pytest.mark.skipif(
+        not _VARISTOR_FIXTURE.exists(),
+        reason="varistor fixture not bundled in this environment",
+    )
+    def test_teds_nonzero_for_table_page(self):
+        """_grade must return TEDS > 0 when gold has html_tables and pred contains a table."""
+        from doc_bench.runners.run_parsing_eval import GoldItem, _grade
+
+        page = json.loads(_VARISTOR_FIXTURE.read_text())
+        html_tables = [
+            det["html"]
+            for det in page.get("layout_dets", [])
+            if det.get("category_type") == "table" and det.get("html")
+        ]
+        assert html_tables, "varistor fixture must have at least one HTML table"
+
+        gold = GoldItem(doc_id="varistor", text="", html_tables=html_tables)
+        pred_markdown = "| A | B |\n| --- | --- |\n| 1 | 2 |"
+        _ned, teds, teds_s = _grade(gold, pred_markdown)
+        assert teds > 0.0, "TEDS must be non-zero when pred contains a markdown table"
+        assert teds_s > 0.0, "TEDS-S must be non-zero when pred contains a markdown table"
+
+    @pytest.mark.skipif(
+        not _VARISTOR_FIXTURE.exists(),
+        reason="varistor fixture not bundled in this environment",
+    )
+    def test_teds_zero_when_no_pred_table(self):
+        """_grade returns teds=0.0 when pred has no markdown table."""
+        from doc_bench.runners.run_parsing_eval import GoldItem, _grade
+
+        page = json.loads(_VARISTOR_FIXTURE.read_text())
+        html_tables = [
+            det["html"]
+            for det in page.get("layout_dets", [])
+            if det.get("category_type") == "table" and det.get("html")
+        ]
+        gold = GoldItem(doc_id="varistor", text="", html_tables=html_tables)
+        _ned, teds, teds_s = _grade(gold, "no table here at all")
+        assert teds == 0.0
+        assert teds_s == 0.0
+
+    def test_teds_zero_when_no_gold_table(self):
+        """_grade returns teds=0.0 when gold has no html_tables."""
+        from doc_bench.runners.run_parsing_eval import GoldItem, _grade
+
+        gold = GoldItem(doc_id="x", text="hello world", html_tables=[])
+        pred = "| A |\n| --- |\n| 1 |"
+        _ned, teds, teds_s = _grade(gold, pred)
+        # No gold tables — TEDS falls back to evaluate_table on text, which may be 0
+        assert isinstance(teds, float)
+        assert 0.0 <= teds <= 1.0
 
 
 class TestTableTEDS:

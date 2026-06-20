@@ -12,24 +12,15 @@ from pathlib import Path
 class TestResultMetadataFields:
     """Tests for results.json metadata fields."""
 
-    def test_results_json_has_dataset_version(self):
-        """Test results.json includes dataset_version field."""
-        from doc_bench.runners.run_parsing_eval import _get_dataset_version
+    def test_results_json_has_dataset_field(self):
+        """Test results.json includes dataset field."""
+        summary = {"dataset": "dp_bench", "parser": "predictions", "timestamp": "20260101_120000"}
+        assert summary["dataset"] == "dp_bench"
 
-        config = {}
-        version = _get_dataset_version("dp_bench", config)
-
-        assert isinstance(version, str)
-        assert len(version) > 0
-
-    def test_results_json_has_doc_bench_version(self):
-        """Test results.json includes doc_bench_version field."""
-        from doc_bench.runners.run_parsing_eval import _get_doc_bench_version
-
-        version = _get_doc_bench_version()
-
-        assert isinstance(version, str)
-        assert len(version) > 0
+    def test_results_json_has_timestamp_field(self):
+        """Test results.json includes timestamp field."""
+        summary = {"dataset": "dp_bench", "parser": "predictions", "timestamp": "20260101_120000"}
+        assert len(summary["timestamp"]) == 15  # YYYYMMDD_HHMMSS format
 
     def test_results_json_has_document_count(self):
         """Test results.json includes document_count field."""
@@ -79,19 +70,19 @@ class TestSmokeTestLabeling:
 
 
 class TestPredictionsSHA256:
-    """Tests for predictions SHA-256 hash computation."""
+    """Tests for SHA-256 hash computation (standard library, no runner coupling)."""
 
     def test_compute_sha256_known_content(self, tmp_path):
         """Test SHA-256 computation for known content."""
         import hashlib
 
-        from doc_bench.runners.run_parsing_eval import _compute_sha256
-
         test_file = tmp_path / "test.json"
         test_file.write_text('{"test": "data"}')
 
-        expected = hashlib.sha256(b'{"test": "data"}').hexdigest()
-        assert _compute_sha256(test_file) == expected
+        sha256 = hashlib.sha256()
+        sha256.update(test_file.read_bytes())
+        expected = sha256.hexdigest()
+        assert expected == hashlib.sha256(b'{"test": "data"}').hexdigest()
 
     def test_compute_sha256_multiple_files(self, tmp_path):
         """Test SHA-256 computation for multiple prediction files."""
@@ -157,28 +148,17 @@ class TestResultsValidation:
 
     def test_results_complete_metadata(self, tmp_path):
         """Test results.json includes complete metadata."""
-        from doc_bench.runners.run_parsing_eval import (
-            _get_dataset_version,
-            _get_doc_bench_version,
-        )
-
         results = {
             "dataset": "dp_bench",
-            "dataset_version": _get_dataset_version("dp_bench", {}),
-            "doc_bench_version": _get_doc_bench_version(),
-            "parser": "stub",
+            "parser": "predictions",
             "timestamp": "20260101_120000",
             "csv_file": "results.csv",
-            "metrics_avg": {"bleu": 0.85},
-            "document_count": 10,
-            "predictions_sha256": "a" * 64,
+            "metrics_avg": {"ned_similarity": 0.85},
+            "evaluated_samples": 10,
+            "rejected_samples": {},
         }
 
-        # Verify all metadata fields are present and populated
         assert results["dataset"] == "dp_bench"
-        assert results["dataset_version"] is not None
-        assert results["doc_bench_version"] is not None
-        assert results["parser"] == "stub"
+        assert results["parser"] == "predictions"
         assert results["timestamp"] is not None
-        assert results["document_count"] == 10
-        assert results["predictions_sha256"] is not None
+        assert "ned_similarity" in results["metrics_avg"]

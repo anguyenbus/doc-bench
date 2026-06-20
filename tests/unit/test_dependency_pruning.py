@@ -75,11 +75,14 @@ def test_kept_torch_importable() -> None:
     assert torch is not None
 
 
-def test_kept_torchmetrics_importable() -> None:
-    """Test that torchmetrics is still available."""
-    import torchmetrics
+def test_removed_torchmetrics_not_importable() -> None:
+    """Test that torchmetrics was pruned and is no longer available.
 
-    assert torchmetrics is not None
+    torchmetrics was removed from [project.dependencies]; this guard fails
+    loudly if it is reintroduced.
+    """
+    with pytest.raises(ImportError, match="No module named 'torchmetrics'"):
+        import torchmetrics  # noqa: F401
 
 
 def test_kept_huggingface_hub_importable() -> None:

@@ -1,116 +1,99 @@
 """
-Tests for result metadata stamping.
+Tests for result metadata in results.json.
 
-Tests results.json includes all required metadata fields:
-dataset_version, doc_bench_version, document_count, timestamp,
-smoke-test labeling, and SHA-256 hashes.
+_compute_sha256, _get_doc_bench_version, _get_dataset_version were private
+helpers in the old monolith runner and have been removed. Tests for the
+current results.json structure live in test_run_parsing_eval.py.
 """
 
-from unittest.mock import patch
+import json
 
 
-class TestMetadataHelperFunctions:
-    """Tests for metadata helper functions."""
+class TestResultsJsonStructure:
+    """results.json summary structure produced by main()."""
 
-    def test_compute_sha256_known_content(self, tmp_path):
-        """Test SHA-256 computation for known content."""
-        import hashlib
+    def _run_main(self, tmp_path, monkeypatch):
+        import sys
 
-        from doc_bench.runners.run_parsing_eval import _compute_sha256
+        from doc_bench.runners.run_parsing_eval import load_dataset, main
 
-        test_file = tmp_path / "test.txt"
-        test_file.write_text("Hello, World!")
+        preds_dir = tmp_path / "predictions"
+        preds_dir.mkdir()
+        results_dir = tmp_path / "results"
 
-        expected = hashlib.sha256(b"Hello, World!").hexdigest()
-        assert _compute_sha256(test_file) == expected
+        for item in load_dataset("ato_bench", root=None):
+            pred = {
+                "schema_version": "1.0.0",
+                "parser_version": "0.0.1",
+                "source": {
+                    "doc_id": item.doc_id,
+                    "filename": f"{item.doc_id}.pdf",
+                    "mime_type": "application/pdf",
+                    "sha256": "a" * 64,
+                },
+                "pages": [{"page_index": 0, "width": 612.0, "height": 792.0}],
+                "elements": [
+                    {
+                        "element_id": "e1",
+                        "type": "paragraph",
+                        "page_index": 0,
+                        "char_span": [0, 4],
+                        "text": "text",
+                        "content": {"kind": "text"},
+                    }
+                ],
+            }
+            (preds_dir / f"{item.doc_id}.json").write_text(json.dumps(pred))
 
-    def test_compute_sha256_binary_content(self, tmp_path):
-        """Test SHA-256 computation for binary content."""
-        import hashlib
-
-        from doc_bench.runners.run_parsing_eval import _compute_sha256
-
-        test_file = tmp_path / "test.bin"
-        test_file.write_bytes(b"\x00\x01\x02\x03")
-
-        expected = hashlib.sha256(b"\x00\x01\x02\x03").hexdigest()
-        assert _compute_sha256(test_file) == expected
-
-    def test_get_doc_bench_version(self):
-        """Test doc-bench version retrieval."""
-        from doc_bench.runners.run_parsing_eval import _get_doc_bench_version
-
-        version = _get_doc_bench_version()
-        assert isinstance(version, str)
-        assert len(version) > 0
-
-    def test_get_dataset_version_no_manifest(self):
-        """Test dataset version without manifest returns fallback."""
-        from doc_bench.runners.run_parsing_eval import _get_dataset_version
-
-        with patch("pathlib.Path.exists", return_value=False):
-            version = _get_dataset_version("dp_bench", {})
-            assert version == "2026.05"  # Fallback version
-
-    def test_get_dataset_version_manifest_structure(self):
-        """Test dataset version function structure."""
-        from doc_bench.runners.run_parsing_eval import _get_dataset_version
-
-        # Test that function handles manifest reading structure
-        # Even if manifest doesn't exist, should return fallback
-        config = {}
-        version = _get_dataset_version("test_dataset", config)
-        assert isinstance(version, str)
-
-
-class TestResultsMetadataFields:
-    """Tests for results.json metadata fields."""
-
-    def test_results_json_has_required_fields(self, tmp_path):
-        """Test results.json includes all required top-level fields."""
-        # Test that we can create a results dict with all required fields
-        from doc_bench.runners.run_parsing_eval import (
-            _get_dataset_version,
-            _get_doc_bench_version,
+        monkeypatch.chdir(tmp_path)
+        monkeypatch.setattr(
+            sys,
+            "argv",
+            [
+                "doc-bench",
+                "--dataset",
+                "ato_bench",
+                "--predictions",
+                str(preds_dir),
+                "--output-dir",
+                str(results_dir),
+            ],
         )
+        import pytest
 
-        results = {
-            "dataset": "dp_bench",
-            "dataset_version": _get_dataset_version("dp_bench", {}),
-            "doc_bench_version": _get_doc_bench_version(),
-            "parser": "stub",
-            "timestamp": "20260101_120000",
-            "csv_file": "results.csv",
-            "metrics_avg": {"bleu": 0.85},
-            "document_count": 10,
-        }
+        with pytest.raises(SystemExit):
+            main()
+        return results_dir
 
-        # Check all required fields exist
-        assert "dataset" in results
-        assert "dataset_version" in results
-        assert "doc_bench_version" in results
-        assert "parser" in results
-        assert "timestamp" in results
-        assert "document_count" in results
+    def test_results_json_has_required_fields(self, tmp_path, monkeypatch):
+        results_dir = self._run_main(tmp_path, monkeypatch)
+        json_files = list(results_dir.glob("*_results_*.json"))
+        assert json_files
+        summary = json.loads(json_files[0].read_text())
 
-    def test_results_json_predictions_hash(self, tmp_path):
-        """Test results.json can include predictions SHA-256 hash."""
-        from doc_bench.runners.run_parsing_eval import _compute_sha256
+        assert "dataset" in summary
+        assert "parser" in summary
+        assert "timestamp" in summary
+        assert "csv_file" in summary
+        assert "metrics_avg" in summary
+        assert "evaluated_samples" in summary
+        assert "rejected_samples" in summary
 
-        # Create test predictions
-        pred_file = tmp_path / "doc1.json"
-        pred_file.write_text('{"test": "data"}')
+    def test_metrics_avg_uses_ned_similarity(self, tmp_path, monkeypatch):
+        results_dir = self._run_main(tmp_path, monkeypatch)
+        json_files = list(results_dir.glob("*_results_*.json"))
+        summary = json.loads(json_files[0].read_text())
 
-        hash_value = _compute_sha256(pred_file)
-        assert len(hash_value) == 64  # SHA-256 is 64 hex chars
-        assert all(c in "0123456789abcdef" for c in hash_value)
+        avg = summary.get("metrics_avg", {})
+        assert "ned_similarity" in avg
+        assert "ned" not in avg
 
 
 class TestSmokeTestLabeling:
     """Tests for smoke-test result labeling."""
 
     def test_smoke_test_results_labeled_bundled(self, tmp_path):
-        """Test smoke-test results are labeled 'bundled-smoke-stratified'."""
+        """Smoke-test results are labeled 'bundled-smoke-stratified'."""
         from click.testing import CliRunner
 
         from doc_bench.cli.smoke_test import main
@@ -119,7 +102,6 @@ class TestSmokeTestLabeling:
         fixtures_dir = tmp_path / "fixtures"
         fixtures_dir.mkdir()
 
-        # Create fixture manifest
         import json
 
         manifest = {
@@ -131,6 +113,4 @@ class TestSmokeTestLabeling:
             json.dump(manifest, f)
 
         result = runner.invoke(main, ["--data", str(fixtures_dir)])
-
-        # Should pass with bundled fixtures
         assert result.exit_code == 0

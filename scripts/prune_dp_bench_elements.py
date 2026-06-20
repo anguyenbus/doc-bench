@@ -8,6 +8,7 @@ import sys
 
 
 def main():
+    """Prune DP-Bench to representative PDFs covering each element type."""
     # Representative PDFs for each element type (2 each)
     selected_pdfs = [
         "01030000000001.pdf",  # Header
@@ -77,7 +78,6 @@ def main():
         shutil.copytree(sample_src, dst / "sample_results")
 
     # Replace original dataset directory with pruned version
-    parent = src.parent
     shutil.rmtree(src)
     dst.rename(src)
 
@@ -94,6 +94,7 @@ def main():
     print("Element type distribution:")
     for elem_type, count in sorted(element_types.items(), key=lambda x: x[1], reverse=True):
         print(f"  - {elem_type}: {count} occurrences")
+
 
 if __name__ == "__main__":
     main()

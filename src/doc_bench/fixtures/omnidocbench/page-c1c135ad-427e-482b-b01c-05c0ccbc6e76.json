@@ -1,0 +1,279 @@
+{
+  "layout_dets": [
+    {
+      "category_type": "text_block",
+      "poly": [
+        344.08,
+        317.9,
+        1350.99,
+        317.9,
+        1350.99,
+        359.92,
+        344.08,
+        359.92
+      ],
+      "ignore": false,
+      "order": 1,
+      "anno_id": "box_id_0",
+      "attribute": {},
+      "text": "return in Section 3 below. In terms of $ \\hat{R} $ and $ * , \\hat{W} $can also be expressed as"
+    },
+    {
+      "category_type": "equation_isolated",
+      "poly": [
+        612,
+        370.91999999999996,
+        1347.3654143179874,
+        370.91999999999996,
+        1347.3654143179874,
+        441.60870753556065,
+        612,
+        441.60870753556065
+      ],
+      "ignore": false,
+      "order": 2,
+      "anno_id": "box_id_1",
+      "attribute": {},
+      "latex": "$$\\hat{W} = \\frac{1}{2}\\left( {\\hat{R} +  *  \\circ  \\hat{R} \\circ   * }\\right)  + \\frac{{\\operatorname{scal}}_{g}}{12}I,\\quad \\tag{10}$$"
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        346.97,
+        449.02,
+        1350.99,
+        449.02,
+        1350.99,
+        938.08,
+        346.97,
+        938.08
+      ],
+      "ignore": false,
+      "order": 3,
+      "anno_id": "box_id_2",
+      "attribute": {},
+      "text": "where $ I : {\\Lambda }^{2} \\rightarrow {\\Lambda }^{2} $is the identity operator. Using (10) and the fact that $ * $ is $ \\langle ,{\\rangle }_{g} $-self-adjoint, it follows easily that the eigenspaces $ {\\Lambda }^{ \\pm } $ are $ \\hat{W} $-invariant. Thus, along with $ {\\Lambda }^{2} = {\\Lambda }^{ + } \\oplus {\\Lambda }^{ - } $, there is a decomposition $ \\hat{W} = {W}^{ + } \\oplus {W}^{ - } $into endomorphisms$ {W}^{ \\pm } : {\\Lambda }^{ \\pm } \\longrightarrow {\\Lambda }^{ \\pm } $, respectively. An oriented Riemannian 4-manifold is said to be self-dual if $ {W}^{ - } = 0 $ and anti-self-dual if $ {W}^{ + } = 0 $. In terms of (9), $ {W}^{ \\pm } = 0 \\Longleftrightarrow A = \\pm B $ (see (14)-(15) below), which, recalling $ \\widetilde{W} = {e}^{2f}W $, makes it clear that these are conformally invariant conditions. The final map that we will need is $ W^{\\prime} $s associated quadratic form. To define it, let $ {G}_{p} \\subseteq {\\Lambda }^{2} $ denote the set of decomposable 2-vectors of $ \\langle ,{\\rangle }_{g} $-length 1; i.e., all 2-vectors $ \\xi \\in {\\Lambda }^{2} $of the form $ \\xi = v \\land w $ for some $ v,w \\in {T}_{p}M $ , with $ \\langle \\xi ,\\xi {\\rangle }_{g} = 1 $; these are also called 2-planes at $ {T}_{p}M $. These, too, can be characterized by $  * $in dimension four:$ {G}_{p} = \\left\\{ {{\\xi }^{ + } + {\\xi }^{ - } : {\\xi }^{ \\pm } \\in {\\Lambda }^{ \\pm },{\\left\\langle {\\xi }^{ \\pm },{\\xi }^{ \\pm }\\right\\rangle }_{g} = 1/2}\\right\\} $; see, e.g., [ST69]. The quadratic form of $ \\hat{W} $is then the map defined by"
+    },
+    {
+      "category_type": "equation_isolated",
+      "poly": [
+        623.05,
+        949.08,
+        1348.3295716322098,
+        949.08,
+        1348.3295716322098,
+        994.6526437405545,
+        623.05,
+        994.6526437405545
+      ],
+      "ignore": false,
+      "order": 4,
+      "anno_id": "box_id_3",
+      "attribute": {},
+      "latex": "$$P \\mapsto  \\langle \\hat{W}P,P{\\rangle }_{g}\\;,\\;P \\in  {G}_{p}. \\tag{11}$$"
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        350.03,
+        1002.98,
+        1352.01,
+        1002.98,
+        1352.01,
+        1149.06,
+        350.03,
+        1149.06
+      ],
+      "ignore": false,
+      "order": 5,
+      "anno_id": "box_id_4",
+      "attribute": {},
+      "text": "(Notice its relation to (8), exactly as sectional curvature related to the curvature operator (1).) This map, and its Lorentzian analogue in [Tho69a] (a variant of which will appear in Definition 2 below), will play a fundamental role in our study of the condition $ W\\left( {T,\\cdot ,\\cdot ,T}\\right) = 0 $, to which we now turn."
+    },
+    {
+      "category_type": "title",
+      "poly": [
+        607.0699999999999,
+        1177,
+        1094.97,
+        1177,
+        1094.97,
+        1215.9399999999998,
+        607.0699999999999,
+        1215.9399999999998
+      ],
+      "ignore": false,
+      "order": 6,
+      "anno_id": "box_id_5",
+      "attribute": {},
+      "text": "## 3.THE CONDITION $W ( T , \\cdot , \\cdot , T ) = 0$"
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        349.01,
+        1232.0000000000002,
+        1353.0300000000002,
+        1232.0000000000002,
+        1353.0300000000002,
+        1305.04,
+        349.01,
+        1305.04
+      ],
+      "ignore": false,
+      "order": 7,
+      "anno_id": "box_id_6",
+      "attribute": {},
+      "text": "We now proceed to our objects of study, oriented Riemannian 4-manifolds (M, g) whose Weyl tensors $ W $satisfy the pointwise condition"
+    },
+    {
+      "category_type": "equation_isolated",
+      "poly": [
+        530.06,
+        1321.1000000000001,
+        1348.8036110938224,
+        1321.1000000000001,
+        1348.8036110938224,
+        1356.2761260474429,
+        530.06,
+        1356.2761260474429
+      ],
+      "ignore": false,
+      "order": 8,
+      "anno_id": "box_id_7",
+      "attribute": {},
+      "latex": "$$W\\left( {T,\\cdot ,\\cdot ,T}\\right)  = 0\\;,\\;\\text{ some unit }T \\in  {T}_{p}M. \\tag{12}$$"
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        350.03,
+        1369.06,
+        1349.97,
+        1369.06,
+        1349.97,
+        1479.06,
+        350.03,
+        1479.06
+      ],
+      "ignore": false,
+      "order": 9,
+      "anno_id": "box_id_8",
+      "attribute": {},
+      "text": "This is a conformally invariant condition, trivial $ g $is locally conformally flat. For an example that is not locally conformally flat (or Einstein), consider the metric$ g $defined on $ M \\mathrel{\\text{:=}} \\left\\{ {\\left( {r,x,y,z}\\right) \\in {\\mathbb{R}}^{4} : x > 0}\\right\\} $by"
+    },
+    {
+      "category_type": "equation_isolated",
+      "poly": [
+        540.9399999999999,
+        1492.04,
+        1157.02,
+        1492.04,
+        1157.02,
+        1530.98,
+        540.9399999999999,
+        1530.98
+      ],
+      "ignore": false,
+      "order": 10,
+      "anno_id": "box_id_9",
+      "attribute": {},
+      "latex": "$$g \\mathrel{\\text{:=}} {\\left( 2x\\right) }^{3}{\\left( dr\\right) }^{2} + {\\left( dx\\right) }^{2} + {\\left( 2x\\right) }^{-3}{\\left( dy\\right) }^{2} + {\\left( dz\\right) }^{2}.$$"
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        351.04999999999995,
+        1543.96,
+        1352.01,
+        1543.96,
+        1352.01,
+        1620.96,
+        351.04999999999995,
+        1620.96
+      ],
+      "ignore": false,
+      "order": 11,
+      "anno_id": "box_id_10",
+      "attribute": {},
+      "text": "The components of the Weyl tensor of $ g $, relative to the orthonormal basis$\\{ {{e}_{1},{e}_{2},{e}_{3},{e}_{4}}\\} \\mathrel{\\text{:=}} \\{ {{\\partial }_{r}/\\sqrt{8{x}^{3}},{\\partial }_{x},\\sqrt{8{x}^{3}}{\\partial }_{y},{\\partial }_{z}}\\} $, are given by"
+    },
+    {
+      "category_type": "equation_isolated",
+      "poly": [
+        351.04999999999995,
+        1646.04,
+        1348.5871115390605,
+        1646.04,
+        1348.5871115390605,
+        1783.75347655638,
+        351.04999999999995,
+        1783.75347655638
+      ],
+      "ignore": false,
+      "order": 12,
+      "anno_id": "box_id_11",
+      "attribute": {},
+      "latex": "$$\\hat{W}=\\left\\lbrack\\begin{array}{ccccccccc}{W}_{1212} & {W}_{1312} & {W}_{1412} & {W}_{3412} & {W}_{2412} & {W}_{2312}\\\\ {W}_{1213} & {W}_{1313} & {W}_{1413} & {W}_{3413} & {W}_{4213} & {W}_{2313}\\\\ {W}_{1214} & {W}_{1314} & {W}_{1414} & {W}_{3414} & {W}_{4214} & {W}_{2314}\\\\ {W}_{1234} & {W}_{1334} & {W}_{1434} & {W}_{3434} & {W}_{4234} & {W}_{2334}\\\\ {W}_{1242} & {W}_{1342} & {W}_{1442} & {W}_{3442} & {W}_{4242} & {W}_{2342}\\\\ {W}_{1223} & {W}_{1323} & {W}_{1423} & {W}_{3423} & {W}_{4223} & {W}_{2323}\\end{array}\\right\\rbrack=\\frac{3}{2{x}^{2}}\\left\\lbrack\\begin{array}{ccccccc}0 & 0 & 0 & 0 & 0 & 0\\\\ 0 & -1 & 0 & 0 & 0 & 0\\\\ 0 & 0 & 1 & 0 & 0 & 0\\\\ 0 & 0 & 0 & 0 & 0 & 0\\\\ 0 & 0 & 0 & 0 & -1 & 0\\\\ 0 & 0 & 0 & 0 & 0 & 1\\end{array}\\right\\rbrack.\\tag{13}$$"
+    },
+    {
+      "category_type": "text_block",
+      "poly": [
+        347.99,
+        1794.1,
+        1354.05,
+        1794.1,
+        1354.05,
+        1948.98,
+        347.99,
+        1948.98
+      ],
+      "ignore": false,
+      "order": 13,
+      "anno_id": "box_id_12",
+      "attribute": {},
+      "text": "It can be verified that $ T \\mathrel{\\text{:=}} \\frac{1}{\\sqrt{2}}\\left( {{e}_{1} \\pm {e}_{2}}\\right) ,\\frac{1}{\\sqrt{2}}\\left( {{e}_{3} \\pm {e}_{4}}\\right) $ all satisfy $ W\\left( {T,\\cdot ,\\cdot ,T}\\right) = 0 $ on $ M $. On the other hand, here are two classes of Riemannian 4-manifolds that are both \"close\" to being locally conformally flat but which nevertheless do not satisfy (12):"
+    },
+    {
+      "category_type": "page_number",
+      "poly": [
+        1332.97,
+        265.09999999999997,
+        1349.97,
+        265.09999999999997,
+        1349.97,
+        287.1,
+        1332.97,
+        287.1
+      ],
+      "ignore": false,
+      "order": 0,
+      "anno_id": "box_id_13",
+      "attribute": {},
+      "text": "5"
+    }
+  ],
+  "page_info": {
+    "page_no": 0,
+    "height": 2200,
+    "width": 1700,
+    "image_path": "page-c1c135ad-427e-482b-b01c-05c0ccbc6e76.png",
+    "page_attribute": {
+      "data_source": "academic_literature",
+      "language": "english",
+      "layout": "single_column",
+      "special_issue": [],
+      "subset": "equation_hard"
+    }
+  },
+  "extra": {
+    "relation": []
+  },
+  "_eval_tags": {
+    "is_clean": true,
+    "has_watermark": false,
+    "has_fuzzy_scan": false,
+    "has_colorful_bg": false,
+    "layout": "single_column"
+  }
+}

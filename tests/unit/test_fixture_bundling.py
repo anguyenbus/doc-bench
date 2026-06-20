@@ -46,26 +46,34 @@ class TestFixtureBundling:
         fixture_pattern = "src/doc_bench/fixtures/**/*"
         assert fixture_pattern in include_patterns
 
-    def test_pyproject_has_shared_data_config(self):
-        """Test pyproject.toml has shared-data configuration for fixtures."""
+    def test_pyproject_has_no_shared_data_config(self):
+        """Test the shared-data wheel mapping was deliberately removed.
+
+        The [tool.hatch.build.targets.wheel.shared-data] mapping was
+        intentionally removed: it packaged a second copy of the fixtures under
+        doc_bench-<ver>.data/data/. The in-package include-glob bundling is
+        canonical (code reads fixtures via importlib.resources), so the
+        shared-data mapping must stay absent.
+        """
         pyproject_path = Path("pyproject.toml")
 
         with open(pyproject_path, "rb") as f:
             config = tomllib.load(f)
 
-        # Check wheel target configuration
-        assert "tool" in config
-        assert "hatch" in config["tool"]
-        assert "build" in config["tool"]["hatch"]
-        assert "targets" in config["tool"]["hatch"]["build"]
-        assert "wheel" in config["tool"]["hatch"]["build"]["targets"]
+        wheel_config = (
+            config.get("tool", {})
+            .get("hatch", {})
+            .get("build", {})
+            .get("targets", {})
+            .get("wheel", {})
+        )
+        assert (
+            "shared-data" not in wheel_config
+        ), "shared-data wheel mapping should be removed; include-globs are canonical"
 
-        wheel_config = config["tool"]["hatch"]["build"]["targets"]["wheel"]
-        assert "shared-data" in wheel_config
-
-        shared_data = wheel_config["shared-data"]
-        assert "src/doc_bench/fixtures" in shared_data
-        assert shared_data["src/doc_bench/fixtures"] == "doc_bench/fixtures"
+        # The canonical bundling is the in-package include globs.
+        include_patterns = config["tool"]["hatch"]["build"]["include"]
+        assert "src/doc_bench/fixtures/**/*" in include_patterns
 
     def test_pyproject_version_single_source(self):
         """Test version is single-source in pyproject.toml."""
@@ -103,40 +111,47 @@ class TestFixtureBundling:
         }
 
         actual_scripts = set(scripts.keys())
-        assert expected_scripts <= actual_scripts, (
-            f"Missing entry points: {expected_scripts - actual_scripts}"
-        )
+        assert (
+            expected_scripts <= actual_scripts
+        ), f"Missing entry points: {expected_scripts - actual_scripts}"
 
     def test_fixtures_directory_exists(self):
         """Test fixtures directory exists in source."""
         fixtures_dir = Path("src/doc_bench/fixtures")
         assert fixtures_dir.exists()
 
-    def test_fixtures_module_exists(self):
-        """Test fixtures module exists."""
-        from doc_bench import fixtures
+    def test_fixtures_python_module_removed(self):
+        """Test the doc_bench.fixtures Python module was removed.
 
-        assert hasattr(fixtures, "get_fixture_path")
-        assert hasattr(fixtures, "load_manifest")
+        The fixtures/__init__.py module (with get_fixture_path/load_manifest)
+        was deleted in commit 23537f5; fixtures are now a pure data directory
+        bundled via include-globs and read via importlib.resources. This guard
+        fails loudly if the removed module API is reintroduced.
+        """
+        fixtures_init = Path("src/doc_bench/fixtures/__init__.py")
+        assert (
+            not fixtures_init.exists()
+        ), f"fixtures Python module should stay removed: {fixtures_init}"
 
-    def test_fixture_get_path_works(self):
-        """Test get_fixture_path returns valid path."""
-        from doc_bench.fixtures import get_fixture_path
-
-        path = get_fixture_path()
-        assert path.exists()
-        assert path.name == "fixtures"
+    def test_fixture_data_directory_present(self):
+        """Test the bundled fixtures data directory exists with content."""
+        fixtures_dir = Path("src/doc_bench/fixtures")
+        assert fixtures_dir.exists()
+        assert fixtures_dir.name == "fixtures"
+        # Data subdirectories ship as package data via the include globs.
+        assert (fixtures_dir / "dp_bench").exists()
+        assert (fixtures_dir / "ato_bench").exists()
 
     def test_fixture_manifest_loadable(self):
-        """Test fixture manifest can be loaded."""
-        from doc_bench.fixtures import load_manifest
+        """Test the bundled fixtures manifest.json loads as a dict."""
+        import json
 
-        manifest = load_manifest()
+        manifest_path = Path("src/doc_bench/fixtures/manifest.json")
+        assert manifest_path.exists(), "fixtures manifest.json should be bundled"
+
+        manifest = json.loads(manifest_path.read_text())
         assert isinstance(manifest, dict)
-
-        # If manifest has data, check structure
-        if manifest:
-            assert "name" in manifest or len(manifest) > 0
+        assert len(manifest) > 0
 
 
 class TestWheelBuilding:
@@ -212,12 +227,13 @@ class TestWheelBuilding:
         with zipfile.ZipFile(wheel, "r") as zf:
             files = zf.namelist()
 
-        # Check for fixture files
+        # Check for fixture data files (fixtures is now a pure data directory
+        # bundled via include-globs; there is no longer a fixtures __init__.py).
         fixture_files = [
             f for f in files if "doc_bench/fixtures" in f or f.startswith("doc_bench/fixtures/")
         ]
 
-        # At minimum, fixtures module should be bundled
-        assert any("__init__.py" in f for f in fixture_files), (
-            "Wheel should contain fixtures module"
-        )
+        # At minimum, the fixtures manifest should be bundled as package data.
+        assert any(
+            f.endswith("doc_bench/fixtures/manifest.json") for f in fixture_files
+        ), "Wheel should contain bundled fixture data (manifest.json)"

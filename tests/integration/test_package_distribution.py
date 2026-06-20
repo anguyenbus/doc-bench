@@ -46,23 +46,30 @@ class TestPackageStructure:
         assert hasattr(version, "get_version")
         assert hasattr(version, "check_dataset_version_alignment")
 
-    def test_package_has_metadata_functions(self):
-        """Test package has metadata functions."""
-        from doc_bench.runners.run_parsing_eval import (
-            _compute_sha256,
-            _get_dataset_version,
-            _get_doc_bench_version,
-        )
+    def test_package_has_grading_interface(self):
+        """Test package exposes the GoldItem adapter interface."""
+        from doc_bench.runners.run_parsing_eval import GoldItem, _grade, load_dataset
 
-        assert callable(_compute_sha256)
-        assert callable(_get_doc_bench_version)
-        assert callable(_get_dataset_version)
+        assert callable(load_dataset)
+        assert callable(_grade)
+        assert GoldItem is not None
 
-    def test_package_has_nltk_setup(self):
-        """Test package has NLTK setup functionality."""
-        from doc_bench.cli.setup import _get_nltk_data_dir
+    def test_package_setup_command_is_no_op_stub(self):
+        """Test setup CLI is a no-op stub (METEOR metric was removed).
 
-        assert callable(_get_nltk_data_dir)
+        NOTE: The setup command previously downloaded NLTK data for METEOR.
+        METEOR was removed in the 2026-06-07 NED/metrics simplification spec.
+        The command is now a no-op stub that prints an informational message.
+        """
+        from click.testing import CliRunner
+
+        from doc_bench.cli.setup import main
+
+        runner = CliRunner()
+        result = runner.invoke(main, [])
+        assert result.exit_code == 0
+        # Stub should mention METEOR removal or that no setup is required
+        assert "METEOR" in result.output or "no setup" in result.output.lower()
 
 
 class TestEndToEndWorkflows:
@@ -123,18 +130,26 @@ class TestEndToEndWorkflows:
 
 
 class TestDockerCompatibility:
-    """Tests Docker container compatibility."""
+    """Deletion-guard for the removed Docker feature.
 
-    def test_dockerfile_exists(self):
-        """Test Dockerfile exists at project root."""
-        # Note: This test assumes running from project root
-        # In actual CI, path would be adjusted
-        assert Path("Dockerfile").exists()
+    The Docker workflow (Dockerfile + docker-compose) was removed;
+    docs/doc-bench/overview.md states "no Docker support". These guards fail
+    loudly if any Docker artifact is reintroduced, rather than silently
+    skipping a feature that no longer exists.
+    """
 
-    def test_container_config_exists(self):
-        """Test container configuration exists."""
-        # Check for docker-compose files
-        assert Path("docker-compose.yml").exists() or Path("docker-compose.dev.yml").exists()
+    def test_dockerfile_absent(self):
+        """Test the repo-root Dockerfile stays absent (feature removed)."""
+        assert not Path("Dockerfile").exists(), "Dockerfile should stay removed (no Docker support)"
+
+    def test_container_config_absent(self):
+        """Test docker-compose configuration stays absent (feature removed)."""
+        assert not Path(
+            "docker-compose.yml"
+        ).exists(), "docker-compose.yml should stay removed (no Docker support)"
+        assert not Path(
+            "docker-compose.dev.yml"
+        ).exists(), "docker-compose.dev.yml should stay removed (no Docker support)"
 
 
 class TestMetadataCompleteness:
@@ -142,45 +157,25 @@ class TestMetadataCompleteness:
 
     def test_results_metadata_structure(self):
         """Test results metadata has all required fields."""
-        from doc_bench.runners.run_parsing_eval import (
-            _get_dataset_version,
-            _get_doc_bench_version,
-        )
-
-        # Create sample results structure
         results = {
             "dataset": "dp_bench",
-            "dataset_version": _get_dataset_version("dp_bench", {}),
-            "doc_bench_version": _get_doc_bench_version(),
-            "parser": "stub",
+            "parser": "predictions",
             "timestamp": "20260101_120000",
             "csv_file": "results.csv",
-            "metrics_avg": {"bleu": 0.85},
-            "document_count": 10,
+            "metrics_avg": {"ned_similarity": 0.85},
+            "evaluated_samples": 10,
+            "rejected_samples": {},
         }
 
-        # Verify all required fields
-        required = [
-            "dataset",
-            "dataset_version",
-            "doc_bench_version",
-            "parser",
-            "timestamp",
-            "document_count",
-        ]
-
-        for field in required:
+        for field in ["dataset", "parser", "timestamp", "csv_file", "metrics_avg"]:
             assert field in results, f"Missing required field: {field}"
 
     def test_version_consistency(self):
         """Test version consistency across components."""
         from doc_bench import __version__
-        from doc_bench.runners.run_parsing_eval import _get_doc_bench_version
         from doc_bench.version import get_version
 
-        # All should return the same version
         v1 = get_version()
-        v2 = _get_doc_bench_version()
-        v3 = __version__
+        v2 = __version__
 
-        assert v1 == v2 == v3, "Versions inconsistent across components"
+        assert v1 == v2, "Versions inconsistent across components"

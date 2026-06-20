@@ -18,9 +18,9 @@ def test_readme_updated_for_parsing_only() -> None:
 
     # Should reference doc-bench, not eval-harness
     # Note: This is a loose check since exact wording may vary
-    assert "doc-bench" in content.lower() or "docbench" in content.lower(), (
-        "README should reference doc-bench"
-    )
+    assert (
+        "doc-bench" in content.lower() or "docbench" in content.lower()
+    ), "README should reference doc-bench"
 
 
 def test_readme_no_rag_references() -> None:
@@ -58,6 +58,6 @@ def test_readme_cli_examples_updated() -> None:
 
     # Should reference eval-parsing command
     # (We keep the old name for now as per requirements)
-    assert "eval-parsing" in content or "doc-bench" in content.lower(), (
-        "README should reference the eval-parsing CLI command"
-    )
+    assert (
+        "eval-parsing" in content or "doc-bench" in content.lower()
+    ), "README should reference the eval-parsing CLI command"

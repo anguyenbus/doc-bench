@@ -15,7 +15,7 @@ class TestSchemaValidation:
 
     def test_valid_parser_output_validates(self, tmp_path):
         """Test that valid parser output passes validation."""
-        schema_path = Path("contracts/parser_output.schema.json")
+        schema_path = Path("src/doc_bench/fixtures/parser_output.schema.json")
 
         valid_output = {
             "schema_version": "1.0.0",
@@ -59,7 +59,7 @@ class TestSchemaValidation:
 
     def test_invalid_parser_output_fails_with_clear_error(self, tmp_path):
         """Test that invalid parser output fails with clear field path error."""
-        schema_path = Path("contracts/parser_output.schema.json")
+        schema_path = Path("src/doc_bench/fixtures/parser_output.schema.json")
 
         invalid_output = {
             "schema_version": "1.0.0",
@@ -74,7 +74,7 @@ class TestSchemaValidation:
 
     def test_schema_version_mismatch_fails(self, tmp_path):
         """Test that wrong schema_version fails validation."""
-        schema_path = Path("contracts/parser_output.schema.json")
+        schema_path = Path("src/doc_bench/fixtures/parser_output.schema.json")
 
         wrong_version = {
             "schema_version": "2.0.0",  # Wrong version - must be "1.0.0"
@@ -98,7 +98,7 @@ class TestSchemaValidation:
 
     def test_missing_nested_field_raises_clear_error(self, tmp_path):
         """Test that missing nested field raises clear error with path."""
-        schema_path = Path("contracts/parser_output.schema.json")
+        schema_path = Path("src/doc_bench/fixtures/parser_output.schema.json")
 
         missing_nested = {
             "schema_version": "1.0.0",
