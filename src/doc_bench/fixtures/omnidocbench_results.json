@@ -3,45 +3,61 @@
   "successful": 5,
   "errors": 0,
   "averages": {
-    "ned_similarity": 0.7688,
-    "teds": 0.0,
-    "teds_s": 0.0
+    "ned_similarity": 0.6029,
+    "teds": 0.2621,
+    "teds_s": 0.3278
   },
   "results": [
     {
       "query_id": "page-c1c135ad-427e-482b-b01c-05c0ccbc6e76",
+      "image": "page-c1c135ad-427e-482b-b01c-05c0ccbc6e76.png",
+      "doc_type": "academic_literature",
       "error": "",
-      "ned_similarity": 0.6023,
+      "ned_similarity": 0.6016,
       "teds": 0.0,
       "teds_s": 0.0
     },
     {
       "query_id": "jiaocaineedrop_Chapter9.pdf_46",
+      "image": "jiaocaineedrop_Chapter9.pdf_46.jpg",
+      "doc_type": "exam_paper",
       "error": "",
-      "ned_similarity": 0.647,
-      "teds": 0.0,
-      "teds_s": 0.0
+      "ned_similarity": 0.6066,
+      "teds": 0.8065,
+      "teds_s": 0.8889
     },
     {
       "query_id": "jiaocaineedrop_c04_874768_mt.pdf_6",
+      "image": "jiaocaineedrop_c04_874768_mt.pdf_6.jpg",
+      "doc_type": "colorful_textbook",
       "error": "",
-      "ned_similarity": 0.9149,
+      "ned_similarity": 0.4656,
       "teds": 0.0,
       "teds_s": 0.0
     },
     {
       "query_id": "page-573c437e-c309-4483-a038-ef2f440b104a",
+      "image": "page-573c437e-c309-4483-a038-ef2f440b104a.png",
+      "doc_type": "book",
       "error": "",
-      "ned_similarity": 0.6913,
-      "teds": 0.0,
-      "teds_s": 0.0
+      "ned_similarity": 0.3519,
+      "teds": 0.5042,
+      "teds_s": 0.75
     },
     {
       "query_id": "PPT_english-studies-s6-on-the-road-resource-3_page_002",
+      "image": "PPT_english-studies-s6-on-the-road-resource-3_page_002.png",
+      "doc_type": "PPT2PDF",
       "error": "",
       "ned_similarity": 0.9887,
       "teds": 0.0,
       "teds_s": 0.0
     }
-  ]
+  ],
+  "provenance": {
+    "docling_version": "2.96.0",
+    "regenerated_at": "2026-06-20",
+    "regenerated_by": "docling_baseline.cli omnidocbench (table-extraction fix)",
+    "note": "Pre-fix baseline reported teds=0.0/teds_s=0.0 on every page because the generator never emitted table elements. Regenerated through the fixed generator (iterate_items dispatch + _build_table_content). Live Docling is an ML model and is NOT bit-reproducible across versions/machines, so these numbers are not pinned. Reading order shifted (iterate_items), so pre/post NED is NOT comparable."
+  }
 }

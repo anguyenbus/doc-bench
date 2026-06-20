@@ -73,7 +73,7 @@ class BaseRunner(ABC):
         """
         if not gold_text or not pred_markdown:
             return {
-                "ned": 0.0,
+                "ned_similarity": 0.0,
                 "teds": 0.0,
                 "teds_s": 0.0,
             }
@@ -83,7 +83,7 @@ class BaseRunner(ABC):
         teds_s = teds_s_score(gold_text, pred_markdown)
 
         return {
-            "ned": safe_float(ned),
+            "ned_similarity": safe_float(ned),
             "teds": safe_float(teds),
             "teds_s": safe_float(teds_s),
         }
@@ -102,7 +102,7 @@ class BaseRunner(ABC):
         if not metrics_list:
             return {}
 
-        metric_names = ["ned", "teds", "teds_s"]
+        metric_names = ["ned_similarity", "teds", "teds_s"]
         averages = {}
 
         for metric in metric_names:

@@ -86,7 +86,10 @@ class ATOBenchRunner(BaseRunner):
             }
             all_doc_results.append(result)
 
-            print(f"  NED={metrics['ned']} TEDS={metrics['teds']} TEDS-S={metrics['teds_s']}")
+            print(
+                f"  NED={metrics['ned_similarity']} TEDS={metrics['teds']} "
+                f"TEDS-S={metrics['teds_s']}"
+            )
 
         # Calculate averages
         averages = self.compute_averages(all_doc_results)

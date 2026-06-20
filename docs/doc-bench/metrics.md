@@ -141,7 +141,7 @@ Example `scores.json` summary:
 ```json
 {
   "metrics_avg": {
-    "ned": 0.85,
+    "ned_similarity": 0.85,
     "teds": 0.92,
     "teds_s": 0.94
   }

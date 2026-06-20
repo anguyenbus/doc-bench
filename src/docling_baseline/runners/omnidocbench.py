@@ -181,11 +181,13 @@ class OmniDocBenchRunner(BaseRunner):
                 continue
 
             # NED: strip equations from pred before comparing (gold has no equation text)
-            ned = self.calculate_metrics(gold_text, _strip_equations(pred_markdown))["ned"]
+            ned = self.calculate_metrics(gold_text, _strip_equations(pred_markdown))[
+                "ned_similarity"
+            ]
             # TEDS: compare gold HTML table (from layout_dets) vs predicted markdown table
             teds, teds_s = _evaluate_teds(gold_data, pred_markdown)
             metrics = {
-                "ned": ned,
+                "ned_similarity": ned,
                 "teds": safe_float(teds),
                 "teds_s": safe_float(teds_s),
             }
@@ -200,7 +202,10 @@ class OmniDocBenchRunner(BaseRunner):
             results.append(result)
 
             # Print key metrics
-            print(f"  NED: {metrics['ned']} | TEDS: {metrics['teds']} | TEDS-S: {metrics['teds_s']}")
+            print(
+                f"  NED: {metrics['ned_similarity']} | TEDS: {metrics['teds']} | "
+                f"TEDS-S: {metrics['teds_s']}"
+            )
 
         # Calculate averages
         averages = self.compute_averages(results)

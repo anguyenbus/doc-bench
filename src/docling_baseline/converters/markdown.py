@@ -25,15 +25,18 @@ def elements_to_markdown(elements: list[dict[str, Any]]) -> str:
         elem_type = elem.get("type")
         text = elem.get("text", "")
 
-        if not text:
-            continue
-
+        # NOTE: Empty-text skip moved to text-only types below.
+        # Tables/figures carry data in content.cells/content.alt_text with empty text.
         if elem_type == "heading":
+            if not text:
+                continue
             level = elem.get("level", 1)
             lines.append(f"{'#' * level} {text}")
             lines.append("")  # Blank line after heading
 
         elif elem_type == "paragraph":
+            if not text:
+                continue
             lines.append(text)
             lines.append("")  # Blank line after paragraph
 
@@ -43,6 +46,8 @@ def elements_to_markdown(elements: list[dict[str, Any]]) -> str:
             # list_item elements with parent_id will be rendered separately
 
         elif elem_type == "list_item":
+            if not text:
+                continue
             # Simple rendering - just the text
             # Real implementation would handle nesting via parent_id
             lines.append(f"- {text}")
@@ -65,6 +70,8 @@ def elements_to_markdown(elements: list[dict[str, Any]]) -> str:
             lines.append("")
 
         elif elem_type == "code_block":
+            if not text:
+                continue
             lines.append("```")
             lines.append(text)
             lines.append("```")
@@ -78,11 +85,15 @@ def elements_to_markdown(elements: list[dict[str, Any]]) -> str:
             "page_number",
             "equation",
         ):
+            if not text:
+                continue
             lines.append(text)
             lines.append("")
 
         else:
             # Default: just output text
+            if not text:
+                continue
             lines.append(text)
             lines.append("")
 
