@@ -64,6 +64,6 @@ def test_removed_config_keys_rejected() -> None:
     # None of these should be required
     not_required = {"metrics", "models", "phoenix", "chromadb", "replay", "generator", "ragas"}
     for section in not_required:
-        assert section not in REQUIRED_SECTIONS, (
-            f"Section {section} should not be required, got {REQUIRED_SECTIONS}"
-        )
+        assert (
+            section not in REQUIRED_SECTIONS
+        ), f"Section {section} should not be required, got {REQUIRED_SECTIONS}"

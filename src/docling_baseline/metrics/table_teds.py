@@ -11,12 +11,12 @@ TEDS-S: Structure-only similarity.
 import re
 from html import unescape
 
-_SEP_RE = re.compile(r"^\|[\s\-:|]+\|[\s\-:|]*$")
-
 from apted import APTED, Config
 from apted.helpers import Tree
 from lxml import etree
 from rapidfuzz.distance import Levenshtein
+
+_SEP_RE = re.compile(r"^\|[\s\-:|]+\|[\s\-:|]*$")
 
 
 def _normalize(text: str) -> str:

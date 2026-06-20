@@ -11,14 +11,14 @@ TEDS-S: Structure-only similarity.
 import re
 from html import unescape
 
-# GFM separator row: pipe-delimited cells containing only dashes, spaces, colons.
-# Matches both compact |---|---| and standard | --- | --- | and aligned |:---|:---:|---:|
-_SEP_RE = re.compile(r"^\|[\s\-:|]+\|[\s\-:|]*$")
-
 from apted import APTED, Config
 from apted.helpers import Tree
 from lxml import etree
 from rapidfuzz.distance import Levenshtein
+
+# GFM separator row: pipe-delimited cells containing only dashes, spaces, colons.
+# Matches both compact |---|---| and standard | --- | --- | and aligned |:---|:---:|---:|
+_SEP_RE = re.compile(r"^\|[\s\-:|]+\|[\s\-:|]*$")
 
 
 def _normalize(text: str) -> str:

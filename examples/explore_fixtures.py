@@ -1,4 +1,5 @@
-"""Inspect the bundled fixture set: list datasets, doc counts, and one sample each.
+"""
+Inspect the bundled fixture set: list datasets, doc counts, and one sample each.
 
 Reads the bundled manifest.json (no downloads) and prints the composition of the
 33 bundled documents.

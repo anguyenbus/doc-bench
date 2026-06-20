@@ -89,9 +89,9 @@ class TestLoadDatasetBundled:
         # All datasets should use real doc stems, never "dataset_0" etc.
         for dataset in ("ato_bench", "dp_bench", "omnidocbench"):
             for item in load_dataset(dataset, root=None):
-                assert not item.doc_id.startswith(f"{dataset}_"), (
-                    f"Positional query_id leaked into {dataset}: {item.doc_id}"
-                )
+                assert not item.doc_id.startswith(
+                    f"{dataset}_"
+                ), f"Positional query_id leaked into {dataset}: {item.doc_id}"
 
 
 class TestMainCLI:

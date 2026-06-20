@@ -115,7 +115,9 @@ line-length = 100
 # explicit path (e.g. pre-commit), not just on a `ruff check .` directory scan.
 # NOTE: references/omnidocbench is an audit trail copy of the OmniDocBench
 # source files (Apache-2.0) and is intentionally exempt from lint standards.
-extend-exclude = ["src/docling_baseline", "references/omnidocbench"]
+# NOTE: notebooks/ holds exploratory .ipynb cells; linting notebook cells is
+# low-value and intentionally exempt from doc-bench lint standards.
+extend-exclude = ["src/docling_baseline", "references/omnidocbench", "notebooks"]
 force-exclude = true
 
 [tool.ruff.lint]
@@ -138,7 +140,7 @@ target-version = ["py313"]
 # extend-exclude is a regex applied to paths; without this, `black --check .`
 # (run by `make lint` / CI) would scan the vendored tree and fail.
 # NOTE: references/omnidocbench is an audit trail copy (Apache-2.0) exempt from formatting.
-extend-exclude = "src/docling_baseline|references/omnidocbench"
+extend-exclude = "src/docling_baseline|references/omnidocbench|notebooks"
 
 [tool.mypy]
 python_version = "3.13"

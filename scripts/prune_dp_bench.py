@@ -8,6 +8,7 @@ import sys
 
 
 def main():
+    """Prune DP-Bench to a minimal sample suitable for a lightweight image."""
     keep_count = 50  # Keep only 50 files for minimal image
 
     # DP-Bench has data under dataset/ subdirectory
@@ -58,12 +59,12 @@ def main():
         shutil.copytree(sample_src, dst / "sample_results")
 
     # Replace original dataset directory with pruned version
-    parent = src.parent
     shutil.rmtree(src)
     dst.rename(src)
 
     print(f"Kept {copied_count} DP-Bench files (from {len(reference)} total)")
     print(f"Filtered reference.json: {len(filtered_reference)} entries")
+
 
 if __name__ == "__main__":
     main()

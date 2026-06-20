@@ -1,19 +1,26 @@
 """
-Tests for DP-Bench gold markdown construction with reading-order sorting.
+Tests for DP-Bench gold markdown construction.
 
-Tests that build_gold_markdown() sorts elements by (page, y, x) coordinates
-and produces consistent output for grading.
+Tests that build_gold_markdown() processes elements in JSON order (no
+coordinate sorting) and produces consistent output for grading, including
+the content.html -> GFM pipe-table rendering path.
+
+NOTE (out of scope): src/doc_bench/datasets/dp_bench.py defines a
+_get_sort_key helper that build_gold_markdown does NOT call -- current
+source processes elements in JSON order per build_gold_markdown's docstring.
+The dead _get_sort_key helper is a src/ concern out of scope for this
+test-only spec; it is flagged here but intentionally left untouched.
 """
 
 
 class TestReadingOrderSorting:
-    """Tests for element sorting by reading order."""
+    """Tests for element ordering and category markup."""
 
     def test_sorting_by_page_then_y_then_x(self):
-        """Test elements are sorted by page, then y coordinate, then x coordinate."""
+        """Test elements are emitted in JSON order (build_gold_markdown does not sort)."""
         from doc_bench.datasets.dp_bench import build_gold_markdown
 
-        # Create elements in reverse order
+        # Elements supplied out of reading order; current source keeps JSON order.
         elements = {
             "elements": [
                 {
@@ -45,23 +52,23 @@ class TestReadingOrderSorting:
 
         result = build_gold_markdown(elements)
 
-        # Expected order: page 1, y=200, x=100 -> page 1, y=300, x=100 ->
-        # page 1, y=300, x=200 -> page 2, y=200, x=100
+        # build_gold_markdown processes elements in JSON order (no coordinate
+        # sorting), so output order matches the input array order exactly.
         expected_texts = [
+            "Page 2, y=200, x=100",
+            "Page 1, y=300, x=200",
             "Page 1, y=200, x=100",
             "Page 1, y=300, x=100",
-            "Page 1, y=300, x=200",
-            "Page 2, y=200, x=100",
         ]
 
-        # Check elements appear in correct order
+        # Check elements appear in JSON (input) order.
         result_clean = result.replace("\n\n", "\n")  # Remove blank lines for checking
         lines = [line for line in result_clean.split("\n") if line]  # Get non-empty lines
 
         for i, expected in enumerate(expected_texts):
-            assert i < len(lines), (
-                f"Not enough lines, expected {len(expected_texts)}, got {len(lines)}"
-            )
+            assert i < len(
+                lines
+            ), f"Not enough lines, expected {len(expected_texts)}, got {len(lines)}"
             assert expected in lines[i], f"Line {i} should contain '{expected}', got '{lines[i]}'"
 
     def test_header_category_markup(self):
@@ -83,7 +90,12 @@ class TestReadingOrderSorting:
         assert "# Test Header" in result
 
     def test_table_category_markup(self):
-        """Test Table elements get [TABLE: ...] markup."""
+        """Test Table elements render content without a literal [TABLE: ...] wrapper.
+
+        The [TABLE: {text}] wrapper was intentionally removed in commit 3184dfd;
+        it injected literal "[TABLE:" tokens that no parser emits. A text-only
+        table now renders its raw text content with no synthetic wrapper.
+        """
         from doc_bench.datasets.dp_bench import build_gold_markdown
 
         elements = {
@@ -98,7 +110,41 @@ class TestReadingOrderSorting:
         }
 
         result = build_gold_markdown(elements)
-        assert "[TABLE: Table Content]" in result
+        assert "Table Content" in result
+        assert "[TABLE:" not in result
+
+    def test_table_html_renders_gfm_pipe_table(self):
+        """Test a Table element with content.html renders a GFM pipe table.
+
+        Exercises _html_table_to_markdown via build_gold_markdown -- the
+        html->pipe-table path that shipped in commit 3184dfd with no coverage.
+        """
+        from doc_bench.datasets.dp_bench import build_gold_markdown
+
+        elements = {
+            "elements": [
+                {
+                    "page": 1,
+                    "coordinates": [{"x": 100, "y": 100}],
+                    "category": "Table",
+                    "content": {
+                        "html": (
+                            "<tr><td>Name</td><td>Age</td></tr>"
+                            "<tr><td>Alice</td><td>30</td></tr>"
+                        )
+                    },
+                },
+            ]
+        }
+
+        result = build_gold_markdown(elements)
+
+        # GFM header row, separator row, and data row.
+        assert "| Name | Age |" in result
+        assert "| --- | --- |" in result
+        assert "| Alice | 30 |" in result
+        # No literal [TABLE: wrapper on the html path either.
+        assert "[TABLE:" not in result
 
     def test_list_category_markup(self):
         """Test List elements get - prefix."""

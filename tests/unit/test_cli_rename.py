@@ -54,9 +54,21 @@ def test_doc_bench_entry_point_works() -> None:
 
     scripts = config.get("project", {}).get("scripts", {})
 
-    # Check eval-parsing entry point
-    assert "eval-parsing" in scripts
-    assert scripts["eval-parsing"] == "doc_bench.runners.run_parsing_eval:main"
+    # Check the current doc-bench entry point (per [project.scripts]).
+    assert "doc-bench" in scripts
+    assert scripts["doc-bench"] == "doc_bench.runners.run_parsing_eval:main"
+
+    # Check the doc-bench-* subcommands are configured.
+    expected_subcommands = {
+        "doc-bench-dump-dataset": "doc_bench.cli.dump_dataset:main",
+        "doc-bench-download": "doc_bench.cli.download:main",
+        "doc-bench-list-datasets": "doc_bench.cli.list_datasets:main",
+        "doc-bench-smoke-test": "doc_bench.cli.smoke_test:main",
+        "doc-bench-setup": "doc_bench.cli.setup:main",
+    }
+    for cmd, target in expected_subcommands.items():
+        assert cmd in scripts, f"Expected subcommand {cmd} in scripts"
+        assert scripts[cmd] == target
 
     # Check that removed commands are not in scripts
     removed = [

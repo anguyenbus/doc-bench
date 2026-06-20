@@ -112,6 +112,7 @@ def test_ned_whitespace_normalization_interior() -> None:
 def _build_dp_bench_gold_markdown(doc_id: str) -> str:
     """Build gold markdown from a bundled dp_bench fixture."""
     import sys
+
     sys.path.insert(0, str(FIXTURE_DIR.parent.parent))
     from doc_bench.datasets.dp_bench import build_gold_markdown
 

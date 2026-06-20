@@ -3,10 +3,10 @@
 from pathlib import Path
 
 import pytest
-from doc_bench.stubs.stub_parser import parse as stub_parse
 
 from doc_bench.adapters.parser_adapter import ParserAdapter
 from doc_bench.adapters.schema_validator import SchemaValidationError
+from doc_bench.stubs.stub_parser import parse as stub_parse
 
 
 class TestParserAdapter:

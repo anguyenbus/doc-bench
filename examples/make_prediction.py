@@ -1,4 +1,5 @@
-"""Build a schema-valid ParserOutput prediction and validate it against the bundled schema.
+"""
+Build a schema-valid ParserOutput prediction and validate it against the bundled schema.
 
 This is the shape your own parser must emit, one file per document named
 ``<doc_id>.json``. The script constructs a minimal valid prediction, validates it
@@ -57,9 +58,7 @@ def main() -> None:
     parser.add_argument("--out", type=Path, default=None, help="Where to write <doc_id>.json.")
     args = parser.parse_args()
 
-    schema = json.loads(
-        (files("doc_bench") / "fixtures" / "parser_output.schema.json").read_text()
-    )
+    schema = json.loads((files("doc_bench") / "fixtures" / "parser_output.schema.json").read_text())
     prediction = build_prediction(args.doc_id)
 
     # Raises jsonschema.ValidationError if the prediction is not schema-valid.

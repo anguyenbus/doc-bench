@@ -16,24 +16,24 @@ def test_parsing_integration_tests_updated() -> None:
     if parsing_pipeline.exists():
         content = parsing_pipeline.read_text()
         # Should contain doc_bench imports, not eval_harness
-        assert "from doc_bench" in content or "import doc_bench" in content, (
-            "test_parsing_pipeline.py should use doc_bench imports"
-        )
-        assert "eval_harness" not in content, (
-            "test_parsing_pipeline.py should not contain eval_harness imports"
-        )
+        assert (
+            "from doc_bench" in content or "import doc_bench" in content
+        ), "test_parsing_pipeline.py should use doc_bench imports"
+        assert (
+            "eval_harness" not in content
+        ), "test_parsing_pipeline.py should not contain eval_harness imports"
 
     # Check test_docling_eval_integration.py
     docling_integration = tests_dir / "integration" / "test_docling_eval_integration.py"
     if docling_integration.exists():
         content = docling_integration.read_text()
         # Should contain doc_bench imports, not eval_harness
-        assert "from doc_bench" in content or "import doc_bench" in content, (
-            "test_docling_eval_integration.py should use doc_bench imports"
-        )
-        assert "eval_harness" not in content, (
-            "test_docling_eval_integration.py should not contain eval_harness imports"
-        )
+        assert (
+            "from doc_bench" in content or "import doc_bench" in content
+        ), "test_docling_eval_integration.py should use doc_bench imports"
+        assert (
+            "eval_harness" not in content
+        ), "test_docling_eval_integration.py should not contain eval_harness imports"
 
 
 def test_parsing_unit_tests_updated() -> None:
@@ -56,6 +56,6 @@ def test_parsing_unit_tests_updated() -> None:
         if test_path.exists():
             content = test_path.read_text()
             # Should not contain eval_harness imports
-            assert "eval_harness" not in content or "test eval_harness" in content.lower(), (
-                f"{test_file} should not contain eval_harness imports"
-            )
+            assert (
+                "eval_harness" not in content or "test eval_harness" in content.lower()
+            ), f"{test_file} should not contain eval_harness imports"

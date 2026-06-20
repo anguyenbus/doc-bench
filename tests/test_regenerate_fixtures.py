@@ -2,9 +2,10 @@
 
 These tests enforce FR3 / AC2 of the docling-baseline generator integration
 spec. The regeneration script drives the vendored generator in-place against
-``src/doc_bench/fixtures/``, regenerating DP-Bench and OmniDocBench by default,
-with a ``DATASET=`` override for a single dataset, and applying the DP-Bench
-rename (``dp_bench_results.json`` -> ``dpbench_results.json``) on copy.
+``src/doc_bench/fixtures/``, regenerating every in-scope dataset (DP-Bench,
+OmniDocBench, and ATO-Bench) by default, with a ``DATASET=`` override for a
+single dataset, and applying the DP-Bench rename
+(``dp_bench_results.json`` -> ``dpbench_results.json``) on copy.
 
 The generator invocation is mocked throughout so these tests stay fast and need
 no Docling install (the generator-invocation step is a separate, monkeypatchable
@@ -33,11 +34,10 @@ def _seed_outputs(fixtures_dir: Path, datasets: list[str]) -> None:
         (fixtures_dir / f"{ds}_results.json").write_text(json.dumps({"dataset": ds, "total": 1}))
 
 
-def test_select_datasets_default_runs_both_in_scope() -> None:
-    """All-by-default selects DP-Bench + OmniDocBench, never ATO-Bench."""
+def test_select_datasets_default_runs_all_in_scope() -> None:
+    """All-by-default selects every in-scope dataset (DP-Bench, OmniDocBench, ATO-Bench)."""
     selected = rf.select_datasets(None)
-    assert selected == ["dp_bench", "omnidocbench"]
-    assert "ato_bench" not in selected
+    assert selected == ["dp_bench", "omnidocbench", "ato_bench"]
 
 
 def test_select_datasets_override_picks_single_dataset() -> None:
@@ -46,10 +46,9 @@ def test_select_datasets_override_picks_single_dataset() -> None:
     assert rf.select_datasets("omnidocbench") == ["omnidocbench"]
 
 
-def test_select_datasets_rejects_unknown_or_out_of_scope() -> None:
-    """ATO-Bench and unknown names are rejected (out of scope)."""
-    with pytest.raises(ValueError):
-        rf.select_datasets("ato_bench")
+def test_select_datasets_accepts_ato_bench_and_rejects_unknown() -> None:
+    """ATO-Bench is now in scope; only unknown names are rejected."""
+    assert rf.select_datasets("ato_bench") == ["ato_bench"]
     with pytest.raises(ValueError):
         rf.select_datasets("nope")
 
@@ -103,9 +102,10 @@ def test_regenerate_success_exit_code_and_mocked_generator(
     code = rf.regenerate(fixtures_dir=fixtures_dir, dataset=None)
 
     assert code == 0
-    assert calls == ["dp_bench", "omnidocbench"]
+    assert calls == ["dp_bench", "omnidocbench", "ato_bench"]
     assert (fixtures_dir / "dpbench_results.json").exists()
     assert (fixtures_dir / "omnidocbench_results.json").exists()
+    assert (fixtures_dir / "ato_bench_results.json").exists()
 
 
 def test_regenerate_error_exit_code_on_failure(
@@ -178,7 +178,7 @@ def test_main_empty_dataset_env_runs_all(tmp_path: Path, monkeypatch: pytest.Mon
     code = rf.main()
 
     assert code == 0
-    assert calls == ["dp_bench", "omnidocbench"]
+    assert calls == ["dp_bench", "omnidocbench", "ato_bench"]
 
 
 def test_run_generator_invokes_cli_as_module(
@@ -188,8 +188,9 @@ def test_run_generator_invokes_cli_as_module(
 
     The command must be ``<python> -m docling_baseline.cli <dataset> <dir>`` so
     the vendored generator runs under the dev ``generator`` group without a
-    registered console-script entry point. ``subprocess.run`` is mocked so no
-    real process spawns.
+    registered console-script entry point. Click maps the underscore dataset
+    name to a hyphen (``dp_bench`` -> ``dp-bench``). ``subprocess.run`` is mocked
+    so no real process spawns.
     """
     captured: dict[str, object] = {}
 
@@ -205,6 +206,7 @@ def test_run_generator_invokes_cli_as_module(
     args = captured["args"]
     assert isinstance(args, list)
     assert args[0] == rf.sys.executable
-    assert args[1:4] == ["-m", "docling_baseline.cli", "dp_bench"]
+    # Click maps the underscore subcommand name to a hyphen (dp_bench -> dp-bench).
+    assert args[1:4] == ["-m", "docling_baseline.cli", "dp-bench"]
     assert args[4] == str(tmp_path)
     assert captured["check"] is True

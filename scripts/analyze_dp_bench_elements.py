@@ -7,6 +7,7 @@ from collections import defaultdict
 
 
 def main():
+    """Analyze DP-Bench and report representative PDFs per element type."""
     # Download reference.json from HuggingFace
     temp_dir = pathlib.Path("/tmp/dp_bench_analysis")
     temp_dir.mkdir(parents=True, exist_ok=True)
@@ -16,6 +17,7 @@ def main():
     if not ref_path.exists():
         print("Downloading reference.json...")
         from huggingface_hub import snapshot_download
+
         snapshot_download(
             repo_id="upstage/dp-bench",
             repo_type="dataset",
@@ -102,6 +104,7 @@ def main():
             f.write(f"{pdf}\n")
 
     print(f"\nSaved selection to: {output_path}")
+
 
 if __name__ == "__main__":
     main()

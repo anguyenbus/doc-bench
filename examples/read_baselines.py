@@ -1,4 +1,5 @@
-"""Load the bundled baseline-score fixtures that ship inside the doc-bench wheel.
+"""
+Load the bundled baseline-score fixtures that ship inside the doc-bench wheel.
 
 These reference scores let you compare a parser's results against the documented
 Docling baseline without re-running anything.

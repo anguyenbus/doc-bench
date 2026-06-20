@@ -46,7 +46,9 @@ def load_scores(scores_path: Path) -> dict:
         raise ValueError(f"Invalid JSON in scores file: {e}") from e
 
 
-def compare_metrics(parser_metrics: dict, predictions_metrics: dict, tolerance: float = 1e-4) -> list[str]:
+def compare_metrics(
+    parser_metrics: dict, predictions_metrics: dict, tolerance: float = 1e-4
+) -> list[str]:
     """
     Compare metrics from two runs.
 
@@ -125,9 +127,12 @@ def verify_equivalence(parser_scores_path: Path, predictions_scores_path: Path) 
 
 
 def main() -> int:
-    """Main entry point."""
+    """Run the equivalence-verification CLI."""
     if len(sys.argv) != 3:
-        print("Usage: python scripts/verify_equivalence.py <parser_scores.json> <predictions_scores.json>")
+        print(
+            "Usage: python scripts/verify_equivalence.py "
+            "<parser_scores.json> <predictions_scores.json>"
+        )
         print("Verifies that parser mode and predictions mode produce identical metrics.")
         return 2
 

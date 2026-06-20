@@ -38,11 +38,7 @@ def _extract_gold_text(gold: dict[str, Any]) -> str:
             float(bbox.get("x0", 0)),
         )
 
-    texts = [
-        el["text"]
-        for el in sorted(elements, key=_sort_key)
-        if el.get("text", "").strip()
-    ]
+    texts = [el["text"] for el in sorted(elements, key=_sort_key) if el.get("text", "").strip()]
     return " ".join(texts)
 
 

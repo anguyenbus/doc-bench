@@ -1,4 +1,5 @@
-"""Compute each of the six doc-bench metrics directly on toy markdown inputs.
+"""
+Compute each of the six doc-bench metrics directly on toy markdown inputs.
 
 This shows what every metric rewards, without needing a dataset. Metrics operate
 on rendered markdown strings (NID/TEDS/MHS/BLEU/METEOR); ARD operates on two
@@ -10,11 +11,12 @@ Run:
 
 from __future__ import annotations
 
-from doc_bench.metrics.parsing.mhs import mhs_score, mhs_s_score
-from doc_bench.metrics.parsing.nid import nid_score, nid_s_score
+from doc_bench.metrics.parsing.mhs import mhs_s_score, mhs_score
+from doc_bench.metrics.parsing.nid import nid_s_score, nid_score
 from doc_bench.metrics.parsing.reading_order import ard_score
-from doc_bench.metrics.parsing.table_teds import teds_score, teds_s_score
 from doc_bench.metrics.parsing.text_similarity import bleu_score, meteor_score
+
+from doc_bench.metrics.parsing.table_teds import teds_s_score, teds_score
 
 GOLD = """# Quarterly Report
 

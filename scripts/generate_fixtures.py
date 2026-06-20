@@ -65,6 +65,7 @@ def generate_dp_bench_fixtures(
         element_list = gold_elements.get("elements", [])
         if element_list:
             from collections import Counter
+
             categories = [e.get("category", "") for e in element_list if e.get("category")]
             if categories:
                 category = Counter(categories).most_common(1)[0][0]
@@ -73,12 +74,14 @@ def generate_dp_bench_fixtures(
         else:
             category = "unknown"
 
-        fixtures.append({
-            "doc_id": doc_id,
-            "category": category,
-            "pdf": f"dp_bench/{pdf_name}",
-            "gold": f"dp_bench/{doc_id}.json",
-        })
+        fixtures.append(
+            {
+                "doc_id": doc_id,
+                "category": category,
+                "pdf": f"dp_bench/{pdf_name}",
+                "gold": f"dp_bench/{doc_id}.json",
+            }
+        )
 
     return fixtures
 
@@ -135,12 +138,16 @@ def generate_omnidocbench_fixtures(
         # Get doc_type
         doc_type = page_attr.get("data_source") or page_info.get("doc_type", "unknown")
 
-        fixtures.append({
-            "doc_id": doc_id,
-            "doc_type": doc_type,
-            "page": f"omnidocbench/{doc_id}.json",
-            "image": f"omnidocbench/{image_name}" if (baseline_root / image_name).exists() else None,
-        })
+        fixtures.append(
+            {
+                "doc_id": doc_id,
+                "doc_type": doc_type,
+                "page": f"omnidocbench/{doc_id}.json",
+                "image": (
+                    f"omnidocbench/{image_name}" if (baseline_root / image_name).exists() else None
+                ),
+            }
+        )
 
     return fixtures
 
@@ -201,6 +208,7 @@ def add_problematic_dp_bench_fixtures(
         element_list = gold_elements.get("elements", [])
         if element_list:
             from collections import Counter
+
             categories = [e.get("category", "") for e in element_list if e.get("category")]
             if categories:
                 category = Counter(categories).most_common(1)[0][0]
@@ -209,12 +217,14 @@ def add_problematic_dp_bench_fixtures(
         else:
             category = "unknown"
 
-        fixtures.append({
-            "doc_id": doc_id,
-            "category": category,
-            "pdf": f"dp_bench/{pdf_name}",
-            "gold": f"dp_bench/{doc_id}.json",
-        })
+        fixtures.append(
+            {
+                "doc_id": doc_id,
+                "category": category,
+                "pdf": f"dp_bench/{pdf_name}",
+                "gold": f"dp_bench/{doc_id}.json",
+            }
+        )
         print(f"  Added {pdf_name} ({category}, {len(element_list)} elements)")
 
     return fixtures

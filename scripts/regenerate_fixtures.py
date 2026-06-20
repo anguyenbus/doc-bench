@@ -58,7 +58,8 @@ RESULTS_RENAME: Final[dict[str, str]] = {
 
 
 def select_datasets(dataset: str | None) -> list[str]:
-    """Resolve which datasets to regenerate.
+    """
+    Resolve which datasets to regenerate.
 
     Args:
         dataset: A single dataset name to regenerate, or ``None`` to regenerate
@@ -84,7 +85,8 @@ def select_datasets(dataset: str | None) -> list[str]:
 
 
 def run_generator(dataset: str, target_dir: Path) -> None:
-    """Invoke the vendored generator for a single dataset, in-place.
+    """
+    Invoke the vendored generator for a single dataset, in-place.
 
     Runs ``python -m docling_baseline.cli <dataset> <target_dir>`` so the
     generator is invoked as a module under the dev ``generator`` group rather
@@ -116,7 +118,8 @@ def run_generator(dataset: str, target_dir: Path) -> None:
 
 
 def copy_results(source_dir: Path, fixtures_dir: Path, datasets: list[str]) -> list[Path]:
-    """Copy produced results into the fixtures dir, applying the DP-Bench rename.
+    """
+    Copy produced results into the fixtures dir, applying the DP-Bench rename.
 
     Copies each dataset's ``<dataset>_results.json`` (renaming DP-Bench to
     ``dpbench_results.json``) plus ``manifest.json`` into ``fixtures_dir``. When
@@ -155,7 +158,8 @@ def copy_results(source_dir: Path, fixtures_dir: Path, datasets: list[str]) -> l
 
 
 def regenerate(fixtures_dir: Path, dataset: str | None) -> int:
-    """Regenerate the selected dataset fixtures in-place.
+    """
+    Regenerate the selected dataset fixtures in-place.
 
     Args:
         fixtures_dir: The doc-bench fixtures directory (in-place target).
@@ -215,7 +219,7 @@ def _parse_args(argv: list[str]) -> argparse.Namespace:
 
 
 def main() -> int:
-    """Main entry point."""
+    """Run the fixture regeneration CLI."""
     args = _parse_args(sys.argv[1:])
     dataset = args.dataset if args.dataset else None
     return regenerate(fixtures_dir=args.fixtures_dir, dataset=dataset)

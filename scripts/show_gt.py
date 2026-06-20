@@ -1,4 +1,5 @@
-"""Overlay annotations on every page of a PDF and open the result in the browser.
+"""
+Overlay annotations on every page of a PDF and open the result in the browser.
 
 Usage
 -----
@@ -65,6 +66,7 @@ def _color(cat: str) -> str:
 
 # --- PDF rendering --------------------------------------------------------
 
+
 def render_pdf(pdf_path: Path, dpi: int = 144) -> list[str]:
     """Return the base64-encoded PNG of every page."""
     import pypdfium2 as pdfium
@@ -97,7 +99,8 @@ def render_pdf(pdf_path: Path, dpi: int = 144) -> list[str]:
 
 
 def _detect_scale(polys: list[list[float]], pw: float, ph: float) -> tuple[float, float]:
-    """Infer the (x, y) divisors that map a page's polys into [0, 1].
+    """
+    Infer the (x, y) divisors that map a page's polys into [0, 1].
 
     Auto-detects across the three conventions used in the repo:
       * coords that fit the page size  -> divide by (pw, ph)   [pixels / points]
@@ -119,16 +122,17 @@ def _detect_scale(polys: list[list[float]], pw: float, ph: float) -> tuple[float
 
     def scale_of(m: float) -> float:
         if m <= 1.5:
-            return 1.0           # already normalized 0..1
+            return 1.0  # already normalized 0..1
         if m <= 1050.0:
-            return 1000.0        # per-mille 0..1000
-        return m or 1.0          # fallback: shrink to fit
+            return 1000.0  # per-mille 0..1000
+        return m or 1.0  # fallback: shrink to fit
 
     return (scale_of(max_x), scale_of(max_y))
 
 
 def _load_elements(json_path: Path) -> list[dict[str, Any]]:
-    """Load a GT (layout_dets) or MinerU (elements) JSON for all pages.
+    """
+    Load a GT (layout_dets) or MinerU (elements) JSON for all pages.
 
     The returned dicts carry an ``nbox`` field already normalized to [0, 1]
     using the coordinate scale detected per file and per page.
@@ -140,38 +144,47 @@ def _load_elements(json_path: Path) -> list[dict[str, Any]]:
 
     # MinerU / ParserOutput / doc_bench format — single file, all pages.
     if "elements" in data and "pages" in data:
-        dims = {p["page_index"]: (float(p["width"]), float(p["height"]))
-                for p in data.get("pages", [])}
+        dims = {
+            p["page_index"]: (float(p["width"]), float(p["height"])) for p in data.get("pages", [])
+        }
         for el in data.get("elements", []):
             pidx = el.get("page_index", 0)
             pw, ph = dims.get(pidx, (1.0, 1.0))
             b = el.get("bbox") or {}
-            raw.append({
-                "page_no": pidx + 1,
-                "eid": str(el.get("element_id", "")),
-                "cat": el.get("type", "unknown"),
-                "text": el.get("text", "") or "",
-                "meta": str(el.get("element_id", ""))[:12],
-                "poly": [b.get("x0", 0), b.get("y0", 0), b.get("x1", 0), b.get("y1", 0)],
-                "pw": pw, "ph": ph,
-            })
+            raw.append(
+                {
+                    "page_no": pidx + 1,
+                    "eid": str(el.get("element_id", "")),
+                    "cat": el.get("type", "unknown"),
+                    "text": el.get("text", "") or "",
+                    "meta": str(el.get("element_id", ""))[:12],
+                    "poly": [b.get("x0", 0), b.get("y0", 0), b.get("x1", 0), b.get("y1", 0)],
+                    "pw": pw,
+                    "ph": ph,
+                }
+            )
     else:
         # GT / layout_dets format — one file per page.
         pi = data.get("page_info", {})
         pw, ph = float(pi.get("width", 1)), float(pi.get("height", 1))
         page_no = int(pi.get("page_no", 1))
-        dets = sorted(data.get("layout_dets", []),
-                      key=lambda d: float("inf") if d.get("order") is None else float(d["order"]))
+        dets = sorted(
+            data.get("layout_dets", []),
+            key=lambda d: float("inf") if d.get("order") is None else float(d["order"]),
+        )
         for det in dets:
-            raw.append({
-                "page_no": page_no,
-                "eid": f"a{det.get('anno_id', '')}",
-                "cat": det.get("category_type", "unknown"),
-                "text": det.get("text", "") or "",
-                "meta": f"#{det.get('order', '')} · id {det.get('anno_id', '')}",
-                "poly": det.get("poly", []),
-                "pw": pw, "ph": ph,
-            })
+            raw.append(
+                {
+                    "page_no": page_no,
+                    "eid": f"a{det.get('anno_id', '')}",
+                    "cat": det.get("category_type", "unknown"),
+                    "text": det.get("text", "") or "",
+                    "meta": f"#{det.get('order', '')} · id {det.get('anno_id', '')}",
+                    "poly": det.get("poly", []),
+                    "pw": pw,
+                    "ph": ph,
+                }
+            )
 
     # Detect the coordinate scale once per page (page dims can differ per page),
     # then normalize every box on that page with it.
@@ -243,6 +256,7 @@ document.querySelectorAll('[data-id]').forEach(el=>{{
 
 
 def build_html(pdf_path: Path, json_paths: list[Path], dpi: int = 144) -> str:
+    """Build a self-contained HTML overlay of annotations on the rendered PDF."""
     imgs = render_pdf(pdf_path, dpi)
 
     # Flatten elements from every input file, grouped by 1-based page_no.
@@ -287,14 +301,17 @@ def build_html(pdf_path: Path, json_paths: list[Path], dpi: int = 144) -> str:
                 c = _color(el["cat"])
                 nogeo = "" if el["nbox"] else " nogeo"
                 txt_parts.append(
-                    f'<div class="ann{nogeo}" data-id="{html.escape(el["eid"])}" style="border-left-color:{c}">'
+                    f'<div class="ann{nogeo}" data-id="{html.escape(el["eid"])}" '
+                    f'style="border-left-color:{c}">'
                     f'<span class="cat">{html.escape(el["cat"])}</span>'
                     f'<span class="meta">{html.escape(el["meta"])}</span>'
                     f'<div class="txt">{html.escape(el["text"])}</div></div>'
                 )
         else:
-            txt_parts.append('<div class="ann nogeo" style="border-left-color:#9ca3af">'
-                             '<span class="cat">no annotations for this page</span></div>')
+            txt_parts.append(
+                '<div class="ann nogeo" style="border-left-color:#9ca3af">'
+                '<span class="cat">no annotations for this page</span></div>'
+            )
 
     legend = "".join(
         f'<span class="lchip" style="background:{_color(c)}">{html.escape(c)}</span>'
@@ -313,7 +330,9 @@ def build_html(pdf_path: Path, json_paths: list[Path], dpi: int = 144) -> str:
 
 # --- CLI ------------------------------------------------------------------
 
+
 def main() -> int:
+    """Render the CLI: overlay annotation JSON(s) onto a PDF as HTML."""
     ap = argparse.ArgumentParser(
         description="Overlay annotation JSON(s) on all pages of a PDF as a self-contained HTML."
     )
@@ -321,7 +340,9 @@ def main() -> int:
     ap.add_argument("annotations", nargs="+", metavar="JSON", help="annotation JSON file(s)")
     ap.add_argument("-o", "--out", help="output HTML path (default: <pdf_stem>.gt_report.html)")
     ap.add_argument("--dpi", type=int, default=144, help="render resolution (default 144)")
-    ap.add_argument("--no-open", action="store_true", help="do not open in browser after generating")
+    ap.add_argument(
+        "--no-open", action="store_true", help="do not open in browser after generating"
+    )
     args = ap.parse_args()
 
     pdf_path = Path(args.pdf)

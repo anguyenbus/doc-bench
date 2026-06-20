@@ -88,9 +88,7 @@ DOCBENCH_SCHEMA: Final[Path] = (
 # 2026-06-07 NED/metrics simplification spec deleted mhs.py, reading_order.py,
 # and text_similarity.py from the doc-bench side. The vendored copies in
 # src/docling_baseline/ are frozen third-party code and were not deleted.
-BYTE_IDENTICAL: Final[tuple[tuple[Path, Path], ...]] = (
-    (VENDORED_SCHEMA, DOCBENCH_SCHEMA),
-)
+BYTE_IDENTICAL: Final[tuple[tuple[Path, Path], ...]] = ((VENDORED_SCHEMA, DOCBENCH_SCHEMA),)
 
 
 # ---------------------------------------------------------------------------

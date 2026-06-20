@@ -130,18 +130,26 @@ class TestEndToEndWorkflows:
 
 
 class TestDockerCompatibility:
-    """Tests Docker container compatibility."""
+    """Deletion-guard for the removed Docker feature.
 
-    def test_dockerfile_exists(self):
-        """Test Dockerfile exists at project root."""
-        # Note: This test assumes running from project root
-        # In actual CI, path would be adjusted
-        assert Path("Dockerfile").exists()
+    The Docker workflow (Dockerfile + docker-compose) was removed;
+    docs/doc-bench/overview.md states "no Docker support". These guards fail
+    loudly if any Docker artifact is reintroduced, rather than silently
+    skipping a feature that no longer exists.
+    """
 
-    def test_container_config_exists(self):
-        """Test container configuration exists."""
-        # Check for docker-compose files
-        assert Path("docker-compose.yml").exists() or Path("docker-compose.dev.yml").exists()
+    def test_dockerfile_absent(self):
+        """Test the repo-root Dockerfile stays absent (feature removed)."""
+        assert not Path("Dockerfile").exists(), "Dockerfile should stay removed (no Docker support)"
+
+    def test_container_config_absent(self):
+        """Test docker-compose configuration stays absent (feature removed)."""
+        assert not Path(
+            "docker-compose.yml"
+        ).exists(), "docker-compose.yml should stay removed (no Docker support)"
+        assert not Path(
+            "docker-compose.dev.yml"
+        ).exists(), "docker-compose.dev.yml should stay removed (no Docker support)"
 
 
 class TestMetadataCompleteness:
