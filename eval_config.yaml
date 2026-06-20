@@ -1,44 +1,20 @@
-# Default evaluation config for Docker container
-# Datasets are baked-in at /opt/doc-bench/data or baseline/
+# Optional evaluation config for doc-bench.
+#
+# This file is read only when present in the working directory. The grader
+# consumes a single thing from it: the ground-truth `path` for each dataset
+# (see `doc_bench.runners.run_parsing_eval`). A `--data-dir` CLI flag, when
+# given, overrides these paths. When neither is provided, the bundled fixtures
+# in `src/doc_bench/fixtures/` are used.
+#
+# Metrics are NOT configurable here: the grader always reports the fixed set
+# NED (ned_similarity) + TEDS + TEDS-S. Parsing runs file-based (pre-computed
+# predictions), so there is no model/parser configuration either.
 
 datasets:
   omnidocbench:
     path: /opt/doc-bench/data/parsing/omnidocbench_english_large
   dp_bench:
-    # Primary path: dataset downloaded via download script (dataset/ subdirectory layout)
+    # The DP-Bench loader auto-detects both the flat layout (reference.json +
+    # pdfs/ directly under path) and the HuggingFace layout (a dataset/
+    # subdirectory). Point this at either.
     path: /opt/doc-bench/data/parsing/dp_bench
-    # Fallback path: baseline directory for container compatibility (flat layout)
-    # The loader supports both layouts automatically
-
-metrics:
-  parsing:
-    # Text similarity metrics
-    bleu: true
-    meteor: true
-    char_edit_distance: true
-    word_edit_distance: true
-
-    # Reading order metrics
-    nid: true
-    nid_normalized: true
-    ard: true
-
-    # Table structure metrics
-    teds: true
-    teds_normalized: true
-
-    # Heading hierarchy metrics
-    mhs: true
-    mhs_normalized: true
-
-models:
-  # Parser output models (for reference)
-  stub:
-    type: stub
-    description: "Stub parser for testing"
-  fast:
-    type: fast
-    description: "Fast digital PDF parser (pypdf)"
-  docling:
-    type: docling
-    description: "Full parser with OCR support (requires docling dependency)"
