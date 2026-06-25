@@ -12,7 +12,7 @@ doc-bench grades pre-computed parser predictions against public benchmarks (DP-B
 # Install from the wheel (bundled fixtures + schema, no download needed)
 pip install dist/doc_bench-0.1.0-py3-none-any.whl
 
-# Validate the install against the 33 bundled fixtures
+# Validate the install against the 11 bundled fixtures
 doc-bench-smoke-test
 
 # Grade your pre-computed predictions
@@ -85,14 +85,18 @@ See [docs/file-based-evaluation.md](docs/file-based-evaluation.md) for the full 
 
 ## Bundled fixtures and baselines
 
-The wheel ships **33 documents** under `doc_bench/fixtures/`, so the smoke test and examples
-need no downloads:
+The smoke test and bundled baselines cover **11 documents** (the stratified set in
+`doc_bench/fixtures/manifest.json`), so the smoke test and examples need no downloads:
 
 | Dataset | Bundled docs | Notes |
 |---------|-------------:|-------|
-| DP-Bench | 16 | Paragraph (10), Caption (2), Chart (1), Heading1 (2), Index (1); includes 4 deliberately hard PDFs. |
-| OmniDocBench | 16 | academic_literature (8), book (2), colorful_textbook (2), exam_paper (2), PPT2PDF (2). |
+| DP-Bench | 5 | Paragraph (4), Chart (1). |
+| OmniDocBench | 5 | Stratified one-per-doc_type subset: academic_literature, book, colorful_textbook, exam_paper, PPT2PDF (1 each). |
 | ATO-Bench | 1 | `1371-6.1997`, a 2-page individual income tax return. |
+
+> The OmniDocBench fixture directory ships 11 page images on disk; `doc-bench --dataset
+> omnidocbench` grades all 11, while the smoke test and bundled baselines use the 5-page
+> stratified subset above.
 
 All three are gradable via `doc-bench --dataset {dp_bench,omnidocbench,ato_bench}`. ATO-Bench
 loads its ground truth from the bundled fixtures, so it needs no `--data-dir`:
@@ -119,16 +123,73 @@ sources, and per-dataset limitations.
 
 ## Metrics
 
-| Metric | Measures |
-|--------|----------|
-| NED | Text similarity (character-level Normalized Edit Distance, OmniDocBench-compatible) |
-| TEDS / TEDS-S | Table structure (tree edit distance) |
+| Metric | Measures | Implementation |
+|--------|----------|----------------|
+| NED | Whole-page text similarity (character-level Normalized Edit Distance, OmniDocBench-compatible) | [`metrics/parsing/ned.py`](src/doc_bench/metrics/parsing/ned.py) |
+| TEDS | Table structure **and** cell content (tree edit distance) | [`metrics/parsing/table_teds.py`](src/doc_bench/metrics/parsing/table_teds.py) |
+| TEDS-S | Table structure only (cells emptied before comparison) | [`metrics/parsing/table_teds.py`](src/doc_bench/metrics/parsing/table_teds.py) |
 
-All scores are in `[0.0, 1.0]`, 1.0 = perfect. NED scores are directly comparable to the
-OmniDocBench leaderboard. Details and known caveats in
-[docs/doc-bench/metrics.md](docs/doc-bench/metrics.md).
+All three scores are in `[0.0, 1.0]`, where `1.0` is a perfect match. Every metric is a pure
+function of `(ground_truth, prediction)` strings — no randomness, no model calls — so the same
+inputs always produce the same score. Full derivations and caveats live in
+[docs/doc-bench/metrics.md](docs/doc-bench/metrics.md); the essentials follow.
 
-The output CSV contains columns `query_id, error, ned, teds, teds_s`.
+### NED (text)
+
+NED scores the full page text and is the metric directly comparable to the
+[OmniDocBench leaderboard](https://arxiv.org/abs/2412.07626). Computation, per document:
+
+1. **Strip equations from the prediction first.** LaTeX spans — `$$…$$`, `$…$`, `\[…\]`,
+   `\(…\)` — are removed before scoring. OmniDocBench gold carries no equation text, so a parser
+   that emits LaTeX (MinerU, Nougat, …) would otherwise look 2–6× too long and tank its NED even
+   when the surrounding text is correct. See `_strip_equations` in
+   [`runners/run_parsing_eval.py`](src/doc_bench/runners/run_parsing_eval.py).
+2. **Normalize both strings identically** — Unicode NFC, then collapse every whitespace run
+   (`\s+`) to a single space and strip ends. This stops paragraph-break vs. single-space
+   differences from inflating the distance.
+3. **Score** with character-level Levenshtein distance:
+
+   ```
+   NED        = Levenshtein.distance(gt, pred) / max(len(gt), len(pred))
+   ned_score  = 1 - NED                              # reported value, in [0, 1]
+   ```
+
+   The `python-Levenshtein` package is used (not `rapidfuzz`) to match the OmniDocBench canonical
+   source byte-for-byte. Empty-string rule: both empty → `1.0`; exactly one empty → `0.0`.
+
+### TEDS / TEDS-S (tables)
+
+TEDS compares the **table tree** rather than flat text. Per document:
+
+1. **Extract** GFM pipe tables from the prediction markdown (and the gold markdown, when the gold
+   carries no pre-built HTML table), skipping the `|---|` separator row.
+2. **Convert** each table to HTML and wrap it in `<html><body>…</body></html>`. `<th>` is
+   rewritten to `<td>` so header placement alone does not penalize the score.
+3. **Tree-edit-distance** the two table trees with `APTED`, then normalize by the larger node
+   count:
+
+   ```
+   TEDS = 1 - APTED_edit_distance(pred_tree, gt_tree) / max(n_nodes_pred, n_nodes_gt)
+   ```
+
+   - **TEDS** (`structure_only=False`) — node rename cost is `1.0` when `tag`, `colspan`, or
+     `rowspan` differ; for matching `<td>` cells the cost is the normalized Levenshtein distance
+     of the (HTML-unescaped, `<br>`→newline, whitespace-collapsed) cell text. So structure **and**
+     content both count.
+   - **TEDS-S** (`structure_only=True`) — cell text is dropped before comparison, isolating
+     structural fidelity (rows, columns, spans).
+
+   Empty-table rules, in order: gold has **no** table → metric is `None` and the runner records
+   `0.0`; gold has a table but the prediction has none → `0.0`; either rendered tree is empty →
+   `0.0`. This is why a page can post a high NED yet `TEDS = 0.0` — it simply has no scorable
+   table on one side (the bundled OmniDocBench baseline shows exactly this on its no-table pages).
+
+### Per-document output and averaging
+
+Each graded document is one row in the results CSV with columns
+`query_id, error, ned_similarity, teds, teds_s` (values rounded to 4 decimals). The summary
+`*.json` averages are the **unweighted means over rows with no `error`** — rejected or errored
+documents are excluded from the means and counted separately under the rejection reason codes.
 
 ## Regenerating baseline fixtures (maintainers)
 
@@ -165,7 +226,7 @@ and [docs/runbook.md](docs/runbook.md).
 ├── notebooks/                    # Jupyter walkthroughs
 ├── scripts/                      # dataset + maintenance utilities
 ├── src/doc_bench/                # the shipped package
-│   ├── fixtures/                 # 33 bundled docs + schema + baselines (bundled in wheel)
+│   ├── fixtures/                 # 11 bundled baseline docs + schema + baselines (bundled in wheel)
 │   ├── datasets/  adapters/  metrics/  runners/  cli/
 │   └── __init__.py               # get_bundled_schema_path()
 ├── src/docling_baseline/         # vendored generator (DEV-ONLY, never in the wheel)
