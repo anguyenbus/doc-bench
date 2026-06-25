@@ -230,9 +230,6 @@ and [docs/runbook.md](docs/runbook.md).
 │   ├── datasets/  adapters/  metrics/  runners/  cli/
 │   └── __init__.py               # get_bundled_schema_path()
 ├── src/docling_baseline/         # vendored generator (DEV-ONLY, never in the wheel)
-├── references/                   # read-only upstream provenance (never imported)
-│   ├── docling-baseline/         # docling-baseline audit trail
-│   └── omnidocbench/             # OmniDocBench NED/ASM audit trail (Apache-2.0)
 └── tests/                        # unit + integration + the two guards
 ```
 
